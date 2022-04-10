@@ -30,12 +30,12 @@ namespace AutoDefense
                     int number = UtilRandom.GetRandomIntFromRange(0, dicCommonHeros.Count);
                     chosenHero = (HeroData)dicCommonHeros.ElementAt(number).Key.GetCopy();
                 }
-                else if(value <= (_probability.probabilityCommon +_probability.probabilityRare))
+                else if(value <= _probability.probabilityCommon + _probability.probabilityRare)
                 {
                     int number = UtilRandom.GetRandomIntFromRange(0, dicRareHeros.Count);
                     chosenHero = (HeroData)dicRareHeros.ElementAt(number).Key.GetCopy();
                 }
-                else if(value <= (_probability.probabilityCommon + _probability.probabilityRare +_probability.probabilityLord))
+                else if(value <= _probability.probabilityCommon + _probability.probabilityRare +_probability.probabilityLord)
                 {
                     int number = UtilRandom.GetRandomIntFromRange(0, dicLordHeros.Count);
                     chosenHero = (HeroData)dicLordHeros.ElementAt(number).Key.GetCopy();

@@ -22,6 +22,6 @@ MonoBehaviour:
   rareHeros:
   - name: Sentry
     unitData: {fileID: 11400000, guid: 52e1aba302998b64d9f395cd5bdca77c, type: 2}
-    amount: 5
+    amount: 9
   lordHeros: []
   Prop: {fileID: 11400000, guid: f21839c151986b748bbeccb4946a662c, type: 2}

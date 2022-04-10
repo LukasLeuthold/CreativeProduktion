@@ -16,7 +16,7 @@ namespace AutoDefense
 
         public bool isGameField;
         
-        private DragDrop Unit;
+        public DragDrop Unit;
         private DragDrop lastUnit;
         [SerializeField] private Vector2 field;
        
@@ -29,7 +29,7 @@ namespace AutoDefense
             }
             else
             {
-                GameField.Instance.Reserve[(int)field.x] = this.gameObject;
+                GameField.Instance.Reserve[count] = this.gameObject;
             }
         }
         public void OnDrop(PointerEventData eventData)
