@@ -436,7 +436,6 @@ GameObject:
   - component: {fileID: 6476974756286386283}
   - component: {fileID: 5391094190750333410}
   - component: {fileID: 4924026428483316532}
-  - component: {fileID: 1693263460980537941}
   m_Layer: 5
   m_Name: HeroCard
   m_TagString: Untagged
@@ -476,6 +475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9381be0f84343e747afd102300416a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  card: {fileID: 2930451171426080212}
+  _canvas: {fileID: 0}
   heroImage: {fileID: 8776879072727361721}
   Border: {fileID: 3075460872338493351}
   nameText: {fileID: 4616111814323017595}
@@ -490,36 +491,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4882985710510396647}
   m_CullTransparentMesh: 1
---- !u!114 &1693263460980537941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4882985710510396647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6529612837239636363
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +581,8 @@ GameObject:
   - component: {fileID: 4890557371820097874}
   - component: {fileID: 9051273033589099107}
   - component: {fileID: 8776879072727361721}
+  - component: {fileID: 6070826680851927864}
+  - component: {fileID: 1969969727}
   m_Layer: 5
   m_Name: HeroSprite
   m_TagString: Untagged
@@ -674,6 +647,33 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6070826680851927864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7990729593023310340}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340d6043a06c1fe4a8659e13b2919ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LastSlot: {fileID: 0}
+  HData: {fileID: 0}
+  haveSlot: 0
+--- !u!225 &1969969727
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7990729593023310340}
+  m_Enabled: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8631731658404412558
 GameObject:
   m_ObjectHideFlags: 0

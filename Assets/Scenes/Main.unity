@@ -356,7 +356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &76789893
 RectTransform:
   m_ObjectHideFlags: 0
@@ -958,10 +958,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae636d5a76cf9459eb7fbef0bfe9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  count: 1
   _SOGameField: {fileID: 0}
   _HData: {fileID: 0}
   isGameField: 0
+  Unit: {fileID: 0}
   field: {x: 1, y: 0}
 --- !u!114 &202078068
 MonoBehaviour:
@@ -1101,6 +1102,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroCard (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 1683344851}
     - target: {fileID: 6476974756286386283, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1500,6 +1505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroCard (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 1683344851}
     - target: {fileID: 6476974756286386283, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1722,6 +1731,7 @@ MonoBehaviour:
   _SOGameField: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
   _HData: {fileID: 0}
   isGameField: 1
+  Unit: {fileID: 0}
   field: {x: 1, y: 2}
 --- !u!114 &481803287
 MonoBehaviour:
@@ -1855,10 +1865,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae636d5a76cf9459eb7fbef0bfe9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  count: 8
   _SOGameField: {fileID: 0}
   _HData: {fileID: 0}
   isGameField: 0
+  Unit: {fileID: 0}
   field: {x: 1, y: 0}
 --- !u!114 &509621418
 MonoBehaviour:
@@ -2389,10 +2400,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae636d5a76cf9459eb7fbef0bfe9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  count: 5
   _SOGameField: {fileID: 0}
   _HData: {fileID: 0}
   isGameField: 0
+  Unit: {fileID: 0}
   field: {x: 1, y: 0}
 --- !u!114 &569344678
 MonoBehaviour:
@@ -2486,6 +2498,7 @@ MonoBehaviour:
   _SOGameField: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
   _HData: {fileID: 0}
   isGameField: 1
+  Unit: {fileID: 0}
   field: {x: 0, y: 0}
 --- !u!114 &599785635
 MonoBehaviour:
@@ -3587,10 +3600,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae636d5a76cf9459eb7fbef0bfe9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  count: 7
   _SOGameField: {fileID: 0}
   _HData: {fileID: 0}
   isGameField: 0
+  Unit: {fileID: 0}
   field: {x: 1, y: 0}
 --- !u!114 &892687650
 MonoBehaviour:
@@ -3887,6 +3901,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroCard (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 1683344851}
     - target: {fileID: 6476974756286386283, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4300,7 +4318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1006668345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5319,7 +5337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1252611207
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5765,6 +5783,7 @@ MonoBehaviour:
   _SOGameField: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
   _HData: {fileID: 0}
   isGameField: 1
+  Unit: {fileID: 0}
   field: {x: 1, y: 1}
 --- !u!114 &1428431305
 MonoBehaviour:
@@ -6022,6 +6041,7 @@ MonoBehaviour:
   _SOGameField: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
   _HData: {fileID: 0}
   isGameField: 1
+  Unit: {fileID: 0}
   field: {x: 0, y: 2}
 --- !u!114 &1525960747
 MonoBehaviour:
@@ -6566,10 +6586,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae636d5a76cf9459eb7fbef0bfe9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  count: 6
   _SOGameField: {fileID: 0}
   _HData: {fileID: 0}
   isGameField: 0
+  Unit: {fileID: 0}
   field: {x: 1, y: 0}
 --- !u!114 &1615342483
 MonoBehaviour:
@@ -6706,6 +6727,7 @@ MonoBehaviour:
   _SOGameField: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
   _HData: {fileID: 0}
   isGameField: 1
+  Unit: {fileID: 0}
   field: {x: 0, y: 1}
 --- !u!114 &1629679659
 MonoBehaviour:
@@ -6840,6 +6862,7 @@ MonoBehaviour:
   _SOGameField: {fileID: 0}
   _HData: {fileID: 0}
   isGameField: 0
+  Unit: {fileID: 0}
   field: {x: 1, y: 0}
 --- !u!114 &1632373581
 MonoBehaviour:
@@ -6964,6 +6987,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroCard (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 1683344851}
     - target: {fileID: 6476974756286386283, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7426,10 +7453,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae636d5a76cf9459eb7fbef0bfe9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  count: 3
   _SOGameField: {fileID: 0}
   _HData: {fileID: 0}
   isGameField: 0
+  Unit: {fileID: 0}
   field: {x: 1, y: 0}
 --- !u!114 &1727628599
 MonoBehaviour:
@@ -7519,10 +7547,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae636d5a76cf9459eb7fbef0bfe9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  count: 4
   _SOGameField: {fileID: 0}
   _HData: {fileID: 0}
   isGameField: 0
+  Unit: {fileID: 0}
   field: {x: 1, y: 0}
 --- !u!114 &1750006249
 MonoBehaviour:
@@ -7701,10 +7730,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae636d5a76cf9459eb7fbef0bfe9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  count: 2
   _SOGameField: {fileID: 0}
   _HData: {fileID: 0}
   isGameField: 0
+  Unit: {fileID: 0}
   field: {x: 1, y: 0}
 --- !u!114 &1785758935
 MonoBehaviour:
@@ -8088,6 +8118,7 @@ MonoBehaviour:
   _SOGameField: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
   _HData: {fileID: 0}
   isGameField: 1
+  Unit: {fileID: 0}
   field: {x: 1, y: 0}
 --- !u!114 &1919640352
 MonoBehaviour:
@@ -8812,6 +8843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroCard
       objectReference: {fileID: 0}
+    - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 1683344851}
     - target: {fileID: 6476974756286386283, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

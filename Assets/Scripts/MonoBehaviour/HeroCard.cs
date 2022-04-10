@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace AutoDefense
 {
-    public class HeroCard : MonoBehaviour
+    public class HeroCard : MonoBehaviour , IPointerDownHandler
     {
         [Header("Data")]
         private HeroData heroData;
@@ -18,6 +19,11 @@ namespace AutoDefense
                 UpdateUnitCard();
             }
         }
+        
+        [SerializeField]public GameObject card;
+
+        [SerializeField] GameObject unitParent;
+        
         [Header("UI")]
         [SerializeField] private Image heroImage; 
         [SerializeField] private Image Border; 
@@ -41,5 +47,26 @@ namespace AutoDefense
             costText.text = heroData.Rarity.Cost.ToString();
         }
 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            card.SetActive(false);
+            for (int i = 0; i < GameField.Instance.Reserve.Length; i++)
+            {
+                if (GameField.Instance.Reserve[i].GetComponent<UnitSlot>()._HData == null)
+                {
+                    Image Hero = Instantiate(heroImage,unitParent.transform);
+
+                    
+                    Hero.GetComponent<DragDrop>().enabled = true;
+                    Hero.GetComponent<CanvasGroup>().enabled = true;
+                    Hero.GetComponent<RectTransform>().anchoredPosition = GameField.Instance.Reserve[i].GetComponent<RectTransform>().anchoredPosition;
+                    Hero.GetComponent<DragDrop>().HData = HeroData;
+                    Hero.GetComponent<DragDrop>().LastSlot = GameField.Instance.Reserve[i].GetComponent<UnitSlot>();
+                    GameField.Instance.Reserve[i].GetComponent<UnitSlot>().Unit = Hero.GetComponent<DragDrop>();
+                    GameField.Instance.Reserve[i].GetComponent<UnitSlot>()._HData = HeroData;
+                    break;
+                }
+            }
+        }
     }
 }
