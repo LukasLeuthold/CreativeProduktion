@@ -49,11 +49,13 @@ namespace AutoDefense
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            card.SetActive(false);
+            
             for (int i = 0; i < GameField.Instance.Reserve.Length; i++)
             {
                 if (GameField.Instance.Reserve[i].GetComponent<UnitSlot>()._HData == null)
                 {
+                    card.SetActive(false);
+                    
                     Image Hero = Instantiate(heroImage,unitParent.transform);
 
                     

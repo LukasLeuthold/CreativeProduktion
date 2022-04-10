@@ -22,6 +22,15 @@ namespace AutoDefense
                 hCard[i].HeroData = hData[i];
             }
         }
+
+        public void Refresh()
+        {
+            for (int i = 0; i < hCard.Length; i++)
+            {
+                hCard[i].card.SetActive(true);
+            }
+            GetNewCarusell();
+        }
     }
 
 }
