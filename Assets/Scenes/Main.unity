@@ -6832,7 +6832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1662021433
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7773,7 +7773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1896895793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7786,7 +7786,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76dfcf75b9d31447b6bffa70149f0ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveBuilder: {fileID: 0}
+  waveBuilder: {fileID: 11400000, guid: 6970fc7b9f70b2d498391765e4d40edd, type: 2}
+  levelInfo: {fileID: 11400000, guid: 9a72326749b33694c9663206106de544, type: 2}
+  Testpoints: 37
 --- !u!4 &1896895794
 Transform:
   m_ObjectHideFlags: 0
