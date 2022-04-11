@@ -23,6 +23,7 @@ namespace AutoDefense
             HeroData[] lineUp = new HeroData[_amount];
             for (int i = 0; i < lineUp.Length; i++)
             {
+                //TODO: what if herodata amount is 0 => get new herodata with amount>0
                 HeroData chosenHero = null;
                 int value = UtilRandom.GetRandomIntFromRange(0, 100);
                 if (value <= _probability.probabilityCommon)
@@ -106,12 +107,11 @@ namespace AutoDefense
                 if (lordHeros[i].unitData != null)
                     lordHeros[i].unitData.OnUnitDataChanged += RefreshUnitData;
             }
-            RefreshUnitData();
-            InitDictionaries();
+            //InitDictionaries();
            
         }
 
-        private void InitDictionaries()
+        public void InitDictionaries()
         {
             dicCommonHeros.Clear();
             dicRareHeros.Clear();
@@ -128,6 +128,7 @@ namespace AutoDefense
             {
                 dicLordHeros.Add((HeroData)lordHeros[i].unitData, lordHeros[i].amount);
             }
+            RefreshUnitData();
         }
 
         private void RefreshUnitData()
@@ -155,12 +156,14 @@ namespace AutoDefense
         //TODO: refactor
         public UnitData unitData;
         public int amount;
+        public int maxAmount;
 
         public void InitPoolUnit()
         {
             if (unitData != null)
             {
                 this.name = unitData.name;
+                amount = maxAmount;
             }
         }
     }

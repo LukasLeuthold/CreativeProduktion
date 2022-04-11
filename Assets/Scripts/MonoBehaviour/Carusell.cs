@@ -11,6 +11,7 @@ namespace AutoDefense
 
         private void Start()
         {
+            hPool.InitDictionaries();
             GetNewCarusell();
         }
         private void GetNewCarusell()
