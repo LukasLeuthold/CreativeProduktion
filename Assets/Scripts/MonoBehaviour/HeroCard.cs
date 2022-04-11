@@ -23,6 +23,8 @@ namespace AutoDefense
         [SerializeField]public GameObject card;
 
         [SerializeField] GameObject unitParent;
+
+        [SerializeField] HeroPool hPool;
         
         [Header("UI")]
         [SerializeField] private Image heroImage; 
@@ -66,6 +68,8 @@ namespace AutoDefense
                     Hero.GetComponent<DragDrop>().LastSlot = GameField.Instance.Reserve[i].GetComponent<UnitSlot>();
                     GameField.Instance.Reserve[i].GetComponent<UnitSlot>().Unit = Hero.GetComponent<DragDrop>();
                     GameField.Instance.Reserve[i].GetComponent<UnitSlot>()._HData = HeroData;
+
+                    hPool.SubtractUnitCount(HeroData, 1);
                     break;
                 }
             }
