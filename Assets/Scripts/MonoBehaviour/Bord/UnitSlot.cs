@@ -18,7 +18,7 @@ namespace AutoDefense
         
         public DragDrop Unit;
         private DragDrop lastUnit;
-        [SerializeField] private Vector2 field;
+        public Vector2 field { get; }
        
 
         private void Start()
@@ -61,7 +61,7 @@ namespace AutoDefense
             else if (eventData.pointerDrag != null && !isGameField)
             {
                 Unit = eventData.pointerDrag.GetComponent<DragDrop>();
-                DeletData();
+                //DeletData();
                 Unit.LastSlot = null;
                 _HData = Unit.HData;
                 GetInfo(eventData);
@@ -71,7 +71,7 @@ namespace AutoDefense
             {             
                 Unit = eventData.pointerDrag.GetComponent<DragDrop>();
                 
-                DeletData();
+                //DeletData();
                 
                 if (isGameField)
                 {
@@ -89,14 +89,14 @@ namespace AutoDefense
         /// <summary>
         /// Löscht Daten des alten slots wenn man ein leeres Feld hinterlässt
         /// </summary>
-        private void DeletData()
-        {
-            if (Unit.LastSlot != null)
-            {
-                Unit.LastSlot.Unit = null;
-                Unit.LastSlot._HData = null;
-            }
-        }
+        //private void DeletData()
+        //{
+        //    if (Unit.LastSlot != null)
+        //    {
+        //        Unit.LastSlot.Unit = null;
+        //        Unit.LastSlot._HData = null;
+        //    }
+        //}
         private void GetInfo(PointerEventData _eventData)
         {
             Unit.haveSlot = true;

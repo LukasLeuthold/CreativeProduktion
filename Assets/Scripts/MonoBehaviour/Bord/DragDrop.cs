@@ -73,6 +73,18 @@ namespace AutoDefense
             }
             UpdateUnitCard();
         }
+        private void Update()
+        {
+            if (GameField.Instance.isGrabing)
+            {
+                canvasGroup.blocksRaycasts = false;
+            }
+            else
+            {
+                canvasGroup.blocksRaycasts = true;
+            }
+
+        }
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (LastSlot!= null && LastSlot.isGameField)
@@ -89,12 +101,10 @@ namespace AutoDefense
             lastRectTranform = rectTransform.anchoredPosition;
             transform.SetAsLastSibling();
         }
-
         public void OnDrag(PointerEventData eventData)
         {         
             rectTransform.anchoredPosition += eventData.delta;
         }
-
         public void OnDrop(PointerEventData eventData)
         {
         }
@@ -110,26 +120,36 @@ namespace AutoDefense
             }
             haveSlot = false;
         }
-
         public void OnPointerDown(PointerEventData eventData)
         {
             
         }
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
         public void OnPointerEnter(PointerEventData eventData)
         {
             currStats.SetActive(true);
             transform.SetAsLastSibling();
+            if (LastSlot.isGameField)
+            {
+                PrintRangeOnField();
+            } 
         }
-
         public void OnPointerExit(PointerEventData eventData)
         {
             currStats.SetActive(false);
             details.SetActive(false);
+<<<<<<< Updated upstream
         }
 
 
+=======
+
+        }
+>>>>>>> Stashed changes
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Right)
@@ -153,6 +173,7 @@ namespace AutoDefense
         }
         private void UpdateUnitCard()
         {
+<<<<<<< Updated upstream
             hP.text = (heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod).ToString();
             speed.text = (heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod).ToString();
             aT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
@@ -166,5 +187,28 @@ namespace AutoDefense
             _border.color = heroData.Rarity.BorderColor;
             GetComponent<Image>().sprite = heroData.unitSprite;
         }
+=======
+            hP.text = heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod.ToString();
+            speed.text = heroData.CurrStatBlock.Speed.ToString();
+            aT.text = heroData.CurrStatBlock.Attack.ToString();
+
+            _HP.text = heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod.ToString();
+            _Speed.text = heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod.ToString();
+            _AT.text = heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod.ToString();
+            _Range.text = heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod.ToString();
+            _Name.text = heroData.name;
+            _Cost.text = heroData.Rarity.Cost.ToString();
+            _border.color = heroData.Rarity.BorderColor;
+        }
+
+        private void PrintRangeOnField()
+        {
+            for (int i = 0; i < heroData.CurrStatBlock.Range; i++)
+            {
+               // GameField.Instance.Slots[1+i, (int)LastSlot.field.y].GetComponent<Image>().color = Color.green;
+            }
+        }
+
+>>>>>>> Stashed changes
     }
 }
