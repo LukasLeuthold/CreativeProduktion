@@ -12,7 +12,7 @@ namespace AutoDefense
         public SOGameField _SOGameField;
 
 
-        [HideInInspector]public HeroData _HData;
+        public HeroData _HData;
 
         public bool isGameField;
         
@@ -54,7 +54,7 @@ namespace AutoDefense
                 _HData = Unit.HData;
                 if (isGameField)
                 {
-                    _SOGameField.HDatas[count] = _HData;
+                    _SOGameField.HDatas[count] = (HeroData)_HData;
                 }
                 Debug.Log(2);
             }

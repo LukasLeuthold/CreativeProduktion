@@ -69,7 +69,7 @@ namespace AutoDefense
                     GameField.Instance.Reserve[i].GetComponent<UnitSlot>().Unit = Hero.GetComponent<DragDrop>();
                     GameField.Instance.Reserve[i].GetComponent<UnitSlot>()._HData = HeroData;
 
-                    hPool.SubtractUnitCount(HeroData, 1);
+                   // hPool.SubtractUnitCount(HeroData.name, 1);
                     break;
                 }
             }

@@ -11,7 +11,7 @@ namespace AutoDefense
         [HideInInspector]public UnitSlot LastSlot;
 
         
-        private HeroData heroData;
+        [SerializeField]private HeroData heroData;
         public HeroData HData
         {
             get => heroData;
