@@ -24,7 +24,7 @@ namespace AutoDefense
 
         [SerializeField] GameObject unitParent;
 
-        [SerializeField] HeroPool hPool;
+        [SerializeField] private GameObject heroPrefab;
         
         [Header("UI")]
         [SerializeField] private Image heroImage; 
@@ -58,18 +58,15 @@ namespace AutoDefense
                 {
                     card.SetActive(false);
                     
-                    Image Hero = Instantiate(heroImage,unitParent.transform);
+                    GameObject Hero = Instantiate(heroPrefab,unitParent.transform);
 
                     
-                    Hero.GetComponent<DragDrop>().enabled = true;
-                    Hero.GetComponent<CanvasGroup>().enabled = true;
                     Hero.GetComponent<RectTransform>().anchoredPosition = GameField.Instance.Reserve[i].GetComponent<RectTransform>().anchoredPosition;
-                    Hero.GetComponent<DragDrop>().HData = HeroData;
+                    Hero.GetComponent<DragDrop>().HData = heroData;
                     Hero.GetComponent<DragDrop>().LastSlot = GameField.Instance.Reserve[i].GetComponent<UnitSlot>();
                     GameField.Instance.Reserve[i].GetComponent<UnitSlot>().Unit = Hero.GetComponent<DragDrop>();
-                    GameField.Instance.Reserve[i].GetComponent<UnitSlot>()._HData = HeroData;
+                    GameField.Instance.Reserve[i].GetComponent<UnitSlot>()._HData = heroData;
 
-                    hPool.SubtractUnitCount(HeroData, 1);
                     break;
                 }
             }
