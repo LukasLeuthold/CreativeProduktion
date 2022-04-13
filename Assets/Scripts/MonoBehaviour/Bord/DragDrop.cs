@@ -39,7 +39,7 @@ namespace AutoDefense
         [SerializeField] private Text _Cost;
         [SerializeField] private Image _border;
 
-       
+        private bool isOpen = true;
         private RectTransform rectTransform;
         private Vector2 lastRectTranform;
         private CanvasGroup canvasGroup;
@@ -139,8 +139,21 @@ namespace AutoDefense
         {
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                details.SetActive(true);
-                currStats.SetActive(false);
+
+                if (!isOpen)
+                {
+                    isOpen = true;
+                    details.SetActive(false);
+                    currStats.SetActive(true);
+                }
+                else if (isOpen)
+                {
+                    isOpen = false;
+                    details.SetActive(true);
+                    currStats.SetActive(false);
+                }
+
+
             }
         }
     }
