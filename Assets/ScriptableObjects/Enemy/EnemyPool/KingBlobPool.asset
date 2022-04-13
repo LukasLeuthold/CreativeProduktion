@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01023e5e77d2d344aa62afc144d42ecc, type: 3}
   m_Name: KingBlobPool
   m_EditorClassIdentifier: 
-  EnemiesInPool:
-  - name: 
+  enemiesInPool:
+  - name: ThreatLvl1
+    pointCost: 1
     enemiesInThreatLevel:
-    - {fileID: 0}
-  - name: 
+    - {fileID: 11400000, guid: 44c4633835fc92945a27e3e16265e3f5, type: 2}
+  - name: ThreatLvl2
+    pointCost: 8
     enemiesInThreatLevel:
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 3a073b7cea5dac543923daf16e2ea2a7, type: 2}
   bossEnemy: {fileID: 11400000, guid: aa0c3885aa852944397b3842d0e7c91a, type: 2}
