@@ -24,32 +24,4 @@ MonoBehaviour:
     unitData: {fileID: 11400000, guid: 52e1aba302998b64d9f395cd5bdca77c, type: 2}
     amount: 10
   lordHeros: []
-    amount: 13
-    maxAmount: 14
-  - name: Imp
-    unitData: {fileID: 11400000, guid: b0b3a7d5b96474a469e9caa70ff46365, type: 2}
-    amount: 9
-    maxAmount: 11
-  - name: Flagellant
-    unitData: {fileID: 11400000, guid: b25400ec807ce1043b4cfb416fbb9d0f, type: 2}
-    amount: 8
-    maxAmount: 11
-  - name: Sharpshooter
-    unitData: {fileID: 11400000, guid: 9145f52a777695d46b4813f78161cd1f, type: 2}
-    amount: 8
-    maxAmount: 11
-  rareHeros:
-  - name: Sentry
-    unitData: {fileID: 11400000, guid: 52e1aba302998b64d9f395cd5bdca77c, type: 2}
-    amount: 8
-    maxAmount: 11
-  - name: Battle Smith
-    unitData: {fileID: 11400000, guid: 6f2ab7a29357ee64ebe73eae1a2f5fcc, type: 2}
-    amount: 9
-    maxAmount: 11
-  lordHeros:
-  - name: Archangel
-    unitData: {fileID: 11400000, guid: bef7763695d44154f9d1db5cd0d1d8b3, type: 2}
-    amount: 26
-    maxAmount: 26
   Prop: {fileID: 11400000, guid: f21839c151986b748bbeccb4946a662c, type: 2}

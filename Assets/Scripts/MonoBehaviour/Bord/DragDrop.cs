@@ -2,44 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace AutoDefense
 {
-    public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler , IPointerClickHandler
+    public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
     {
         [HideInInspector]public UnitSlot LastSlot;
 
+        public HeroData HData;
         
-        [SerializeField]private HeroData heroData;
-        public HeroData HData
-        {
-            get => heroData;
-            set
-            {
-                heroData = value;
-                UpdateUnitCard();
-            }
-        }
-
-        [Header("CurrStats")]
         [HideInInspector]public bool haveSlot;
-        [SerializeField] private GameObject currStats;
-        [SerializeField] private Text hP;
-        [SerializeField] private Text speed;
-        [SerializeField] private Text aT;
-        
-        [Header("Details")] 
-        [SerializeField] private GameObject details;
-        [SerializeField] private Text _HP;
-        [SerializeField] private Text _Speed;
-        [SerializeField] private Text _AT;
-        [SerializeField] private Text _Range;
-        [SerializeField] private Text _Name;
-        [SerializeField] private Text _Cost;
-        [SerializeField] private Image _border;
-
-        private bool isOpen = true;
+       
         private RectTransform rectTransform;
         private Vector2 lastRectTranform;
         private CanvasGroup canvasGroup;
@@ -49,29 +22,6 @@ namespace AutoDefense
         {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            currStats.SetActive(false);
-            details.SetActive(false);
-            
-        }
-        private void Update()
-        {
-            if (GameField.Instance.isGrabing)
-            {
-                canvasGroup.blocksRaycasts = false;
-            }
-            else
-            {
-                canvasGroup.blocksRaycasts = true;
-            }
-
-        }
-        private void OnValidate()
-        {
-            if (heroData == null)
-            {
-                return;
-            }
-            UpdateUnitCard();
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -88,7 +38,6 @@ namespace AutoDefense
    
             lastRectTranform = rectTransform.anchoredPosition;
             transform.SetAsLastSibling();
-            heroData.RemoveFromField();
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -117,55 +66,17 @@ namespace AutoDefense
             
         }
 
-
-        public void OnPointerEnter(PointerEventData eventData)
+        private void Update()
         {
-            currStats.SetActive(true);
-            transform.SetAsLastSibling();
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            currStats.SetActive(false);
-            details.SetActive(false);
-        }
-
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            if (eventData.button == PointerEventData.InputButton.Right)
+            if (GameField.Instance.isGrabing)
             {
-
-                if (!isOpen)
-                {
-                    isOpen = true;
-                    details.SetActive(false);
-                    currStats.SetActive(true);
-                }
-                else if (isOpen)
-                {
-                    isOpen = false;
-                    details.SetActive(true);
-                    currStats.SetActive(false);
-                }
-
-
+                canvasGroup.blocksRaycasts = false;
             }
-        }
-        private void UpdateUnitCard()
-        {
-            hP.text = (heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod).ToString();
-            speed.text = (heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod).ToString();
-            aT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
+            else
+            {
+                canvasGroup.blocksRaycasts = true;
+            }
 
-            _HP.text = (heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod).ToString();
-            _Speed.text = (heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod).ToString();
-            _AT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
-            _Range.text = (heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod).ToString();
-            _Name.text = heroData.name;
-            _Cost.text = heroData.Rarity.Cost.ToString();
-            _border.color = heroData.Rarity.BorderColor;
-            GetComponent<Image>().sprite = heroData.unitSprite;
         }
     }
 }

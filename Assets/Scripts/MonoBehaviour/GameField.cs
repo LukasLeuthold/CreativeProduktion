@@ -34,6 +34,5 @@ namespace AutoDefense
                 sOGameField.HDatas[i] = null;
             }           
         }
-
     }
 }
