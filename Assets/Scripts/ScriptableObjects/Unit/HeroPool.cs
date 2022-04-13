@@ -29,7 +29,6 @@ namespace AutoDefense
             for (int i = 0; i < lineUp.Length; i++)
             {
 
-                //TODO: what if herodata amount is 0 => get new herodata with amount>0
                 HeroData chosenHero = null;
                 possibleChosenHero = new List<HeroData>();
                 int value = UtilRandom.GetRandomIntFromRange(0, 100);
