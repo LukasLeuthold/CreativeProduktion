@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   card: {fileID: 2930451171426080212}
   unitParent: {fileID: 0}
-  hPool: {fileID: 11400000, guid: d5c6937a326753645bd1e3314683f7dd, type: 2}
+  heroPrefab: {fileID: 5838227218692730145, guid: afe58b98458a7ce4883f4dcc1eac1c6c, type: 3}
   heroImage: {fileID: 8776879072727361721}
   Border: {fileID: 3075460872338493351}
   nameText: {fileID: 4616111814323017595}
@@ -1999,8 +1999,6 @@ GameObject:
   - component: {fileID: 4890557371820097874}
   - component: {fileID: 9051273033589099107}
   - component: {fileID: 8776879072727361721}
-  - component: {fileID: 6070826680851927864}
-  - component: {fileID: 1969969727}
   m_Layer: 5
   m_Name: HeroSprite
   m_TagString: Untagged
@@ -2027,7 +2025,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 219.85516, y: -306.99814}
-  m_SizeDelta: {x: 92, y: 124}
+  m_SizeDelta: {x: 128, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9051273033589099107
 CanvasRenderer:
@@ -2067,44 +2065,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6070826680851927864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7990729593023310340}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 340d6043a06c1fe4a8659e13b2919ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LastSlot: {fileID: 0}
-  haveSlot: 0
-  currStats: {fileID: 1380390406}
-  hP: {fileID: 1750532586245896536}
-  speed: {fileID: 1982715748135166132}
-  aT: {fileID: 3208041719703689485}
-  details: {fileID: 2272475319381438724}
-  _HP: {fileID: 5808031761929694497}
-  _Speed: {fileID: 3092662676147071684}
-  _AT: {fileID: 8170171873105906308}
-  _Range: {fileID: 6345320620138221816}
-  _Name: {fileID: 6170687480269482259}
-  _Cost: {fileID: 4685163929869831969}
-  _border: {fileID: 5432230484208539672}
---- !u!225 &1969969727
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7990729593023310340}
-  m_Enabled: 0
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &8164067040173343872
 GameObject:
   m_ObjectHideFlags: 0

@@ -128,17 +128,17 @@ namespace AutoDefense
             for (int i = 0; i < commonHeros.Length; i++)
             {
                 if (commonHeros[i].unitData != null)
-                    commonHeros[i].unitData.OnUnitDataChanged += RefreshUnitData;
+                    commonHeros[i].unitData.OnUnitDataChanged += InitUnitData;
             }
             for (int i = 0; i < rareHeros.Length; i++)
             {
                 if (rareHeros[i].unitData != null)
-                    rareHeros[i].unitData.OnUnitDataChanged += RefreshUnitData;
+                    rareHeros[i].unitData.OnUnitDataChanged += InitUnitData;
             }
             for (int i = 0; i < lordHeros.Length; i++)
             {
                 if (lordHeros[i].unitData != null)
-                    lordHeros[i].unitData.OnUnitDataChanged += RefreshUnitData;
+                    lordHeros[i].unitData.OnUnitDataChanged += InitUnitData;
             }
             //InitDictionaries();
 

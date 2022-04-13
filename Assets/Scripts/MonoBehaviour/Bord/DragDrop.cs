@@ -88,6 +88,7 @@ namespace AutoDefense
    
             lastRectTranform = rectTransform.anchoredPosition;
             transform.SetAsLastSibling();
+            heroData.RemoveFromField();
         }
 
         public void OnDrag(PointerEventData eventData)
