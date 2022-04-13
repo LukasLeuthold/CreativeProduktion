@@ -2,16 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace AutoDefense
 {
-    public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+    public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [HideInInspector]public UnitSlot LastSlot;
 
-        public HeroData HData;
         
+        private HeroData heroData;
+        public HeroData HData
+        {
+            get => heroData;
+            set
+            {
+                heroData = value;
+                UpdateUnitCard();
+            }
+        }
+
         [HideInInspector]public bool haveSlot;
+
+        [SerializeField] private GameObject currStats;
+        [SerializeField] private Text hP;
+        [SerializeField] private Text speed;
+        [SerializeField] private Text aT;
        
         private RectTransform rectTransform;
         private Vector2 lastRectTranform;
@@ -22,6 +38,7 @@ namespace AutoDefense
         {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
+            currStats.SetActive(false);
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -77,6 +94,24 @@ namespace AutoDefense
                 canvasGroup.blocksRaycasts = true;
             }
 
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            currStats.SetActive(true);
+            transform.SetAsLastSibling();
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            currStats.SetActive(false);
+        }
+
+        private void UpdateUnitCard()
+        {
+            hP.text = heroData.CurrStatBlock.MaxHP.ToString();
+            speed.text = heroData.CurrStatBlock.Speed.ToString();
+            aT.text = heroData.CurrStatBlock.Attack.ToString();
         }
     }
 }
