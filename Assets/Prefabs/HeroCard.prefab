@@ -476,7 +476,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 2930451171426080212}
-  _canvas: {fileID: 0}
+  unitParent: {fileID: 0}
+  hPool: {fileID: 11400000, guid: d5c6937a326753645bd1e3314683f7dd, type: 2}
   heroImage: {fileID: 8776879072727361721}
   Border: {fileID: 3075460872338493351}
   nameText: {fileID: 4616111814323017595}
