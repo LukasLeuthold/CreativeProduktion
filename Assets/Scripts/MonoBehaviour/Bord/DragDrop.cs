@@ -117,7 +117,7 @@ namespace AutoDefense
         public void OnPointerExit(PointerEventData eventData)
         {
             currStats.SetActive(false);
-           // details.SetActive(false);
+            details.SetActive(false);
         }
 
         private void UpdateUnitCard()
@@ -137,9 +137,10 @@ namespace AutoDefense
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Left)
+            if (eventData.button == PointerEventData.InputButton.Right)
             {
                 details.SetActive(true);
+                currStats.SetActive(false);
             }
         }
     }
