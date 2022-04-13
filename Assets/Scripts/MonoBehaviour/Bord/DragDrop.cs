@@ -53,6 +53,26 @@ namespace AutoDefense
             details.SetActive(false);
             
         }
+        private void Update()
+        {
+            if (GameField.Instance.isGrabing)
+            {
+                canvasGroup.blocksRaycasts = false;
+            }
+            else
+            {
+                canvasGroup.blocksRaycasts = true;
+            }
+
+        }
+        private void OnValidate()
+        {
+            if (heroData == null)
+            {
+                return;
+            }
+            UpdateUnitCard();
+        }
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (LastSlot!= null && LastSlot.isGameField)
@@ -96,18 +116,6 @@ namespace AutoDefense
             
         }
 
-        private void Update()
-        {
-            if (GameField.Instance.isGrabing)
-            {
-                canvasGroup.blocksRaycasts = false;
-            }
-            else
-            {
-                canvasGroup.blocksRaycasts = true;
-            }
-
-        }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -121,21 +129,6 @@ namespace AutoDefense
             details.SetActive(false);
         }
 
-        private void UpdateUnitCard()
-        {
-            hP.text = heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod.ToString();
-            speed.text = heroData.CurrStatBlock.Speed.ToString();
-            aT.text = heroData.CurrStatBlock.Attack.ToString();
-
-            _HP.text = heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod.ToString();
-            _Speed.text = heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod.ToString();
-            _AT.text = heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod.ToString();
-            _Range.text = heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod.ToString();
-            _Name.text = heroData.name;
-            _Cost.text = heroData.Rarity.Cost.ToString();
-            _border.color = heroData.Rarity.BorderColor;
-            GetComponent<Image>().sprite = heroData.unitSprite;
-        }
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -157,6 +150,21 @@ namespace AutoDefense
 
 
             }
+        }
+        private void UpdateUnitCard()
+        {
+            hP.text = (heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod).ToString();
+            speed.text = (heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod).ToString();
+            aT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
+
+            _HP.text = (heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod).ToString();
+            _Speed.text = (heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod).ToString();
+            _AT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
+            _Range.text = (heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod).ToString();
+            _Name.text = heroData.name;
+            _Cost.text = heroData.Rarity.Cost.ToString();
+            _border.color = heroData.Rarity.BorderColor;
+            GetComponent<Image>().sprite = heroData.unitSprite;
         }
     }
 }
