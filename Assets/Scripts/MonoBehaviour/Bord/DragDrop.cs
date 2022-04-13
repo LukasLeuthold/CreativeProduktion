@@ -51,6 +51,7 @@ namespace AutoDefense
             canvasGroup = GetComponent<CanvasGroup>();
             currStats.SetActive(false);
             details.SetActive(false);
+            
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -133,6 +134,7 @@ namespace AutoDefense
             _Name.text = heroData.name;
             _Cost.text = heroData.Rarity.Cost.ToString();
             _border.color = heroData.Rarity.BorderColor;
+            GetComponent<Image>().sprite = heroData.unitSprite;
         }
 
         public void OnPointerClick(PointerEventData eventData)
