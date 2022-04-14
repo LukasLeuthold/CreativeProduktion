@@ -18,7 +18,7 @@ namespace AutoDefense
         
         public DragDrop Unit;
         private DragDrop lastUnit;
-        [SerializeField] private Vector2 field;
+        public Vector2 field;
        
 
         private void Start()
