@@ -8,22 +8,11 @@ namespace AutoDefense
     public class EnemyPool : ScriptableObject
     {
         [SerializeField]
-        private ThreatLevel[] enemiesInPool;
+        private ThreatLevel[] enemiesInPool = new ThreatLevel[1];
         [SerializeField]
         private EnemyData bossEnemy;
-        public ThreatLevel[] EnemiesInPool { get => enemiesInPool; set => enemiesInPool = value; }
+        public ThreatLevel[] EnemiesInPool { get => enemiesInPool; private set => enemiesInPool = value; }
 
-        //public EnemyData GetRandomEnemy(int _threatLevel)
-        //{
-        //    if (_threatLevel == -1)
-        //    {
-        //        return bossEnemy;
-        //    }
-        //    else
-        //    {
-        //        return EnemiesInPool[_threatLevel].GetRandomEnemy();
-        //    }
-        //}
     }
 
     [System.Serializable]
@@ -32,15 +21,21 @@ namespace AutoDefense
         [SerializeField]
         private string name;
 
-        public readonly int pointCost;
+        [SerializeField]
+        private int pointCost;
 
         [SerializeField]
         private EnemyData[] enemiesInThreatLevel;
 
+        public int PointCost { get => pointCost; }
+
+        /// <summary>
+        /// returns a random enemyData of the ThreatLevel
+        /// </summary>
+        /// <returns>Random EnemyData</returns>
         public EnemyData GetRandomEnemy()
         {
-            return enemiesInThreatLevel[UtilRandom.GetRandomIntFromRange(0, enemiesInThreatLevel.Length)];
+            return enemiesInThreatLevel[UtilRandom.GetRandomIntFromRange(0, enemiesInThreatLevel.Length)].GetCopy();
         }
     }
-
 }
