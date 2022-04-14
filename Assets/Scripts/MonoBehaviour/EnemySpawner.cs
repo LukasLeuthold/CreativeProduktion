@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,11 +16,15 @@ namespace AutoDefense
 
         //test
         public int Testpoints;
+        public bool debug;
 
         private void Start()
         {
             BuildWave(Testpoints);
-            DebugWave();
+            if (debug)
+            {
+                DebugWave();
+            }
             SpawnNextEnemy();
         }
         public void BuildWave()
