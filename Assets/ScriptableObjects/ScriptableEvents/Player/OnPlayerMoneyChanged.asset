@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98889a51253b9f40bc5a411934ff212, type: 3}
-  m_Name: MainPlayerRessources
+  m_Script: {fileID: 11500000, guid: 1e290e79e2b94204abc013b93d4bbd00, type: 3}
+  m_Name: OnPlayerMoneyChanged
   m_EditorClassIdentifier: 
-  OnPlayerMoneyChanged: {fileID: 11400000, guid: 50d77abc411929442b1633fa486b0a77, type: 2}
-  xPNeededForLevelUp: 
-  probabilities: []
+  manualRaiseValue: 28

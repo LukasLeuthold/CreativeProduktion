@@ -13,10 +13,20 @@ namespace AutoDefense
         private int playerMoney;
         private int PlayerLevel;
 
+        [SerializeField]private INTScriptableEvent OnPlayerMoneyChanged;
+
         private int currXP;
         [SerializeField] private int[] xPNeededForLevelUp;
         [SerializeField] private ProbabilityDistribution[] probabilities;
 
-
+        public int PlayerMoney 
+        {
+            get => playerMoney;
+            set
+            {
+                playerMoney = value;
+                OnPlayerMoneyChanged?.Raise(playerMoney);
+            }
+        }
     }
 }
