@@ -11,6 +11,7 @@ namespace AutoDefense
 
         private void Start()
         {
+            hPool.InitDictionaries();
             GetNewCarusell();
         }
         private void GetNewCarusell()
@@ -27,6 +28,10 @@ namespace AutoDefense
         {
             for (int i = 0; i < hCard.Length; i++)
             {
+                if (hCard[i].card.activeSelf)
+                {
+                    hPool.AddUnitCount(hCard[i].HeroData.name, 1);
+                }
                 hCard[i].card.SetActive(true);
             }
             GetNewCarusell();

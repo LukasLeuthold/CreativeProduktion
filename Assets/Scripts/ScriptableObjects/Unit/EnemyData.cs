@@ -39,5 +39,10 @@ namespace AutoDefense
                 Attack();
             }
         }
+
+        public override string ToString()
+        {
+            return $"Enemy {name}";
+        }
     }
 }

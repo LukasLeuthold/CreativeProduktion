@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d29dab57afac24ba4e0ca23d4051b4, type: 3}
+  m_Name: Battle Smith
+  m_EditorClassIdentifier: 
+  unitSprite: {fileID: 21300000, guid: 7553b781a228a6746a50ed0bbf7ca0ad, type: 3}
+  currStatBlock:
+    amountAttackActions: 0
+    amountMovementActions: 0
+    maxHP: 0
+    speed: 0
+    attack: 0
+    pierce: 0
+    range: 0
+  currStatModifier:
+    amountAttackActionsMod: 0
+    amountMovementActionsMod: 0
+    maxHPMod: 0
+    speedMod: 0
+    attackMod: 0
+    pierceMod: 0
+    rangeMod: 0
+  unitStats:
+  - amountAttackActions: 0
+    amountMovementActions: 0
+    maxHP: 0
+    speed: 0
+    attack: 0
+    pierce: 0
+    range: 0
+  - amountAttackActions: 0
+    amountMovementActions: 0
+    maxHP: 0
+    speed: 0
+    attack: 0
+    pierce: 0
+    range: 0
+  - amountAttackActions: 0
+    amountMovementActions: 0
+    maxHP: 0
+    speed: 0
+    attack: 0
+    pierce: 0
+    range: 0
+  currLevel: 1
+  activeHeroCollection: {fileID: 11400000, guid: 00cffb01dbb21b34dbd03483c3308b8a, type: 2}
+  allianceAttribute: {fileID: 11400000, guid: 58de748fd1cee0c448e9dd0ea6f5f50b, type: 2}
+  classAttribute: {fileID: 11400000, guid: 15efbbde8bf724448b8f9bd67e126c7d, type: 2}
+  rarity: {fileID: 11400000, guid: aa5009484bda8fa47a7a95acf68f31d5, type: 2}

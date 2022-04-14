@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,9 +10,12 @@ namespace AutoDefense
         [SerializeField] private PoolUnit[] commonHeros;
         [SerializeField] private PoolUnit[] rareHeros;
         [SerializeField] private PoolUnit[] lordHeros;
-        private Dictionary<HeroData, int> dicCommonHeros = new Dictionary<HeroData, int>();
-        private Dictionary<HeroData, int> dicRareHeros = new Dictionary<HeroData, int>();
-        private Dictionary<HeroData, int> dicLordHeros = new Dictionary<HeroData, int>();
+        private Dictionary<string, HeroDataCount> allHeros = new Dictionary<string, HeroDataCount>();
+        private Dictionary<string, HeroDataCount> dicCommonHeros = new Dictionary<string, HeroDataCount>();
+        private Dictionary<string, HeroDataCount> dicRareHeros = new Dictionary<string, HeroDataCount>();
+        private Dictionary<string, HeroDataCount> dicLordHeros = new Dictionary<string, HeroDataCount>();
+
+        List<HeroData> possibleChosenHero;
 
         //TODO: test only delete before release
         public ProbabilityDistribution Prop;
@@ -21,25 +23,54 @@ namespace AutoDefense
         public HeroData[] GetLineUp(int _amount, ProbabilityDistribution _probability)
         {
             HeroData[] lineUp = new HeroData[_amount];
+            bool commonUnitEmpty = false;
+            bool rareUnitempty = false;
+            bool lordUnitempty = false;
             for (int i = 0; i < lineUp.Length; i++)
             {
+
                 HeroData chosenHero = null;
+                possibleChosenHero = new List<HeroData>();
                 int value = UtilRandom.GetRandomIntFromRange(0, 100);
-                if (value <= _probability.probabilityCommon)
+                do
                 {
-                    int number = UtilRandom.GetRandomIntFromRange(0, dicCommonHeros.Count);
-                    chosenHero = (HeroData)dicCommonHeros.ElementAt(number).Key.GetCopy();
-                }
-                else if(value <= _probability.probabilityCommon + _probability.probabilityRare)
-                {
-                    int number = UtilRandom.GetRandomIntFromRange(0, dicRareHeros.Count);
-                    chosenHero = (HeroData)dicRareHeros.ElementAt(number).Key.GetCopy();
-                }
-                else if(value <= _probability.probabilityCommon + _probability.probabilityRare +_probability.probabilityLord)
-                {
-                    int number = UtilRandom.GetRandomIntFromRange(0, dicLordHeros.Count);
-                    chosenHero = (HeroData)dicLordHeros.ElementAt(number).Key.GetCopy();
-                }
+                    if (!commonUnitEmpty && value <= _probability.probabilityCommon)
+                    {
+                        foreach (KeyValuePair<string, HeroDataCount> dicEntry in dicCommonHeros)
+                        {
+                            if (dicEntry.Value.count > 0)
+                            {
+                                possibleChosenHero.Add(dicEntry.Value.heroData);
+                            }
+                        }
+                        if (possibleChosenHero.Count == 0)
+                        {
+                            commonUnitEmpty = true;
+                        }
+                    }
+                    else if (!rareUnitempty && value <= _probability.probabilityCommon + _probability.probabilityRare)
+                    {
+                        foreach (KeyValuePair<string, HeroDataCount> dicEntry in dicRareHeros)
+                        {
+                            if (dicEntry.Value.count > 0)
+                            {
+                                possibleChosenHero.Add(dicEntry.Value.heroData);
+                            }
+                        }
+                        if (possibleChosenHero.Count == 0)
+                        {
+                            rareUnitempty = true;
+                        }
+                    }
+                    else if (!lordUnitempty || value <= _probability.probabilityCommon + _probability.probabilityRare + _probability.probabilityLord)
+                    {
+                        int number = UtilRandom.GetRandomIntFromRange(0, dicLordHeros.Count);
+                        chosenHero = (HeroData)dicLordHeros.ElementAt(number).Value.heroData.GetCopy();
+                    }
+                } while (possibleChosenHero.Count <= 0);
+                int number2 = UtilRandom.GetRandomIntFromRange(0, possibleChosenHero.Count);
+                chosenHero = possibleChosenHero[number2].GetCopy();
+                SubtractUnitCount(chosenHero.name, 1);
                 lineUp[i] = chosenHero;
             }
             Debug.Log("lineUp: ");
@@ -54,39 +85,41 @@ namespace AutoDefense
             }
             return lineUp;
         }
-        public void AddUnitCount(HeroData _heroData, int _amount = 1)
+        public void AddUnitCount(string _heroName, int _amount = 1)
         {
-            switch (_heroData.Rarity.name)
+            switch (allHeros[_heroName].heroData.Rarity.name)
             {
                 case "Common":
-                    dicCommonHeros[_heroData]+=_amount;
+                    dicCommonHeros[_heroName].AddCount(_amount);
                     break;
                 case "Rare":
-                    dicRareHeros[_heroData] += _amount;
+                    dicRareHeros[_heroName].AddCount(_amount);
                     break;
                 case "Lord":
-                    dicLordHeros[_heroData] += _amount;
+                    dicLordHeros[_heroName].AddCount(_amount);
                     break;
                 default:
                     break;
             }
+            RefreshUnitData();
         }
-        public void SubtractUnitCount(HeroData _heroData, int _amount = 1)
+        public void SubtractUnitCount(string _heroName, int _amount = 1)
         {
-            switch (_heroData.Rarity.name)
+            switch (allHeros[_heroName].heroData.Rarity.name)
             {
                 case "Common":
-                    dicCommonHeros[_heroData] -= _amount;
+                    dicCommonHeros[_heroName].SubCount(_amount);
                     break;
                 case "Rare":
-                    dicRareHeros[_heroData] -= _amount;
+                    dicRareHeros[_heroName].SubCount(_amount);
                     break;
                 case "Lord":
-                    dicLordHeros[_heroData] -= _amount;
+                    dicLordHeros[_heroName].SubCount(_amount);
                     break;
                 default:
                     break;
             }
+            RefreshUnitData();
         }
 
         private void OnValidate()
@@ -94,43 +127,46 @@ namespace AutoDefense
             for (int i = 0; i < commonHeros.Length; i++)
             {
                 if (commonHeros[i].unitData != null)
-                    commonHeros[i].unitData.OnUnitDataChanged += RefreshUnitData;
+                    commonHeros[i].unitData.OnUnitDataChanged += InitUnitData;
             }
             for (int i = 0; i < rareHeros.Length; i++)
             {
                 if (rareHeros[i].unitData != null)
-                    rareHeros[i].unitData.OnUnitDataChanged += RefreshUnitData;
+                    rareHeros[i].unitData.OnUnitDataChanged += InitUnitData;
             }
             for (int i = 0; i < lordHeros.Length; i++)
             {
                 if (lordHeros[i].unitData != null)
-                    lordHeros[i].unitData.OnUnitDataChanged += RefreshUnitData;
+                    lordHeros[i].unitData.OnUnitDataChanged += InitUnitData;
             }
-            RefreshUnitData();
-            InitDictionaries();
-           
+            //InitDictionaries();
+
         }
 
-        private void InitDictionaries()
+        public void InitDictionaries()
         {
             dicCommonHeros.Clear();
             dicRareHeros.Clear();
             dicLordHeros.Clear();
+            InitUnitData();
             for (int i = 0; i < commonHeros.Length; i++)
             {
-                dicCommonHeros.Add((HeroData)commonHeros[i].unitData, commonHeros[i].amount);
+                dicCommonHeros.Add(commonHeros[i].name, new HeroDataCount(commonHeros[i].unitData, commonHeros[i].amount));
+                allHeros.Add(commonHeros[i].name, new HeroDataCount(commonHeros[i].unitData, commonHeros[i].amount));
             }
             for (int i = 0; i < rareHeros.Length; i++)
             {
-                dicRareHeros.Add((HeroData)rareHeros[i].unitData, rareHeros[i].amount);
+                dicRareHeros.Add(rareHeros[i].name, new HeroDataCount(rareHeros[i].unitData, rareHeros[i].amount));
+                allHeros.Add(rareHeros[i].name, new HeroDataCount(rareHeros[i].unitData, rareHeros[i].amount));
             }
             for (int i = 0; i < lordHeros.Length; i++)
             {
-                dicLordHeros.Add((HeroData)lordHeros[i].unitData, lordHeros[i].amount);
+                dicLordHeros.Add(lordHeros[i].name, new HeroDataCount(lordHeros[i].unitData, lordHeros[i].amount));
+                allHeros.Add(lordHeros[i].name, new HeroDataCount(lordHeros[i].unitData, lordHeros[i].amount));
             }
         }
 
-        private void RefreshUnitData()
+        private void InitUnitData()
         {
             for (int i = 0; i < commonHeros.Length; i++)
             {
@@ -145,6 +181,21 @@ namespace AutoDefense
                 lordHeros[i].InitPoolUnit();
             }
         }
+        private void RefreshUnitData()
+        {
+            for (int i = 0; i < commonHeros.Length; i++)
+            {
+                commonHeros[i].amount = dicCommonHeros[commonHeros[i].name].count;
+            }
+            for (int i = 0; i < rareHeros.Length; i++)
+            {
+                rareHeros[i].amount = dicRareHeros[rareHeros[i].name].count;
+            }
+            for (int i = 0; i < lordHeros.Length; i++)
+            {
+                lordHeros[i].amount = dicLordHeros[lordHeros[i].name].count;
+            }
+        }
 
     }
 
@@ -153,15 +204,35 @@ namespace AutoDefense
     {
         [HideInInspector] public string name;
         //TODO: refactor
-        public UnitData unitData;
-        public int amount;
+        public HeroData unitData;
+        [Min(1)] public int amount;
+        [Min(1)] public int maxAmount;
 
         public void InitPoolUnit()
         {
             if (unitData != null)
             {
                 this.name = unitData.name;
+                amount = maxAmount;
             }
+        }
+    }
+    public class HeroDataCount
+    {
+        public HeroDataCount(HeroData _heroData, int _count)
+        {
+            heroData = _heroData;
+            count = _count;
+        }
+        public HeroData heroData;
+        public int count;
+        public void AddCount(int _add)
+        {
+            count += _add;
+        }
+        public void SubCount(int _sub)
+        {
+            count -= _sub;
         }
     }
 }

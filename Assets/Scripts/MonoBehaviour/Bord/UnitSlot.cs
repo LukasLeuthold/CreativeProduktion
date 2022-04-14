@@ -12,7 +12,7 @@ namespace AutoDefense
         public SOGameField _SOGameField;
 
 
-        [HideInInspector]public HeroData _HData;
+        public HeroData _HData;
 
         public bool isGameField;
         
@@ -36,6 +36,8 @@ namespace AutoDefense
         {
              if (eventData.pointerDrag != null && _HData != null)
             {
+                //Tauschen von Units
+
                 //Momentane Unit die getauscht wird
                 Unit.GetComponent<RectTransform>().anchoredPosition = eventData.pointerDrag.GetComponent<DragDrop>().LastSlot.GetComponent<RectTransform>().anchoredPosition;
                 Unit.LastSlot = eventData.pointerDrag.GetComponent<DragDrop>().LastSlot;
@@ -54,21 +56,22 @@ namespace AutoDefense
                 _HData = Unit.HData;
                 if (isGameField)
                 {
-                    _SOGameField.HDatas[count] = _HData;
+                    _SOGameField.HDatas[count] = (HeroData)_HData;
+                    _HData.PlaceOnField();
                 }
-                Debug.Log(2);
             }
             else if (eventData.pointerDrag != null && !isGameField)
             {
+                //Auf die Reserve
                 Unit = eventData.pointerDrag.GetComponent<DragDrop>();
                 DeletData();
                 Unit.LastSlot = null;
                 _HData = Unit.HData;
                 GetInfo(eventData);
-                Debug.Log(3);
             }
             else if (eventData.pointerDrag != null)
-            {             
+            {   
+                //Wenn keine Unit aufm feld stellt
                 Unit = eventData.pointerDrag.GetComponent<DragDrop>();
                 
                 DeletData();
@@ -77,12 +80,10 @@ namespace AutoDefense
                 {
                     _HData = Unit.HData;
                     _SOGameField.HDatas[count] = _HData;
+                    _HData.PlaceOnField();
                 }
 
                 GetInfo(eventData);
-
-
-                Debug.Log(1);
             }
 
         }
