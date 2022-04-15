@@ -3934,6 +3934,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1662021433}
     m_Modifications:
+    - target: {fileID: 1573881914, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573881914, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4882985710510396647, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: m_Name
       value: HeroCard (1)
