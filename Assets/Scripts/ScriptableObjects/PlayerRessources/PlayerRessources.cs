@@ -10,7 +10,7 @@ namespace AutoDefense
     {
         //scriptable variable
         private int playerHealth;
-        private int playerMoney;
+        [SerializeField]private int playerMoney;
         private int PlayerLevel;
 
         [SerializeField]private INTScriptableEvent OnPlayerMoneyChanged;

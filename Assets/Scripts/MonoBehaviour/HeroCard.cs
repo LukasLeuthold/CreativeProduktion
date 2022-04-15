@@ -16,17 +16,19 @@ namespace AutoDefense
             set
             {
                 heroData = value;
-                UpdateUnitCard();
+                SetAffordable(playerRessources.PlayerMoney);
             }
         }
         
-        [SerializeField]public GameObject card;
+        [SerializeField]private PlayerRessources playerRessources;
+        private bool isAffordable = false;
 
         [SerializeField] GameObject unitParent;
 
         [SerializeField] private GameObject heroPrefab;
         
         [Header("UI")]
+        [SerializeField]public GameObject card;
         [SerializeField] private Image heroImage; 
         [SerializeField] private Image Border; 
         [SerializeField]private Text nameText;
@@ -43,21 +45,50 @@ namespace AutoDefense
             }
             heroImage.sprite = heroData.unitSprite;
             nameText.text = heroData.name;
-            Border.color = heroData.Rarity.BorderColor;
             allianceText.text = heroData.AllianceName;
             classText.text = heroData.ClassName;
             costText.text = heroData.Rarity.Cost.ToString();
+
+            if (isAffordable)
+            {
+                Border.color = heroData.Rarity.BorderColor;
+                heroImage.color = Color.white;
+            }
+            else if (!isAffordable)
+            {
+                Border.color = Color.grey;
+                Color color = Color.grey;
+                color.a = .5f;
+                heroImage.color = color;
+            }
+        }
+        public void SetAffordable(int _value)
+        {
+            Debug.Log(_value);
+            if (heroData.Rarity.Cost<= _value)
+            {
+                isAffordable = true;
+                UpdateUnitCard();
+            }
+            else if (heroData.Rarity.Cost > _value)
+            {
+                isAffordable = false;
+                UpdateUnitCard();
+            }
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            
+            if (!isAffordable)
+            {
+                return;
+            }
             for (int i = 0; i < GameField.Instance.Reserve.Length; i++)
             {
                 if (GameField.Instance.Reserve[i].GetComponent<UnitSlot>()._HData == null)
                 {
                     card.SetActive(false);
-                    
+                    playerRessources.PlayerMoney -= HeroData.Rarity.Cost;
                     GameObject Hero = Instantiate(heroPrefab,unitParent.transform);
 
                     

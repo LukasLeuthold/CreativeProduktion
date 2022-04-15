@@ -15,12 +15,13 @@ namespace AutoDefense
             DragDrop dd = eventData.pointerDrag.GetComponent<DragDrop>();
             dd.LastSlot._HData = null;
             dd.LastSlot.Unit = null;
+            dd.haveSlot = true;
+            GameField.Instance.isGrabing = false;
 
             HeroData hData = dd.HData;
             pRessources.PlayerMoney += hData.Rarity.Cost;
             heroPool.AddUnitCount(hData.name);
             Destroy(eventData.pointerDrag);
         }
-
     }
 }

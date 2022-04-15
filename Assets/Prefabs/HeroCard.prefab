@@ -1458,6 +1458,7 @@ GameObject:
   - component: {fileID: 6476974756286386283}
   - component: {fileID: 5391094190750333410}
   - component: {fileID: 4924026428483316532}
+  - component: {fileID: 1573881914}
   m_Layer: 5
   m_Name: HeroCard
   m_TagString: Untagged
@@ -1497,9 +1498,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9381be0f84343e747afd102300416a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 2930451171426080212}
+  playerRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
   unitParent: {fileID: 0}
   heroPrefab: {fileID: 5838227218692730145, guid: afe58b98458a7ce4883f4dcc1eac1c6c, type: 3}
+  card: {fileID: 2930451171426080212}
   heroImage: {fileID: 8776879072727361721}
   Border: {fileID: 3075460872338493351}
   nameText: {fileID: 4616111814323017595}
@@ -1514,6 +1516,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4882985710510396647}
   m_CullTransparentMesh: 1
+--- !u!114 &1573881914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882985710510396647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27faec90322d77c4b96cc1ee356e649a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 50d77abc411929442b1633fa486b0a77, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5391094190750333410}
+        m_TargetAssemblyTypeName: AutoDefense.HeroCard, Assembly-CSharp
+        m_MethodName: SetAffordable
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5304465861178882014
 GameObject:
   m_ObjectHideFlags: 0
