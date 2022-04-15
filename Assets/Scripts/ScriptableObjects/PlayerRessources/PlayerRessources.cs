@@ -6,16 +6,20 @@ namespace AutoDefense
 {
     [CreateAssetMenu(fileName = "new PlayerRessources", menuName = "ScriptablePlayerRessources/PlayerRessources")]
 
-    public class PlayerRessources : ScriptableObject
+    public class PlayerRessources : InitScriptObject
     {
         //scriptable variable
         private int playerHealth;
-        [SerializeField]private int playerMoney;
+        private int playerMoney;
+        [SerializeField]private int startPlayerMoney;
         private int PlayerLevel;
 
         [SerializeField]private INTScriptableEvent OnPlayerMoneyChanged;
+        [SerializeField]private INTScriptableEvent OnPlayerLevelChanged;
 
         private int currXP;
+
+        private int currLevel;
         [SerializeField] private int[] xPNeededForLevelUp;
         [SerializeField] private ProbabilityDistribution[] probabilities;
 
@@ -27,6 +31,31 @@ namespace AutoDefense
                 playerMoney = value;
                 OnPlayerMoneyChanged?.Raise(playerMoney);
             }
+        }
+
+        public int CurrXP
+        {
+            get => currXP;
+            set
+            {
+                if (currXP + value < xPNeededForLevelUp[(currLevel - 1)])
+                {
+                    currXP += value;
+                }
+                else
+                {
+                    int difference = xPNeededForLevelUp[(currLevel - 1)] - currXP;
+                    currXP = value - difference;
+                    currLevel++;
+                    OnPlayerLevelChanged.Raise(currLevel);
+                }
+            }
+        }
+
+        public override void Initialize()
+        {
+            PlayerMoney = startPlayerMoney;
+            currLevel = 1;
         }
     }
 }

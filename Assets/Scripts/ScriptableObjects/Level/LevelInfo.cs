@@ -6,7 +6,7 @@ using UnityEngine;
 namespace AutoDefense
 {
     [CreateAssetMenu(fileName = "new LevelInfo", menuName = "Level/LevelInfo")]
-    public class LevelInfo : ScriptableObject
+    public class LevelInfo : InitScriptObject
     {
         [SerializeField]private int maxWaveCount;
         [SerializeField]private int currWave;
@@ -24,9 +24,10 @@ namespace AutoDefense
         public int CurrWave { get => currWave; set => currWave = value; }
         public AnimationCurve DifficultieCurve { get => difficultieCurve; private set => difficultieCurve = value; }
 
-        public void Initialize()
+        public override void Initialize()
         {
             currWave = 0;
+
         }
     }
 }
