@@ -64,7 +64,10 @@ namespace AutoDefense
         }
         public void SetAffordable(int _value)
         {
-            Debug.Log(_value);
+            if (heroData == null)
+            {
+                return;
+            }
             if (heroData.Rarity.Cost<= _value)
             {
                 isAffordable = true;

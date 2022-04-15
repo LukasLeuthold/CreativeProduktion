@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AutoDefense
 {
@@ -8,6 +9,10 @@ namespace AutoDefense
     {
         [SerializeField] private HeroPool hPool;
         [SerializeField] private HeroCard[] hCard = new HeroCard[5];
+        [SerializeField] private int rerollCost;
+        [SerializeField] private PlayerRessources playerRessources;
+        [SerializeField] private Button rerollButton;
+
 
         private void Start()
         {
@@ -24,6 +29,18 @@ namespace AutoDefense
             }
         }
 
+        public void SetRerollable(int _value)
+        {
+            if (rerollCost <= _value)
+            {
+                rerollButton.interactable = true;
+            }
+            else if (rerollCost > _value)
+            {
+                rerollButton.interactable = false;
+            }
+        }
+
         public void Refresh()
         {
             for (int i = 0; i < hCard.Length; i++)
@@ -34,6 +51,7 @@ namespace AutoDefense
                 }
                 hCard[i].card.SetActive(true);
             }
+            playerRessources.PlayerMoney -= rerollCost;
             GetNewCarusell();
         }
     }
