@@ -7,7 +7,7 @@ namespace AutoDefense
     /// class to handle unitcollection logic for applying effects on to groups and tracking group count
     /// </summary>
     [CreateAssetMenu(fileName = "new HeroCollection", menuName = "ScriptableCollection/HeroCollection", order = 1)]
-    public class HeroCollection : ScriptableObject
+    public class HeroCollection : InitScriptObject
     {
         //TODO: list for testing purpose only used for visualizing the dictionary
         public List<HeroData> heroessssTest;
@@ -15,18 +15,14 @@ namespace AutoDefense
         /// <summary>
         /// dictionary of unique heroes and the amount of them on the battlefield
         /// </summary>
-        Dictionary<HeroData, int> heroesInCollection = new Dictionary<HeroData, int>();
+        Dictionary<string, List<HeroData>> heroesInCollection;
         /// <summary>
         /// number of unique units on the battlefield
         /// </summary>
         [SerializeField] private int diversity;
 
-        public void ClearCollection()
-        {
-            diversity = 0;
-            heroesInCollection = new Dictionary<HeroData, int>();
-            heroessssTest = new List<HeroData>();
-        }
+        public GroupEffect[] groupEffects;
+
         /// <summary>
         /// adds a herodata to the collection
         /// </summary>
@@ -34,16 +30,17 @@ namespace AutoDefense
         public void AddToCollection(HeroData _hero)
         {
             heroessssTest.Add(_hero);
-            //if (heroesInCollection.ContainsKey(_hero))
-            //{
-            //    heroesInCollection[_hero]++;
-            //}
-            //else
-            //{
-            //    heroesInCollection.Add(_hero, 1);
-            //    diversity++;
-            //}
-            //Debug.Log("after adding 1 " + this.name + " the amount is " + diversity);
+            if (heroesInCollection.ContainsKey(_hero.name))
+            {
+                heroesInCollection[_hero.name].Add(_hero);
+            }
+            else
+            {
+                heroesInCollection.Add(_hero.name, new List<HeroData>());
+                heroesInCollection[_hero.name].Add(_hero);
+                diversity++;
+            }
+            Debug.Log("after adding 1 " + this.name + " the diversity is: " + diversity);
         }
         /// <summary>
         /// removes a herodata from the collection
@@ -51,17 +48,28 @@ namespace AutoDefense
         /// <param name="_hero">herodata to remove</param>
         public void RemoveFromCollection(HeroData _hero)
         {
-                heroessssTest.Remove(_hero);
-            //if (heroesInCollection.ContainsKey(_hero))
-            //{
-            //    heroesInCollection[_hero]--;
-            //    if (heroesInCollection[_hero] == 0)
-            //    {
-            //        heroesInCollection.Remove(_hero);
-            //        diversity--;
-            //    }
-            //    Debug.Log("after subtracting 1 " + this.name + " the amount is " + diversity);
-            //}
+            heroessssTest.Remove(_hero);
+            heroesInCollection[_hero.name].Remove(_hero);
+            if (heroesInCollection[_hero.name].Count <= 0)
+            {
+                heroesInCollection.Remove(_hero.name);
+                diversity--;
+            }
+            Debug.Log("after subtracting 1 " + this.name + " the diversity is " + diversity);
         }
+
+        public override void Initialize()
+        {
+            heroesInCollection = new Dictionary<string, List<HeroData>>();
+            diversity = 0;
+            heroessssTest = new List<HeroData>();
+        }
+    }
+
+    [System.Serializable]
+    public struct GroupEffect
+    {
+        public int neededDiversity;
+        public Effect effect;
     }
 }

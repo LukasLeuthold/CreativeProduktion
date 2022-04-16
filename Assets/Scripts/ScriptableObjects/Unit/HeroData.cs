@@ -54,14 +54,13 @@ namespace AutoDefense
 
         public void PlaceOnField()
         {
-            //TODO: test copy thingy
-            activeHeroCollection.AddToCollection(GetCopy());
+            activeHeroCollection.AddToCollection(this);
             allianceAttribute.AddToCollection(this);
             classAttribute.AddToCollection(this);
         }
         public void RemoveFromField()
         {
-            activeHeroCollection.RemoveFromCollection(GetCopy());
+            activeHeroCollection.RemoveFromCollection(this);
             allianceAttribute.RemoveFromCollection(this);
             classAttribute.RemoveFromCollection(this);
         }

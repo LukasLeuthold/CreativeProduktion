@@ -24,11 +24,6 @@ namespace AutoDefense
 
         public void OnDrop(PointerEventData eventData)
         {
-            //TODO: test empty drop
-            //if (true)
-            //{
-
-            //}
             DragDrop dd = eventData.pointerDrag.GetComponent<DragDrop>();
             dd.LastSlot._HData = null;
             dd.LastSlot.Unit = null;

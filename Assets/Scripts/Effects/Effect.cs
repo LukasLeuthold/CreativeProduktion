@@ -4,17 +4,9 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    public class Effect : ScriptableObject
+    public abstract class Effect : ScriptableObject
     {
-        public readonly ModifierBlock buffStats;
-
-        public void ApplyEffect(HeroData _hero)
-        {
-            _hero.CurrStatModifier = _hero.CurrStatModifier + buffStats;
-        }
-        public void RemoveEffect(HeroData _hero)
-        {
-            _hero.CurrStatModifier = _hero.CurrStatModifier - buffStats;
-        }
+        public abstract void ApplyEffect(HeroData _hero);
+        public abstract void RemoveEffect(HeroData _hero);
     }
 }

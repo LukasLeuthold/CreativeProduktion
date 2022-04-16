@@ -9,5 +9,6 @@ namespace AutoDefense
     public class SOCards : ScriptableObject
     {
         public HeroCard[] Cards = new HeroCard[5];
+        //TODO: do we need this??
     }
 }
