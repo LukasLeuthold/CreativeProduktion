@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: test ProbabilityDistribution
   m_EditorClassIdentifier: 
   probabilityCommon: 60
-  probabilityRare: 40
-  probabilityLord: 0
+  probabilityRare: 30
+  probabilityLord: 10
