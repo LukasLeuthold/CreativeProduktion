@@ -71,13 +71,13 @@ namespace AutoDefense
     [System.Serializable]
     public struct ModifierBlock
     {
-        [SerializeField] private int amountAttackActionsMod;
-        [SerializeField] private int amountMovementActionsMod;
         [SerializeField] private int maxHPMod;
         [SerializeField] private int speedMod;
         [SerializeField] private int attackMod;
-        [SerializeField] private int pierceMod;
         [SerializeField] private int rangeMod;
+        [SerializeField] private int pierceMod;
+        [SerializeField] private int amountAttackActionsMod;
+        [SerializeField] private int amountMovementActionsMod;
         public int AmountAttackActionsMod { get => amountAttackActionsMod; set => amountAttackActionsMod = value; }
         public int AmountMovementActionsMod { get => amountMovementActionsMod; set => amountMovementActionsMod = value; }
         public int MaxHPMod { get => maxHPMod; set => maxHPMod = value; }

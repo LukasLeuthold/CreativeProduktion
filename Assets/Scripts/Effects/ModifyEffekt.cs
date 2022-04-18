@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    [CreateAssetMenu(fileName = "new ModifyEffect", menuName = "ScriptableEffects/MOdifyEffect")]
+    [CreateAssetMenu(fileName = "new ModifyEffect", menuName = "ScriptableEffects/ModifyEffect")]
     public class ModifyEffekt : Effect
     {
         [SerializeField]private ModifierBlock buffStats;
