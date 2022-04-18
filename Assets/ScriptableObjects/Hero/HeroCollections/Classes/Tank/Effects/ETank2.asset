@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ETank2
   m_EditorClassIdentifier: 
   buffStats:
-    maxHPMod: 0
+    maxHPMod: 4
     speedMod: 0
     attackMod: 0
     rangeMod: 0

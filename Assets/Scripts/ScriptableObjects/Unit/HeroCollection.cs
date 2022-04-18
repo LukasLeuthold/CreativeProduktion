@@ -158,6 +158,7 @@ namespace AutoDefense
             }
             lowestDiversity = int.MaxValue;
             dicGroupEffect = new Dictionary<int, Effect>();
+            string namew = this.name; 
             for (int i = 0; i < groupEffects.Length; i++)
             {
                 dicGroupEffect.Add(groupEffects[i].neededDiversity, groupEffects[i].effect);

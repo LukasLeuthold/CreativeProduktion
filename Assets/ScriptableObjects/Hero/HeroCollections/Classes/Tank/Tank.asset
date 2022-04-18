@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c42e8b6218cf448d83a6d45ea3d2b, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
-  heroessssTest:
-  - {fileID: 11400000, guid: 52e1aba302998b64d9f395cd5bdca77c, type: 2}
+  heroessssTest: []
+  diversity: 0
+  groupEffects:
+  - neededDiversity: 2
+    effect: {fileID: 11400000, guid: c2b0ddc780ed1ce4ea4c26b1a55eb44d, type: 2}
+  - neededDiversity: 4
+    effect: {fileID: 11400000, guid: 4e1db35d1ad1648418596936f2eab750, type: 2}
+  - neededDiversity: 6
+    effect: {fileID: 11400000, guid: 914f3e70b9c4c724784a4cbdedac7602, type: 2}

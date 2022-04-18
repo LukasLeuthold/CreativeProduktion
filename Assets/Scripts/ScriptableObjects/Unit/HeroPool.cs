@@ -139,7 +139,7 @@ namespace AutoDefense
                 if (lordHeros[i].unitData != null)
                     lordHeros[i].unitData.OnUnitDataChanged += InitUnitData;
             }
-            //InitDictionaries();
+            InitUnitData();
 
         }
 
