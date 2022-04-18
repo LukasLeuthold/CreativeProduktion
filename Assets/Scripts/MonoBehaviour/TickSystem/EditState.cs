@@ -6,13 +6,25 @@ namespace AutoDefense
 {
     public class EditState :  TickState
     {
+        TickManager tickManager;       
         public EditState(TickManager _TManager)
         {
-
+            tickManager = _TManager;
         }
-        public override TickState HandleState()
+
+        public override void EnterState()
         {
-            return this;
+            tickManager.ResetSlider();
+        }
+        public override void  HandleState()
+        {               
+            tickManager.currTime += Time.deltaTime;
+            tickManager.timeSlider.value = tickManager.currTime;
+                
+                if (tickManager.currTime >= tickManager.editTime)
+                {
+                    tickManager.SetState("Fight");
+                }                      
         }
     }
 }

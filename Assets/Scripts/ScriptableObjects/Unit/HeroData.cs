@@ -66,9 +66,9 @@ namespace AutoDefense
             classAttribute.RemoveFromCollection(this);
         }
 
-        protected override void Attack()
+        public override void Attack()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Attack");
         }
 
         public HeroData GetCopy()

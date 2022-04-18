@@ -6,9 +6,18 @@ namespace AutoDefense
 {
     public class TickState 
     {
-        virtual public TickState HandleState()
+        virtual public void EnterState()
         {
-            return this;
+
+        }
+        virtual public void HandleState()
+        {
+            
+        }
+
+        virtual public void ExitState()
+        {
+
         }
     }
 }

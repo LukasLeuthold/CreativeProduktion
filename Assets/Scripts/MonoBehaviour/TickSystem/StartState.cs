@@ -6,13 +6,20 @@ namespace AutoDefense
 {
     public class StartState : TickState
     {
+        private TickManager tickManager;
         public StartState(TickManager _TManager)
         {
-
+            tickManager = _TManager;
         }
-        public override TickState HandleState()
+
+        public override void EnterState()
         {
-            return this;
+            
+        }
+        public override void HandleState()
+        {
+            tickManager.timeSlider.value = 0;
+            tickManager.SetState("Edit");
         }
     }
 }

@@ -10,9 +10,9 @@ namespace AutoDefense
         {
 
         }
-        public override TickState HandleState()
+        public override void HandleState()
         {
-            return this;
+
         }
     }
 }

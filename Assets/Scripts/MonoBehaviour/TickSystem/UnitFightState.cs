@@ -6,13 +6,18 @@ namespace AutoDefense
 {
     public class UnitFightState : TickState
     {
+        TickManager tickManager;
         public UnitFightState(TickManager _TManager)
         {
-
+            tickManager = _TManager;
         }
-        public override TickState HandleState()
+        public override void EnterState()
         {
-            return this;
+            tickManager.UnitAttack();
+        }
+        public override void HandleState()
+        {
+            
         }
     }
 }

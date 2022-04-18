@@ -25,7 +25,7 @@ namespace AutoDefense
             {
                 DebugWave();
             }
-            SpawnNextEnemy();
+            //SpawnNextEnemy();
         }
         public void BuildWave()
         {
@@ -49,7 +49,7 @@ namespace AutoDefense
             }
         }
 
-        private void SpawnNextEnemy()
+        public void SpawnNextEnemy()
         {
             for (int i = 0; i < spawnFieldTransforms.Length; i++)
             {
@@ -61,6 +61,7 @@ namespace AutoDefense
                         EnemyData enemy = enemiesInWave.Dequeue();
                         clone.GetComponent<Enemy>().EnemyData = enemy;
                         spawnFieldTransforms[i].GetComponent<EnemyField>().EnemyOnField = enemy;
+                        // ToDO zu Array hinzufügen
                     }
                 }
             }

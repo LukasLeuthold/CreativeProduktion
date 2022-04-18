@@ -7,12 +7,12 @@ namespace AutoDefense
     [CreateAssetMenu(fileName = "new EnemyData", menuName = "ScriptableUnitData/EnemyData", order = 2)]
     public class EnemyData : UnitData
     {
-        protected override void Attack()
+        public override void Attack()
         {
             throw new System.NotImplementedException();
         }
 
-        protected override void Move()
+        public override void Move()
         {
             base.Move();
         }
