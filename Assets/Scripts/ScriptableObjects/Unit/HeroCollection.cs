@@ -40,22 +40,14 @@ namespace AutoDefense
                         diversity = value;
                         return;
                     }
-                    if (currEffect == null)
+                    if (currEffect != null)
                     {
-                        diversity = value;
-                        ApplyEffectToGroup(dicGroupEffect[diversity]);
-                        for (int i = 0; i < groupEffects.Length; i++)
-                        {
-                            if (groupEffects[i].effect == dicGroupEffect[diversity])
-                            {
-                                currEffect = groupEffects[i];
-                            }
-                        }
-                        return;
+                        RemoveEffectFromGroup(currEffect);
                     }
-                    RemoveEffectFromGroup(currEffect.effect);
                     diversity = value;
-                    ApplyEffectToGroup(dicGroupEffect[diversity]);
+                    currEffect = dicGroupEffect[diversity];
+                    currNeededDiversity = diversity;
+                    ApplyEffectToGroup(currEffect);
                 }
                 else if (diversity > value)
                 {
@@ -64,26 +56,49 @@ namespace AutoDefense
                         diversity = value;
                         return;
                     }
-                    if (value < currEffect.neededDiversity && value< lowestDiversity)
+                    if (dicGroupEffect.ContainsKey(diversity) && !dicGroupEffect.ContainsKey(value))
                     {
-                        RemoveEffectFromGroup(currEffect.effect);
-                        currEffect = null;
-                        diversity = value;
+                        if (value < lowestDiversity)
+                        {
+                            RemoveEffectFromGroup(currEffect);
+                            currEffect = null;
+                            diversity = value;
+                            return;
+                        }
+                        else
+                        {
+                            RemoveEffectFromGroup(currEffect);
+                            for (int i = value; i >=0; i--)
+                            {
+                                if (dicGroupEffect.ContainsKey(i))
+                                {
+                                    currEffect = dicGroupEffect[i];
+                                    currNeededDiversity = i;
+                                    diversity = value;
+                                    ApplyEffectToGroup(currEffect);
+                                    return;
+                                }
+                            }
+                        }
                     }
-                    if (currEffect != null && value < lowestDiversity)
+                    if (!dicGroupEffect.ContainsKey(diversity) && !dicGroupEffect.ContainsKey(value))
                     {
                         diversity = value;
-                        RemoveEffectFromGroup(currEffect.effect);
-                        currEffect = null;
                         return;
                     }
-
+                    if (!dicGroupEffect.ContainsKey(diversity) && dicGroupEffect.ContainsKey(value))
+                    {
+                        diversity = value;
+                        return;
+                    }
                 }
             }
         }
 
         public GroupEffect[] groupEffects;
-        private GroupEffect currEffect;
+        //private GroupEffect currEffect;
+        private Effect currEffect;
+        private int currNeededDiversity;
         private Dictionary<int, Effect> dicGroupEffect;
 
         /// <summary>
@@ -95,7 +110,8 @@ namespace AutoDefense
             heroessssTest.Add(_hero);
             if (currEffect != null)
             {
-                currEffect.effect.ApplyEffect(_hero);
+                //currEffect.effect.ApplyEffect(_hero);
+                currEffect.ApplyEffect(_hero);
             }
             if (heroesInCollection.ContainsKey(_hero.name))
             {
@@ -120,7 +136,7 @@ namespace AutoDefense
             heroesInCollection[_hero.name].Remove(_hero);
             if (currEffect != null)
             {
-                currEffect.effect.RemoveEffect(_hero);
+                currEffect.RemoveEffect(_hero);
             }
             if (heroesInCollection[_hero.name].Count <= 0)
             {
