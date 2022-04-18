@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace AutoDefense
@@ -21,7 +22,69 @@ namespace AutoDefense
         /// </summary>
         [SerializeField] private int diversity;
 
+        private int lowestDiversity;
+        public int Diversity
+        {
+            get => diversity;
+            set
+            {
+                if (dicGroupEffect == null)
+                {
+                    diversity = value;
+                    return;
+                }
+                if (diversity < value)
+                {
+                    if (!dicGroupEffect.ContainsKey(value))
+                    {
+                        diversity = value;
+                        return;
+                    }
+                    if (currEffect == null)
+                    {
+                        diversity = value;
+                        ApplyEffectToGroup(dicGroupEffect[diversity]);
+                        for (int i = 0; i < groupEffects.Length; i++)
+                        {
+                            if (groupEffects[i].effect == dicGroupEffect[diversity])
+                            {
+                                currEffect = groupEffects[i];
+                            }
+                        }
+                        return;
+                    }
+                    RemoveEffectFromGroup(currEffect.effect);
+                    diversity = value;
+                    ApplyEffectToGroup(dicGroupEffect[diversity]);
+                }
+                else if (diversity > value)
+                {
+                    if (currEffect == null)
+                    {
+                        diversity = value;
+                        return;
+                    }
+                    if (value < currEffect.neededDiversity && value< lowestDiversity)
+                    {
+                        RemoveEffectFromGroup(currEffect.effect);
+                        currEffect = null;
+                        diversity = value;
+                    }
+                    if (currEffect != null && value < lowestDiversity)
+                    {
+                        diversity = value;
+                        RemoveEffectFromGroup(currEffect.effect);
+                        currEffect = null;
+                        return;
+                    }
+
+                }
+            }
+        }
+
         public GroupEffect[] groupEffects;
+        private GroupEffect currEffect;
+        private Dictionary<int, Effect> dicGroupEffect;
 
         /// <summary>
         /// adds a herodata to the collection
@@ -30,6 +93,10 @@ namespace AutoDefense
         public void AddToCollection(HeroData _hero)
         {
             heroessssTest.Add(_hero);
+            if (currEffect != null)
+            {
+                currEffect.effect.ApplyEffect(_hero);
+            }
             if (heroesInCollection.ContainsKey(_hero.name))
             {
                 heroesInCollection[_hero.name].Add(_hero);
@@ -38,8 +105,9 @@ namespace AutoDefense
             {
                 heroesInCollection.Add(_hero.name, new List<HeroData>());
                 heroesInCollection[_hero.name].Add(_hero);
-                diversity++;
+                Diversity++;
             }
+
             Debug.Log("after adding 1 " + this.name + " the diversity is: " + diversity);
         }
         /// <summary>
@@ -50,24 +118,68 @@ namespace AutoDefense
         {
             heroessssTest.Remove(_hero);
             heroesInCollection[_hero.name].Remove(_hero);
+            if (currEffect != null)
+            {
+                currEffect.effect.RemoveEffect(_hero);
+            }
             if (heroesInCollection[_hero.name].Count <= 0)
             {
                 heroesInCollection.Remove(_hero.name);
-                diversity--;
+                Diversity--;
             }
-            Debug.Log("after subtracting 1 " + this.name + " the diversity is " + diversity);
+            //Debug.Log("after subtracting 1 " + this.name + " the diversity is " + diversity);
         }
 
         public override void Initialize()
         {
             heroesInCollection = new Dictionary<string, List<HeroData>>();
+            currEffect = null;
             diversity = 0;
             heroessssTest = new List<HeroData>();
+            if (groupEffects.Length == 0)
+            {
+                return;
+            }
+            lowestDiversity = int.MaxValue;
+            dicGroupEffect = new Dictionary<int, Effect>();
+            for (int i = 0; i < groupEffects.Length; i++)
+            {
+                dicGroupEffect.Add(groupEffects[i].neededDiversity, groupEffects[i].effect);
+                if (groupEffects[i].neededDiversity < lowestDiversity)
+                {
+                    lowestDiversity = groupEffects[i].neededDiversity;
+                }
+            }
+        }
+
+        private void ApplyEffectToGroup(Effect _effect)
+        {
+            Debug.Log("applying buff");
+            for (int i = 0; i < heroesInCollection.Count; i++)
+            {
+                List<HeroData> heroes = heroesInCollection.ElementAt(i).Value;
+                for (int j = 0; j < heroes.Count; j++)
+                {
+                    _effect.ApplyEffect(heroes[j]);
+                }
+            }
+        }
+        private void RemoveEffectFromGroup(Effect _effect)
+        {
+            Debug.Log("removing buff");
+            for (int i = 0; i < heroesInCollection.Count; i++)
+            {
+                List<HeroData> heroes = heroesInCollection.ElementAt(i).Value;
+                for (int j = 0; j < heroes.Count; j++)
+                {
+                    _effect.RemoveEffect(heroes[j]);
+                }
+            }
         }
     }
 
     [System.Serializable]
-    public struct GroupEffect
+    public class GroupEffect
     {
         public int neededDiversity;
         public Effect effect;

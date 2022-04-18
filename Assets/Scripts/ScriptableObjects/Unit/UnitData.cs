@@ -10,6 +10,7 @@ namespace AutoDefense
         public Sprite unitSprite;
         [SerializeField]private StatBlock currStatBlock;
         [SerializeField]private ModifierBlock currStatModifier;
+        public event Action OnModifierChanged;
         public event Action OnUnitDataChanged;
         public event Action OnTurnStart;
         public event Action OnMoving;
@@ -18,7 +19,15 @@ namespace AutoDefense
         public event Action OnTurnEnd;
 
         public StatBlock CurrStatBlock { get => currStatBlock; protected set => currStatBlock = value; }
-        public ModifierBlock CurrStatModifier { get => currStatModifier; set => currStatModifier = value; }
+        public ModifierBlock CurrStatModifier 
+        {
+            get => currStatModifier;
+            set
+            {
+                currStatModifier = value;
+                OnModifierChanged?.Invoke();
+            }
+        }
         private void OnValidate()
         {
             OnUnitDataChanged?.Invoke();

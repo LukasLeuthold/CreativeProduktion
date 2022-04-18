@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace AutoDefense
 {
+    [CreateAssetMenu(fileName = "new ModifyEffect", menuName = "ScriptableEffects/MOdifyEffect")]
     public class ModifyEffekt : Effect
     {
-        public readonly ModifierBlock buffStats;
+        [SerializeField]private ModifierBlock buffStats;
 
         public override void ApplyEffect(HeroData _hero)
         {

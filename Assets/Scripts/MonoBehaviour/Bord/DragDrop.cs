@@ -15,8 +15,13 @@ namespace AutoDefense
             get => heroData;
             set
             {
+                if (heroData != null)
+                {
+                    heroData.OnModifierChanged -= UpdateUnitCard;
+                }
                 heroData = value;
                 UpdateUnitCard();
+                heroData.OnModifierChanged += UpdateUnitCard;
             }
         }
 

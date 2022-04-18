@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c42e8b6218cf448d83a6d45ea3d2b, type: 3}
   m_Name: Demon
   m_EditorClassIdentifier: 
+  heroessssTest: []
+  diversity: 0
+  groupEffects: []
