@@ -7625,7 +7625,7 @@ MonoBehaviour:
   - {fileID: 551032604}
   - {fileID: 1042780414}
   - {fileID: 1412311634}
-  rerollCost: 4
+  rerollCost: 0
   playerRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
   rerollButton: {fileID: 1427058232}
 --- !u!114 &1662021435

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace AutoDefense
@@ -32,42 +31,54 @@ namespace AutoDefense
                 HeroData chosenHero = null;
                 possibleChosenHero = new List<HeroData>();
                 int value = UtilRandom.GetRandomIntFromRange(0, 100);
-                do
+                //do
+                //{
+                if (!commonUnitEmpty && value <= _probability.probabilityCommon)
                 {
-                    if (!commonUnitEmpty && value <= _probability.probabilityCommon)
+                    foreach (KeyValuePair<string, HeroDataCount> dicEntry in dicCommonHeros)
                     {
-                        foreach (KeyValuePair<string, HeroDataCount> dicEntry in dicCommonHeros)
+                        if (dicEntry.Value.count > 0)
                         {
-                            if (dicEntry.Value.count > 0)
-                            {
-                                possibleChosenHero.Add(dicEntry.Value.heroData);
-                            }
-                        }
-                        if (possibleChosenHero.Count == 0)
-                        {
-                            commonUnitEmpty = true;
+                            possibleChosenHero.Add(dicEntry.Value.heroData);
                         }
                     }
-                    else if (!rareUnitempty && value <= _probability.probabilityCommon + _probability.probabilityRare)
+                    if (possibleChosenHero.Count == 0)
                     {
-                        foreach (KeyValuePair<string, HeroDataCount> dicEntry in dicRareHeros)
+                        commonUnitEmpty = true;
+                    }
+                }
+                else if (!rareUnitempty && value <= _probability.probabilityCommon + _probability.probabilityRare)
+                {
+                    foreach (KeyValuePair<string, HeroDataCount> dicEntry in dicRareHeros)
+                    {
+                        if (dicEntry.Value.count > 0)
                         {
-                            if (dicEntry.Value.count > 0)
-                            {
-                                possibleChosenHero.Add(dicEntry.Value.heroData);
-                            }
-                        }
-                        if (possibleChosenHero.Count == 0)
-                        {
-                            rareUnitempty = true;
+                            possibleChosenHero.Add(dicEntry.Value.heroData);
                         }
                     }
-                    else if (!lordUnitempty || value <= _probability.probabilityCommon + _probability.probabilityRare + _probability.probabilityLord)
+                    if (possibleChosenHero.Count == 0)
                     {
-                        int number = UtilRandom.GetRandomIntFromRange(0, dicLordHeros.Count);
-                        chosenHero = (HeroData)dicLordHeros.ElementAt(number).Value.heroData.GetCopy();
+                        rareUnitempty = true;
                     }
-                } while (possibleChosenHero.Count <= 0);
+                }
+                else if (!lordUnitempty || value <= _probability.probabilityCommon + _probability.probabilityRare + _probability.probabilityLord)
+                {
+                    foreach (KeyValuePair<string, HeroDataCount> dicEntry in dicLordHeros)
+                    {
+                        if (dicEntry.Value.count > 0)
+                        {
+                            possibleChosenHero.Add(dicEntry.Value.heroData);
+                        }
+                    }
+                    if (possibleChosenHero.Count == 0)
+                    {
+                        lordUnitempty = true;
+                    }
+
+                    //int number = UtilRandom.GetRandomIntFromRange(0, dicLordHeros.Count);
+                    //    chosenHero = (HeroData)dicLordHeros.ElementAt(number).Value.heroData.GetCopy();
+                }
+                //} while (possibleChosenHero.Count <= 0);
                 int number2 = UtilRandom.GetRandomIntFromRange(0, possibleChosenHero.Count);
                 chosenHero = possibleChosenHero[number2].GetCopy();
                 SubtractUnitCount(chosenHero.name, 1);
