@@ -73,16 +73,16 @@ namespace AutoDefense
                 SubtractUnitCount(chosenHero.name, 1);
                 lineUp[i] = chosenHero;
             }
-            Debug.Log("lineUp: ");
-            for (int i = 0; i < lineUp.Length; i++)
-            {
-                if (lineUp[i] == null)
-                {
-                    Debug.Log("Unit null");
-                    continue;
-                }
-                Debug.Log("Unit: " + lineUp[i]);
-            }
+            //Debug.Log("lineUp: ");
+            //for (int i = 0; i < lineUp.Length; i++)
+            //{
+            //    if (lineUp[i] == null)
+            //    {
+            //        Debug.Log("Unit null");
+            //        continue;
+            //    }
+            //    //Debug.Log("Unit: " + lineUp[i]);
+            //}
             return lineUp;
         }
         public void AddUnitCount(string _heroName, int _amount = 1)

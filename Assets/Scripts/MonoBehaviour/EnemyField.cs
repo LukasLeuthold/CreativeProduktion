@@ -6,7 +6,7 @@ namespace AutoDefense
 {
     public class EnemyField : MonoBehaviour
     {
-        [SerializeField] private Vector2 field;
+        public Vector2 field;
         public EnemyData EnemyOnField { get; set; }
 
         void Start()

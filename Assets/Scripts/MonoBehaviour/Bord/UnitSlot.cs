@@ -19,7 +19,7 @@ namespace AutoDefense
         public DragDrop Unit;
         private DragDrop lastUnit;
         public Vector2 field;
-       
+        public EnemyData EnemyOnField { get; set; }
 
         private void Start()
         {

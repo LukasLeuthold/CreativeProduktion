@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ namespace AutoDefense
             {
                 DebugWave();
             }
-            //SpawnNextEnemy();
+            SpawnNextEnemy();
         }
         public void BuildWave()
         {
@@ -61,7 +62,10 @@ namespace AutoDefense
                         EnemyData enemy = enemiesInWave.Dequeue();
                         clone.GetComponent<Enemy>().EnemyData = enemy;
                         spawnFieldTransforms[i].GetComponent<EnemyField>().EnemyOnField = enemy;
-                        // ToDO zu Array hinzufügen
+                        enemy.nextPosition = spawnFieldTransforms[i].GetComponent<EnemyField>().field;
+                        
+                        Array.Resize(ref GameField.Instance.Enemys, GameField.Instance.Enemys.Length + 1);
+                        GameField.Instance.Enemys[GameField.Instance.Enemys.Length-1] = enemy;
                     }
                 }
             }

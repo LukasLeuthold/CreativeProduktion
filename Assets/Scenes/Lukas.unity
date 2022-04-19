@@ -4055,6 +4055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9f3e140b5d4dd42b6c3ccbea88e6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemys: []
   Reserve:
   - {fileID: 0}
   - {fileID: 0}
@@ -4088,7 +4089,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977695118}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27faec90322d77c4b96cc1ee356e649a, type: 3}
   m_Name: 
@@ -4124,7 +4125,8 @@ MonoBehaviour:
   levelI: {fileID: 11400000, guid: 9a72326749b33694c9663206106de544, type: 2}
   currStateText: {fileID: 1353539251}
   timeSlider: {fileID: 1353539252}
-  editTime: 10
+  editTime: 5
+  onEnemyMove: {fileID: 11400000, guid: 876a29bf790753a4b9ee8585ebb7038a, type: 2}
   _Field: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
 --- !u!1 &990152439
 GameObject:

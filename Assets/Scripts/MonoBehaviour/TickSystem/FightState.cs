@@ -11,12 +11,12 @@ namespace AutoDefense
         {
             tickManager = _TManager;
         }
-        public override void HandleState()
+        public override void EnterState()
         {
-            if (true)
-            {
-                tickManager.SetState("Unit");
-            }           
+            tickManager.SetState("Enemy");
+        }
+        public override void HandleState()
+        {         
         }
     }
 }
