@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03d2b365db5471643964df1fc6177692, type: 3}
-  m_Name: test ProbabilityDistribution
+  m_Name: ProbabilityLvl1
   m_EditorClassIdentifier: 
-  probabilityCommon: 60
-  probabilityRare: 30
-  probabilityLord: 10
+  probabilityCommon: 90
+  probabilityRare: 10
+  probabilityLord: 0

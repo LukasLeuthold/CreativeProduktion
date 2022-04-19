@@ -11,6 +11,8 @@ namespace AutoDefense
 
         [Header("Attributes")]
         [SerializeField] private HeroCollection allianceAttribute;
+
+
         [SerializeField] private HeroCollection classAttribute;
         [Header("Rarity")]
         [SerializeField] private HeroRarity rarity;

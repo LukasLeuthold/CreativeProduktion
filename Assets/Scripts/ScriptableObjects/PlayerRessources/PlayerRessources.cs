@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,21 +9,31 @@ namespace AutoDefense
 
     public class PlayerRessources : InitScriptObject
     {
-        //scriptable variable
+        [Header("Player-Health")]
+        [SerializeField]private int startPlayerHealth;
         private int playerHealth;
-        private int playerMoney;
+
+        [Header("Player-Money")]
         [SerializeField]private int startPlayerMoney;
-        private int PlayerLevel;
 
-        [SerializeField]private INTScriptableEvent OnPlayerMoneyChanged;
-        [SerializeField]private INTScriptableEvent OnPlayerLevelChanged;
+       
 
-        private int currXP;
+        private int playerMoney;
 
-        private int currLevel;
+        [Header("Player-XP")]
         [SerializeField] private int[] xPNeededForLevelUp;
         [SerializeField] private ProbabilityDistribution[] probabilities;
+        private int currXP;
+        private int currLevel;
+        private int maxLevel;
 
+
+
+        [Header("Events")]
+        [SerializeField]private INTScriptableEvent OnPlayerMoneyChanged;
+        [SerializeField]private INTScriptableEvent OnPlayerLevelChanged;
+        [SerializeField]private INT2ScriptableEvent OnPlayerXpChanged;
+        [SerializeField]private INTScriptableEvent OnPlayerHpChanged;
         public int PlayerMoney 
         {
             get => playerMoney;
@@ -32,23 +43,50 @@ namespace AutoDefense
                 OnPlayerMoneyChanged?.Raise(playerMoney);
             }
         }
+        public ProbabilityDistribution CurrProbability 
+        {
+            get
+            {
+                if (probabilities[currLevel - 1] != null)
+                {
+                    return probabilities[currLevel - 1];
+                }
+                else return new ProbabilityDistribution();
+            }
+        }
+
+
 
         public int CurrXP
         {
             get => currXP;
             set
             {
-                if (currXP + value < xPNeededForLevelUp[(currLevel - 1)])
+                if (currLevel == maxLevel)
                 {
-                    currXP += value;
+                    return;
+                }
+                if (value < xPNeededForLevelUp[(currLevel - 1)])
+                {
+                    currXP = value;
+                    OnPlayerXpChanged?.Raise(currXP,xPNeededForLevelUp[currLevel-1]);
                 }
                 else
                 {
-                    int difference = xPNeededForLevelUp[(currLevel - 1)] - currXP;
-                    currXP = value - difference;
+                    currXP = value - xPNeededForLevelUp[(currLevel - 1)];
                     currLevel++;
-                    OnPlayerLevelChanged.Raise(currLevel);
+                    if (currLevel == maxLevel)
+                    {
+                        currXP = 0;
+                        OnPlayerXpChanged?.Raise(currXP, xPNeededForLevelUp[currLevel - 2]);
+                    }
+                    else
+                    {
+                        OnPlayerXpChanged?.Raise(currXP, xPNeededForLevelUp[currLevel - 1]);
+                    }
+                    OnPlayerLevelChanged?.Raise(currLevel);
                 }
+
             }
         }
 
@@ -56,6 +94,13 @@ namespace AutoDefense
         {
             PlayerMoney = startPlayerMoney;
             currLevel = 1;
+            currXP = 0;
+            maxLevel = xPNeededForLevelUp.Length+1;
+        }
+
+        public void AddXp()
+        {
+            CurrXP += 9;
         }
     }
 }
