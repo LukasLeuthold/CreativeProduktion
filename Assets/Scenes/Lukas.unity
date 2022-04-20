@@ -4035,7 +4035,6 @@ GameObject:
   - component: {fileID: 977695120}
   - component: {fileID: 977695119}
   - component: {fileID: 977695122}
-  - component: {fileID: 977695121}
   m_Layer: 0
   m_Name: GameField
   m_TagString: Untagged
@@ -4082,34 +4081,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &977695121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977695118}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27faec90322d77c4b96cc1ee356e649a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5078ed14aaec500498a1c452e024e45d, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 977695122}
-        m_TargetAssemblyTypeName: AutoDefense.TickManager, Assembly-CSharp
-        m_MethodName: OnWaveEnd
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &977695122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7565,6 +7536,9 @@ MonoBehaviour:
   - {fileID: 551032604}
   - {fileID: 1042780414}
   - {fileID: 1412311634}
+  rerollCost: 0
+  playerRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
+  rerollButton: {fileID: 1427058232}
 --- !u!1 &1683344848
 GameObject:
   m_ObjectHideFlags: 0
