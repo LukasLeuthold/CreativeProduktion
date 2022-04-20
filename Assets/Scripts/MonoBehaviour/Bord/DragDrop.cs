@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace AutoDefense
 {
-    public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         [HideInInspector] public UnitSlot LastSlot;
 
@@ -42,10 +42,13 @@ namespace AutoDefense
         [SerializeField] private Text _Cost;
         [SerializeField] private Image _border;
 
-        private bool isOpen = true;
+        [SerializeField] private Image heroImage;
+
+        private bool isHidden = true;
         private RectTransform rectTransform;
         private Vector2 lastRectTranform;
         private CanvasGroup canvasGroup;
+        [SerializeField]private Animator animator;
 
 
         private void Start()
@@ -99,9 +102,6 @@ namespace AutoDefense
             rectTransform.anchoredPosition += eventData.delta;
         }
 
-        public void OnDrop(PointerEventData eventData)
-        {
-        }
         public void OnEndDrag(PointerEventData eventData)
         {
             
@@ -117,22 +117,29 @@ namespace AutoDefense
             haveSlot = false;
         }
 
-        public void OnPointerDown(PointerEventData eventData)
-        {
-
-        }
+        
 
 
         public void OnPointerEnter(PointerEventData eventData)
         {
             currStats.SetActive(true);
             transform.SetAsLastSibling();
+            if (LastSlot.isGameField)
+            {
+                PrintRangeOnField(Color.green);
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             currStats.SetActive(false);
             details.SetActive(false);
+            if (LastSlot.isGameField)
+            {
+                PrintRangeOnField(Color.white);
+            }
+            isHidden = true;
+
         }
 
 
@@ -140,21 +147,28 @@ namespace AutoDefense
         {
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-
-                if (!isOpen)
+                if (!isHidden)
                 {
-                    isOpen = true;
+                    isHidden = true;
                     details.SetActive(false);
                     currStats.SetActive(true);
                 }
-                else if (isOpen)
+                else if (isHidden)
                 {
-                    isOpen = false;
+                    isHidden = false;
                     details.SetActive(true);
                     currStats.SetActive(false);
                 }
-
-
+            }
+        }
+        private void PrintRangeOnField(Color color)
+        {
+            for (int i = 0; i < (heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod); i++)
+            {
+                var tempColor = GameField.Instance.Slots[2 + i, (int)LastSlot.field.y].GetComponent<Image>().color;
+                tempColor = color;
+                tempColor.a = 0.25f;
+                GameField.Instance.Slots[2 + i, (int)LastSlot.field.y].GetComponent<Image>().color = tempColor;
             }
         }
         private void UpdateUnitCard()
@@ -170,7 +184,8 @@ namespace AutoDefense
             _Name.text = heroData.name;
             _Cost.text = heroData.Rarity.Cost.ToString();
             _border.color = heroData.Rarity.BorderColor;
-            GetComponent<Image>().sprite = heroData.unitSprite;
+            heroImage.sprite = heroData.unitSprite;
+            heroData.anim = animator;
         }
     }
 }
