@@ -14,7 +14,7 @@ namespace AutoDefense
         [SerializeField] private HeroCollection classAttribute;
         [Header("Rarity")]
         [SerializeField] private HeroRarity rarity;
-
+        public Animator anim { get; set; }
         public string AllianceName
         {
             get
@@ -66,9 +66,10 @@ namespace AutoDefense
             classAttribute.RemoveFromCollection(this);
         }
 
-        protected override void Attack()
+        public override void Attack()
         {
-            throw new System.NotImplementedException();
+            anim.Play("Attack");
+            Debug.Log("Attack");
         }
 
         public HeroData GetCopy()

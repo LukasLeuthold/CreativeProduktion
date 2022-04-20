@@ -81,7 +81,7 @@ namespace AutoDefense
             //        Debug.Log("Unit null");
             //        continue;
             //    }
-            //    Debug.Log("Unit: " + lineUp[i]);
+            //    //Debug.Log("Unit: " + lineUp[i]);
             //}
             return lineUp;
         }

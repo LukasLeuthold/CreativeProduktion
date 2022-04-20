@@ -8,13 +8,14 @@ namespace AutoDefense
     {
         public static GameField Instance;
 
+        public EnemyData[] Enemys = new EnemyData[1];
         public GameObject[,] Slots = new GameObject[10, 3];
-
+       
         [HideInInspector]public GameObject[] Reserve = new GameObject[9];
         
         [HideInInspector]public bool isGrabing;
 
-        [SerializeField] private SOGameField sOGameField;
+        public SOGameField sOGameField;
 
 
 

@@ -1,15 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AutoDefense
 {
-    public abstract class UnitData : ScriptableObject,ITickable
+    public abstract class UnitData : ScriptableObject, ITickable
     {
         public Sprite unitSprite;
-        [SerializeField]private StatBlock currStatBlock;
-        [SerializeField]private ModifierBlock currStatModifier;
+        [SerializeField] private StatBlock currStatBlock;
+        [SerializeField] private ModifierBlock currStatModifier;
         public event Action OnUnitDataChanged;
         public event Action OnTurnStart;
         public event Action OnMoving;
@@ -23,8 +21,8 @@ namespace AutoDefense
         {
             OnUnitDataChanged?.Invoke();
         }
-        protected virtual void Attack() { }
-        protected virtual void Move() { }
+        public virtual void Attack() { }
+        public virtual void Move() { }
 
         public abstract void Tick();
     }
@@ -32,14 +30,33 @@ namespace AutoDefense
     [System.Serializable]
     public struct StatBlock
     {
-        [SerializeField] private int amountAttackActions ;
-        [SerializeField] private int amountMovementActions ;
-        [SerializeField]private int maxHP;
-        [SerializeField]private int speed;
-        [SerializeField]private int attack;
-        [SerializeField]private int pierce;
-        [SerializeField]private int range;
+        [SerializeField] private int maxHP;
+        [SerializeField] private int currHP;
+        [SerializeField] private int speed;
+        [SerializeField] private int attack;
+        [SerializeField] private int range;
+        [SerializeField] private int pierce;
+        [SerializeField] private int amountAttackActions;
+        [SerializeField] private int amountMovementActions;
         public int MaxHP { get => maxHP; }
+        public int CurrHP
+        {
+            get => CurrHP;
+            set
+            {
+                if (currHP + value >= maxHP)
+                {
+                    currHP = maxHP;
+                    return;
+                }
+                if (currHP + value <= 0)
+                {
+                    currHP = 0;
+                    return;
+                }
+                currHP = value;
+            }
+        }
         public int Speed { get => speed; }
         public int Attack { get => attack; }
         public int Pierce { get => pierce; }
@@ -47,15 +64,16 @@ namespace AutoDefense
         public int AmountAttackActions { get => amountAttackActions; }
         public int AmountMovementActions { get => amountMovementActions; }
 
-        public static StatBlock Copy(StatBlock __original)
+        public static StatBlock Copy(StatBlock _original)
         {
             StatBlock copy = new StatBlock();
-            copy.amountAttackActions = __original.amountAttackActions;
-            copy.amountMovementActions = __original.amountMovementActions;
-            copy.maxHP = __original.maxHP;
-            copy.speed = __original.speed;
-            copy.attack = __original.attack;
-            copy.range = __original.range;
+            copy.amountAttackActions = _original.amountAttackActions;
+            copy.amountMovementActions = _original.amountMovementActions;
+            copy.maxHP = _original.maxHP;
+            copy.currHP = _original.currHP;
+            copy.speed = _original.speed;
+            copy.attack = _original.attack;
+            copy.range = _original.range;
             return copy;
         }
     }

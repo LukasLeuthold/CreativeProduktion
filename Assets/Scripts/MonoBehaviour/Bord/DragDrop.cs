@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace AutoDefense
 {
-    public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler , IPointerClickHandler
+    public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
-        [HideInInspector]public UnitSlot LastSlot;
+        [HideInInspector] public UnitSlot LastSlot;
 
-        
-        [SerializeField]private HeroData heroData;
+
+        [SerializeField] private HeroData heroData;
+
+        [SerializeField] private Image heroImage;
         public HeroData HData
         {
             get => heroData;
@@ -23,13 +23,13 @@ namespace AutoDefense
         }
 
         [Header("CurrStats")]
-        [HideInInspector]public bool haveSlot;
+        [HideInInspector] public bool haveSlot;
         [SerializeField] private GameObject currStats;
         [SerializeField] private Text hP;
         [SerializeField] private Text speed;
         [SerializeField] private Text aT;
-        
-        [Header("Details")] 
+
+        [Header("Details")]
         [SerializeField] private GameObject details;
         [SerializeField] private Text _HP;
         [SerializeField] private Text _Speed;
@@ -43,8 +43,8 @@ namespace AutoDefense
         private RectTransform rectTransform;
         private Vector2 lastRectTranform;
         private CanvasGroup canvasGroup;
+        [SerializeField]private Animator animator;
 
-        
         private void Start()
         {
             rectTransform = GetComponent<RectTransform>();
@@ -52,6 +52,7 @@ namespace AutoDefense
             currStats.SetActive(false);
             details.SetActive(false);
             
+
         }
         private void Update()
         {
@@ -75,27 +76,25 @@ namespace AutoDefense
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (LastSlot!= null && LastSlot.isGameField)
+            if (LastSlot != null && LastSlot.isGameField)
             {
                 LastSlot._HData = null;
                 LastSlot._SOGameField.HDatas[LastSlot.count] = null;
-                
+
             }
-            
+
             canvasGroup.alpha = 0.7f;
             canvasGroup.blocksRaycasts = false;
             GameField.Instance.isGrabing = true;
-   
+
             lastRectTranform = rectTransform.anchoredPosition;
             transform.SetAsLastSibling();
             heroData.RemoveFromField();
         }
-
         public void OnDrag(PointerEventData eventData)
-        {         
+        {
             rectTransform.anchoredPosition += eventData.delta;
         }
-
         public void OnDrop(PointerEventData eventData)
         {
         }
@@ -107,30 +106,34 @@ namespace AutoDefense
             canvasGroup.blocksRaycasts = true;
             if (!haveSlot)
             {
-                rectTransform.anchoredPosition = lastRectTranform;               
+                rectTransform.anchoredPosition = lastRectTranform;
             }
             haveSlot = false;
         }
-
         public void OnPointerDown(PointerEventData eventData)
         {
-            
+
         }
-
-
         public void OnPointerEnter(PointerEventData eventData)
         {
             currStats.SetActive(true);
             transform.SetAsLastSibling();
+            if (LastSlot.isGameField)
+            {
+                PrintRangeOnField();
+            }
         }
-
         public void OnPointerExit(PointerEventData eventData)
         {
             currStats.SetActive(false);
             details.SetActive(false);
+            if (LastSlot.isGameField)
+            {
+                DeletRangeOnField();
+            }
+            isOpen = true;
+
         }
-
-
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Right)
@@ -165,7 +168,28 @@ namespace AutoDefense
             _Name.text = heroData.name;
             _Cost.text = heroData.Rarity.Cost.ToString();
             _border.color = heroData.Rarity.BorderColor;
-            GetComponent<Image>().sprite = heroData.unitSprite;
+            heroData.anim = animator;
+            heroImage.sprite = heroData.unitSprite;
+        }
+        private void PrintRangeOnField()
+        {
+            for (int i = 0; i < (heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod); i++)
+            {
+                var tempColor = GameField.Instance.Slots[2 + i, (int)LastSlot.field.y].GetComponent<Image>().color;
+                tempColor = Color.green;
+                tempColor.a = 0.25f;
+                GameField.Instance.Slots[2 + i, (int)LastSlot.field.y].GetComponent<Image>().color = tempColor;
+            }
+        }
+        private void DeletRangeOnField()
+        {
+            for (int i = 0; i < (heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod); i++)
+            {
+                var tempColor = GameField.Instance.Slots[2 + i, (int)LastSlot.field.y].GetComponent<Image>().color;
+                tempColor = Color.white;
+                tempColor.a = 0.25f;
+                GameField.Instance.Slots[2 + i, (int)LastSlot.field.y].GetComponent<Image>().color = tempColor;
+            }
         }
     }
 }

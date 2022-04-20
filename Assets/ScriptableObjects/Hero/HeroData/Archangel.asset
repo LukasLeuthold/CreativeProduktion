@@ -20,7 +20,7 @@ MonoBehaviour:
     speed: 0
     attack: 0
     pierce: 0
-    range: 0
+    range: 5
   currStatModifier:
     amountAttackActionsMod: 0
     amountMovementActionsMod: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
     speed: 0
     attack: 0
     pierce: 0
-    range: 0
+    range: 5
   - amountAttackActions: 0
     amountMovementActions: 0
     maxHP: 0

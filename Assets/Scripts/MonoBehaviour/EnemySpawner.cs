@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,7 +50,7 @@ namespace AutoDefense
             }
         }
 
-        private void SpawnNextEnemy()
+        public void SpawnNextEnemy()
         {
             for (int i = 0; i < spawnFieldTransforms.Length; i++)
             {
@@ -61,6 +62,10 @@ namespace AutoDefense
                         EnemyData enemy = enemiesInWave.Dequeue();
                         clone.GetComponent<Enemy>().EnemyData = enemy;
                         spawnFieldTransforms[i].GetComponent<EnemyField>().EnemyOnField = enemy;
+                        enemy.nextPosition = spawnFieldTransforms[i].GetComponent<EnemyField>().field;
+                        
+                        Array.Resize(ref GameField.Instance.Enemys, GameField.Instance.Enemys.Length + 1);
+                        GameField.Instance.Enemys[GameField.Instance.Enemys.Length-1] = enemy;
                     }
                 }
             }
