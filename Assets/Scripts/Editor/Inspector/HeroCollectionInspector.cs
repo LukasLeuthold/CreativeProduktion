@@ -13,16 +13,16 @@ namespace AutoDefense
             base.OnInspectorGUI();
             if(GUILayout.Button("Clear Collection"))
             {
-                (target as HeroCollection).ClearCollection();
+                (target as HeroCollection).Initialize();
             }
-            if (GUILayout.Button("Enable Effect"))
-            {
-                //(target as HeroCollection).ClearCollection();
-            }
-            if (GUILayout.Button("Disable Effect"))
-            {
-                //(target as HeroCollection).ClearCollection();
-            }
+            //if (GUILayout.Button("Apply Effect"))
+            //{
+            //    (target as HeroCollection).ClearCollection();
+            //}
+            //if (GUILayout.Button("Remove Effect"))
+            //{
+            //    (target as HeroCollection).ClearCollection();
+            //}
         }
     }
 }

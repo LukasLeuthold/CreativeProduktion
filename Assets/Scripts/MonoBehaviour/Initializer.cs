@@ -8,7 +8,7 @@ namespace AutoDefense
     {
         [SerializeField] private InitScriptObject[] initializableObjects;
 
-        private void Start()
+        private void Awake()
         {
             for (int i = 0; i < initializableObjects.Length; i++)
             {

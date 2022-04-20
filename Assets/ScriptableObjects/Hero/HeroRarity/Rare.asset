@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Rare
   m_EditorClassIdentifier: 
   borderColor: {r: 0.0514418, g: 0.17069997, b: 0.6415094, a: 1}
-  cost: 2
+  cost: 3

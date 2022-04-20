@@ -11,6 +11,8 @@ namespace AutoDefense
 
         [Header("Attributes")]
         [SerializeField] private HeroCollection allianceAttribute;
+
+
         [SerializeField] private HeroCollection classAttribute;
         [Header("Rarity")]
         [SerializeField] private HeroRarity rarity;
@@ -54,14 +56,13 @@ namespace AutoDefense
 
         public void PlaceOnField()
         {
-            //TODO: test copy thingy
-            activeHeroCollection.AddToCollection(GetCopy());
+            activeHeroCollection.AddToCollection(this);
             allianceAttribute.AddToCollection(this);
             classAttribute.AddToCollection(this);
         }
         public void RemoveFromField()
         {
-            activeHeroCollection.RemoveFromCollection(GetCopy());
+            activeHeroCollection.RemoveFromCollection(this);
             allianceAttribute.RemoveFromCollection(this);
             classAttribute.RemoveFromCollection(this);
         }

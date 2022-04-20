@@ -21,8 +21,8 @@ namespace AutoDefense
         }
         private void GetNewCarusell()
         {
-            HeroData[]hData = hPool.GetLineUp(hCard.Length, hPool.Prop);
-
+            HeroData[]hData = hPool.GetLineUp(hCard.Length, playerRessources.CurrProbability);
+            Debug.Log(playerRessources.CurrProbability.name);
             for (int i = 0; i < hCard.Length; i++)
             {
                 hCard[i].HeroData = hData[i];

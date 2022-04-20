@@ -1,13 +1,16 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AutoDefense
 {
-    public abstract class UnitData : ScriptableObject, ITickable
+    public abstract class UnitData : ScriptableObject,ITickable
     {
         public Sprite unitSprite;
-        [SerializeField] private StatBlock currStatBlock;
-        [SerializeField] private ModifierBlock currStatModifier;
+        [SerializeField]private StatBlock currStatBlock;
+        [SerializeField]private ModifierBlock currStatModifier;
+        public event Action OnModifierChanged;
         public event Action OnUnitDataChanged;
         public event Action OnTurnStart;
         public event Action OnMoving;
@@ -16,13 +19,21 @@ namespace AutoDefense
         public event Action OnTurnEnd;
 
         public StatBlock CurrStatBlock { get => currStatBlock; protected set => currStatBlock = value; }
-        public ModifierBlock CurrStatModifier { get => currStatModifier; set => currStatModifier = value; }
+        public ModifierBlock CurrStatModifier 
+        {
+            get => currStatModifier;
+            set
+            {
+                currStatModifier = value;
+                OnModifierChanged?.Invoke();
+            }
+        }
         private void OnValidate()
         {
             OnUnitDataChanged?.Invoke();
         }
-        public virtual void Attack() { }
-        public virtual void Move() { }
+        protected virtual void Attack() { }
+        protected virtual void Move() { }
 
         public abstract void Tick();
     }
@@ -30,33 +41,14 @@ namespace AutoDefense
     [System.Serializable]
     public struct StatBlock
     {
-        [SerializeField] private int maxHP;
-        [SerializeField] private int currHP;
-        [SerializeField] private int speed;
-        [SerializeField] private int attack;
-        [SerializeField] private int range;
-        [SerializeField] private int pierce;
-        [SerializeField] private int amountAttackActions;
-        [SerializeField] private int amountMovementActions;
+        [SerializeField] private int amountAttackActions ;
+        [SerializeField] private int amountMovementActions ;
+        [SerializeField]private int maxHP;
+        [SerializeField]private int speed;
+        [SerializeField]private int attack;
+        [SerializeField]private int pierce;
+        [SerializeField]private int range;
         public int MaxHP { get => maxHP; }
-        public int CurrHP
-        {
-            get => CurrHP;
-            set
-            {
-                if (currHP + value >= maxHP)
-                {
-                    currHP = maxHP;
-                    return;
-                }
-                if (currHP + value <= 0)
-                {
-                    currHP = 0;
-                    return;
-                }
-                currHP = value;
-            }
-        }
         public int Speed { get => speed; }
         public int Attack { get => attack; }
         public int Pierce { get => pierce; }
@@ -64,29 +56,28 @@ namespace AutoDefense
         public int AmountAttackActions { get => amountAttackActions; }
         public int AmountMovementActions { get => amountMovementActions; }
 
-        public static StatBlock Copy(StatBlock _original)
+        public static StatBlock Copy(StatBlock __original)
         {
             StatBlock copy = new StatBlock();
-            copy.amountAttackActions = _original.amountAttackActions;
-            copy.amountMovementActions = _original.amountMovementActions;
-            copy.maxHP = _original.maxHP;
-            copy.currHP = _original.currHP;
-            copy.speed = _original.speed;
-            copy.attack = _original.attack;
-            copy.range = _original.range;
+            copy.amountAttackActions = __original.amountAttackActions;
+            copy.amountMovementActions = __original.amountMovementActions;
+            copy.maxHP = __original.maxHP;
+            copy.speed = __original.speed;
+            copy.attack = __original.attack;
+            copy.range = __original.range;
             return copy;
         }
     }
     [System.Serializable]
     public struct ModifierBlock
     {
-        [SerializeField] private int amountAttackActionsMod;
-        [SerializeField] private int amountMovementActionsMod;
         [SerializeField] private int maxHPMod;
         [SerializeField] private int speedMod;
         [SerializeField] private int attackMod;
-        [SerializeField] private int pierceMod;
         [SerializeField] private int rangeMod;
+        [SerializeField] private int pierceMod;
+        [SerializeField] private int amountAttackActionsMod;
+        [SerializeField] private int amountMovementActionsMod;
         public int AmountAttackActionsMod { get => amountAttackActionsMod; set => amountAttackActionsMod = value; }
         public int AmountMovementActionsMod { get => amountMovementActionsMod; set => amountMovementActionsMod = value; }
         public int MaxHPMod { get => maxHPMod; set => maxHPMod = value; }
