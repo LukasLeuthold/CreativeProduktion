@@ -32,8 +32,8 @@ namespace AutoDefense
         {
             OnUnitDataChanged?.Invoke();
         }
-        protected virtual void Attack() { }
-        protected virtual void Move() { }
+        public virtual void Attack() { }
+        public virtual void Move() { }
 
         public abstract void Tick();
     }
