@@ -5,6 +5,8 @@ namespace AutoDefense
     [CreateAssetMenu(fileName = "new HeroData", menuName = "ScriptableUnitData/HeroData", order = 1)]
     public class HeroData : UnitData
     {
+        public Animator Anim { get; set; }
+        public DragDrop Unit;
         [SerializeField] private StatBlock[] unitStats = new StatBlock[3];
         [SerializeField, Range(1, 3)] private int currLevel = 1;
         [SerializeField] private HeroCollection activeHeroCollection;
@@ -30,7 +32,6 @@ namespace AutoDefense
             }
         }
 
-        public Animator anim { get; set; }
         public string AllianceName
         {
             get
@@ -81,9 +82,9 @@ namespace AutoDefense
             classAttribute.RemoveFromCollection(this);
         }
 
-        public override void Attack()
+        public override void Attack(Vector2 _enemyField)
         {
-            anim.Play("Attack");
+            Anim.Play("Attack");
             Debug.Log("Attack");
         }
 
@@ -99,7 +100,6 @@ namespace AutoDefense
         {
             for (int i = 0; i < (CurrStatBlock.AmountAttackActions + CurrStatModifier.AmountAttackActionsMod); i++)
             {
-                Attack();
             }
         }
 
