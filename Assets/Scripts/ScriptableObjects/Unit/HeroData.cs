@@ -16,6 +16,20 @@ namespace AutoDefense
         [SerializeField] private HeroCollection classAttribute;
         [Header("Rarity")]
         [SerializeField] private HeroRarity rarity;
+        //ADDED
+        [SerializeField] private int currCost;
+        public int CurrCost
+        {
+            get
+            {
+                if (currLevel == 1)
+                {
+                    return rarity.Cost;
+                }
+                return rarity.Cost *  int.Parse(Mathf.Pow(3,currLevel-1).ToString());
+            }
+        }
+
         public Animator anim { get; set; }
         public string AllianceName
         {

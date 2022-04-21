@@ -173,6 +173,7 @@ namespace AutoDefense
         }
         private void UpdateUnitCard()
         {
+            //UNDONE: add this to herodata valuechanged/modchanged
             hP.text = (heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod).ToString();
             speed.text = (heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod).ToString();
             aT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
@@ -182,7 +183,8 @@ namespace AutoDefense
             _AT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
             _Range.text = (heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod).ToString();
             _Name.text = heroData.name;
-            _Cost.text = heroData.Rarity.Cost.ToString();
+            //changed cost
+            _Cost.text = heroData.CurrCost.ToString();
             _border.color = heroData.Rarity.BorderColor;
             heroImage.sprite = heroData.unitSprite;
             heroData.anim = animator;

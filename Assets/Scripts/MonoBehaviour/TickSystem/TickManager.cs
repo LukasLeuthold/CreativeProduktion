@@ -78,7 +78,7 @@ namespace AutoDefense
         {
             
             HeroData[] hDatas = _Field.HDatas.ToArray();
-                          
+            Debug.LogWarning("queueueu");              
             
             for (int e = 0; e < hDatas.Length; e++)
             {

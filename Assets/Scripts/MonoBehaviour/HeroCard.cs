@@ -21,6 +21,8 @@ namespace AutoDefense
         }
         
         [SerializeField]private PlayerRessources playerRessources;
+        [SerializeField]private HeroCombiner heroCombiner;
+
         private bool isAffordable = false;
 
         [SerializeField] GameObject unitParent;
@@ -100,6 +102,8 @@ namespace AutoDefense
                     Hero.GetComponent<DragDrop>().LastSlot = GameField.Instance.Reserve[i].GetComponent<UnitSlot>();
                     GameField.Instance.Reserve[i].GetComponent<UnitSlot>().Unit = Hero.GetComponent<DragDrop>();
                     GameField.Instance.Reserve[i].GetComponent<UnitSlot>()._HData = heroData;
+
+                    heroCombiner.AddHeroPrefab(Hero.GetComponent<DragDrop>());
 
                     break;
                 }

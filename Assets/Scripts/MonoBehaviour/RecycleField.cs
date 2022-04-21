@@ -10,6 +10,7 @@ namespace AutoDefense
     {
         [SerializeField]private PlayerRessources pRessources;
         [SerializeField]private HeroPool heroPool;
+        [SerializeField]private HeroCombiner heroCombiner;
 
         [Header("Bin Icon")]
         [SerializeField]private Image recycleFieldImage;
@@ -29,10 +30,13 @@ namespace AutoDefense
             dd.LastSlot.Unit = null;
             dd.haveSlot = true;
             GameField.Instance.isGrabing = false;
+            heroCombiner.RemoveHeroPrefab(dd);
 
             HeroData hData = dd.HData;
+            //TODO: modify to multiply by level and take it away from herocombiner
             pRessources.PlayerMoney += hData.Rarity.Cost;
             heroPool.AddUnitCount(hData.name);
+
             Destroy(eventData.pointerDrag);
             recycleFieldImage.sprite = closedTrashSprite;
         }
