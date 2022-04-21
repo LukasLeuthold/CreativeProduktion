@@ -6053,7 +6053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
   heroPool: {fileID: 11400000, guid: d5c6937a326753645bd1e3314683f7dd, type: 2}
-  heroCombiner: {fileID: 0}
+  heroCombiner: {fileID: 11400000, guid: 7152fb949bfbb0244b4fbfffbc58088d, type: 2}
   recycleFieldImage: {fileID: 1409592873}
   closedTrashSprite: {fileID: 21300000, guid: 15d70715ab8e1934faac2cb5615840c0, type: 3}
   openTrashSprite: {fileID: 21300000, guid: 650a998b7aa26ea40ae0dbec87b45456, type: 3}

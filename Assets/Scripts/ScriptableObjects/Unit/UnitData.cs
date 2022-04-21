@@ -12,13 +12,22 @@ namespace AutoDefense
         [SerializeField]private ModifierBlock currStatModifier;
         public event Action OnModifierChanged;
         public event Action OnUnitDataChanged;
+        public event Action OnCurrStatBlockChanged;
         public event Action OnTurnStart;
         public event Action OnMoving;
         public event Action OnAttack;
         public event Action OnOnKill;
         public event Action OnTurnEnd;
 
-        public StatBlock CurrStatBlock { get => currStatBlock; protected set => currStatBlock = value; }
+        public StatBlock CurrStatBlock
+        {
+            get => currStatBlock;
+            protected set 
+            {
+                currStatBlock = value; 
+                OnCurrStatBlockChanged?.Invoke();
+            }
+        }
         public ModifierBlock CurrStatModifier 
         {
             get => currStatModifier;

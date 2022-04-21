@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,6 +31,7 @@ namespace AutoDefense
                     heroPrefabsByLevel[_heroPrefab.HData.CurrLevel].Remove(_heroPrefab.HData.name);
 
                     DragDrop _cloneDrop = SpawnPrefab(spawnSlot, heroData, parent);
+                    _cloneDrop.AnimateFusion();
                     AddHeroPrefab(_cloneDrop);
                 }
             }
