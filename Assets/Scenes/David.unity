@@ -1005,6 +1005,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1301650578}
     - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: heroCombiner
+      value: 
+      objectReference: {fileID: 11400000, guid: 7152fb949bfbb0244b4fbfffbc58088d, type: 2}
+    - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: playerRessources
       value: 
       objectReference: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
@@ -1423,6 +1427,10 @@ PrefabInstance:
       propertyPath: unitParent
       value: 
       objectReference: {fileID: 1301650578}
+    - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: heroCombiner
+      value: 
+      objectReference: {fileID: 11400000, guid: 7152fb949bfbb0244b4fbfffbc58088d, type: 2}
     - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: playerRessources
       value: 
@@ -3966,6 +3974,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1301650578}
     - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: heroCombiner
+      value: 
+      objectReference: {fileID: 11400000, guid: 7152fb949bfbb0244b4fbfffbc58088d, type: 2}
+    - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: playerRessources
       value: 
       objectReference: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
@@ -4127,7 +4139,7 @@ MonoBehaviour:
   levelI: {fileID: 11400000, guid: 9a72326749b33694c9663206106de544, type: 2}
   currStateText: {fileID: 840408013}
   timeSlider: {fileID: 1660544710}
-  editTime: 5
+  editTime: 10
   onEnemyMove: {fileID: 11400000, guid: 876a29bf790753a4b9ee8585ebb7038a, type: 2}
   _Field: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
 --- !u!1 &990152439
@@ -6041,6 +6053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
   heroPool: {fileID: 11400000, guid: d5c6937a326753645bd1e3314683f7dd, type: 2}
+  heroCombiner: {fileID: 11400000, guid: 7152fb949bfbb0244b4fbfffbc58088d, type: 2}
   recycleFieldImage: {fileID: 1409592873}
   closedTrashSprite: {fileID: 21300000, guid: 15d70715ab8e1934faac2cb5615840c0, type: 3}
   openTrashSprite: {fileID: 21300000, guid: 650a998b7aa26ea40ae0dbec87b45456, type: 3}
@@ -7615,6 +7628,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1301650578}
     - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: heroCombiner
+      value: 
+      objectReference: {fileID: 11400000, guid: 7152fb949bfbb0244b4fbfffbc58088d, type: 2}
+    - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: playerRessources
       value: 
       objectReference: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
@@ -8607,6 +8624,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 00cffb01dbb21b34dbd03483c3308b8a, type: 2}
   - {fileID: 11400000, guid: c1215f8c4fdf45a488fe924642e66c4b, type: 2}
   - {fileID: 11400000, guid: 58de748fd1cee0c448e9dd0ea6f5f50b, type: 2}
+  - {fileID: 11400000, guid: 7152fb949bfbb0244b4fbfffbc58088d, type: 2}
 --- !u!4 &1866481926
 Transform:
   m_ObjectHideFlags: 0
@@ -9752,6 +9770,10 @@ PrefabInstance:
       propertyPath: unitParent
       value: 
       objectReference: {fileID: 1301650578}
+    - target: {fileID: 5391094190750333410, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
+      propertyPath: heroCombiner
+      value: 
+      objectReference: {fileID: 11400000, guid: 7152fb949bfbb0244b4fbfffbc58088d, type: 2}
     - target: {fileID: 6476974756286386283, guid: c1e296b4bcb16694092fb2b0704ac673, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

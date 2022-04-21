@@ -5,8 +5,6 @@ namespace AutoDefense
     [CreateAssetMenu(fileName = "new HeroData", menuName = "ScriptableUnitData/HeroData", order = 1)]
     public class HeroData : UnitData
     {
-        public Animator Anim { get; set; }
-        public DragDrop Unit;
         [SerializeField] private StatBlock[] unitStats = new StatBlock[3];
         [SerializeField, Range(1, 3)] private int currLevel = 1;
         [SerializeField] private HeroCollection activeHeroCollection;
@@ -18,6 +16,21 @@ namespace AutoDefense
         [SerializeField] private HeroCollection classAttribute;
         [Header("Rarity")]
         [SerializeField] private HeroRarity rarity;
+        //ADDED
+        [SerializeField] private int currCost;
+        public int CurrCost
+        {
+            get
+            {
+                if (currLevel == 1)
+                {
+                    return rarity.Cost;
+                }
+                return rarity.Cost *  int.Parse(Mathf.Pow(3,currLevel-1).ToString());
+            }
+        }
+
+        public Animator anim { get; set; }
         public string AllianceName
         {
             get
@@ -68,10 +81,10 @@ namespace AutoDefense
             classAttribute.RemoveFromCollection(this);
         }
 
-        public override void Attack(Vector2 enemyfield)
-        {   
-            Anim.Play("Attack");
-            Debug.Log(enemyfield);
+        public override void Attack()
+        {
+            anim.Play("Attack");
+            Debug.Log("Attack");
         }
 
         public HeroData GetCopy()
@@ -86,7 +99,7 @@ namespace AutoDefense
         {
             for (int i = 0; i < (CurrStatBlock.AmountAttackActions + CurrStatModifier.AmountAttackActionsMod); i++)
             {
-                
+                Attack();
             }
         }
 

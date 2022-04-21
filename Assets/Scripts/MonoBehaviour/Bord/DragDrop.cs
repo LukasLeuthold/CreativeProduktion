@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ namespace AutoDefense
                 if (heroData != null)
                 {
                     heroData.OnModifierChanged -= UpdateUnitCard;
+                    heroData.OnCurrStatBlockChanged -= UpdateUnitCard;
                 }
                 heroData = value;
                 UpdateUnitCard();
@@ -173,6 +175,7 @@ namespace AutoDefense
         }
         private void UpdateUnitCard()
         {
+            // add this to herodata valuechanged/modchanged
             hP.text = (heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod).ToString();
             speed.text = (heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod).ToString();
             aT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
@@ -182,11 +185,37 @@ namespace AutoDefense
             _AT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
             _Range.text = (heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod).ToString();
             _Name.text = heroData.name;
-            _Cost.text = heroData.Rarity.Cost.ToString();
+            //changed cost
+            _Cost.text = heroData.CurrCost.ToString();
             _border.color = heroData.Rarity.BorderColor;
             heroImage.sprite = heroData.unitSprite;
             heroData.Anim = animator;
             heroData.Unit = this;
+        }
+
+
+
+        public void AnimateFusion()
+        {
+            StartCoroutine(FusionAnimation());
+        }
+
+        private void ColorHeroImage(Color _color,float _alpha = 1)
+        {
+            Color tempColor = _color;
+            tempColor.a = _alpha;
+            heroImage.color = tempColor;
+        }
+
+        private IEnumerator FusionAnimation()
+        {
+            ColorHeroImage(Color.blue, 1f);
+            yield return new WaitForSeconds(.1f);
+            ColorHeroImage(Color.white, 1);
+            yield return new WaitForSeconds(.1f);
+            ColorHeroImage(Color.blue, 1f);
+            yield return new WaitForSeconds(.1f);
+            ColorHeroImage(Color.white, 1);
         }
     }
 }
