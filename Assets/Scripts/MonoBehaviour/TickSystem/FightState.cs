@@ -16,7 +16,9 @@ namespace AutoDefense
             tickManager.SetState("Enemy");
         }
         public override void HandleState()
-        {         
+        {     
+            
+
         }
     }
 }

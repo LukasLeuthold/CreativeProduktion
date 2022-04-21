@@ -14,10 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroessssTest:
   - {fileID: 0}
-  - {fileID: 0}
-  diversity: 3
-  groupEffects:
-  - neededDiversity: 2
-    effect: {fileID: 11400000, guid: e30f3ccac3d401e42b564c47db4eb538, type: 2}
-  - neededDiversity: 4
-    effect: {fileID: 11400000, guid: d03fec82ee6c0ff4c84b4651123158af, type: 2}
+  diversity: 1
+  groupEffects: []

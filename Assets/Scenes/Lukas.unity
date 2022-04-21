@@ -4127,7 +4127,7 @@ MonoBehaviour:
   levelI: {fileID: 11400000, guid: 9a72326749b33694c9663206106de544, type: 2}
   currStateText: {fileID: 840408013}
   timeSlider: {fileID: 1660544710}
-  editTime: 5
+  editTime: 20
   onEnemyMove: {fileID: 11400000, guid: 876a29bf790753a4b9ee8585ebb7038a, type: 2}
   _Field: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
 --- !u!1 &990152439

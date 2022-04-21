@@ -17,8 +17,6 @@ namespace AutoDefense
 
         public SOGameField sOGameField;
 
-
-
         private void Awake()
         {
             if (Instance == null)

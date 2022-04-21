@@ -124,7 +124,7 @@ namespace AutoDefense
                 Diversity++;
             }
 
-            Debug.Log("after adding 1 " + this.name + " the diversity is: " + diversity);
+            //Debug.Log("after adding 1 " + this.name + " the diversity is: " + diversity);
         }
         /// <summary>
         /// removes a herodata from the collection

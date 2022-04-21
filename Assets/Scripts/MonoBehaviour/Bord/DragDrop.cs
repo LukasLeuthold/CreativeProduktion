@@ -185,7 +185,8 @@ namespace AutoDefense
             _Cost.text = heroData.Rarity.Cost.ToString();
             _border.color = heroData.Rarity.BorderColor;
             heroImage.sprite = heroData.unitSprite;
-            heroData.anim = animator;
+            heroData.Anim = animator;
+            heroData.Unit = this;
         }
     }
 }

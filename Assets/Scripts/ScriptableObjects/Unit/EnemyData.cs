@@ -10,7 +10,7 @@ namespace AutoDefense
         public Vector2 nextPosition;
         public RectTransform enemyTransform;
 
-        public override void Attack()
+        public override void Attack(Vector2 heroOnField)
         {
             anim.Play("Attack");
             Debug.Log("Enemy Attack");
@@ -91,7 +91,7 @@ namespace AutoDefense
             }
             for (int i = 0; i < (CurrStatBlock.AmountAttackActions + CurrStatModifier.AmountAttackActionsMod); i++)
             {
-                Attack();
+                
             }
         }
 
