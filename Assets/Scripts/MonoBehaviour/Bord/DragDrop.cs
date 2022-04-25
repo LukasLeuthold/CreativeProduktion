@@ -50,11 +50,14 @@ namespace AutoDefense
         private RectTransform rectTransform;
         private Vector2 lastRectTranform;
         private CanvasGroup canvasGroup;
+
+        private Canvas canvas;
         [SerializeField]private Animator animator;
 
 
         private void Start()
         {
+            canvas  = FindObjectOfType<Canvas>();
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             currStats.SetActive(false);
@@ -101,7 +104,7 @@ namespace AutoDefense
 
         public void OnDrag(PointerEventData eventData)
         {
-            rectTransform.anchoredPosition += eventData.delta;
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -118,8 +121,6 @@ namespace AutoDefense
             }
             haveSlot = false;
         }
-
-        
 
 
         public void OnPointerEnter(PointerEventData eventData)

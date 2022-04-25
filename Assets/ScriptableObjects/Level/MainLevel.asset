@@ -47,5 +47,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  OnWaveStart: {fileID: 0}
-  OnWaveEnd: {fileID: 0}
+  goldPerWave: 0
+  xpPerWave: 0
+  OnWaveStart: {fileID: 11400000, guid: 85cc32f130cf7f54d81c2fcc6fa4ce00, type: 2}
+  OnWaveEnd: {fileID: 11400000, guid: 5078ed14aaec500498a1c452e024e45d, type: 2}

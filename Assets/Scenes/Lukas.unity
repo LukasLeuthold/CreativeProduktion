@@ -4097,7 +4097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9f3e140b5d4dd42b6c3ccbea88e6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemys: []
+  EnemyList: []
   Reserve:
   - {fileID: 0}
   - {fileID: 0}
@@ -4136,11 +4136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff3ec491b6a8bc468bacf2b840b1414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelI: {fileID: 11400000, guid: 9a72326749b33694c9663206106de544, type: 2}
+  LevelI: {fileID: 11400000, guid: 9a72326749b33694c9663206106de544, type: 2}
   currStateText: {fileID: 840408013}
   timeSlider: {fileID: 1660544710}
-  editTime: 10
-  onEnemyMove: {fileID: 11400000, guid: 876a29bf790753a4b9ee8585ebb7038a, type: 2}
+  editTime: 5
+  enemySpawner: {fileID: 1896895793}
   _Field: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
 --- !u!1 &990152439
 GameObject:
@@ -5709,6 +5709,7 @@ Transform:
   - {fileID: 2085647243}
   - {fileID: 1639430534}
   - {fileID: 1899633903}
+  - {fileID: 1642827216}
   m_Father: {fileID: 1683344852}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7581,7 +7582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642827215}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -963.49994, y: -536.49994, z: 0}
+  m_LocalPosition: {x: -3.499939, y: 3.500061, z: 0}
   m_LocalScale: {x: 0.94999987, y: 0.94999987, z: 1}
   m_Children:
   - {fileID: 1859175420}
@@ -7592,8 +7593,8 @@ Transform:
   - {fileID: 726754828}
   - {fileID: 797347842}
   - {fileID: 451583167}
-  m_Father: {fileID: 2055516948}
-  m_RootOrder: 0
+  m_Father: {fileID: 1294351419}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1657541457
 PrefabInstance:
@@ -8731,6 +8732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1896895794}
   - component: {fileID: 1896895793}
+  - component: {fileID: 1896895795}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -8779,6 +8781,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1896895795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896895792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27faec90322d77c4b96cc1ee356e649a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 85cc32f130cf7f54d81c2fcc6fa4ce00, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1896895793}
+        m_TargetAssemblyTypeName: AutoDefense.EnemySpawner, Assembly-CSharp
+        m_MethodName: SpawnNextWave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1899633902
 GameObject:
   m_ObjectHideFlags: 0
@@ -9453,8 +9483,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1642827216}
+  m_Children: []
   m_Father: {fileID: 1683344852}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

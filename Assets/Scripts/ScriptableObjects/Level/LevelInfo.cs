@@ -34,5 +34,9 @@ namespace AutoDefense
             currWave = 0;
 
         }
+        public void StartWave()
+        {
+            OnWaveStart.Raise(currWave);
+        }
     }
 }

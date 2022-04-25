@@ -14,16 +14,16 @@ namespace AutoDefense
 
         public Dictionary<string, TickState> _TickStates;
         private TickState state;
-        [SerializeField] internal LevelInfo levelI;
+        [SerializeField] internal LevelInfo LevelI;
         [SerializeField] internal TMP_Text currStateText;
         [SerializeField] internal Slider timeSlider;
         [SerializeField] internal int editTime;
 
+        public EnemySpawner enemySpawner;
+
         internal float currTime;
 
         private Text CurrSateText;
-
-        [SerializeField] internal VOIDScriptableEvent onEnemyMove;
 
         [SerializeField] private SOGameField _Field;
         Queue<HeroData> sortHeros = new Queue<HeroData>();
@@ -152,7 +152,7 @@ namespace AutoDefense
         }
         private IEnumerator _EnemyAttack()
         {
-            float time = 0.5f;
+            float time = 0.2f;
 
             for (int i = 0; i <= GameField.Instance.EnemyList.Count(); i++)
             {
@@ -167,11 +167,16 @@ namespace AutoDefense
 
                         if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData != null)
                         {
-                            Vector2 vector2 =  Vector2.zero;
+                            Vector2 vector2 = Vector2.zero;
                             sortEnemys.Dequeue().Attack(vector2);
                             yield return new WaitForSeconds(time);
                         }
-                        else
+                        else if (slots[x -1,y].GetComponent<EnemyField>() != null && slots[x - 1, y].GetComponent<EnemyField>().EnemyOnField == null)
+                        {
+                            sortEnemys.Dequeue().Move();
+                            yield return new WaitForSeconds(time);
+                        }
+                        else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData == null)
                         {
                             sortEnemys.Dequeue().Move();
                             yield return new WaitForSeconds(time);
@@ -190,19 +195,19 @@ namespace AutoDefense
                                 break;
                             }
                         }
-                        for (int e  = 0; e < GameField.Instance.EnemyList.Count(); e++)
+                        for (int e = 0; e < GameField.Instance.EnemyList.Count(); e++)
                         {
                             if (GameField.Instance.EnemyList[e] != null)
                             {
                                 SetState("Unit");
                                 yield break;
                             }
-                           
+
                         }
-                     
-                           SetState("Edit");
-                           yield break;
-                        
+
+                        SetState("Edit");
+                        yield break;
+
                     }
 
                 }
@@ -227,7 +232,7 @@ namespace AutoDefense
                 {
                     if (slots[2 + e, y].GetComponent<EnemyField>().EnemyOnField != null)
                     {
-                        targetField = new Vector2(2+e, y);
+                        targetField = new Vector2(2 + e, y);
                         break;
                     }
                 }

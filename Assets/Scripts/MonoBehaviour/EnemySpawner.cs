@@ -13,7 +13,7 @@ namespace AutoDefense
         [SerializeField] private RectTransform[] spawnFieldTransforms;
 
 
-        Queue<EnemyData> enemiesInWave;
+        public Queue<EnemyData> EnemiesInWave;
 
         //test
         public int Testpoints;
@@ -30,20 +30,20 @@ namespace AutoDefense
         }
         public void BuildWave()
         {
-            enemiesInWave = waveBuilder.BuildEnemyWave(Mathf.RoundToInt(levelInfo.DifficultieCurve.Evaluate(levelInfo.CurrWave)));
+            EnemiesInWave = waveBuilder.BuildEnemyWave(Mathf.RoundToInt(levelInfo.DifficultieCurve.Evaluate(levelInfo.CurrWave)));
         }
         public void BuildWave(int _points)
         {
-            enemiesInWave = waveBuilder.BuildEnemyWave(_points);
+            EnemiesInWave = waveBuilder.BuildEnemyWave(_points);
         }
         private void DebugWave()
         {
-            if (enemiesInWave == null)
+            if (EnemiesInWave == null)
             {
                 Debug.Log("null");
                 return;
             }
-            EnemyData[] enemieDebug = enemiesInWave.ToArray();
+            EnemyData[] enemieDebug = EnemiesInWave.ToArray();
             foreach (EnemyData enemy in enemieDebug)
             {
                 Debug.Log(enemy.ToString());
@@ -54,23 +54,22 @@ namespace AutoDefense
         {
             for (int i = 0; i < spawnFieldTransforms.Length; i++)
             {
-                if (spawnFieldTransforms[i].GetComponent<EnemyField>().EnemyOnField == null)
+                if (spawnFieldTransforms[i].GetComponent<EnemyField>().EnemyOnField == null && EnemiesInWave.Count > 0)
                 {
                     if (UtilRandom.GetPercentageSuccess(spawnProbability))
                     {
                         GameObject clone = Instantiate(enemyPrefab, spawnFieldTransforms[i].position, Quaternion.identity, this.transform);
-                        EnemyData enemy = enemiesInWave.Dequeue();
+                        EnemyData enemy = EnemiesInWave.Dequeue();
                         clone.GetComponent<Enemy>().EnemyData = enemy;
                         spawnFieldTransforms[i].GetComponent<EnemyField>().EnemyOnField = enemy;
                         enemy.nextPosition = spawnFieldTransforms[i].GetComponent<EnemyField>().field;
 
                         GameField.Instance.EnemyList.Add(enemy);
-
-                        //Array.Resize(ref GameField.Instance.Enemys, GameField.Instance.Enemys.Length + 1);
-                        //GameField.Instance.Enemys[GameField.Instance.Enemys.Length-1] = enemy;
+                      
                     }
                 }
             }
         }
+
     }
 }
