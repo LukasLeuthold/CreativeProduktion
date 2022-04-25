@@ -115,31 +115,6 @@ namespace AutoDefense
                 herosOnField.Remove(hData);
             }
 
-
-
-            //for (int i = 0; i < hDatas.Length; i++)
-            //{
-            //    if (hDatas[i] != null && hDatas[i] != null && hDatas[i].CurrStatBlock.Speed + hDatas[i].CurrStatModifier.SpeedMod <= minSpeed)
-            //    {
-            //        minSpeed = hDatas[i].CurrStatBlock.Speed + hDatas[i].CurrStatModifier.SpeedMod;
-            //    }
-            //}
-
-            //for (int i = 0; i < hDatas.Length; i++)
-            //{
-            //    if (hDatas[i] != null)
-            //    {
-            //        int unitSpeed = hDatas[i].CurrStatBlock.Speed + hDatas[i].CurrStatModifier.SpeedMod;
-
-            //        if (minSpeed == unitSpeed)
-            //        {
-            //            sortHeros.Enqueue(hDatas[i]);
-            //            hDatas[i] = null;
-            //        }
-            //    }
-            //}
-
-
             if (sortHeros.Count != 0)
             {
                 StartCoroutine(_UnitsAttack());
@@ -151,7 +126,7 @@ namespace AutoDefense
         }
         internal void EnemyMoA()
         {
-            EnemyData[] eDatas = GameField.Instance.Enemys.ToArray();
+            EnemyData[] eDatas = GameField.Instance.EnemyList.ToArray();
 
 
             for (int e = 0; e < eDatas.Length; e++)
@@ -179,7 +154,7 @@ namespace AutoDefense
         {
             float time = 0.5f;
 
-            for (int i = 0; i <= GameField.Instance.Enemys.Length; i++)
+            for (int i = 0; i <= GameField.Instance.EnemyList.Count(); i++)
             {
                 if (sortEnemys.Count != 0)
                 {
@@ -205,15 +180,29 @@ namespace AutoDefense
                     else
                     {
 
-                        for (int e = 0; e < GameField.Instance.Enemys.Length; e++)
+                        for (int e = 0; e < GameField.Instance.EnemyList.Count(); e++)
                         {
-                            if (GameField.Instance.Enemys[e] == sortEnemys.Peek())
+                            if (GameField.Instance.EnemyList[e] == sortEnemys.Peek())
                             {
                                 sortEnemys.Dequeue().DestroyEnemy();
-                                GameField.Instance.Enemys[e] = null;
+                                GameField.Instance.EnemyList.RemoveAt(e);
+                                yield return new WaitForSeconds(time);
                                 break;
                             }
                         }
+                        for (int e  = 0; e < GameField.Instance.EnemyList.Count(); e++)
+                        {
+                            if (GameField.Instance.EnemyList[e] != null)
+                            {
+                                SetState("Unit");
+                                yield break;
+                            }
+                           
+                        }
+                     
+                           SetState("Edit");
+                           yield break;
+                        
                     }
 
                 }

@@ -63,9 +63,11 @@ namespace AutoDefense
                         clone.GetComponent<Enemy>().EnemyData = enemy;
                         spawnFieldTransforms[i].GetComponent<EnemyField>().EnemyOnField = enemy;
                         enemy.nextPosition = spawnFieldTransforms[i].GetComponent<EnemyField>().field;
-                        
-                        Array.Resize(ref GameField.Instance.Enemys, GameField.Instance.Enemys.Length + 1);
-                        GameField.Instance.Enemys[GameField.Instance.Enemys.Length-1] = enemy;
+
+                        GameField.Instance.EnemyList.Add(enemy);
+
+                        //Array.Resize(ref GameField.Instance.Enemys, GameField.Instance.Enemys.Length + 1);
+                        //GameField.Instance.Enemys[GameField.Instance.Enemys.Length-1] = enemy;
                     }
                 }
             }

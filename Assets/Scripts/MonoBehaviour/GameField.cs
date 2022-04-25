@@ -8,7 +8,8 @@ namespace AutoDefense
     {
         public static GameField Instance;
 
-        public EnemyData[] Enemys = new EnemyData[1];
+        //public EnemyData[] Enemys = new EnemyData[1];
+        public List<EnemyData> EnemyList = new List<EnemyData>();
         public GameObject[,] Slots = new GameObject[10, 3];
        
         [HideInInspector]public GameObject[] Reserve = new GameObject[9];

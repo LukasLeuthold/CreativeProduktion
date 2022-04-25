@@ -13,6 +13,7 @@ namespace AutoDefense
         }
         public override void EnterState()
         {
+
             tickManager.SetState("Enemy");
         }
         public override void HandleState()
