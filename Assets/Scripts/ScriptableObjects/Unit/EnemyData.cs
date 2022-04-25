@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace AutoDefense
@@ -9,7 +10,7 @@ namespace AutoDefense
         public Animator anim { get; set; }
         public Vector2 nextPosition;
         public RectTransform enemyTransform;
-
+        public TMP_Text DamageText;
         public override void Attack(Vector2 heroOnField)
         {
             anim.Play("Attack");

@@ -84,6 +84,8 @@ namespace AutoDefense
 
         public override void Attack(Vector2 _enemyField)
         {
+            GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.DamageText.text = (CurrStatBlock.Attack + CurrStatModifier.AttackMod).ToString();
+            GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.DamageText.gameObject.SetActive(true);
             Anim.Play("Attack");
             Debug.Log("Attack");
         }
