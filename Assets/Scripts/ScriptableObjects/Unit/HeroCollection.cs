@@ -112,6 +112,10 @@ namespace AutoDefense
         /// <param name="_hero">herodata to add</param>
         public void AddToCollection(HeroData _hero)
         {
+            if (Diversity ==0)
+            {
+                OnFirstUnitPlaced?.Invoke(this);
+            }
             heroessssTest.Add(_hero);
             if (currEffect != null)
             {
@@ -147,6 +151,10 @@ namespace AutoDefense
             {
                 heroesInCollection.Remove(_hero.name);
                 Diversity--;
+            }
+            if (Diversity == 0)
+            {
+                OnLastUnitRemoved?.Invoke(this);
             }
             //Debug.Log("after subtracting 1 " + this.name + " the diversity is " + diversity);
         }
