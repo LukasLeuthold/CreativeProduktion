@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -100,6 +101,10 @@ namespace AutoDefense
         private Effect currEffect;
         private int currNeededDiversity;
         private Dictionary<int, Effect> dicGroupEffect;
+
+        public event Action<HeroCollection> OnFirstUnitPlaced; 
+        public event Action<HeroCollection> OnBuffChanged; 
+        public event Action<HeroCollection> OnLastUnitRemoved; 
 
         /// <summary>
         /// adds a herodata to the collection
