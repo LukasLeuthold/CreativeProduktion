@@ -101,7 +101,7 @@ namespace AutoDefense
         {
             _attributeVisualManager.DiversityText = _collection.Diversity.ToString();
             _attributeVisualManager.NameText = _collection.name;
-            _attributeVisualManager.ToolTipText = _collection.name+ " has " + _collection.Diversity.ToString() + " Heroes active.";
+            _attributeVisualManager.ToolTipText = _collection.GetToolTip();
         }
 
         private void SetEmptyAttributeVisual(HeroCollection _collection)

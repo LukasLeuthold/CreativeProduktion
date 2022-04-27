@@ -24,8 +24,9 @@ namespace AutoDefense
         public GroupEffect[] groupEffects;
         //private GroupEffect currEffect;
         private Effect currEffect;
+        private string currEffectToolTip;
         private int currNeededDiversity;
-        private Dictionary<int, Effect> dicGroupEffect;
+        private Dictionary<int, GroupEffect> dicGroupEffect;
 
         public event Action<HeroCollection> OnFirstUnitPlaced; 
         public event Action<HeroCollection> OnBuffStatusChanged; 
@@ -68,7 +69,8 @@ namespace AutoDefense
                     }
                     diversity = value;
                     OnDiversityChanged?.Invoke(this);
-                    currEffect = dicGroupEffect[diversity];
+                    currEffect = dicGroupEffect[diversity].effect;
+                    currEffectToolTip = dicGroupEffect[diversity].effectToolTip;
                     OnBuffStatusChanged(this);
                     currNeededDiversity = diversity;
                     ApplyEffectToGroup(currEffect);
@@ -99,7 +101,8 @@ namespace AutoDefense
                             {
                                 if (dicGroupEffect.ContainsKey(i))
                                 {
-                                    currEffect = dicGroupEffect[i];
+                                    currEffect = dicGroupEffect[i].effect;
+                                    currEffectToolTip = dicGroupEffect[i].effectToolTip;
                                     currNeededDiversity = i;
                                     diversity = value;
                                     OnDiversityChanged?.Invoke(this);
@@ -139,7 +142,6 @@ namespace AutoDefense
             heroessssTest.Add(_hero);
             if (currEffect != null)
             {
-                //currEffect.effect.ApplyEffect(_hero);
                 currEffect.ApplyEffect(_hero);
             }
             if (heroesInCollection.ContainsKey(_hero.name))
@@ -153,7 +155,6 @@ namespace AutoDefense
                 Diversity++;
             }
 
-            //Debug.Log("after adding 1 " + this.name + " the diversity is: " + diversity);
         }
         /// <summary>
         /// removes a herodata from the collection
@@ -176,7 +177,6 @@ namespace AutoDefense
             {
                 OnLastUnitRemoved?.Invoke(this);
             }
-            //Debug.Log("after subtracting 1 " + this.name + " the diversity is " + diversity);
         }
 
         public override void Initialize()
@@ -190,11 +190,11 @@ namespace AutoDefense
                 return;
             }
             lowestDiversity = int.MaxValue;
-            dicGroupEffect = new Dictionary<int, Effect>();
+            dicGroupEffect = new Dictionary<int, GroupEffect>();
             string namew = this.name; 
             for (int i = 0; i < groupEffects.Length; i++)
             {
-                dicGroupEffect.Add(groupEffects[i].neededDiversity, groupEffects[i].effect);
+                dicGroupEffect.Add(groupEffects[i].neededDiversity, groupEffects[i]);
                 if (groupEffects[i].neededDiversity < lowestDiversity)
                 {
                     lowestDiversity = groupEffects[i].neededDiversity;
@@ -226,6 +226,12 @@ namespace AutoDefense
                 }
             }
         }
+
+        public string GetToolTip()
+        {
+
+            return null;
+        }
     }
 
     [System.Serializable]
@@ -233,5 +239,6 @@ namespace AutoDefense
     {
         public int neededDiversity;
         public Effect effect;
+        public string effectToolTip;
     }
 }
