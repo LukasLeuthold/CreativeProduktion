@@ -11,9 +11,10 @@ namespace AutoDefense
         public Vector2 nextPosition;
         public RectTransform enemyTransform;
         public TMP_Text DamageText;
-        public override void Attack(Vector2 heroOnField)
+        public override void Attack()
         {
             anim.Play("Attack");
+
             Debug.Log("Enemy Attack");
         }
 
@@ -71,6 +72,7 @@ namespace AutoDefense
 
         public void DestroyEnemy()
         {
+
             enemyTransform.GetComponent<Enemy>().DestroyEnemy();
         }
         public EnemyData GetCopy()

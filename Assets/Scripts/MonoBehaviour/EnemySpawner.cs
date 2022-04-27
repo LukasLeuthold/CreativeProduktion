@@ -21,7 +21,7 @@ namespace AutoDefense
 
         private void Start()
         {
-            BuildWave(Testpoints);
+            BuildWave();
             if (debug)
             {
                 DebugWave();

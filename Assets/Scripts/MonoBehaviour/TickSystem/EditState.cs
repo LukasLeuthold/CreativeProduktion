@@ -26,8 +26,9 @@ namespace AutoDefense
                 //TODO End Level
                 Debug.Log("Level End");
             }
-            if (tickManager.currTime >= tickManager.editTime)
+            else if (tickManager.currTime >= tickManager.editTime)
             {
+                
                 tickManager.SetState("Fight");
             }
         }

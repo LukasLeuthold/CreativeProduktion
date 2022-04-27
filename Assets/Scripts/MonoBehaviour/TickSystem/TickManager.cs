@@ -92,6 +92,7 @@ namespace AutoDefense
                         if (slots[2 + e, y].GetComponent<EnemyField>().EnemyOnField != null)
                         {
                             herosOnField.Add(hDatas[i]);
+                            break;
                         }
                     }
 
@@ -115,7 +116,7 @@ namespace AutoDefense
                 herosOnField.Remove(hData);
             }
 
-            if (sortHeros.Count != 0)
+            if (sortHeros.Count > 0)
             {
                 StartCoroutine(_UnitsAttack());
             }
@@ -127,6 +128,7 @@ namespace AutoDefense
         internal void EnemyMoA()
         {
             EnemyData[] eDatas = GameField.Instance.EnemyList.ToArray();
+            sortEnemys.Clear();
 
 
             for (int e = 0; e < eDatas.Length; e++)
@@ -154,94 +156,94 @@ namespace AutoDefense
         {
             float time = 0.2f;
 
-            for (int i = 0; i <= GameField.Instance.EnemyList.Count(); i++)
+
+
+
+            
+            for (int i = 0; i < GameField.Instance.EnemyList.Count(); i++)
             {
-                if (sortEnemys.Count != 0)
+                if (sortEnemys.Count > 0 && sortEnemys.Peek().nextPosition.x  > 0  )
                 {
 
-                    if (sortEnemys.Peek().nextPosition.x > 0)
-                    {
-                        int x = (int)sortEnemys.Peek().nextPosition.x;
-                        int y = (int)sortEnemys.Peek().nextPosition.y;
-                        GameObject[,] slots = GameField.Instance.Slots;
+                    int x = (int)sortEnemys.Peek().nextPosition.x;
+                    int y = (int)sortEnemys.Peek().nextPosition.y;
+                    GameObject[,] slots = GameField.Instance.Slots;
 
-                        if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData != null)
-                        {
-                            Vector2 vector2 = Vector2.zero;
-                            sortEnemys.Dequeue().Attack(vector2);
-                            yield return new WaitForSeconds(time);
-                        }
-                        else if (slots[x -1,y].GetComponent<EnemyField>() != null && slots[x - 1, y].GetComponent<EnemyField>().EnemyOnField == null)
-                        {
-                            sortEnemys.Dequeue().Move();
-                            yield return new WaitForSeconds(time);
-                        }
-                        else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData == null)
-                        {
-                            sortEnemys.Dequeue().Move();
-                            yield return new WaitForSeconds(time);
-                        }
+                    if (slots[x - 1, y].GetComponent<EnemyField>() != null && slots[x - 1, y].GetComponent<EnemyField>().EnemyOnField == null)
+                    {
+                        sortEnemys.Dequeue().Move();
+                        yield return new WaitForSeconds(time);
+                    }
+                     else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData == null && slots[x - 1, y].GetComponent<UnitSlot>().EnemyOnField == null)
+                    {
+                        sortEnemys.Dequeue().Move();
+                        yield return new WaitForSeconds(time);
+                    }
+                    else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData != null)
+                    {
+                        Debug.Log("Zahl");
+                        //Vector2 vector2 = Vector2.zero;
+                        sortEnemys.Dequeue().Attack();
+                        yield return new WaitForSeconds(time);
                     }
                     else
                     {
-
-                        for (int e = 0; e < GameField.Instance.EnemyList.Count(); e++)
-                        {
-                            if (GameField.Instance.EnemyList[e] == sortEnemys.Peek())
-                            {
-                                sortEnemys.Dequeue().DestroyEnemy();
-                                GameField.Instance.EnemyList.RemoveAt(e);
-                                yield return new WaitForSeconds(time);
-                                break;
-                            }
-                        }
-                        for (int e = 0; e < GameField.Instance.EnemyList.Count(); e++)
-                        {
-                            if (GameField.Instance.EnemyList[e] != null)
-                            {
-                                SetState("Unit");
-                                yield break;
-                            }
-
-                        }
-
-                        SetState("Edit");
-                        yield break;
+                    
+                        sortEnemys.Dequeue();   
 
                     }
+                }
+                else
+                {
+                    if (GameField.Instance.EnemyList[i] == sortEnemys.Peek() && sortEnemys.Peek().nextPosition.x <= 0)
+                    {
+                        int x = (int)sortEnemys.Peek().nextPosition.x;
+                        int y = (int)sortEnemys.Peek().nextPosition.y;
+                        EnemyData edata = sortEnemys.Peek();
 
+                        sortEnemys.Dequeue();
+                        edata.DestroyEnemy();
+                        GameField.Instance.EnemyList.RemoveAt(i);
+                        GameField.Instance.Slots[x, y].GetComponent<UnitSlot>().EnemyOnField = null;
+                        yield return new WaitForSeconds(time);
+                    }
                 }
 
             }
+
+
             SetState("Unit");
+
         }
         private IEnumerator _UnitsAttack()
         {
             float time = 0.5f;
             int count = sortHeros.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                //Vector2 targetField = Vector2.zero;
+                testc();
+                yield return new WaitForSeconds(time);
+            }
+
+            SetState("Fight");
+        }
+        private void testc()
+        {
             GameObject[,] slots = GameField.Instance.Slots;
 
             int rang = sortHeros.Peek().CurrStatBlock.Range + sortHeros.Peek().CurrStatModifier.RangeMod;
             int y = (int)sortHeros.Peek().Unit.LastSlot.field.y;
-
-
-            for (int i = 0; i < count; i++)
+            for (int e = 0; e < rang; e++)
             {
-                Vector2 targetField = Vector2.zero;
-                for (int e = 0; e < rang; e++)
+                if (slots[2 + e, y].GetComponent<EnemyField>().EnemyOnField != null)
                 {
-                    if (slots[2 + e, y].GetComponent<EnemyField>().EnemyOnField != null)
-                    {
-                        targetField = new Vector2(2 + e, y);
-                        break;
-                    }
+                    //targetField = new Vector2(2 + e, y);
+                    sortHeros.Dequeue().Attack();
+                    return;
                 }
-                sortHeros.Dequeue().Attack(targetField);
-                yield return new WaitForSeconds(time);
             }
-
-            sortHeros.Clear();
-            SetState("Fight");
         }
     }
 }

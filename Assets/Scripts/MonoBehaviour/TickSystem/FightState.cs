@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace AutoDefense
 {
     public class FightState : TickState
@@ -11,17 +9,23 @@ namespace AutoDefense
         }
         public override void EnterState()
         {
-            Debug.Log("Fight");
 
 
             if (tickManager.enemySpawner.EnemiesInWave.Count > 0)
             {
                 tickManager.enemySpawner.SpawnNextEnemy();
             }
-            tickManager.currStateText.text = "Fight";
-            tickManager.SetState("Enemy");
 
-
+            if (tickManager.enemySpawner.EnemiesInWave.Count <= 0 && GameField.Instance.EnemyList.Count <= 0)
+            {
+                tickManager.enemySpawner.BuildWave();
+                tickManager.SetState("Edit");
+            }
+            else
+            {
+                tickManager.currStateText.text = "Fight";
+                tickManager.SetState("Enemy");
+            }
         }
         public override void HandleState()
         {

@@ -14,7 +14,6 @@ namespace AutoDefense
         public override void EnterState()
         {
             tickManager.EnemyMoA();
-            Debug.Log("Enemy");
         }
         public override void HandleState()
         {

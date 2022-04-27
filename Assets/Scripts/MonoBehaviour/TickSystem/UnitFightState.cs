@@ -14,7 +14,6 @@ namespace AutoDefense
         public override void EnterState()
         {
             tickManager.UnitAttack();
-            Debug.Log("Unit");
         }
         public override void HandleState()
         {
