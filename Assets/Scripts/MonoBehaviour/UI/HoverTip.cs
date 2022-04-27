@@ -10,7 +10,7 @@ namespace AutoDefense
         [SerializeField]private ScriptableFloatValue timeToShow;
         [SerializeField] private ToolTipHorizontalAllignment horizontalAllignment;
         [SerializeField] private ToolTipVerticalAllignment verticalAllignment;
-        [SerializeField, TextArea] private string toolTipText;
+        [SerializeField, TextArea] public string toolTipText;
 
         public void OnPointerEnter(PointerEventData eventData)
         {

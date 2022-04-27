@@ -21,9 +21,28 @@ namespace AutoDefense
         /// <summary>
         /// number of unique units on the battlefield
         /// </summary>
+        public GroupEffect[] groupEffects;
+        //private GroupEffect currEffect;
+        private Effect currEffect;
+        private int currNeededDiversity;
+        private Dictionary<int, Effect> dicGroupEffect;
+
+        public event Action<HeroCollection> OnFirstUnitPlaced; 
+        public event Action<HeroCollection> OnBuffStatusChanged; 
+        public event Action<HeroCollection> OnDiversityChanged; 
+        public event Action<HeroCollection> OnLastUnitRemoved; 
+
         [SerializeField] private int diversity;
 
         private int lowestDiversity;
+
+        public Effect CurrEffect
+        {
+            get
+            {
+                return currEffect;
+            }
+        }
         public int Diversity
         {
             get => diversity;
@@ -32,6 +51,7 @@ namespace AutoDefense
                 if (dicGroupEffect == null)
                 {
                     diversity = value;
+                    OnDiversityChanged?.Invoke(this);
                     return;
                 }
                 if (diversity < value)
@@ -39,6 +59,7 @@ namespace AutoDefense
                     if (!dicGroupEffect.ContainsKey(value))
                     {
                         diversity = value;
+                        OnDiversityChanged?.Invoke(this);
                         return;
                     }
                     if (currEffect != null)
@@ -46,7 +67,9 @@ namespace AutoDefense
                         RemoveEffectFromGroup(currEffect);
                     }
                     diversity = value;
+                    OnDiversityChanged?.Invoke(this);
                     currEffect = dicGroupEffect[diversity];
+                    OnBuffStatusChanged(this);
                     currNeededDiversity = diversity;
                     ApplyEffectToGroup(currEffect);
                 }
@@ -55,6 +78,7 @@ namespace AutoDefense
                     if (currEffect == null)
                     {
                         diversity = value;
+                        OnDiversityChanged?.Invoke(this);
                         return;
                     }
                     if (dicGroupEffect.ContainsKey(diversity) && !dicGroupEffect.ContainsKey(value))
@@ -63,7 +87,9 @@ namespace AutoDefense
                         {
                             RemoveEffectFromGroup(currEffect);
                             currEffect = null;
+                            OnBuffStatusChanged(this);
                             diversity = value;
+                            OnDiversityChanged?.Invoke(this);
                             return;
                         }
                         else
@@ -76,6 +102,7 @@ namespace AutoDefense
                                     currEffect = dicGroupEffect[i];
                                     currNeededDiversity = i;
                                     diversity = value;
+                                    OnDiversityChanged?.Invoke(this);
                                     ApplyEffectToGroup(currEffect);
                                     return;
                                 }
@@ -85,27 +112,19 @@ namespace AutoDefense
                     if (!dicGroupEffect.ContainsKey(diversity) && !dicGroupEffect.ContainsKey(value))
                     {
                         diversity = value;
+                        OnDiversityChanged?.Invoke(this);
                         return;
                     }
                     if (!dicGroupEffect.ContainsKey(diversity) && dicGroupEffect.ContainsKey(value))
                     {
                         diversity = value;
+                        OnDiversityChanged?.Invoke(this);
                         return;
                     }
                 }
             }
         }
 
-        public GroupEffect[] groupEffects;
-        //private GroupEffect currEffect;
-        private Effect currEffect;
-        private int currNeededDiversity;
-        private Dictionary<int, Effect> dicGroupEffect;
-
-        public event Action<HeroCollection> OnFirstUnitPlaced; 
-        public event Action<HeroCollection> OnBuffChanged; 
-        public event Action<HeroCollection> OnDiversityChanged; 
-        public event Action<HeroCollection> OnLastUnitRemoved; 
 
         /// <summary>
         /// adds a herodata to the collection
