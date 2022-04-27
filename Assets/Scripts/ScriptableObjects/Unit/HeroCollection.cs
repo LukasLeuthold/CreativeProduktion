@@ -28,10 +28,10 @@ namespace AutoDefense
         private int currNeededDiversity;
         private Dictionary<int, GroupEffect> dicGroupEffect;
 
-        public event Action<HeroCollection> OnFirstUnitPlaced; 
-        public event Action<HeroCollection> OnBuffStatusChanged; 
-        public event Action<HeroCollection> OnDiversityChanged; 
-        public event Action<HeroCollection> OnLastUnitRemoved; 
+        public event Action<HeroCollection> OnFirstUnitPlaced;
+        public event Action<HeroCollection> OnBuffStatusChanged;
+        public event Action<HeroCollection> OnDiversityChanged;
+        public event Action<HeroCollection> OnLastUnitRemoved;
 
         [SerializeField] private int diversity;
 
@@ -97,7 +97,7 @@ namespace AutoDefense
                         else
                         {
                             RemoveEffectFromGroup(currEffect);
-                            for (int i = value; i >=0; i--)
+                            for (int i = value; i >= 0; i--)
                             {
                                 if (dicGroupEffect.ContainsKey(i))
                                 {
@@ -135,7 +135,7 @@ namespace AutoDefense
         /// <param name="_hero">herodata to add</param>
         public void AddToCollection(HeroData _hero)
         {
-            if (Diversity ==0)
+            if (Diversity == 0)
             {
                 OnFirstUnitPlaced?.Invoke(this);
             }
@@ -191,7 +191,7 @@ namespace AutoDefense
             }
             lowestDiversity = int.MaxValue;
             dicGroupEffect = new Dictionary<int, GroupEffect>();
-            string namew = this.name; 
+            string namew = this.name;
             for (int i = 0; i < groupEffects.Length; i++)
             {
                 dicGroupEffect.Add(groupEffects[i].neededDiversity, groupEffects[i]);
@@ -229,8 +229,29 @@ namespace AutoDefense
 
         public string GetToolTip()
         {
-
-            return null;
+            string toolTip = "";
+            for (int i = 0; i < groupEffects.Length; i++)
+            {
+                if (diversity == groupEffects[i].neededDiversity)
+                {
+                    toolTip += "<b>"+ "{"  + "<u>"+ groupEffects[i].neededDiversity.ToString() + "</u>" + "} "+ "</b>";
+                }
+                else
+                {
+                    toolTip += "{" + groupEffects[i].neededDiversity.ToString() + "} ";
+                }
+            }
+            toolTip += "\n";
+            if (currEffectToolTip != null)
+            {
+                toolTip += currEffectToolTip;
+            }
+            else
+            {
+                toolTip += "\n";
+                toolTip += "\n";
+            }
+            return toolTip;
         }
     }
 

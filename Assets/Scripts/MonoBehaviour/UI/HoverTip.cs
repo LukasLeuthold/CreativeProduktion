@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace AutoDefense
 {
-    public class HoverTip : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
+    public class HoverTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField]private ScriptableFloatValue timeToShow;
+        [SerializeField] private ScriptableFloatValue timeToShow;
         [SerializeField] private ToolTipHorizontalAllignment horizontalAllignment;
         [SerializeField] private ToolTipVerticalAllignment verticalAllignment;
         [SerializeField, TextArea] public string toolTipText;
@@ -15,7 +14,10 @@ namespace AutoDefense
         public void OnPointerEnter(PointerEventData eventData)
         {
             StopAllCoroutines();
-            StartCoroutine(HoverTime());
+            if (!string.IsNullOrWhiteSpace(toolTipText))
+            {
+                StartCoroutine(HoverTime());
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -28,7 +30,7 @@ namespace AutoDefense
         {
             yield return new WaitForSeconds(timeToShow.Value);
 
-            HoverTipManager.OnMouseEnter(toolTipText,Input.mousePosition,horizontalAllignment,verticalAllignment);
+            HoverTipManager.OnMouseEnter(toolTipText, Input.mousePosition, horizontalAllignment, verticalAllignment);
         }
     }
 }

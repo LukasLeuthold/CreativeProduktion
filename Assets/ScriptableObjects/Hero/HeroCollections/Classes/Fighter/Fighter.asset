@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c42e8b6218cf448d83a6d45ea3d2b, type: 3}
   m_Name: Fighter
   m_EditorClassIdentifier: 
-  heroessssTest: []
-  diversity: 0
+  heroessssTest:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   groupEffects:
   - neededDiversity: 2
     effect: {fileID: 11400000, guid: 07c607fd4e34d0b4b9f7b990db7fd643, type: 2}
+    effectToolTip: This is a fighter effect
   - neededDiversity: 4
     effect: {fileID: 11400000, guid: 8617eae2d3d045c4085ef5e24bdb7648, type: 2}
+    effectToolTip: this is another fighter effect
   - neededDiversity: 6
     effect: {fileID: 11400000, guid: aca919d73548cdb43b475f26ace966f1, type: 2}
+    effectToolTip: 
+  diversity: 2
