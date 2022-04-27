@@ -92,10 +92,11 @@ namespace AutoDefense
         /// </summary>
         private void DeletData()
         {
-            if (Unit.LastSlot != null)
+            if (Unit.LastSlot != null && Unit.LastSlot != this)
             {
                 Unit.LastSlot.Unit = null;
-                Unit.LastSlot._HData = null;
+
+                 Unit.LastSlot._HData = null;
             }
         }
         private void GetInfo(PointerEventData _eventData)
