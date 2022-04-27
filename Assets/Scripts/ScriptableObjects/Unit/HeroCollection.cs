@@ -104,6 +104,7 @@ namespace AutoDefense
 
         public event Action<HeroCollection> OnFirstUnitPlaced; 
         public event Action<HeroCollection> OnBuffChanged; 
+        public event Action<HeroCollection> OnDiversityChanged; 
         public event Action<HeroCollection> OnLastUnitRemoved; 
 
         /// <summary>

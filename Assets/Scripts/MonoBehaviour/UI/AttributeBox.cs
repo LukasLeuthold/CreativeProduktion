@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +15,18 @@ namespace AutoDefense
             {
                 heroCollectionsInGame[i].OnFirstUnitPlaced += SpawnNewAttribute;
                 heroCollectionsInGame[i].OnLastUnitRemoved += DeleteAttribute;
+                heroCollectionsInGame[i].OnDiversityChanged += SetAttributeCount;
                 heroCollectionsInGame[i].OnBuffChanged += SetAttributeStatus;
+            }
+        }
+        private void OnDisable()
+        {
+            for (int i = 0; i < heroCollectionsInGame.Count; i++)
+            {
+                heroCollectionsInGame[i].OnFirstUnitPlaced -= SpawnNewAttribute;
+                heroCollectionsInGame[i].OnLastUnitRemoved -= DeleteAttribute;
+                heroCollectionsInGame[i].OnDiversityChanged -= SetAttributeCount;
+                heroCollectionsInGame[i].OnBuffChanged -= SetAttributeStatus;
             }
         }
 
@@ -36,6 +46,10 @@ namespace AutoDefense
         {
             Debug.Log("setAttribute status: " + _collection.name);
 
+        }
+        private void SetAttributeCount(HeroCollection _collection)
+        {
+            Debug.Log("changed count to: " + _collection.Diversity);
         }
 
     }
