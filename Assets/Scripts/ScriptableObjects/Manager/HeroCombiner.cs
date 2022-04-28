@@ -12,6 +12,18 @@ namespace AutoDefense
         [SerializeField] private int maxLevel;
         [SerializeField] private GameObject heroPrefab;
 
+        public int AmountToCombine
+        {
+            get
+            {
+                return amountToCombine;
+            }
+            set
+            {
+                amountToCombine = value;
+            }
+        }
+
         public void AddHeroPrefab(DragDrop _heroPrefab)
         {
             if (heroPrefabsByLevel[_heroPrefab.HData.CurrLevel].ContainsKey(_heroPrefab.HData.name))

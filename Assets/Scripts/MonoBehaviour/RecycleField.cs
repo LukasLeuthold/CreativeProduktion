@@ -31,12 +31,22 @@ namespace AutoDefense
             dd.haveSlot = true;
             GameField.Instance.isGrabing = false;
             heroCombiner.RemoveHeroPrefab(dd);
-
             HeroData hData = dd.HData;
-            //TODO: modify to multiply by level and take it away from herocombiner
-            pRessources.PlayerMoney += hData.Rarity.Cost;
-            heroPool.AddUnitCount(hData.name);
 
+            if (hData.CurrLevel == 1)
+            {
+                pRessources.PlayerMoney += hData.Rarity.Cost;
+                heroPool.AddUnitCount(hData.name);
+            }
+            else
+            {
+                int timesToDo = (int)(Mathf.Pow(heroCombiner.AmountToCombine, hData.CurrLevel - 1));
+                for (int i = 0; i < timesToDo; i++)
+                {
+                    pRessources.PlayerMoney += hData.Rarity.Cost;
+                    heroPool.AddUnitCount(hData.name);
+                }
+            }
             Destroy(eventData.pointerDrag);
             recycleFieldImage.sprite = closedTrashSprite;
         }
