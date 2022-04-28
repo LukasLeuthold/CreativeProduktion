@@ -227,7 +227,7 @@ namespace AutoDefense
 
         public string GetToolTip()
         {
-            string toolTip = "";
+            string toolTip = this.name + "\n";
             for (int i = 0; i < groupEffects.Length; i++)
             {
                 if (diversity == groupEffects[i].neededDiversity)

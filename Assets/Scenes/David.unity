@@ -357,6 +357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 3, y: 1}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!114 &73066623 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 263169575372759161, guid: e1ff6d8bb5a738940aa56abb255c4daf, type: 3}
@@ -887,6 +889,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 8, y: 1}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!114 &161953621 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 263169575372759161, guid: e1ff6d8bb5a738940aa56abb255c4daf, type: 3}
@@ -988,6 +992,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 5, y: 2}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &202078065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 6, y: 1}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &212268271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,6 +2346,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 7, y: 2}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1001 &337126393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3483,6 +3493,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 3, y: 2}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1001 &549765874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3691,6 +3703,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 3, y: 0}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &569344675
 GameObject:
   m_ObjectHideFlags: 0
@@ -5015,6 +5029,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 7, y: 0}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &733113639
 GameObject:
   m_ObjectHideFlags: 0
@@ -5105,6 +5121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 5, y: 0}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1001 &779525931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5399,6 +5417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 4, y: 1}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &811483312
 GameObject:
   m_ObjectHideFlags: 0
@@ -5627,6 +5647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 4, y: 2}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!114 &840408013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3957786421976050671, guid: 88f32a1b80cba6d4093abc6521d81811, type: 3}
@@ -6573,6 +6595,7 @@ MonoBehaviour:
   currStateText: {fileID: 840408013}
   timeSlider: {fileID: 1660544710}
   editTime: 10
+  breakTime: 1
   enemySpawner: {fileID: 1896895793}
   _Field: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
 --- !u!1001 &989427386
@@ -6898,6 +6921,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 6, y: 0}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &1014797200
 GameObject:
   m_ObjectHideFlags: 0
@@ -7377,6 +7402,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 2, y: 1}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &1123991348
 GameObject:
   m_ObjectHideFlags: 0
@@ -8189,6 +8216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 7, y: 1}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1001 &1214006097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8381,6 +8410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 2, y: 2}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1001 &1288971309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8943,6 +8974,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 4, y: 0}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &1347746640
 GameObject:
   m_ObjectHideFlags: 0
@@ -10388,6 +10421,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 2, y: 0}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &1573645810
 GameObject:
   m_ObjectHideFlags: 0
@@ -10509,6 +10544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 5, y: 1}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &1615342480
 GameObject:
   m_ObjectHideFlags: 0
@@ -11564,6 +11601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 8, y: 0}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1001 &1725336269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12026,6 +12065,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 8, y: 2}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1001 &1773246451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12798,6 +12839,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 9, y: 2}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &2045627028
 GameObject:
   m_ObjectHideFlags: 0
@@ -12929,6 +12972,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 9, y: 1}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1001 &2054417252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13261,6 +13306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 9, y: 0}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &2088106018
 GameObject:
   m_ObjectHideFlags: 0
@@ -13351,6 +13398,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {x: 6, y: 2}
+  enemyData: {fileID: 0}
+  enemyPrefab: {fileID: 0}
 --- !u!1001 &2094367554
 PrefabInstance:
   m_ObjectHideFlags: 0
