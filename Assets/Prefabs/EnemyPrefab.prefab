@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.5, y: 25.8}
+  m_AnchoredPosition: {x: 0, y: 17.9}
   m_SizeDelta: {x: 76.4865, y: 54.6861}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7053051344440326309
@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 65924
-  m_fontColor: {r: 0.5188679, g: 0.002447496, b: 0.002447496, a: 0}
+    rgba: 4278256004
+  m_fontColor: {r: 0.5188679, g: 0.002447496, b: 0.002447496, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

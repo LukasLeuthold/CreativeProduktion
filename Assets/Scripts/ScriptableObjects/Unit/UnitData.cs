@@ -41,7 +41,7 @@ namespace AutoDefense
         {
             OnUnitDataChanged?.Invoke();
         }
-        public virtual void Attack() { }
+        public virtual void Attack(Vector2 targetPosition) { }
         public virtual void Move() { }
 
         public abstract void Tick();

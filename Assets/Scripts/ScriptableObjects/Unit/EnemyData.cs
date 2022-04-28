@@ -11,7 +11,7 @@ namespace AutoDefense
         public Vector2 nextPosition;
         public RectTransform enemyTransform;
         public TMP_Text DamageText;
-        public override void Attack()
+        public override void Attack(Vector2 TargetPosition)
         {
             anim.Play("Attack");
 
