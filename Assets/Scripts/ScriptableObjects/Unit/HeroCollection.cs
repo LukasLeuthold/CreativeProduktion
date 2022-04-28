@@ -227,16 +227,16 @@ namespace AutoDefense
 
         public string GetToolTip()
         {
-            string toolTip = this.name;
+            string toolTip = "";
             for (int i = 0; i < groupEffects.Length; i++)
             {
                 if (diversity == groupEffects[i].neededDiversity)
                 {
-                    toolTip += "<b>"+ " {"  + "<u>"+ groupEffects[i].neededDiversity.ToString() + "</u>" + "} "+ "</b>";
+                    toolTip += "<b>"+ "{"  + "<u>"+ groupEffects[i].neededDiversity.ToString() + "</u>" + "} "+ "</b>";
                 }
                 else
                 {
-                    toolTip += " {" + groupEffects[i].neededDiversity.ToString() + "} ";
+                    toolTip += "{" + groupEffects[i].neededDiversity.ToString() + "} ";
                 }
             }
             toolTip += "\n";
