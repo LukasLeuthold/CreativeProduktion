@@ -181,7 +181,6 @@ namespace AutoDefense
                     }
                     else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData != null)
                     {
-                        Debug.Log("Zahl");
                         //Vector2 vector2 = Vector2.zero;
                         sortEnemys.Dequeue().Attack();
                         yield return new WaitForSeconds(time);

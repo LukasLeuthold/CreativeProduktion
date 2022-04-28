@@ -87,6 +87,7 @@ namespace AutoDefense
                         {
                             RemoveEffectFromGroup(currEffect);
                             currEffect = null;
+                            currEffectToolTip = null;
                             OnBuffStatusChanged(this);
                             diversity = value;
                             OnDiversityChanged?.Invoke(this);
@@ -184,6 +185,7 @@ namespace AutoDefense
             heroesInCollection = new Dictionary<string, List<HeroData>>();
             heroDragDrops = new List<DragDrop>();
             currEffect = null;
+            currEffectToolTip = null;
             diversity = 0;
             heroessssTest = new List<HeroData>();
             if (groupEffects.Length == 0)

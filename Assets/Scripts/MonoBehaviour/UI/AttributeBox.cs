@@ -116,6 +116,7 @@ namespace AutoDefense
                 attributeVisuals[j].TextColor = inActiveAttributeColor;
                 attributeVisuals[j].DisplayedCollection = null;
                 attributeVisuals[j].gameObject.SetActive(false);
+                attributeVisuals[j].ToolTipText = null;
             }
         }
 

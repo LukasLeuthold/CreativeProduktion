@@ -15,7 +15,6 @@ namespace AutoDefense
         {
             anim.Play("Attack");
 
-            Debug.Log("Enemy Attack");
         }
 
         public override void Move()
