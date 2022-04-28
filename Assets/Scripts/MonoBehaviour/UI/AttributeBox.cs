@@ -12,10 +12,12 @@ namespace AutoDefense
 
         private List<HeroCollection> activeHeroCollections;
 
+        public static Action<HeroCollection> OnTurnOnHighlight;
+        public static Action<HeroCollection> OnTurnOffHighlight;
+
         [Header("Color")]
         [SerializeField]private Color activeAttributeColor;
         [SerializeField]private Color inActiveAttributeColor;
-        //GameObject attributeVisual;
 
         private void Start()
         {
@@ -29,6 +31,9 @@ namespace AutoDefense
                 heroCollectionsInGame[i].OnBuffStatusChanged += SetAttributeStatus;
             }
             ResetAttributeVisuals();
+
+            OnTurnOnHighlight += TurnOnHighlight;
+            OnTurnOffHighlight += TurnOffHighlight;
         }
         private void OnDisable()
         {
@@ -39,23 +44,14 @@ namespace AutoDefense
                 heroCollectionsInGame[i].OnDiversityChanged -= SetAttributeCount;
                 heroCollectionsInGame[i].OnBuffStatusChanged -= SetAttributeStatus;
             }
+            OnTurnOnHighlight -= TurnOnHighlight;
+            OnTurnOffHighlight -= TurnOffHighlight;
         }
 
         private void SpawnNewAttribute(HeroCollection _collection)
         {
             activeHeroCollections.Add(_collection);
             UpdateAttributeBox();
-            //for (int i = 0; i < attributeVisuals.Length; i++)
-            //{
-            //    if (attributeVisuals[i].gameObject.activeSelf == false)
-            //    {
-            //        Debug.Log("spawn new Attribute: " + _collection.name);
-            //        UpdateAttributeVisual(attributeVisuals[i],_collection);
-            //        attributeBox.Add(_collection, attributeVisuals[i]);
-            //        attributeVisuals[i].gameObject.SetActive(true);
-            //        return;
-            //    }
-            //}
         }
 
         private void DeleteAttribute(HeroCollection _collection)
@@ -63,11 +59,6 @@ namespace AutoDefense
             Debug.Log("delete Attribute: " + _collection.name);
             activeHeroCollections.Remove(_collection);
             UpdateAttributeBox();
-
-            //dicAttributeBox[_collection].gameObject.SetActive(false);
-            //UpdateAttributeBox();
-            //dicAttributeBox.Remove(_collection);
-            //TODO: shuffle them up
         }
 
         private void UpdateAttributeBox()
@@ -101,6 +92,7 @@ namespace AutoDefense
         {
             _attributeVisualManager.DiversityText = _collection.Diversity.ToString();
             _attributeVisualManager.NameText = _collection.name;
+            _attributeVisualManager.DisplayedCollection = _collection;
             _attributeVisualManager.ToolTipText = _collection.GetToolTip();
         }
 
@@ -122,8 +114,18 @@ namespace AutoDefense
             for (int j = 0; j < attributeVisuals.Length; j++)
             {
                 attributeVisuals[j].TextColor = inActiveAttributeColor;
+                attributeVisuals[j].DisplayedCollection = null;
                 attributeVisuals[j].gameObject.SetActive(false);
             }
+        }
+
+        private void TurnOnHighlight(HeroCollection _collection)
+        {
+            _collection.TurnOnHighlights();
+        }
+        private void TurnOffHighlight(HeroCollection _collection)
+        {
+            _collection.TurnOffHighlights();
         }
     }
 }

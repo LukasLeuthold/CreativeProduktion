@@ -31,7 +31,6 @@ namespace AutoDefense
             enemyImage.sprite = enemyData.unitSprite;
             enemyData.enemyTransform = GetComponent<RectTransform>();
             enemyData.anim = animator;
-            //TODO: use to update enemy card values from data
         }
 
         public void DestroyEnemy()

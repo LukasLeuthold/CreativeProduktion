@@ -173,7 +173,7 @@ MonoBehaviour:
   timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
   horizontalAllignment: 1
   verticalAllignment: 1
-  toolTipText: Hello im a tooltipyeah baby o_Ololololololo----------------------------------------------------------------------------
+  toolTipText: 
 --- !u!114 &263169575372759161
 MonoBehaviour:
   m_ObjectHideFlags: 0

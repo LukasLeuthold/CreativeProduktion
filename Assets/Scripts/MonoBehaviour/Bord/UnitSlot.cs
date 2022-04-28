@@ -57,7 +57,7 @@ namespace AutoDefense
                 if (isGameField)
                 {
                     _SOGameField.HDatas[count] = (HeroData)_HData;
-                    _HData.PlaceOnField();
+                    _HData.PlaceOnField(Unit);
                 }
             }
             else if (eventData.pointerDrag != null && !isGameField)
@@ -80,7 +80,7 @@ namespace AutoDefense
                 {
                     _HData = Unit.HData;
                     _SOGameField.HDatas[count] = _HData;
-                    _HData.PlaceOnField();
+                    _HData.PlaceOnField(Unit);
                 }
 
                 GetInfo(eventData);

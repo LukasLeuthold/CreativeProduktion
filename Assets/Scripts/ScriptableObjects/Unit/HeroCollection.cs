@@ -18,11 +18,8 @@ namespace AutoDefense
         /// dictionary of unique heroes and the amount of them on the battlefield
         /// </summary>
         Dictionary<string, List<HeroData>> heroesInCollection;
-        /// <summary>
-        /// number of unique units on the battlefield
-        /// </summary>
+        private List<DragDrop> heroDragDrops;
         public GroupEffect[] groupEffects;
-        //private GroupEffect currEffect;
         private Effect currEffect;
         private string currEffectToolTip;
         private int currNeededDiversity;
@@ -133,12 +130,13 @@ namespace AutoDefense
         /// adds a herodata to the collection
         /// </summary>
         /// <param name="_hero">herodata to add</param>
-        public void AddToCollection(HeroData _hero)
+        public void AddToCollection(HeroData _hero,DragDrop _heroDrag)
         {
             if (Diversity == 0)
             {
                 OnFirstUnitPlaced?.Invoke(this);
             }
+            heroDragDrops.Add(_heroDrag);
             heroessssTest.Add(_hero);
             if (currEffect != null)
             {
@@ -160,9 +158,10 @@ namespace AutoDefense
         /// removes a herodata from the collection
         /// </summary>
         /// <param name="_hero">herodata to remove</param>
-        public void RemoveFromCollection(HeroData _hero)
+        public void RemoveFromCollection(HeroData _hero, DragDrop _heroDrag)
         {
             heroessssTest.Remove(_hero);
+            heroDragDrops.Remove(_heroDrag);
             heroesInCollection[_hero.name].Remove(_hero);
             if (currEffect != null)
             {
@@ -182,6 +181,7 @@ namespace AutoDefense
         public override void Initialize()
         {
             heroesInCollection = new Dictionary<string, List<HeroData>>();
+            heroDragDrops = new List<DragDrop>();
             currEffect = null;
             diversity = 0;
             heroessssTest = new List<HeroData>();
@@ -252,6 +252,22 @@ namespace AutoDefense
                 toolTip += "\n";
             }
             return toolTip;
+        }
+
+        public void TurnOnHighlights()
+        {
+            for (int i = 0; i < heroDragDrops.Count; i++)
+            {
+                heroDragDrops[i].ToggleHighlight(true);
+            }
+        }
+        public void TurnOffHighlights()
+        {
+            for (int i = 0; i < heroDragDrops.Count; i++)
+            {
+                heroDragDrops[i].ToggleHighlight(false);
+            }
+            //UNDONE: implement highlights and add dragdrop-List to collection
         }
     }
 

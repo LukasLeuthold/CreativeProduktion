@@ -69,17 +69,17 @@ namespace AutoDefense
             CurrStatBlock = unitStats[currLevel - 1];
         }
 
-        public void PlaceOnField()
+        public void PlaceOnField(DragDrop _heroDrag)
         {
-            activeHeroCollection.AddToCollection(this);
-            allianceAttribute.AddToCollection(this);
-            classAttribute.AddToCollection(this);
+            activeHeroCollection.AddToCollection(this, _heroDrag);
+            allianceAttribute.AddToCollection(this, _heroDrag);
+            classAttribute.AddToCollection(this, _heroDrag);
         }
-        public void RemoveFromField()
+        public void RemoveFromField(DragDrop _heroDrag)
         {
-            activeHeroCollection.RemoveFromCollection(this);
-            allianceAttribute.RemoveFromCollection(this);
-            classAttribute.RemoveFromCollection(this);
+            activeHeroCollection.RemoveFromCollection(this, _heroDrag);
+            allianceAttribute.RemoveFromCollection(this, _heroDrag);
+            classAttribute.RemoveFromCollection(this, _heroDrag);
         }
 
         public override void Attack(Vector2 _enemyField)

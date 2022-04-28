@@ -12,6 +12,11 @@ namespace AutoDefense
         [SerializeField] private Text diversityText;
         [SerializeField] private HoverTip toolTip;
 
+        public HeroCollection DisplayedCollection
+        {
+            get;
+            set;
+        }
         public string NameText
         {
             set

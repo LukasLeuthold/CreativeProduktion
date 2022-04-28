@@ -45,6 +45,7 @@ namespace AutoDefense
         [SerializeField] private Image _border;
 
         [SerializeField] private Image heroImage;
+        [SerializeField] private GameObject highlightObject;
 
         private bool isHidden = true;
         private RectTransform rectTransform;
@@ -52,14 +53,13 @@ namespace AutoDefense
         private CanvasGroup canvasGroup;
         [SerializeField]private Animator animator;
 
-
         private void Start()
         {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             currStats.SetActive(false);
             details.SetActive(false);
-
+            highlightObject.SetActive(false);
         }
         private void Update()
         {
@@ -87,7 +87,7 @@ namespace AutoDefense
             {
                 LastSlot._HData = null;
                 LastSlot._SOGameField.HDatas[LastSlot.count] = null;
-                heroData.RemoveFromField();
+                heroData.RemoveFromField(this);
 
             }
 
@@ -113,14 +113,11 @@ namespace AutoDefense
             canvasGroup.blocksRaycasts = true;
             if (!haveSlot)
             {
-                heroData.PlaceOnField();
+                heroData.PlaceOnField(this);
                 rectTransform.anchoredPosition = lastRectTranform;
             }
             haveSlot = false;
         }
-
-        
-
 
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -143,7 +140,6 @@ namespace AutoDefense
             isHidden = true;
 
         }
-
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -194,7 +190,10 @@ namespace AutoDefense
         }
 
 
-
+        public void ToggleHighlight(bool _value)
+        {
+            highlightObject.SetActive(_value);
+        }
         public void AnimateFusion()
         {
             StartCoroutine(FusionAnimation());
