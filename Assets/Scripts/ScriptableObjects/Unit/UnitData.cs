@@ -53,11 +53,13 @@ namespace AutoDefense
         [SerializeField] private int amountAttackActions ;
         [SerializeField] private int amountMovementActions ;
         [SerializeField]private int maxHP;
+        [SerializeField]private int currHP;
         [SerializeField]private int speed;
         [SerializeField]private int attack;
         [SerializeField]private int pierce;
         [SerializeField]private int range;
         public int MaxHP { get => maxHP; }
+        public int CurrHP { get => maxHP; set => currHP = value; }
         public int Speed { get => speed; }
         public int Attack { get => attack; }
         public int Pierce { get => pierce; }
