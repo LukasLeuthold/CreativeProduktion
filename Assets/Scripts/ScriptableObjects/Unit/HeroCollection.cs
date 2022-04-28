@@ -69,8 +69,8 @@ namespace AutoDefense
                     OnDiversityChanged?.Invoke(this);
                     currEffect = dicGroupEffect[diversity].effect;
                     currEffectToolTip = dicGroupEffect[diversity].effectToolTip;
-                    OnBuffStatusChanged(this);
                     currNeededDiversity = diversity;
+                    OnBuffStatusChanged(this);
                     ApplyEffectToGroup(currEffect);
                 }
                 else if (diversity > value)
@@ -88,8 +88,8 @@ namespace AutoDefense
                             RemoveEffectFromGroup(currEffect);
                             currEffect = null;
                             currEffectToolTip = null;
-                            OnBuffStatusChanged(this);
                             diversity = value;
+                            OnBuffStatusChanged(this);
                             OnDiversityChanged?.Invoke(this);
                             return;
                         }

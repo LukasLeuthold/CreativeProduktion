@@ -113,7 +113,10 @@ namespace AutoDefense
             canvasGroup.blocksRaycasts = true;
             if (!haveSlot)
             {
+                if (LastSlot.isGameField)
+                {
                 heroData.PlaceOnField(this);
+                }
                 rectTransform.anchoredPosition = lastRectTranform;
             }
             haveSlot = false;

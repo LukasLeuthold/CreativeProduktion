@@ -97,6 +97,7 @@ namespace AutoDefense
             return copy;
         }
 
+        //TODO: do we need this
         public override void Tick()
         {
             for (int i = 0; i < (CurrStatBlock.AmountAttackActions + CurrStatModifier.AmountAttackActionsMod); i++)

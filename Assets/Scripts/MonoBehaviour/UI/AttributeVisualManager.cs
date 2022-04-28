@@ -35,6 +35,7 @@ namespace AutoDefense
         {
             set
             {
+                Debug.Log("tooltip set to: " + value);
                 toolTip.toolTipText = value;
             }
         }
