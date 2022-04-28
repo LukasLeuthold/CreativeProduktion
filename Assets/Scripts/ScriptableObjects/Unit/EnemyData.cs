@@ -11,7 +11,8 @@ namespace AutoDefense
         public Vector2 nextPosition;
         public RectTransform enemyTransform;
         public TMP_Text DamageText;
-        public override void Attack()
+        public Enemy enemyPrefab;
+        public override void Attack(Vector2 TargetPosition)
         {
             anim.Play("Attack");
 
@@ -25,6 +26,13 @@ namespace AutoDefense
             if (GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<EnemyField>() != null)
             {
                 GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<EnemyField>().EnemyOnField = null;
+                if (GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<EnemyField>().enemyPrefab != null)
+                {
+
+                GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<EnemyField>().enemyPrefab.lastEnemyField = null;
+                }
+                GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<EnemyField>().enemyPrefab = null;
+
             }
             else
             {
@@ -49,10 +57,13 @@ namespace AutoDefense
             if (GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<EnemyField>() != null)
             {
                 GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<EnemyField>().EnemyOnField = this;
+                GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<EnemyField>().enemyPrefab = enemyPrefab;
+                GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<EnemyField>().enemyPrefab.lastEnemyField = GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<EnemyField>();
             }
             else
             {
                 GameField.Instance.Slots[(int)nextPosition.x, (int)nextPosition.y].GetComponent<UnitSlot>().EnemyOnField = this;
+
             }
 
             //Bewegen auf die nächste Position

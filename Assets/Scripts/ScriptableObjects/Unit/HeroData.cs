@@ -28,7 +28,7 @@ namespace AutoDefense
                 {
                     return rarity.Cost;
                 }
-                return rarity.Cost *  int.Parse(Mathf.Pow(3,currLevel-1).ToString());
+                return rarity.Cost * int.Parse(Mathf.Pow(3, currLevel - 1).ToString());
             }
         }
 
@@ -69,24 +69,35 @@ namespace AutoDefense
             CurrStatBlock = unitStats[currLevel - 1];
         }
 
-        public void PlaceOnField(DragDrop _heroDrag)
+        public void PlaceOnField()
         {
-            activeHeroCollection.AddToCollection(this, _heroDrag);
-            allianceAttribute.AddToCollection(this, _heroDrag);
-            classAttribute.AddToCollection(this, _heroDrag);
+            activeHeroCollection.AddToCollection(this);
+            allianceAttribute.AddToCollection(this);
+            classAttribute.AddToCollection(this);
         }
-        public void RemoveFromField(DragDrop _heroDrag)
+        public void RemoveFromField()
         {
-            activeHeroCollection.RemoveFromCollection(this, _heroDrag);
-            allianceAttribute.RemoveFromCollection(this, _heroDrag);
-            classAttribute.RemoveFromCollection(this, _heroDrag);
+            activeHeroCollection.RemoveFromCollection(this);
+            allianceAttribute.RemoveFromCollection(this);
+            classAttribute.RemoveFromCollection(this);
         }
 
-        public override void Attack()
+        public override void Attack(Vector2 _enemyField)
         {
-           // GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.DamageText.text = (CurrStatBlock.Attack + CurrStatModifier.AttackMod).ToString();
-           // GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.DamageText.gameObject.SetActive(true);
+
+            GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.DamageText.text = (CurrStatBlock.Attack + CurrStatModifier.AttackMod).ToString();
+            GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.DamageText.gameObject.SetActive(true);
+            GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.anim.Play("Damage");
+
+            //GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.CurrStatBlock.CurrHP -= (CurrStatBlock.Attack + CurrStatModifier.AttackMod);
+
+            GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().enemyPrefab.currHP -= (CurrStatBlock.Attack + CurrStatModifier.AttackMod);
+
+
+            Debug.Log(GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().enemyPrefab.currHP);
+
             Anim.Play("Attack");
+
         }
 
         public HeroData GetCopy()
@@ -97,7 +108,6 @@ namespace AutoDefense
             return copy;
         }
 
-        //TODO: do we need this
         public override void Tick()
         {
             for (int i = 0; i < (CurrStatBlock.AmountAttackActions + CurrStatModifier.AmountAttackActionsMod); i++)

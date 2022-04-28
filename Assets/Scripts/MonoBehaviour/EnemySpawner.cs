@@ -22,11 +22,7 @@ namespace AutoDefense
         private void Start()
         {
             BuildWave();
-            if (debug)
-            {
-                DebugWave();
-            }
-            SpawnNextEnemy();
+
         }
         public void BuildWave()
         {

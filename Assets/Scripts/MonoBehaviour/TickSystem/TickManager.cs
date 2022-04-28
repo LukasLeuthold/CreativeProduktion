@@ -23,8 +23,6 @@ namespace AutoDefense
 
         internal float currTime;
 
-        private Text CurrSateText;
-
         [SerializeField] private SOGameField _Field;
         Queue<HeroData> sortHeros = new Queue<HeroData>();
         Queue<EnemyData> sortEnemys = new Queue<EnemyData>();
@@ -35,6 +33,7 @@ namespace AutoDefense
             {"Start",new StartState(this)},
             {"Edit", new EditState(this)},
             {"Fight", new FightState(this)},
+            {"Break", new BreakState(this) },
             {"Unit", new UnitFightState(this)},
             {"Enemy", new EnemyFightState(this)}
         };
@@ -72,7 +71,6 @@ namespace AutoDefense
 
         internal void UnitAttack()
         {
-
             HeroData[] hDatas = _Field.HDatas;
             GameObject[,] slots = GameField.Instance.Slots;
 
@@ -95,7 +93,6 @@ namespace AutoDefense
                             break;
                         }
                     }
-
                 }
             }
 
@@ -154,11 +151,7 @@ namespace AutoDefense
         }
         private IEnumerator _EnemyAttack()
         {
-            float time = 0.2f;
-
-
-
-
+            float time = 0.5f;
             
             for (int i = 0; i < GameField.Instance.EnemyList.Count(); i++)
             {
@@ -172,24 +165,23 @@ namespace AutoDefense
                     if (slots[x - 1, y].GetComponent<EnemyField>() != null && slots[x - 1, y].GetComponent<EnemyField>().EnemyOnField == null)
                     {
                         sortEnemys.Dequeue().Move();
-                        yield return new WaitForSeconds(time);
+                        yield return new WaitForSeconds(0.2f);
                     }
                      else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData == null && slots[x - 1, y].GetComponent<UnitSlot>().EnemyOnField == null)
                     {
                         sortEnemys.Dequeue().Move();
-                        yield return new WaitForSeconds(time);
+                        yield return new WaitForSeconds(0.2f);
                     }
                     else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData != null)
                     {
-                        //Vector2 vector2 = Vector2.zero;
-                        sortEnemys.Dequeue().Attack();
+                        Debug.Log("Zahl");
+                        Vector2 vector2 = Vector2.zero;
+                        sortEnemys.Dequeue().Attack(vector2);
                         yield return new WaitForSeconds(time);
                     }
                     else
-                    {
-                    
+                    {                   
                         sortEnemys.Dequeue();   
-
                     }
                 }
                 else
@@ -210,9 +202,7 @@ namespace AutoDefense
 
             }
 
-
             SetState("Unit");
-
         }
         private IEnumerator _UnitsAttack()
         {
@@ -221,14 +211,12 @@ namespace AutoDefense
 
             for (int i = 0; i < count; i++)
             {
-                //Vector2 targetField = Vector2.zero;
-                testc();
+                _Attack();
                 yield return new WaitForSeconds(time);
             }
-
             SetState("Fight");
         }
-        private void testc()
+        private void _Attack()
         {
             GameObject[,] slots = GameField.Instance.Slots;
 
@@ -238,8 +226,9 @@ namespace AutoDefense
             {
                 if (slots[2 + e, y].GetComponent<EnemyField>().EnemyOnField != null)
                 {
-                    //targetField = new Vector2(2 + e, y);
-                    sortHeros.Dequeue().Attack();
+                    Vector2 targetField;
+                    targetField = new Vector2(2 + e, y);
+                    sortHeros.Dequeue().Attack(targetField);
                     return;
                 }
             }

@@ -16,16 +16,21 @@ MonoBehaviour:
   currStatBlock:
     amountAttackActions: 1
     amountMovementActions: 1
-    maxHP: 8
+    maxHP: 20
+    currHP: 0
     speed: 1
     attack: 1
     pierce: 0
     range: 1
   currStatModifier:
-    amountAttackActionsMod: 0
-    amountMovementActionsMod: 0
     maxHPMod: 0
     speedMod: 0
     attackMod: 0
-    pierceMod: 0
     rangeMod: 0
+    pierceMod: 0
+    amountAttackActionsMod: 0
+    amountMovementActionsMod: 0
+  nextPosition: {x: 0, y: 0}
+  enemyTransform: {fileID: 0}
+  DamageText: {fileID: 0}
+  enemyPrefab: {fileID: 0}
