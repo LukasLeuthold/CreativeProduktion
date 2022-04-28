@@ -24,6 +24,7 @@ namespace AutoDefense
                 heroData = value;
                 UpdateUnitCard();
                 heroData.OnModifierChanged += UpdateUnitCard;
+                    heroData.OnCurrStatBlockChanged += UpdateUnitCard;
             }
         }
 

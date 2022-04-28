@@ -27,8 +27,7 @@ namespace AutoDefense
             {
                 heroCollectionsInGame[i].OnFirstUnitPlaced += SpawnNewAttribute;
                 heroCollectionsInGame[i].OnLastUnitRemoved += DeleteAttribute;
-                heroCollectionsInGame[i].OnDiversityChanged += SetAttributeCount;
-                heroCollectionsInGame[i].OnBuffStatusChanged += SetAttributeStatus;
+                heroCollectionsInGame[i].OnCollectionChanged += RefreshAttribute;
             }
             ResetAttributeVisuals();
 
@@ -41,8 +40,7 @@ namespace AutoDefense
             {
                 heroCollectionsInGame[i].OnFirstUnitPlaced -= SpawnNewAttribute;
                 heroCollectionsInGame[i].OnLastUnitRemoved -= DeleteAttribute;
-                heroCollectionsInGame[i].OnDiversityChanged -= SetAttributeCount;
-                heroCollectionsInGame[i].OnBuffStatusChanged -= SetAttributeStatus;
+                heroCollectionsInGame[i].OnCollectionChanged -= RefreshAttribute;
             }
             OnTurnOnHighlight -= TurnOnHighlight;
             OnTurnOffHighlight -= TurnOffHighlight;
@@ -53,14 +51,20 @@ namespace AutoDefense
             activeHeroCollections.Add(_collection);
             UpdateAttributeBox();
         }
-
         private void DeleteAttribute(HeroCollection _collection)
         {
-            Debug.Log("delete Attribute: " + _collection.name);
             activeHeroCollections.Remove(_collection);
             UpdateAttributeBox();
         }
+        private void RefreshAttribute(HeroCollection _collection)
+        {
+            UpdateAttributeVisual(dicAttributeBox[_collection], _collection);
+        }
 
+
+        /// <summary>
+        /// updates the attribute box with active attributes
+        /// </summary>
         private void UpdateAttributeBox()
         {
             dicAttributeBox = new Dictionary<HeroCollection, AttributeVisualManager>();
@@ -68,34 +72,12 @@ namespace AutoDefense
             for (int i = 0; i < activeHeroCollections.Count; i++)
             {
                 SetEmptyAttributeVisual(activeHeroCollections[i]);
-                SetAttributeStatus(activeHeroCollections[i]);
             }
         }
-
-        private void SetAttributeStatus(HeroCollection _collection)
-        {
-            if (_collection.CurrEffect == null)
-            {
-                dicAttributeBox[_collection].TextColor = inActiveAttributeColor;
-            }
-            else
-            {
-                dicAttributeBox[_collection].TextColor = activeAttributeColor;
-            }
-
-        }
-        private void SetAttributeCount(HeroCollection _collection)
-        {
-            UpdateAttributeVisual(dicAttributeBox[_collection], _collection);
-        }
-        private void UpdateAttributeVisual(AttributeVisualManager _attributeVisualManager, HeroCollection _collection)
-        {
-            _attributeVisualManager.DiversityText = _collection.Diversity.ToString();
-            _attributeVisualManager.NameText = _collection.name;
-            _attributeVisualManager.DisplayedCollection = _collection;
-            _attributeVisualManager.ToolTipText = _collection.GetToolTip();
-        }
-
+        /// <summary>
+        /// looks for the next empty visual and acitvates it
+        /// </summary>
+        /// <param name="_collection"></param>
         private void SetEmptyAttributeVisual(HeroCollection _collection)
         {
             for (int j = 0; j < attributeVisuals.Length; j++)
@@ -109,6 +91,29 @@ namespace AutoDefense
                 }
             }
         }
+        /// <summary>
+        /// updates the visual representation of the collection
+        /// </summary>
+        /// <param name="_attributeVisualManager"></param>
+        /// <param name="_collection"></param>
+        private void UpdateAttributeVisual(AttributeVisualManager _attributeVisualManager, HeroCollection _collection)
+        {
+            _attributeVisualManager.DiversityText = _collection.Diversity.ToString();
+            _attributeVisualManager.NameText = _collection.name;
+            _attributeVisualManager.DisplayedCollection = _collection;
+            _attributeVisualManager.ToolTipText = _collection.GetToolTip();
+            if (_collection.CurrEffect == null)
+            {
+                _attributeVisualManager.TextColor = inActiveAttributeColor;
+            }
+            else
+            {
+                _attributeVisualManager.TextColor = activeAttributeColor;
+            }
+        }
+        /// <summary>
+        /// resets the visual representation of a collection to default
+        /// </summary>
         private void ResetAttributeVisuals()
         {
             for (int j = 0; j < attributeVisuals.Length; j++)
@@ -119,7 +124,6 @@ namespace AutoDefense
                 attributeVisuals[j].ToolTipText = null;
             }
         }
-
         private void TurnOnHighlight(HeroCollection _collection)
         {
             _collection.TurnOnHighlights();

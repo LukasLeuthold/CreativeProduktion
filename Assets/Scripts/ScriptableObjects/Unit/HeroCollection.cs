@@ -27,8 +27,7 @@ namespace AutoDefense
         [SerializeField]private Color highlightColor;
 
         public event Action<HeroCollection> OnFirstUnitPlaced;
-        public event Action<HeroCollection> OnBuffStatusChanged;
-        public event Action<HeroCollection> OnDiversityChanged;
+        public event Action<HeroCollection> OnCollectionChanged;
         public event Action<HeroCollection> OnLastUnitRemoved;
 
         [SerializeField] private int diversity;
@@ -50,7 +49,7 @@ namespace AutoDefense
                 if (dicGroupEffect == null)
                 {
                     diversity = value;
-                    OnDiversityChanged?.Invoke(this);
+                    OnCollectionChanged?.Invoke(this);
                     return;
                 }
                 if (diversity < value)
@@ -58,7 +57,7 @@ namespace AutoDefense
                     if (!dicGroupEffect.ContainsKey(value))
                     {
                         diversity = value;
-                        OnDiversityChanged?.Invoke(this);
+                        OnCollectionChanged?.Invoke(this);
                         return;
                     }
                     if (currEffect != null)
@@ -66,11 +65,10 @@ namespace AutoDefense
                         RemoveEffectFromGroup(currEffect);
                     }
                     diversity = value;
-                    OnDiversityChanged?.Invoke(this);
                     currEffect = dicGroupEffect[diversity].effect;
                     currEffectToolTip = dicGroupEffect[diversity].effectToolTip;
                     currNeededDiversity = diversity;
-                    OnBuffStatusChanged(this);
+                    OnCollectionChanged?.Invoke(this);
                     ApplyEffectToGroup(currEffect);
                 }
                 else if (diversity > value)
@@ -78,7 +76,7 @@ namespace AutoDefense
                     if (currEffect == null)
                     {
                         diversity = value;
-                        OnDiversityChanged?.Invoke(this);
+                        OnCollectionChanged?.Invoke(this);
                         return;
                     }
                     if (dicGroupEffect.ContainsKey(diversity) && !dicGroupEffect.ContainsKey(value))
@@ -89,8 +87,7 @@ namespace AutoDefense
                             currEffect = null;
                             currEffectToolTip = null;
                             diversity = value;
-                            OnBuffStatusChanged(this);
-                            OnDiversityChanged?.Invoke(this);
+                            OnCollectionChanged?.Invoke(this);
                             return;
                         }
                         else
@@ -104,7 +101,7 @@ namespace AutoDefense
                                     currEffectToolTip = dicGroupEffect[i].effectToolTip;
                                     currNeededDiversity = i;
                                     diversity = value;
-                                    OnDiversityChanged?.Invoke(this);
+                                    OnCollectionChanged?.Invoke(this);
                                     ApplyEffectToGroup(currEffect);
                                     return;
                                 }
@@ -114,13 +111,13 @@ namespace AutoDefense
                     if (!dicGroupEffect.ContainsKey(diversity) && !dicGroupEffect.ContainsKey(value))
                     {
                         diversity = value;
-                        OnDiversityChanged?.Invoke(this);
+                        OnCollectionChanged?.Invoke(this);
                         return;
                     }
                     if (!dicGroupEffect.ContainsKey(diversity) && dicGroupEffect.ContainsKey(value))
                     {
                         diversity = value;
-                        OnDiversityChanged?.Invoke(this);
+                        OnCollectionChanged?.Invoke(this);
                         return;
                     }
                 }
@@ -207,7 +204,6 @@ namespace AutoDefense
 
         private void ApplyEffectToGroup(Effect _effect)
         {
-            Debug.Log("applying buff");
             for (int i = 0; i < heroesInCollection.Count; i++)
             {
                 List<HeroData> heroes = heroesInCollection.ElementAt(i).Value;
@@ -219,7 +215,6 @@ namespace AutoDefense
         }
         private void RemoveEffectFromGroup(Effect _effect)
         {
-            Debug.Log("removing buff");
             for (int i = 0; i < heroesInCollection.Count; i++)
             {
                 List<HeroData> heroes = heroesInCollection.ElementAt(i).Value;
