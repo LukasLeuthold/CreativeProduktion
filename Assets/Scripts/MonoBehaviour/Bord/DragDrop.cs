@@ -45,7 +45,7 @@ namespace AutoDefense
         [SerializeField] private Image _border;
 
         [SerializeField] private Image heroImage;
-        [SerializeField] private GameObject highlightObject;
+        [SerializeField] private Image highlightImage;
 
         private bool isHidden = true;
         private RectTransform rectTransform;
@@ -59,7 +59,7 @@ namespace AutoDefense
             canvasGroup = GetComponent<CanvasGroup>();
             currStats.SetActive(false);
             details.SetActive(false);
-            highlightObject.SetActive(false);
+            highlightImage.gameObject.SetActive(false);
         }
         private void Update()
         {
@@ -190,9 +190,10 @@ namespace AutoDefense
         }
 
 
-        public void ToggleHighlight(bool _value)
+        public void ToggleHighlight(bool _value,Color _color)
         {
-            highlightObject.SetActive(_value);
+            highlightImage.gameObject.SetActive(_value);
+            highlightImage.color = _color;
         }
         public void AnimateFusion()
         {

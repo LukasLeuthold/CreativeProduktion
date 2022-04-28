@@ -24,6 +24,7 @@ namespace AutoDefense
         private string currEffectToolTip;
         private int currNeededDiversity;
         private Dictionary<int, GroupEffect> dicGroupEffect;
+        [SerializeField]private Color highlightColor;
 
         public event Action<HeroCollection> OnFirstUnitPlaced;
         public event Action<HeroCollection> OnBuffStatusChanged;
@@ -258,16 +259,15 @@ namespace AutoDefense
         {
             for (int i = 0; i < heroDragDrops.Count; i++)
             {
-                heroDragDrops[i].ToggleHighlight(true);
+                heroDragDrops[i].ToggleHighlight(true,highlightColor);
             }
         }
         public void TurnOffHighlights()
         {
             for (int i = 0; i < heroDragDrops.Count; i++)
             {
-                heroDragDrops[i].ToggleHighlight(false);
+                heroDragDrops[i].ToggleHighlight(false, highlightColor);
             }
-            //UNDONE: implement highlights and add dragdrop-List to collection
         }
     }
 

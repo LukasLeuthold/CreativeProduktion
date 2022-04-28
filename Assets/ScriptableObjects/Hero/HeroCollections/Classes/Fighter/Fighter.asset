@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c42e8b6218cf448d83a6d45ea3d2b, type: 3}
   m_Name: Fighter
   m_EditorClassIdentifier: 
-  heroessssTest:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  heroessssTest: []
   groupEffects:
   - neededDiversity: 2
     effect: {fileID: 11400000, guid: 07c607fd4e34d0b4b9f7b990db7fd643, type: 2}
@@ -26,4 +23,5 @@ MonoBehaviour:
   - neededDiversity: 6
     effect: {fileID: 11400000, guid: aca919d73548cdb43b475f26ace966f1, type: 2}
     effectToolTip: 
-  diversity: 2
+  highlightColor: {r: 0.8773585, g: 0.23385492, b: 0.22761661, a: 0.7176471}
+  diversity: 0

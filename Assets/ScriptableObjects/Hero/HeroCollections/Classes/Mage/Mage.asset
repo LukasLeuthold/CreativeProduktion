@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: Mage
   m_EditorClassIdentifier: 
   heroessssTest: []
-  diversity: 0
   groupEffects:
   - neededDiversity: 2
     effect: {fileID: 11400000, guid: 0f3b233609840a34db40e22b3dcded3f, type: 2}
+    effectToolTip: 
   - neededDiversity: 4
     effect: {fileID: 11400000, guid: 58923a3644caa4b4a8b3003db408027b, type: 2}
+    effectToolTip: 
   - neededDiversity: 6
     effect: {fileID: 11400000, guid: 7a89fd76cc0f18c42aca077c773ff971, type: 2}
+    effectToolTip: 
+  highlightColor: {r: 0.033018887, g: 0.113471925, b: 1, a: 0.6392157}
+  diversity: 0

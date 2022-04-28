@@ -1268,7 +1268,7 @@ MonoBehaviour:
   _Cost: {fileID: 1564976926663346283}
   _border: {fileID: 2006043957086938147}
   heroImage: {fileID: 8718536276557778854}
-  highlightObject: {fileID: 5012700787547876492}
+  highlightImage: {fileID: 5225587760699588247}
   animator: {fileID: 2686951840346532141}
 --- !u!225 &3202606274977018456
 CanvasGroup:
