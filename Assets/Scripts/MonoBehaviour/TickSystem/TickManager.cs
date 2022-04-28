@@ -153,10 +153,11 @@ namespace AutoDefense
         private IEnumerator _EnemyAttack()
         {
             float time = 0.5f;
-            
-            for (int i = 0; i < GameField.Instance.EnemyList.Count(); i++)
+            int count = sortEnemys.Count;
+
+            for (int i = 0; i < count; i++)
             {
-                if (sortEnemys.Count > 0 && sortEnemys.Peek().nextPosition.x  > 0  )
+                if (sortEnemys.Count > 0 && sortEnemys.Peek().nextPosition.x > 0)
                 {
 
                     int x = (int)sortEnemys.Peek().nextPosition.x;
@@ -168,7 +169,7 @@ namespace AutoDefense
                         sortEnemys.Dequeue().Move();
                         yield return new WaitForSeconds(0.2f);
                     }
-                     else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData == null && slots[x - 1, y].GetComponent<UnitSlot>().EnemyOnField == null)
+                    else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData == null && slots[x - 1, y].GetComponent<UnitSlot>().EnemyOnField == null)
                     {
                         sortEnemys.Dequeue().Move();
                         yield return new WaitForSeconds(0.2f);
@@ -180,23 +181,27 @@ namespace AutoDefense
                         yield return new WaitForSeconds(time);
                     }
                     else
-                    {                   
-                        sortEnemys.Dequeue();   
+                    {
+                        sortEnemys.Dequeue();
                     }
                 }
                 else
                 {
-                    if (GameField.Instance.EnemyList[i] == sortEnemys.Peek() && sortEnemys.Peek().nextPosition.x <= 0)
+                    for (int e = 0; e < GameField.Instance.EnemyList.Count(); e++)
                     {
-                        int x = (int)sortEnemys.Peek().nextPosition.x;
-                        int y = (int)sortEnemys.Peek().nextPosition.y;
-                        EnemyData edata = sortEnemys.Peek();
 
-                        sortEnemys.Dequeue();
-                        edata.DestroyEnemy();
-                        GameField.Instance.EnemyList.RemoveAt(i);
-                        GameField.Instance.Slots[x, y].GetComponent<UnitSlot>().EnemyOnField = null;
-                        yield return new WaitForSeconds(time);
+                        if (GameField.Instance.EnemyList[e] == sortEnemys.Peek() && sortEnemys.Peek().nextPosition.x <= 0)
+                        {
+                            int x = (int)sortEnemys.Peek().nextPosition.x;
+                            int y = (int)sortEnemys.Peek().nextPosition.y;
+                            EnemyData edata = sortEnemys.Peek();
+
+                            sortEnemys.Dequeue();
+                            edata.DestroyEnemy();
+                            GameField.Instance.EnemyList.RemoveAt(e);
+                            GameField.Instance.Slots[x, y].GetComponent<UnitSlot>().EnemyOnField = null;
+                            yield return new WaitForSeconds(time);
+                        }
                     }
                 }
 
