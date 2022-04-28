@@ -240,13 +240,13 @@ namespace AutoDefense
                 }
             }
             toolTip += "\n";
+            toolTip += "\n";
             if (currEffectToolTip != null)
             {
                 toolTip += currEffectToolTip;
             }
             else
             {
-                toolTip += "\n";
                 toolTip += "\n";
             }
             return toolTip;
