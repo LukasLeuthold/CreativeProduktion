@@ -12,7 +12,7 @@ namespace AutoDefense
 
         public override void EnterState()
         {
-            tickManager.ResetSlider();
+            tickManager.ResetSlider(tickManager.editTime);
             tickManager.currStateText.text = "Edit";
             tickManager.LevelI.CurrWave++;
         }

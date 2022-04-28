@@ -18,6 +18,7 @@ namespace AutoDefense
         [SerializeField] internal TMP_Text currStateText;
         [SerializeField] internal Slider timeSlider;
         [SerializeField] internal int editTime;
+        [SerializeField] internal int breakTime;
 
         public EnemySpawner enemySpawner;
 
@@ -62,11 +63,11 @@ namespace AutoDefense
             state.EnterState();
         }
 
-        internal void ResetSlider()
+        internal void ResetSlider(int maxTime)
         {
             currTime = 0;
             timeSlider.value = 0;
-            timeSlider.maxValue = editTime;
+            timeSlider.maxValue = maxTime;
         }
 
         internal void UnitAttack()
@@ -119,7 +120,7 @@ namespace AutoDefense
             }
             else
             {
-                SetState("Fight");
+                SetState("Break");
             }
         }
         internal void EnemyMoA()
@@ -174,7 +175,6 @@ namespace AutoDefense
                     }
                     else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData != null)
                     {
-                        Debug.Log("Zahl");
                         Vector2 vector2 = Vector2.zero;
                         sortEnemys.Dequeue().Attack(vector2);
                         yield return new WaitForSeconds(time);
@@ -214,7 +214,7 @@ namespace AutoDefense
                 _Attack();
                 yield return new WaitForSeconds(time);
             }
-            SetState("Fight");
+            SetState("Break");
         }
         private void _Attack()
         {
