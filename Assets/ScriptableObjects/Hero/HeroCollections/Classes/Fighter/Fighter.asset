@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: Fighter
   m_EditorClassIdentifier: 
   heroessssTest: []
-  diversity: 0
   groupEffects:
   - neededDiversity: 2
     effect: {fileID: 11400000, guid: 07c607fd4e34d0b4b9f7b990db7fd643, type: 2}
+    effectToolTip: This is a fighter effect
   - neededDiversity: 4
     effect: {fileID: 11400000, guid: 8617eae2d3d045c4085ef5e24bdb7648, type: 2}
+    effectToolTip: this is another fighter effect
   - neededDiversity: 6
     effect: {fileID: 11400000, guid: aca919d73548cdb43b475f26ace966f1, type: 2}
+    effectToolTip: 
+  highlightColor: {r: 0.8773585, g: 0.23385492, b: 0.22761661, a: 0.7176471}
+  diversity: 0

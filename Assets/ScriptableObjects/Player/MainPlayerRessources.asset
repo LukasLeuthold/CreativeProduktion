@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98889a51253b9f40bc5a411934ff212, type: 3}
   m_Name: MainPlayerRessources
   m_EditorClassIdentifier: 
-  startPlayerHealth: 20
+  startPlayerHealth: 24
   startPlayerMoney: 20
   xPNeededForLevelUp: 280000003c0000005000000064000000
   probabilities:
@@ -21,8 +21,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b507f6f27ae54814ebc87a168ed68ece, type: 2}
   - {fileID: 11400000, guid: 286c9dd6f1ec3284b949b2a37d588a8d, type: 2}
   - {fileID: 11400000, guid: b158cb0a9d1afc34aa9a8491f4be8948, type: 2}
-  currLevel: 5
   OnPlayerMoneyChanged: {fileID: 11400000, guid: 50d77abc411929442b1633fa486b0a77, type: 2}
   OnPlayerLevelChanged: {fileID: 11400000, guid: 3ca0ee347d76d1d4a8b58e6d4bea6885, type: 2}
+  OnProbabilityChanged: {fileID: 11400000, guid: 933b8be556b1abd4793fe88e4b1592a2, type: 2}
   OnPlayerXpChanged: {fileID: 11400000, guid: d364f44b92774e84692029fd0ab35452, type: 2}
   OnPlayerHpChanged: {fileID: 11400000, guid: 75d83f4741575bf4daefa3f4d76b928d, type: 2}

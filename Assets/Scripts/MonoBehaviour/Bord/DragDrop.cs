@@ -45,24 +45,21 @@ namespace AutoDefense
         [SerializeField] private Image _border;
 
         [SerializeField] private Image heroImage;
+        [SerializeField] private Image highlightImage;
 
         private bool isHidden = true;
         private RectTransform rectTransform;
         private Vector2 lastRectTranform;
         private CanvasGroup canvasGroup;
-
-        private Canvas canvas;
         [SerializeField]private Animator animator;
-
 
         private void Start()
         {
-            canvas  = FindObjectOfType<Canvas>();
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             currStats.SetActive(false);
             details.SetActive(false);
-
+            highlightImage.gameObject.SetActive(false);
         }
         private void Update()
         {
@@ -90,7 +87,7 @@ namespace AutoDefense
             {
                 LastSlot._HData = null;
                 LastSlot._SOGameField.HDatas[LastSlot.count] = null;
-                heroData.RemoveFromField();
+                heroData.RemoveFromField(this);
 
             }
 
@@ -104,7 +101,7 @@ namespace AutoDefense
 
         public void OnDrag(PointerEventData eventData)
         {
-            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+            rectTransform.anchoredPosition += eventData.delta;
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -116,12 +113,11 @@ namespace AutoDefense
             canvasGroup.blocksRaycasts = true;
             if (!haveSlot)
             {
-                heroData.PlaceOnField();
+                heroData.PlaceOnField(this);
                 rectTransform.anchoredPosition = lastRectTranform;
             }
             haveSlot = false;
         }
-
 
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -144,7 +140,6 @@ namespace AutoDefense
             isHidden = true;
 
         }
-
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -195,7 +190,11 @@ namespace AutoDefense
         }
 
 
-
+        public void ToggleHighlight(bool _value,Color _color)
+        {
+            highlightImage.gameObject.SetActive(_value);
+            highlightImage.color = _color;
+        }
         public void AnimateFusion()
         {
             StartCoroutine(FusionAnimation());

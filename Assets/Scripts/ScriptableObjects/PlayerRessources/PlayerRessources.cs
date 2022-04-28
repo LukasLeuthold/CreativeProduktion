@@ -15,9 +15,6 @@ namespace AutoDefense
 
         [Header("Player-Money")]
         [SerializeField]private int startPlayerMoney;
-
-       
-
         private int playerMoney;
 
         [Header("Player-XP")]
@@ -27,11 +24,10 @@ namespace AutoDefense
         private int currLevel;
         private int maxLevel;
 
-
-
         [Header("Events")]
         [SerializeField]private INTScriptableEvent OnPlayerMoneyChanged;
         [SerializeField]private INTScriptableEvent OnPlayerLevelChanged;
+        [SerializeField]private PROBScriptableEvent OnProbabilityChanged;
         [SerializeField]private INT2ScriptableEvent OnPlayerXpChanged;
         [SerializeField]private INTScriptableEvent OnPlayerHpChanged;
         public int PlayerMoney 
@@ -54,7 +50,22 @@ namespace AutoDefense
                 else return new ProbabilityDistribution();
             }
         }
-
+        public int PlayerHealth
+        {
+            get => playerHealth;
+            set
+            {
+                playerHealth = value;
+                if (playerHealth <=0)
+                {
+                    playerHealth = 0;
+                    OnPlayerHpChanged?.Raise(playerHealth);
+                    //TODO: trigger gameOver
+                    return;
+                }
+                OnPlayerHpChanged?.Raise(playerHealth);
+            }
+        }
 
 
         public int CurrXP
@@ -77,7 +88,7 @@ namespace AutoDefense
                     currLevel++;
                     if (currLevel == maxLevel)
                     {
-                        currXP = 0;
+                        currXP = xPNeededForLevelUp[currLevel - 2];
                         OnPlayerXpChanged?.Raise(currXP, xPNeededForLevelUp[currLevel - 2]);
                     }
                     else
@@ -85,6 +96,7 @@ namespace AutoDefense
                         OnPlayerXpChanged?.Raise(currXP, xPNeededForLevelUp[currLevel - 1]);
                     }
                     OnPlayerLevelChanged?.Raise(currLevel);
+                    OnProbabilityChanged?.Raise(probabilities[currLevel - 1]);
                 }
 
             }
@@ -94,13 +106,15 @@ namespace AutoDefense
         {
             PlayerMoney = startPlayerMoney;
             currLevel = 1;
-            currXP = 0;
+            CurrXP = 0;
             maxLevel = xPNeededForLevelUp.Length+1;
+            OnProbabilityChanged?.Raise(probabilities[currLevel - 1]);
+            PlayerHealth = startPlayerHealth;
         }
 
         public void AddXp()
         {
-            CurrXP += 9;
+            CurrXP += 10;
         }
     }
 }

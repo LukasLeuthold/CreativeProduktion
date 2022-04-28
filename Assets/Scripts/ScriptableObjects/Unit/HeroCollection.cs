@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,12 +18,30 @@ namespace AutoDefense
         /// dictionary of unique heroes and the amount of them on the battlefield
         /// </summary>
         Dictionary<string, List<HeroData>> heroesInCollection;
-        /// <summary>
-        /// number of unique units on the battlefield
-        /// </summary>
+        private List<DragDrop> heroDragDrops;
+        public GroupEffect[] groupEffects;
+        private Effect currEffect;
+        private string currEffectToolTip;
+        private int currNeededDiversity;
+        private Dictionary<int, GroupEffect> dicGroupEffect;
+        [SerializeField]private Color highlightColor;
+
+        public event Action<HeroCollection> OnFirstUnitPlaced;
+        public event Action<HeroCollection> OnBuffStatusChanged;
+        public event Action<HeroCollection> OnDiversityChanged;
+        public event Action<HeroCollection> OnLastUnitRemoved;
+
         [SerializeField] private int diversity;
 
         private int lowestDiversity;
+
+        public Effect CurrEffect
+        {
+            get
+            {
+                return currEffect;
+            }
+        }
         public int Diversity
         {
             get => diversity;
@@ -31,6 +50,7 @@ namespace AutoDefense
                 if (dicGroupEffect == null)
                 {
                     diversity = value;
+                    OnDiversityChanged?.Invoke(this);
                     return;
                 }
                 if (diversity < value)
@@ -38,6 +58,7 @@ namespace AutoDefense
                     if (!dicGroupEffect.ContainsKey(value))
                     {
                         diversity = value;
+                        OnDiversityChanged?.Invoke(this);
                         return;
                     }
                     if (currEffect != null)
@@ -45,7 +66,10 @@ namespace AutoDefense
                         RemoveEffectFromGroup(currEffect);
                     }
                     diversity = value;
-                    currEffect = dicGroupEffect[diversity];
+                    OnDiversityChanged?.Invoke(this);
+                    currEffect = dicGroupEffect[diversity].effect;
+                    currEffectToolTip = dicGroupEffect[diversity].effectToolTip;
+                    OnBuffStatusChanged(this);
                     currNeededDiversity = diversity;
                     ApplyEffectToGroup(currEffect);
                 }
@@ -54,6 +78,7 @@ namespace AutoDefense
                     if (currEffect == null)
                     {
                         diversity = value;
+                        OnDiversityChanged?.Invoke(this);
                         return;
                     }
                     if (dicGroupEffect.ContainsKey(diversity) && !dicGroupEffect.ContainsKey(value))
@@ -62,19 +87,23 @@ namespace AutoDefense
                         {
                             RemoveEffectFromGroup(currEffect);
                             currEffect = null;
+                            OnBuffStatusChanged(this);
                             diversity = value;
+                            OnDiversityChanged?.Invoke(this);
                             return;
                         }
                         else
                         {
                             RemoveEffectFromGroup(currEffect);
-                            for (int i = value; i >=0; i--)
+                            for (int i = value; i >= 0; i--)
                             {
                                 if (dicGroupEffect.ContainsKey(i))
                                 {
-                                    currEffect = dicGroupEffect[i];
+                                    currEffect = dicGroupEffect[i].effect;
+                                    currEffectToolTip = dicGroupEffect[i].effectToolTip;
                                     currNeededDiversity = i;
                                     diversity = value;
+                                    OnDiversityChanged?.Invoke(this);
                                     ApplyEffectToGroup(currEffect);
                                     return;
                                 }
@@ -84,33 +113,34 @@ namespace AutoDefense
                     if (!dicGroupEffect.ContainsKey(diversity) && !dicGroupEffect.ContainsKey(value))
                     {
                         diversity = value;
+                        OnDiversityChanged?.Invoke(this);
                         return;
                     }
                     if (!dicGroupEffect.ContainsKey(diversity) && dicGroupEffect.ContainsKey(value))
                     {
                         diversity = value;
+                        OnDiversityChanged?.Invoke(this);
                         return;
                     }
                 }
             }
         }
 
-        public GroupEffect[] groupEffects;
-        //private GroupEffect currEffect;
-        private Effect currEffect;
-        private int currNeededDiversity;
-        private Dictionary<int, Effect> dicGroupEffect;
 
         /// <summary>
         /// adds a herodata to the collection
         /// </summary>
         /// <param name="_hero">herodata to add</param>
-        public void AddToCollection(HeroData _hero)
+        public void AddToCollection(HeroData _hero,DragDrop _heroDrag)
         {
+            if (Diversity == 0)
+            {
+                OnFirstUnitPlaced?.Invoke(this);
+            }
+            heroDragDrops.Add(_heroDrag);
             heroessssTest.Add(_hero);
             if (currEffect != null)
             {
-                //currEffect.effect.ApplyEffect(_hero);
                 currEffect.ApplyEffect(_hero);
             }
             if (heroesInCollection.ContainsKey(_hero.name))
@@ -124,15 +154,15 @@ namespace AutoDefense
                 Diversity++;
             }
 
-            //Debug.Log("after adding 1 " + this.name + " the diversity is: " + diversity);
         }
         /// <summary>
         /// removes a herodata from the collection
         /// </summary>
         /// <param name="_hero">herodata to remove</param>
-        public void RemoveFromCollection(HeroData _hero)
+        public void RemoveFromCollection(HeroData _hero, DragDrop _heroDrag)
         {
             heroessssTest.Remove(_hero);
+            heroDragDrops.Remove(_heroDrag);
             heroesInCollection[_hero.name].Remove(_hero);
             if (currEffect != null)
             {
@@ -143,12 +173,16 @@ namespace AutoDefense
                 heroesInCollection.Remove(_hero.name);
                 Diversity--;
             }
-            //Debug.Log("after subtracting 1 " + this.name + " the diversity is " + diversity);
+            if (Diversity == 0)
+            {
+                OnLastUnitRemoved?.Invoke(this);
+            }
         }
 
         public override void Initialize()
         {
             heroesInCollection = new Dictionary<string, List<HeroData>>();
+            heroDragDrops = new List<DragDrop>();
             currEffect = null;
             diversity = 0;
             heroessssTest = new List<HeroData>();
@@ -157,11 +191,11 @@ namespace AutoDefense
                 return;
             }
             lowestDiversity = int.MaxValue;
-            dicGroupEffect = new Dictionary<int, Effect>();
-            string namew = this.name; 
+            dicGroupEffect = new Dictionary<int, GroupEffect>();
+            string namew = this.name;
             for (int i = 0; i < groupEffects.Length; i++)
             {
-                dicGroupEffect.Add(groupEffects[i].neededDiversity, groupEffects[i].effect);
+                dicGroupEffect.Add(groupEffects[i].neededDiversity, groupEffects[i]);
                 if (groupEffects[i].neededDiversity < lowestDiversity)
                 {
                     lowestDiversity = groupEffects[i].neededDiversity;
@@ -193,6 +227,48 @@ namespace AutoDefense
                 }
             }
         }
+
+        public string GetToolTip()
+        {
+            string toolTip = "";
+            for (int i = 0; i < groupEffects.Length; i++)
+            {
+                if (diversity == groupEffects[i].neededDiversity)
+                {
+                    toolTip += "<b>"+ "{"  + "<u>"+ groupEffects[i].neededDiversity.ToString() + "</u>" + "} "+ "</b>";
+                }
+                else
+                {
+                    toolTip += "{" + groupEffects[i].neededDiversity.ToString() + "} ";
+                }
+            }
+            toolTip += "\n";
+            if (currEffectToolTip != null)
+            {
+                toolTip += currEffectToolTip;
+            }
+            else
+            {
+                toolTip += "\n";
+                toolTip += "\n";
+            }
+            return toolTip;
+        }
+
+        public void TurnOnHighlights()
+        {
+            for (int i = 0; i < heroDragDrops.Count; i++)
+            {
+                heroDragDrops[i].ToggleHighlight(true,highlightColor);
+            }
+        }
+        public void TurnOffHighlights()
+        {
+            for (int i = 0; i < heroDragDrops.Count; i++)
+            {
+                heroDragDrops[i].ToggleHighlight(false, highlightColor);
+            }
+        }
     }
 
     [System.Serializable]
@@ -200,5 +276,6 @@ namespace AutoDefense
     {
         public int neededDiversity;
         public Effect effect;
+        public string effectToolTip;
     }
 }

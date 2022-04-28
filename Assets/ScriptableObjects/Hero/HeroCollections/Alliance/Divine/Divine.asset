@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c42e8b6218cf448d83a6d45ea3d2b, type: 3}
   m_Name: Divine
   m_EditorClassIdentifier: 
-  heroessssTest:
-  - {fileID: 0}
-  diversity: 1
+  heroessssTest: []
   groupEffects: []
+  highlightColor: {r: 0.8113208, g: 0.6963596, b: 0.057404764, a: 0.6117647}
+  diversity: 0

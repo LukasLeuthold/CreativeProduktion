@@ -214,7 +214,6 @@ namespace AutoDefense
     public struct PoolUnit
     {
         [HideInInspector] public string name;
-        //TODO: refactor
         public HeroData unitData;
         [Min(1)] public int amount;
         [Min(1)] public int maxAmount;

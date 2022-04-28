@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Demon
   m_EditorClassIdentifier: 
   heroessssTest: []
-  diversity: 0
   groupEffects: []
+  highlightColor: {r: 0.49731323, g: 0.08664116, b: 0.5566038, a: 0.5176471}
+  diversity: 0
