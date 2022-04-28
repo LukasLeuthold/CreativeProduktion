@@ -7,7 +7,11 @@ namespace AutoDefense
     public class EnemyField : MonoBehaviour
     {
         public Vector2 field;
-        public EnemyData EnemyOnField { get; set; }
+
+        public EnemyData enemyData;
+        public EnemyData EnemyOnField { get { return enemyData; } set { enemyData = value; } }
+
+        public Enemy enemyPrefab;
 
         void Start()
         {

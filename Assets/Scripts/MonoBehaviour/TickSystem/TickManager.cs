@@ -33,6 +33,7 @@ namespace AutoDefense
             {"Start",new StartState(this)},
             {"Edit", new EditState(this)},
             {"Fight", new FightState(this)},
+            {"Break", new BreakState(this) },
             {"Unit", new UnitFightState(this)},
             {"Enemy", new EnemyFightState(this)}
         };
