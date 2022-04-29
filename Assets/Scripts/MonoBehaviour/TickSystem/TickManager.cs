@@ -24,6 +24,8 @@ namespace AutoDefense
 
         internal float currTime;
 
+        public GameObject skipButton;
+
         [SerializeField] private SOGameField _Field;
         Queue<HeroData> sortHeros = new Queue<HeroData>();
         Queue<EnemyData> sortEnemys = new Queue<EnemyData>();
@@ -48,9 +50,10 @@ namespace AutoDefense
             //Debug.Log(state);
         }
 
-        public void OnWaveEnd(int waveNumber)
+        public void  SkipEdit()
         {
-            SetState("Edit");
+            currTime = editTime;
+            timeSlider.value = editTime;
         }
         internal void SetState(string stateName)
         {
@@ -69,7 +72,21 @@ namespace AutoDefense
             timeSlider.value = 0;
             timeSlider.maxValue = maxTime;
         }
-
+        public void SwitchDragDropGameAll(bool _switch)
+        {
+            GameField.Instance.isGrabing = !_switch;
+        }
+        public void SwitchDragDropReserve(bool _switch)
+        {
+            for (int i = 0; i < GameField.Instance.Reserve.Length; i++)
+            {
+                if (GameField.Instance.Reserve[i].GetComponent<UnitSlot>().Unit != null)
+                {
+                    GameField.Instance.Reserve[i].GetComponent<UnitSlot>().Unit.GetComponent<CanvasGroup>().blocksRaycasts = _switch;
+                }
+                GameField.Instance.Reserve[i].GetComponent<UnitSlot>().enabled = _switch;
+            }
+        }
         internal void UnitAttack()
         {
             HeroData[] hDatas = _Field.HDatas;

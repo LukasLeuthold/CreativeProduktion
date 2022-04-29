@@ -10,10 +10,13 @@ namespace AutoDefense
         public BreakState(TickManager _TManager)
         {
             tickManager = _TManager;
+            
         }
 
         public override void EnterState()
         {
+            tickManager.SwitchDragDropGameAll(true);
+            tickManager.SwitchDragDropReserve(false);
             tickManager.ResetSlider(tickManager.breakTime);
             tickManager.currStateText.text = "Break";
         }
@@ -25,6 +28,11 @@ namespace AutoDefense
             {
                 tickManager.SetState("Fight");
             }
+        }
+        public override void ExitState()
+        {
+            tickManager.SwitchDragDropReserve(true);
+            tickManager.SwitchDragDropGameAll(false);
         }
     }
 }

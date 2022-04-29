@@ -68,6 +68,5 @@ namespace AutoDefense
             Destroy(this.gameObject);
         }
 
-
     }
 }
