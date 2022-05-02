@@ -26,6 +26,17 @@ namespace AutoDefense
                 tickManager.currStateText.text = "Fight";
                 tickManager.SetState("Enemy");
             }
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int e = 0; e < 3; e++)
+                {
+                    if (GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit != null)
+                    {
+                        GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit.CantDragDrop = true;
+                    }
+                }
+            }
         }
         public override void HandleState()
         {

@@ -11,6 +11,7 @@ namespace AutoDefense
         [HideInInspector] public UnitSlot LastSlot;
 
         public bool isDead;
+        public bool CantDragDrop;
 
         public HeroData HData
         {
@@ -128,12 +129,17 @@ namespace AutoDefense
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (CantDragDrop)
+            {
+                return;
+            }
+            
             rectTransform.anchoredPosition += eventData.delta;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            
+
             canvasGroup.alpha = 1f;
 
             GameField.Instance.isGrabing = false;

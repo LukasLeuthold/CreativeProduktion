@@ -12,11 +12,12 @@ namespace AutoDefense
 
         public override void EnterState()
         {
-            tickManager.skipButton.SetActive(true);
+            tickManager.SkipButton.SetActive(true);
             tickManager.ResetSlider(tickManager.editTime);
             tickManager.currStateText.text = "Edit";
             tickManager.LevelI.CurrWave++;
-            tickManager.SwitchDragDropGameAll(true);
+           // tickManager.SwitchDragDropGameAll(true);
+            tickManager.BlockImage.SetActive(false);
 
             for (int i = 0; i < 2; i++)
             {
@@ -26,6 +27,7 @@ namespace AutoDefense
                     {
                         GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit.CurrHP = GameField.Instance.Slots[i, e].GetComponent<UnitSlot>()._HData.CurrStatBlock.MaxHP;
                         GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit.isDead = false;
+                        GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit.CantDragDrop = false;
 
                     }
                 }
@@ -50,9 +52,10 @@ namespace AutoDefense
 
         
         public override void ExitState()
-        {          
-            tickManager.skipButton.SetActive(false);
-            tickManager.SwitchDragDropGameAll(false);
+        {        
+            tickManager.BlockImage.SetActive(true);
+            tickManager.SkipButton.SetActive(false);
+            //tickManager.SwitchDragDropGameAll(false);
         }
     }
 }
