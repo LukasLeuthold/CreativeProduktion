@@ -6,18 +6,18 @@ using UnityEngine.Events;
 namespace AutoDefense
 {
     /// <summary>
-    /// simple event listener to int events
+    /// simple event listener to bool events
     /// </summary>
-    public class INTEventListener : MonoBehaviour
+    public class BOOLEventListener : MonoBehaviour
     {
         /// <summary>
         /// the event the listener is registering to
         /// </summary>
-        [SerializeField] private INTScriptableEvent Event;
+        [SerializeField] private BOOLScriptableEvent Event;
         /// <summary>
         /// the unity event to register the response to raising the event
         /// </summary>
-        public UnityEvent<int> response;
+        public UnityEvent<bool> response;
 
         /// <summary>
         /// on enable registers to event
@@ -36,7 +36,7 @@ namespace AutoDefense
         /// <summary>
         /// on event raised invokes the respone unityevent
         /// </summary>
-        public void OnEventRaised(int _value)
+        public void OnEventRaised(bool _value)
         {
             response?.Invoke(_value);
         }
