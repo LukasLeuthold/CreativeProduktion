@@ -17,6 +17,19 @@ namespace AutoDefense
             tickManager.currStateText.text = "Edit";
             tickManager.LevelI.CurrWave++;
             tickManager.SwitchDragDropGameAll(true);
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int e = 0; e < 3; e++)
+                {
+                    if (GameField.Instance.Slots[i,e].GetComponent<UnitSlot>().Unit != null)
+                    {
+                        GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit.CurrHP = GameField.Instance.Slots[i, e].GetComponent<UnitSlot>()._HData.CurrStatBlock.MaxHP;
+                        GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit.isDead = false;
+
+                    }
+                }
+            }
         }
         public override void HandleState()
         {

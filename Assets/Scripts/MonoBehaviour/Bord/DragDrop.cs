@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 namespace AutoDefense
 {
@@ -9,8 +10,8 @@ namespace AutoDefense
     {
         [HideInInspector] public UnitSlot LastSlot;
 
+        public bool isDead;
 
-        [SerializeField] private HeroData heroData;
         public HeroData HData
         {
             get => heroData;
@@ -27,6 +28,11 @@ namespace AutoDefense
                     heroData.OnCurrStatBlockChanged += UpdateUnitCard;
             }
         }
+
+        public int CurrHP;
+        [SerializeField] private HeroData heroData;
+
+        public TMP_Text damageText;
 
         [Header("CurrStats")]
         [HideInInspector] public bool haveSlot;
@@ -48,7 +54,7 @@ namespace AutoDefense
         [SerializeField] private Image heroImage;
         [SerializeField] private Image highlightImage;
 
-        private bool isHidden = true;
+        private bool isHiddenCard = true;
         private RectTransform rectTransform;
         private Vector2 lastRectTranform;
         private CanvasGroup canvasGroup;
@@ -61,6 +67,7 @@ namespace AutoDefense
             currStats.SetActive(false);
             details.SetActive(false);
             highlightImage.gameObject.SetActive(false);
+            CurrHP = heroData.CurrStatBlock.MaxHP;
         }
         private void Update()
         {
@@ -72,6 +79,20 @@ namespace AutoDefense
             {
                 canvasGroup.blocksRaycasts = true;
             }
+            if (CurrHP <= 0)
+            {
+                isDead = true;
+
+            }
+           
+            if (isDead)
+            {
+                SwitchUnitOnOFF(isDead);
+            }
+            else
+            {
+                SwitchUnitOnOFF(isDead);
+            }
 
         }
         private void OnValidate()
@@ -80,7 +101,12 @@ namespace AutoDefense
             {
                 return;
             }
+
+
+
             UpdateUnitCard();
+
+
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -141,7 +167,7 @@ namespace AutoDefense
             {
                 PrintRangeOnField(Color.white);
             }
-            isHidden = true;
+            isHiddenCard = true;
 
         }
 
@@ -149,19 +175,24 @@ namespace AutoDefense
         {
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                if (!isHidden)
+                if (!isHiddenCard)
                 {
-                    isHidden = true;
+                    isHiddenCard = true;
                     details.SetActive(false);
                     currStats.SetActive(true);
                 }
-                else if (isHidden)
+                else if (isHiddenCard)
                 {
-                    isHidden = false;
+                    isHiddenCard = false;
                     details.SetActive(true);
                     currStats.SetActive(false);
                 }
             }
+        }
+
+        public void SwitchUnitOnOFF(bool _switch)
+        {
+            heroImage.gameObject.SetActive(!_switch);  
         }
         private void PrintRangeOnField(Color color)
         {
@@ -192,7 +223,6 @@ namespace AutoDefense
             heroData.Anim = animator;
             heroData.Unit = this;
         }
-
 
         public void ToggleHighlight(bool _value,Color _color)
         {

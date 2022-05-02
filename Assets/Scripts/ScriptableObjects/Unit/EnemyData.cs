@@ -12,10 +12,13 @@ namespace AutoDefense
         public RectTransform enemyTransform;
         public TMP_Text DamageText;
         public Enemy enemyPrefab;
-        public override void Attack(Vector2 TargetPosition)
+        public override void Attack(Vector2 _targetPosition)
         {
-            anim.Play("Attack");
+            GameField.Instance.Slots[(int)_targetPosition.x, (int)_targetPosition.y].GetComponent<UnitSlot>().Unit.damageText.text = (CurrStatBlock.Attack + CurrStatModifier.AttackMod).ToString();
 
+            GameField.Instance.Slots[(int)_targetPosition.x, (int)_targetPosition.y].GetComponent<UnitSlot>()._HData.Anim.Play("Damage");
+            anim.Play("Attack");
+            GameField.Instance.Slots[(int)_targetPosition.x, (int)_targetPosition.y].GetComponent<UnitSlot>().Unit.CurrHP -= CurrStatBlock.Attack + CurrStatModifier.AttackMod;
         }
 
         public override void Move()

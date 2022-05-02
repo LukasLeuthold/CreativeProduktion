@@ -140,6 +140,43 @@ namespace AutoDefense
                 SetState("Break");
             }
         }
+        private IEnumerator _UnitsAttack()
+        {
+            float time = 0.5f;
+            int count = sortHeros.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                if (!sortHeros.Peek().Unit.isDead)
+                {
+                    _Attack();
+                    yield return new WaitForSeconds(time);
+                }
+                else
+                {
+                    sortHeros.Dequeue();
+                }
+            }
+            SetState("Break");
+        }
+        private void _Attack()
+        {
+            GameObject[,] slots = GameField.Instance.Slots;
+
+            int rang = sortHeros.Peek().CurrStatBlock.Range + sortHeros.Peek().CurrStatModifier.RangeMod;
+            int y = (int)sortHeros.Peek().Unit.LastSlot.field.y;
+            for (int e = 0; e < rang; e++)
+            {
+                if (slots[2 + e, y].GetComponent<EnemyField>().EnemyOnField != null)
+                {
+                    Vector2 targetField;
+                    targetField = new Vector2(2 + e, y);
+                    sortHeros.Dequeue().Attack(targetField);
+                    return;
+                }
+            }
+        }
+        
         internal void EnemyMoA()
         {
             EnemyData[] eDatas = GameField.Instance.EnemyList.ToArray();
@@ -191,11 +228,23 @@ namespace AutoDefense
                         sortEnemys.Dequeue().Move();
                         yield return new WaitForSeconds(0.2f);
                     }
-                    else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData != null)
+                    else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && ((slots[x - 1, y].GetComponent<UnitSlot>()._HData != null && !slots[x - 1, y].GetComponent<UnitSlot>().Unit.isDead) || (slots[x - 2, y].GetComponent<UnitSlot>()._HData != null && !slots[x - 2, y].GetComponent<UnitSlot>().Unit.isDead)))
                     {
-                        Vector2 vector2 = Vector2.zero;
-                        sortEnemys.Dequeue().Attack(vector2);
-                        yield return new WaitForSeconds(time);
+                        Vector2 targetPosition = Vector2.zero;
+                        
+                        if (!slots[x - 1, y].GetComponent<UnitSlot>().Unit.isDead)
+                        {
+                            targetPosition = slots[x - 1, y].GetComponent<UnitSlot>().field;
+                            sortEnemys.Dequeue().Attack(targetPosition);
+                            yield return new WaitForSeconds(time);
+                        }
+                        else
+                        {
+                            targetPosition = slots[x - 2, y].GetComponent<UnitSlot>().field;
+                            sortEnemys.Dequeue().Attack(targetPosition);
+                            yield return new WaitForSeconds(time);
+                        }
+
                     }
                     else
                     {
@@ -225,35 +274,6 @@ namespace AutoDefense
             }
 
             SetState("Unit");
-        }
-        private IEnumerator _UnitsAttack()
-        {
-            float time = 0.5f;
-            int count = sortHeros.Count;
-
-            for (int i = 0; i < count; i++)
-            {
-                _Attack();
-                yield return new WaitForSeconds(time);
-            }
-            SetState("Break");
-        }
-        private void _Attack()
-        {
-            GameObject[,] slots = GameField.Instance.Slots;
-
-            int rang = sortHeros.Peek().CurrStatBlock.Range + sortHeros.Peek().CurrStatModifier.RangeMod;
-            int y = (int)sortHeros.Peek().Unit.LastSlot.field.y;
-            for (int e = 0; e < rang; e++)
-            {
-                if (slots[2 + e, y].GetComponent<EnemyField>().EnemyOnField != null)
-                {
-                    Vector2 targetField;
-                    targetField = new Vector2(2 + e, y);
-                    sortHeros.Dequeue().Attack(targetField);
-                    return;
-                }
-            }
         }
     }
 }
