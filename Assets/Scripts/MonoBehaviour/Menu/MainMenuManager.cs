@@ -31,9 +31,9 @@ namespace AutoDefense
             mainMenuScreen.SetActive(true);
             leaveScreen.SetActive(false);
         }
-        public void HandleLeaveScreenInput(bool _value)
+        public void HandleLeaveScreenInput(bool _isQuitting)
         {
-            if (_value)
+            if (_isQuitting)
             {
                 Debug.LogError("Quitting the Game");
                 Application.Quit();

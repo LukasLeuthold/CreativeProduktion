@@ -159,6 +159,7 @@ namespace AutoDefense
             dicCommonHeros.Clear();
             dicRareHeros.Clear();
             dicLordHeros.Clear();
+            allHeros.Clear();
             InitUnitData();
             for (int i = 0; i < commonHeros.Length; i++)
             {

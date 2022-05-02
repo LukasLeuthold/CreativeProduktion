@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d2b365db5471643964df1fc6177692, type: 3}
   m_Name: ProbabilityLvl1
   m_EditorClassIdentifier: 
-  probabilityCommon: 90
-  probabilityRare: 10
+  probabilityCommon: 99
+  probabilityRare: 1
   probabilityLord: 0
