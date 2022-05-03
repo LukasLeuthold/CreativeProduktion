@@ -6671,9 +6671,11 @@ MonoBehaviour:
   timeSlider: {fileID: 1660544710}
   editTime: 10
   breakTime: 5
+  playerDamage: 1
   enemySpawner: {fileID: 1896895793}
   SkipButton: {fileID: 1557589588}
   BlockImage: {fileID: 744178432}
+  pRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
   _Field: {fileID: 11400000, guid: daad7052e5fc0674fb02fa28c9aa9d32, type: 2}
 --- !u!1001 &989427386
 PrefabInstance:

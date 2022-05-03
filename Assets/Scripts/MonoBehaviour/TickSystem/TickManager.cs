@@ -19,6 +19,7 @@ namespace AutoDefense
         [SerializeField] internal Slider timeSlider;
         [SerializeField] internal int editTime;
         [SerializeField] internal int breakTime;
+        [SerializeField] private int playerDamage;
 
         public EnemySpawner enemySpawner;
 
@@ -26,6 +27,8 @@ namespace AutoDefense
 
         public GameObject SkipButton;
         public GameObject BlockImage;
+
+        [SerializeField] private PlayerRessources pRessources;
 
         [SerializeField] private SOGameField _Field;
         Queue<HeroData> sortHeros = new Queue<HeroData>();
@@ -197,7 +200,7 @@ namespace AutoDefense
 
             for (int i = 0; i < count; i++)
             {
-                if (sortEnemys.Count > 0 && sortEnemys.Peek().nextPosition.x > 0)
+                if (sortEnemys.Count > 0 && sortEnemys.Peek().nextPosition.x > 2)
                 {
 
                     int x = (int)sortEnemys.Peek().nextPosition.x;
@@ -241,17 +244,18 @@ namespace AutoDefense
                 {
                     for (int e = 0; e < GameField.Instance.EnemyList.Count(); e++)
                     {
-
-                        if (GameField.Instance.EnemyList[e] == sortEnemys.Peek() && sortEnemys.Peek().nextPosition.x <= 0)
+                        GameObject[,] slots = GameField.Instance.Slots;
+                        int x = (int)sortEnemys.Peek().nextPosition.x;
+                        int y = (int)sortEnemys.Peek().nextPosition.y;
+                        if (GameField.Instance.EnemyList[e] == sortEnemys.Peek() && (slots[x - 1, y].GetComponent<UnitSlot>()._HData == null || slots[x - 1, y].GetComponent<UnitSlot>().Unit.isDead) && (slots[x - 2, y].GetComponent<UnitSlot>()._HData == null || slots[x - 2, y].GetComponent<UnitSlot>().Unit.isDead))
                         {
-                            int x = (int)sortEnemys.Peek().nextPosition.x;
-                            int y = (int)sortEnemys.Peek().nextPosition.y;
                             EnemyData edata = sortEnemys.Peek();
 
                             sortEnemys.Dequeue();
                             edata.DestroyEnemy();
                             GameField.Instance.EnemyList.RemoveAt(e);
-                            GameField.Instance.Slots[x, y].GetComponent<UnitSlot>().EnemyOnField = null;
+                            GameField.Instance.Slots[x, y].GetComponent<EnemyField>().EnemyOnField = null;
+                            pRessources.PlayerHealth -= playerDamage;
                             yield return new WaitForSeconds(time);
                         }
                     }
