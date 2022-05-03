@@ -47,8 +47,7 @@ namespace AutoDefense
 
         void Update()
         {
-            state.HandleState();
-            //Debug.Log(state);
+            state.HandleState();           
         }
 
         public void  SkipEdit()
@@ -73,21 +72,7 @@ namespace AutoDefense
             timeSlider.value = 0;
             timeSlider.maxValue = maxTime;
         }
-        //public void SwitchDragDropGameAll(bool _switch)
-        //{
-        //    GameField.Instance.isGrabing = !_switch;
-        //}
-        //public void SwitchDragDropReserve(bool _switch)
-        //{
-        //    for (int i = 0; i < GameField.Instance.Reserve.Length; i++)
-        //    {
-        //        if (GameField.Instance.Reserve[i].GetComponent<UnitSlot>().Unit != null)
-        //        {
-        //            GameField.Instance.Reserve[i].GetComponent<UnitSlot>().Unit.GetComponent<CanvasGroup>().blocksRaycasts = _switch;
-        //        }
-        //        GameField.Instance.Reserve[i].GetComponent<UnitSlot>().enabled = _switch;
-        //    }
-        //}
+
         internal void UnitAttack()
         {
             HeroData[] hDatas = _Field.HDatas;
