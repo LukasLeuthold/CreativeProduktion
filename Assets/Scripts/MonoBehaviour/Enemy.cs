@@ -12,9 +12,10 @@ namespace AutoDefense
         [SerializeField]private EnemyData enemyData;
         [SerializeField]private Image enemyImage;
         [SerializeField]private Animator animator;
+        [SerializeField] private Slider hpSlider;
         public TMP_Text damageNumber;
         public EnemyField lastEnemyField;
-        public int currHP;
+        [HideInInspector]public int currHP;
         public EnemyData EnemyData
         {
             get
@@ -31,9 +32,12 @@ namespace AutoDefense
         private void Start()
         {
             currHP = enemyData.CurrStatBlock.MaxHP;
+            hpSlider.maxValue = enemyData.CurrStatBlock.MaxHP;
+            hpSlider.value = hpSlider.maxValue;
         }
         private void Update()
         {
+            hpSlider.value = currHP;    
             if (currHP <= 0)
             {
                 lastEnemyField.EnemyOnField = null;
