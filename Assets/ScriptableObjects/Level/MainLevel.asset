@@ -12,51 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7500d6b15484d049a94b754922cd27d, type: 3}
   m_Name: MainLevel
   m_EditorClassIdentifier: 
-  maxWaveCount: 2
+  maxWaveCount: 5
   currWave: 0
   difficultieCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -4.005493
-      value: 5.5879517
-      inSlope: 17.1794
-      outSlope: 17.1794
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.028266903
-    - serializedVersion: 3
-      time: -3.8449228
-      value: 78.0883
+      time: 0
+      value: 10
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10
+      value: 10
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
       outWeight: 0
-    - serializedVersion: 3
-      time: 10.363235
-      value: 74.647545
-      inSlope: 2.001694
-      outSlope: 2.001694
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 18.632233
-      value: 52.430725
-      inSlope: 5.1254945
-      outSlope: 5.1254945
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  goldPerWave: 0
-  xpPerWave: 0
+  goldPerWave: 4
+  xpPerWave: 4
   OnWaveStart: {fileID: 11400000, guid: 85cc32f130cf7f54d81c2fcc6fa4ce00, type: 2}
   OnWaveEnd: {fileID: 11400000, guid: 5078ed14aaec500498a1c452e024e45d, type: 2}

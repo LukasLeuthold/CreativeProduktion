@@ -16,7 +16,7 @@ MonoBehaviour:
   currStatBlock:
     amountAttackActions: 1
     amountMovementActions: 1
-    maxHP: 300
+    maxHP: 4
     currHP: 0
     speed: 0
     attack: 4
@@ -30,6 +30,7 @@ MonoBehaviour:
     pierceMod: 0
     amountAttackActionsMod: 0
     amountMovementActionsMod: 0
+    canDoPirceDamage: 0
   nextPosition: {x: 0, y: 0}
   enemyTransform: {fileID: 0}
   DamageText: {fileID: 0}

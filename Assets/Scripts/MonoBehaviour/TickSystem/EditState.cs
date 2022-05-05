@@ -18,7 +18,7 @@ namespace AutoDefense
             tickManager.LevelI.CurrWave++;
            // tickManager.SwitchDragDropGameAll(true);
             tickManager.BlockImage.SetActive(false);
-
+            tickManager.CallOnEditStart();
             for (int i = 0; i < 2; i++)
             {
                 for (int e = 0; e < 3; e++)
@@ -55,6 +55,7 @@ namespace AutoDefense
         {        
             tickManager.BlockImage.SetActive(true);
             tickManager.SkipButton.SetActive(false);
+            tickManager.CallOnEditEnd();
             //tickManager.SwitchDragDropGameAll(false);
         }
     }

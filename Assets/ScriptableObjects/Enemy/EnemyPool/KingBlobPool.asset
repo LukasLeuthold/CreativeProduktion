@@ -17,8 +17,11 @@ MonoBehaviour:
     pointCost: 1
     enemiesInThreatLevel:
     - {fileID: 11400000, guid: 44c4633835fc92945a27e3e16265e3f5, type: 2}
+    - {fileID: 11400000, guid: 889d0328e10e5844bad914ab5c8ac94f, type: 2}
+    - {fileID: 11400000, guid: 13ffca170274e624e8f2d360abc72760, type: 2}
   - name: ThreatLvl2
     pointCost: 8
     enemiesInThreatLevel:
     - {fileID: 11400000, guid: 3a073b7cea5dac543923daf16e2ea2a7, type: 2}
+    - {fileID: 11400000, guid: 6a262871e285b4f48b7abbfde1b4a6dd, type: 2}
   bossEnemy: {fileID: 11400000, guid: aa0c3885aa852944397b3842d0e7c91a, type: 2}
