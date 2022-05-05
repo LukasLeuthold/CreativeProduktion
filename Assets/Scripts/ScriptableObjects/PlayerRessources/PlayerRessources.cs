@@ -30,6 +30,7 @@ namespace AutoDefense
         [SerializeField]private PROBScriptableEvent OnProbabilityChanged;
         [SerializeField]private INT2ScriptableEvent OnPlayerXpChanged;
         [SerializeField]private INTScriptableEvent OnPlayerHpChanged;
+        [SerializeField]private BOOLScriptableEvent OnGameOver;
         public int PlayerMoney 
         {
             get => playerMoney;
@@ -60,7 +61,7 @@ namespace AutoDefense
                 {
                     playerHealth = 0;
                     OnPlayerHpChanged?.Raise(playerHealth);
-                    //TODO: trigger gameOver
+                    OnGameOver?.Raise(false);
                     return;
                 }
                 OnPlayerHpChanged?.Raise(playerHealth);

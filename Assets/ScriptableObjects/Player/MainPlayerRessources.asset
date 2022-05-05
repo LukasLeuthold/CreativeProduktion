@@ -26,3 +26,4 @@ MonoBehaviour:
   OnProbabilityChanged: {fileID: 11400000, guid: 933b8be556b1abd4793fe88e4b1592a2, type: 2}
   OnPlayerXpChanged: {fileID: 11400000, guid: d364f44b92774e84692029fd0ab35452, type: 2}
   OnPlayerHpChanged: {fileID: 11400000, guid: 75d83f4741575bf4daefa3f4d76b928d, type: 2}
+  OnGameOver: {fileID: 11400000, guid: 17df92b924336af4da04f5c0400d8083, type: 2}
