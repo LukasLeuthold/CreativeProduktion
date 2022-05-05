@@ -56,14 +56,9 @@ namespace AutoDefense
         [SerializeField] private int attack;
         [SerializeField] private int pierce;
         [SerializeField] private int range;
+        
         public int MaxHP { get => maxHP; }
-        public int CurrHP
-        {
-            get => maxHP; set
-            { currHP = value;
-                
-            }
-        }
+
         public int Speed { get => speed; }
         public int Attack { get => attack; }
         public int Pierce { get => pierce; }
@@ -71,17 +66,12 @@ namespace AutoDefense
         public int AmountAttackActions { get => amountAttackActions; }
         public int AmountMovementActions { get => amountMovementActions; }
 
-        public StatBlock()
-        {
-            currHP = maxHP;
-        }
         public static StatBlock Copy(StatBlock __original)
         {
             StatBlock copy = new StatBlock();
             copy.amountAttackActions = __original.amountAttackActions;
             copy.amountMovementActions = __original.amountMovementActions;
             copy.maxHP = __original.maxHP;
-            copy.currHP = __original.currHP;
             copy.speed = __original.speed;
             copy.attack = __original.attack;
             copy.range = __original.range;
@@ -98,6 +88,7 @@ namespace AutoDefense
         [SerializeField] private int pierceMod;
         [SerializeField] private int amountAttackActionsMod;
         [SerializeField] private int amountMovementActionsMod;
+        [SerializeField] private bool canDoPirceDamage;
         public int AmountAttackActionsMod { get => amountAttackActionsMod; set => amountAttackActionsMod = value; }
         public int AmountMovementActionsMod { get => amountMovementActionsMod; set => amountMovementActionsMod = value; }
         public int MaxHPMod { get => maxHPMod; set => maxHPMod = value; }
@@ -105,6 +96,7 @@ namespace AutoDefense
         public int AttackMod { get => attackMod; set => attackMod = value; }
         public int PierceMod { get => pierceMod; set => pierceMod = value; }
         public int RangeMod { get => rangeMod; set => rangeMod = value; }
+        public bool CanDoPierceDamage { get => canDoPirceDamage; }
 
         public static ModifierBlock Copy(ModifierBlock __original)
         {
@@ -115,6 +107,8 @@ namespace AutoDefense
             copy.speedMod = __original.speedMod;
             copy.attackMod = __original.attackMod;
             copy.rangeMod = __original.rangeMod;
+            copy.canDoPirceDamage = __original.canDoPirceDamage;
+            
             return copy;
         }
         public static ModifierBlock operator +(ModifierBlock a, ModifierBlock b)

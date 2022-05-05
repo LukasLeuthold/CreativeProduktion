@@ -8,6 +8,7 @@ namespace AutoDefense
         public Animator Anim { get; set; }
         public DragDrop Unit;
         public bool isMele;
+
         [SerializeField] private StatBlock[] unitStats = new StatBlock[3];
         [SerializeField, Range(1, 3)] private int currLevel = 1;
         [SerializeField] private HeroCollection activeHeroCollection;

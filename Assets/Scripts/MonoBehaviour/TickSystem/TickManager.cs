@@ -50,10 +50,10 @@ namespace AutoDefense
 
         void Update()
         {
-            state.HandleState();           
+            state.HandleState();
         }
 
-        public void  SkipEdit()
+        public void SkipEdit()
         {
             currTime = editTime;
             timeSlider.value = editTime;
@@ -138,13 +138,21 @@ namespace AutoDefense
             {
                 if (!sortHeros.Peek().Unit.isDead && (int)sortHeros.Peek().Unit.LastSlot.field.x == 0 && !sortHeros.Peek().isMele)
                 {
-                    _Attack();
-                    yield return new WaitForSeconds(time);
+                    for (int e = 0; e < sortHeros.Peek().CurrStatBlock.AmountAttackActions; e++)
+                    {
+                        _Attack();
+                        yield return new WaitForSeconds(time);
+                    }
+                    sortHeros.Dequeue();
                 }
-                else if(!sortHeros.Peek().Unit.isDead && (int)sortHeros.Peek().Unit.LastSlot.field.x == 1)
+                else if (!sortHeros.Peek().Unit.isDead && (int)sortHeros.Peek().Unit.LastSlot.field.x == 1)
                 {
-                    _Attack();
-                    yield return new WaitForSeconds(time);
+                    for (int e = 0; e < sortHeros.Peek().CurrStatBlock.AmountAttackActions; e++)
+                    {
+                        _Attack();
+                        yield return new WaitForSeconds(time);
+                    }
+                    sortHeros.Dequeue();
                 }
                 else
                 {
@@ -164,13 +172,21 @@ namespace AutoDefense
                 if (slots[2 + e, y].GetComponent<EnemyField>().EnemyOnField != null)
                 {
                     Vector2 targetField;
+                    targetField = new Vector2(3 + e, y);
+
+                    if (sortHeros.Peek().CurrStatModifier.CanDoPierceDamage && slots[(int)targetField.x, (int)targetField.y].GetComponent<EnemyField>().EnemyOnField != null)
+                    {
+
+                        sortHeros.Peek().Attack(targetField);
+                    }
                     targetField = new Vector2(2 + e, y);
-                    sortHeros.Dequeue().Attack(targetField);
+
+                    sortHeros.Peek().Attack(targetField);
                     return;
                 }
             }
         }
-        
+
         internal void EnemyMoA()
         {
             EnemyData[] eDatas = GameField.Instance.EnemyList.ToArray();
@@ -210,13 +226,13 @@ namespace AutoDefense
                 GameObject[,] slots = GameField.Instance.Slots;
                 if (sortEnemys.Count > 0 && sortEnemys.Peek().nextPosition.x > 2)
                 {
-                    if (slots[x - 1, y].GetComponent<EnemyField>() != null && slots[x - 1, y].GetComponent<EnemyField>().EnemyOnField == null 
+                    if (slots[x - 1, y].GetComponent<EnemyField>() != null && slots[x - 1, y].GetComponent<EnemyField>().EnemyOnField == null
                         && sortEnemys.Peek().nextPosition.x > 2)
                     {
                         sortEnemys.Dequeue().Move();
                         yield return new WaitForSeconds(0.2f);
                     }
-                    else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData == null 
+                    else if (slots[x - 1, y].GetComponent<UnitSlot>() != null && slots[x - 1, y].GetComponent<UnitSlot>()._HData == null
                         && slots[x - 1, y].GetComponent<UnitSlot>().EnemyOnField == null && sortEnemys.Peek().nextPosition.x > 2)
                     {
                         sortEnemys.Dequeue().Move();
@@ -227,8 +243,8 @@ namespace AutoDefense
                         sortEnemys.Dequeue();
                     }
                 }
-                else if (sortEnemys.Peek().nextPosition.x == 2 && slots[x - 1, y].GetComponent<UnitSlot>() != null 
-                    && ((slots[x - 1, y].GetComponent<UnitSlot>()._HData != null && !slots[x - 1, y].GetComponent<UnitSlot>().Unit.isDead) 
+                else if (sortEnemys.Peek().nextPosition.x == 2 && slots[x - 1, y].GetComponent<UnitSlot>() != null
+                    && ((slots[x - 1, y].GetComponent<UnitSlot>()._HData != null && !slots[x - 1, y].GetComponent<UnitSlot>().Unit.isDead)
                     || (slots[x - 2, y].GetComponent<UnitSlot>()._HData != null && !slots[x - 2, y].GetComponent<UnitSlot>().Unit.isDead)))
                 {
                     Vector2 targetPosition = Vector2.zero;
