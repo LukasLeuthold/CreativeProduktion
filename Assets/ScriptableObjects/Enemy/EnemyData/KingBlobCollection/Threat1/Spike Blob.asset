@@ -16,7 +16,7 @@ MonoBehaviour:
   currStatBlock:
     amountAttackActions: 1
     amountMovementActions: 1
-    maxHP: 4
+    maxHP: 300
     currHP: 0
     speed: 0
     attack: 4

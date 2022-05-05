@@ -10,12 +10,25 @@ namespace AutoDefense
         public BreakState(TickManager _TManager)
         {
             tickManager = _TManager;
+            
         }
 
         public override void EnterState()
         {
+            //tickManager.SwitchDragDropGameAll(true);
+            //tickManager.SwitchDragDropReserve(false);
             tickManager.ResetSlider(tickManager.breakTime);
             tickManager.currStateText.text = "Break";
+            for (int i = 0; i < 2; i++)
+            {
+                for (int e = 0; e < 3; e++)
+                {
+                    if (GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit != null)
+                    {
+                        GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit.CantDragDrop = false;
+                    }
+                }
+            }
         }
         public override void HandleState()
         {
@@ -25,6 +38,11 @@ namespace AutoDefense
             {
                 tickManager.SetState("Fight");
             }
+        }
+        public override void ExitState()
+        {            
+            //tickManager.SwitchDragDropReserve(true);
+            //tickManager.SwitchDragDropGameAll(false);
         }
     }
 }

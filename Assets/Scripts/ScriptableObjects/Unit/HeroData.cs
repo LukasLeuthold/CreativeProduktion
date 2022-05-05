@@ -7,6 +7,7 @@ namespace AutoDefense
     {
         public Animator Anim { get; set; }
         public DragDrop Unit;
+        public bool isMele;
         [SerializeField] private StatBlock[] unitStats = new StatBlock[3];
         [SerializeField, Range(1, 3)] private int currLevel = 1;
         [SerializeField] private HeroCollection activeHeroCollection;
@@ -87,14 +88,9 @@ namespace AutoDefense
 
             GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.DamageText.text = (CurrStatBlock.Attack + CurrStatModifier.AttackMod).ToString();
             GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.DamageText.gameObject.SetActive(true);
-            GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.anim.Play("Damage");
-
-            //GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.CurrStatBlock.CurrHP -= (CurrStatBlock.Attack + CurrStatModifier.AttackMod);
+            GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.anim.Play("Damage");        
 
             GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().enemyPrefab.currHP -= (CurrStatBlock.Attack + CurrStatModifier.AttackMod);
-
-
-            Debug.Log(GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().enemyPrefab.currHP);
 
             Anim.Play("Attack");
 

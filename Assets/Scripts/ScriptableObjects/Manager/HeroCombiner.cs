@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -97,11 +96,11 @@ namespace AutoDefense
             if (_heroPrefab.LastSlot.isGameField)
             {
                 _heroPrefab.HData.RemoveFromField(_heroPrefab);
+                GameField.Instance.sOGameField.HDatas[_heroPrefab.LastSlot.count] = null;
             }
             _heroPrefab.LastSlot._HData = null;
             _heroPrefab.LastSlot.Unit = null;
             _heroPrefab.haveSlot = true;
-            GameField.Instance.sOGameField.HDatas[_heroPrefab.LastSlot.count] = null;
             Destroy(_heroPrefab.gameObject);
         }
 
