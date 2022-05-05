@@ -33,6 +33,12 @@ namespace AutoDefense
         [SerializeField] private SOGameField _Field;
         Queue<HeroData> sortHeros = new Queue<HeroData>();
         Queue<EnemyData> sortEnemys = new Queue<EnemyData>();
+
+        [Header("Events")]
+        [SerializeField] private INTScriptableEvent onWaveEnd;
+        [SerializeField] private VOIDScriptableEvent onEditStart;
+        [SerializeField] private VOIDScriptableEvent onEditEnd;
+
         void Start()
         {
             _TickStates = new Dictionary<string, TickState>()
@@ -285,5 +291,19 @@ namespace AutoDefense
 
             SetState("Unit");
         }
+
+        public void CallOnWaveEnd()
+        {
+            onWaveEnd.Raise(LevelI.CurrWave);
+        }
+        public void CallOnEditStart()
+        {
+            onEditStart.Raise();
+        }
+        public void CallOnEditEnd()
+        {
+            onEditEnd.Raise();
+        }
+
     }
 }

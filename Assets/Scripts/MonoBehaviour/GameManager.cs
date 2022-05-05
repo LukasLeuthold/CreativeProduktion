@@ -9,6 +9,9 @@ namespace AutoDefense
         [SerializeField] private GameObject levelGO;
         [SerializeField] private GameObject gameOverGO;
 
+        [SerializeField] private PlayerRessources playerRessources;
+        [SerializeField] private LevelInfo levelInfo;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -22,6 +25,12 @@ namespace AutoDefense
             levelGO.SetActive(false);
             gameOverGO.SetActive(true);
             gameOverGO.GetComponent<GameOverMenuManager>().SetGameOverScreen(_isWinner);
+        }
+
+        public void RewardPlayer(int _waveNumber)
+        {
+            playerRessources.PlayerMoney += levelInfo.GoldPerWave + playerRessources.Interest;
+            playerRessources.CurrXP += levelInfo.XpPerWave;
         }
     }
 }

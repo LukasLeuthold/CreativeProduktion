@@ -18,10 +18,9 @@ namespace AutoDefense
         [SerializeField]private int xpPerWave;
 
 
-
-        [Header("Events")]
-        [SerializeField]private INTScriptableEvent OnWaveStart;
-        [SerializeField]private INTScriptableEvent OnWaveEnd;
+        //[Header("Events")]
+        //[SerializeField]private INTScriptableEvent OnWaveStart;
+        //[SerializeField]private INTScriptableEvent OnWaveEnd;
 
         public int MaxWaveCount { get =>maxWaveCount; private set => maxWaveCount = value; }
         public int CurrWave { get => currWave; set => currWave = value; }
@@ -34,9 +33,9 @@ namespace AutoDefense
             currWave = 0;
 
         }
-        public void StartWave()
-        {
-            OnWaveStart.Raise(currWave);
-        }
+        //public void StartWave()
+        //{
+        //    OnWaveStart.Raise(currWave);
+        //}
     }
 }

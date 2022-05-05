@@ -15,6 +15,8 @@ namespace AutoDefense
 
         [Header("Player-Money")]
         [SerializeField]private int startPlayerMoney;
+        [SerializeField,Min(1)] private int interestCalculationValue = 1;
+        [SerializeField] private int maxPossibleInterest;
         private int playerMoney;
 
         [Header("Player-XP")]
@@ -65,6 +67,21 @@ namespace AutoDefense
                     return;
                 }
                 OnPlayerHpChanged?.Raise(playerHealth);
+            }
+        }
+        public int Interest
+        {
+            get
+            {
+                int interest = playerMoney / interestCalculationValue;
+                if (interest<=maxPossibleInterest)
+                {
+                    return interest;
+                }
+                else
+                {
+                    return maxPossibleInterest;
+                }
             }
         }
 
