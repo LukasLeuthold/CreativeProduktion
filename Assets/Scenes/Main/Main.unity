@@ -4464,7 +4464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 503694280}
   m_Layer: 5
-  m_Name: Carusell
+  m_Name: CarusellVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9337,7 +9337,7 @@ MonoBehaviour:
   currStateText: {fileID: 840408013}
   timeSlider: {fileID: 1660544710}
   editTime: 200
-  breakTime: 4
+  breakTime: 0
   playerDamage: 1
   enemySpawner: {fileID: 1896895793}
   SkipButton: {fileID: 1557589588}

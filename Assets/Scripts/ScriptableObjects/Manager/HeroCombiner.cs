@@ -7,7 +7,7 @@ namespace AutoDefense
     public class HeroCombiner : InitScriptObject
     {
         Dictionary<int, Dictionary<string, List<DragDrop>>> heroPrefabsByLevel;
-        [SerializeField] private int amountToCombine;
+        [SerializeField,Min(2)] private int amountToCombine;
         [SerializeField] private int maxLevel;
         [SerializeField] private GameObject heroPrefab;
 

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: MainPlayerRessources
   m_EditorClassIdentifier: 
   startPlayerHealth: 20
-  startPlayerMoney: 20
+  startPlayerMoney: 2000
   interestCalculationValue: 4
+  maxPossibleInterest: 5
   xPNeededForLevelUp: 280000003c0000005000000064000000
   probabilities:
   - {fileID: 11400000, guid: 7e50c57ffc6023f40969cdb105d306d1, type: 2}
