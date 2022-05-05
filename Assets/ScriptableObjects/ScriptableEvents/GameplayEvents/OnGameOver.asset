@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af456beab9304040b6927e656d22d30, type: 3}
   m_Name: OnGameOver
   m_EditorClassIdentifier: 
-  manualRaiseValue: 1
+  manualRaiseValue: 0
