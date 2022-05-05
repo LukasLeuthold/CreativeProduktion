@@ -12,11 +12,9 @@ namespace AutoDefense
 
         public override void EnterState()
         {
-            tickManager.skipButton.SetActive(true);
             tickManager.ResetSlider(tickManager.editTime);
             tickManager.currStateText.text = "Edit";
             tickManager.LevelI.CurrWave++;
-            tickManager.SwitchDragDropGameAll(true);
         }
         public override void HandleState()
         {
@@ -33,13 +31,6 @@ namespace AutoDefense
                 
                 tickManager.SetState("Fight");
             }
-        }
-
-        
-        public override void ExitState()
-        {          
-            tickManager.skipButton.SetActive(false);
-            tickManager.SwitchDragDropGameAll(false);
         }
     }
 }
