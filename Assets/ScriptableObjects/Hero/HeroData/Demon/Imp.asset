@@ -17,6 +17,7 @@ MonoBehaviour:
     amountAttackActions: 1
     amountMovementActions: 1
     maxHP: 3
+    currHP: 0
     speed: 1
     attack: 4
     pierce: 0
@@ -29,10 +30,13 @@ MonoBehaviour:
     pierceMod: 0
     amountAttackActionsMod: 0
     amountMovementActionsMod: 0
+  Unit: {fileID: 0}
+  isMele: 1
   unitStats:
   - amountAttackActions: 1
     amountMovementActions: 1
     maxHP: 3
+    currHP: 0
     speed: 1
     attack: 4
     pierce: 0
@@ -40,6 +44,7 @@ MonoBehaviour:
   - amountAttackActions: 1
     amountMovementActions: 1
     maxHP: 4
+    currHP: 0
     speed: 1
     attack: 5
     pierce: 0
@@ -47,6 +52,7 @@ MonoBehaviour:
   - amountAttackActions: 1
     amountMovementActions: 1
     maxHP: 5
+    currHP: 0
     speed: 1
     attack: 6
     pierce: 0
@@ -56,3 +62,4 @@ MonoBehaviour:
   allianceAttribute: {fileID: 11400000, guid: c1215f8c4fdf45a488fe924642e66c4b, type: 2}
   classAttribute: {fileID: 11400000, guid: 7ff8a8a286f2a7a42910e41f2478c13c, type: 2}
   rarity: {fileID: 11400000, guid: cf8f89d144a9c1240830520008d3f8bd, type: 2}
+  currCost: 0
