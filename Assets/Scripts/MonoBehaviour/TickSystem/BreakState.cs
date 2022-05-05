@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AutoDefense
@@ -15,8 +13,6 @@ namespace AutoDefense
 
         public override void EnterState()
         {
-            //tickManager.SwitchDragDropGameAll(true);
-            //tickManager.SwitchDragDropReserve(false);
             tickManager.ResetSlider(tickManager.breakTime);
             tickManager.currStateText.text = "Break";
             for (int i = 0; i < 2; i++)
@@ -39,10 +35,6 @@ namespace AutoDefense
                 tickManager.SetState("Fight");
             }
         }
-        public override void ExitState()
-        {            
-            //tickManager.SwitchDragDropReserve(true);
-            //tickManager.SwitchDragDropGameAll(false);
-        }
+
     }
 }

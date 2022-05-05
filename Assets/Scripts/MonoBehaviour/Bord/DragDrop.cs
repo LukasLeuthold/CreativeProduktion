@@ -44,12 +44,18 @@ namespace AutoDefense
 
         [Header("Details")]
         [SerializeField] private GameObject details;
+        [SerializeField] private GameObject meleUnitText;
+        [SerializeField] private GameObject rangeUnitText;
         [SerializeField] private Text _HP;
         [SerializeField] private Text _Speed;
         [SerializeField] private Text _AT;
         [SerializeField] private Text _Range;
         [SerializeField] private Text _Name;
         [SerializeField] private Text _Cost;
+        
+        [SerializeField] private Text _Alliance;
+        [SerializeField] private Text _Class;
+        
         [SerializeField] private Image _border;
 
         [SerializeField] private Image heroImage;
@@ -72,6 +78,7 @@ namespace AutoDefense
         }
         private void Update()
         {
+            hP.text = CurrHP.ToString();
             if (GameField.Instance.isGrabing)
             {
                 canvasGroup.blocksRaycasts = false;
@@ -213,15 +220,29 @@ namespace AutoDefense
         private void UpdateUnitCard()
         {
             // add this to herodata valuechanged/modchanged
-            hP.text = (heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod).ToString();
             speed.text = (heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod).ToString();
             aT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
 
-            _HP.text = (heroData.CurrStatBlock.MaxHP + heroData.CurrStatModifier.MaxHPMod).ToString();
+            
+            _HP.text = (heroData.CurrStatBlock.MaxHP + heroData.CurrStatBlock.MaxHP).ToString();
             _Speed.text = (heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod).ToString();
             _AT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
             _Range.text = (heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod).ToString();
             _Name.text = heroData.name;
+            _Alliance.text = heroData.AllianceName;
+            _Class.text = heroData.ClassName;
+
+            if (heroData.isMele)
+            {
+                meleUnitText.SetActive(true);
+                
+            }
+            else if(!heroData.isMele)
+            {
+                
+                rangeUnitText.SetActive(true);
+            }
+            
             //changed cost
             _Cost.text = heroData.CurrCost.ToString();
             _border.color = heroData.Rarity.BorderColor;

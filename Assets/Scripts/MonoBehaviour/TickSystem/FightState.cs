@@ -9,7 +9,16 @@ namespace AutoDefense
         }
         public override void EnterState()
         {
-
+            for (int i = 0; i < 2; i++)
+            {
+                for (int e = 0; e < 3; e++)
+                {
+                    if (GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit != null)
+                    {
+                        GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit.CantDragDrop = true;
+                    }
+                }
+            }
 
             if (tickManager.enemySpawner.EnemiesInWave.Count > 0)
             {
@@ -27,16 +36,7 @@ namespace AutoDefense
                 tickManager.SetState("Enemy");
             }
 
-            for (int i = 0; i < 2; i++)
-            {
-                for (int e = 0; e < 3; e++)
-                {
-                    if (GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit != null)
-                    {
-                        GameField.Instance.Slots[i, e].GetComponent<UnitSlot>().Unit.CantDragDrop = true;
-                    }
-                }
-            }
+
         }
         public override void HandleState()
         {
