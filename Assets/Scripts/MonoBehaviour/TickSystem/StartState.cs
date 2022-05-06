@@ -17,7 +17,6 @@ namespace AutoDefense
         {
             tickManager.timeSlider.value = 0;
             tickManager.SetState("Edit");
-            tickManager.LevelI.CurrWave = 0;
         }
     }
 }

@@ -38,12 +38,13 @@ namespace AutoDefense
             tickManager.currTime += Time.deltaTime;
             tickManager.timeSlider.value = tickManager.currTime;
 
-            if (tickManager.LevelI.CurrWave > tickManager.LevelI.MaxWaveCount)
-            {
-                //TODO End Level
-                Debug.Log("Level End");
-            }
-            else if (tickManager.currTime >= tickManager.editTime)
+            //if (tickManager.LevelI.CurrWave > tickManager.LevelI.MaxWaveCount)
+            //{
+            //    //TODO End Level
+            //    Debug.Log("Level End");
+            //}
+            //else
+            if (tickManager.currTime >= tickManager.editTime)
             {
                 
                 tickManager.SetState("Fight");

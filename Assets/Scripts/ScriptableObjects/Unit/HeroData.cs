@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    [CreateAssetMenu(fileName = "new HeroData", menuName = "ScriptableUnitData/HeroData", order = 1)]
+    [CreateAssetMenu(fileName = "new HeroData", menuName = "Hero/HeroData", order = 1)]
     public class HeroData : UnitData
     {
         public Animator Anim { get; set; }

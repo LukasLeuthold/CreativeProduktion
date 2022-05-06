@@ -8,7 +8,7 @@ namespace AutoDefense
     /// <summary>
     /// class to handle unitcollection logic for applying effects on to groups and tracking group count
     /// </summary>
-    [CreateAssetMenu(fileName = "new HeroCollection", menuName = "ScriptableCollection/HeroCollection", order = 1)]
+    [CreateAssetMenu(fileName = "new HeroCollection", menuName = "Hero/HeroCollection")]
     public class HeroCollection : InitScriptObject
     {
         //TODO: list for testing purpose only used for visualizing the dictionary

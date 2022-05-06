@@ -18,12 +18,23 @@ namespace AutoDefense
         [SerializeField]private int xpPerWave;
 
 
-        //[Header("Events")]
-        //[SerializeField]private INTScriptableEvent OnWaveStart;
+        [Header("Events")]
+        [SerializeField] private BOOLScriptableEvent OnGameOver;
         //[SerializeField]private INTScriptableEvent OnWaveEnd;
 
         public int MaxWaveCount { get =>maxWaveCount; private set => maxWaveCount = value; }
-        public int CurrWave { get => currWave; set => currWave = value; }
+        public int CurrWave {
+            get => currWave;
+            set
+            {
+                if (value >MaxWaveCount)
+                {
+                    OnGameOver.Raise(true);
+                    return;
+                }
+                currWave = value; 
+            }
+        }
         public int GoldPerWave { get => goldPerWave; private set => goldPerWave = value; }
         public int XpPerWave { get => xpPerWave; set => xpPerWave = value; }
         public AnimationCurve DifficultieCurve { get => difficultieCurve; private set => difficultieCurve = value; }
@@ -33,9 +44,5 @@ namespace AutoDefense
             currWave = 0;
 
         }
-        //public void StartWave()
-        //{
-        //    OnWaveStart.Raise(currWave);
-        //}
     }
 }

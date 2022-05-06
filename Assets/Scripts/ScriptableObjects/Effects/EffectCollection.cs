@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    [CreateAssetMenu(fileName = "new HeroCollection", menuName = "ScriptableCollection/HeroCollection", order = 1)]
+    [CreateAssetMenu(fileName = "new Effect Collection", menuName = "Effect/EffectCollection")]
     public class EffectCollection : InitScriptObject
     {
         private Dictionary<HeroCollection, EffectInfo> effectDictionary;

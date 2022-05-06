@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    [CreateAssetMenu(fileName = "new HeroPool", menuName = "ScriptableUnitPool/HeroPool", order = 1)]
+    [CreateAssetMenu(fileName = "new HeroPool", menuName = "Hero/HeroPool", order = 1)]
     public class HeroPool : ScriptableObject
     {
         [SerializeField] private PoolUnit[] commonHeros;

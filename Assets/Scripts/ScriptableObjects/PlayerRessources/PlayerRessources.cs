@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    [CreateAssetMenu(fileName = "new PlayerRessources", menuName = "ScriptablePlayerRessources/PlayerRessources")]
+    [CreateAssetMenu(fileName = "new PlayerRessources", menuName = "Player/PlayerRessources")]
 
     public class PlayerRessources : InitScriptObject
     {

@@ -8,7 +8,7 @@ namespace AutoDefense
     /// <summary>
     /// Simple Class to store info about hero rarity
     /// </summary>
-    [CreateAssetMenu(fileName = "new HeroRarity", menuName = "HeroRarity")]
+    [CreateAssetMenu(fileName = "new HeroRarity", menuName = "Hero/HeroRarity")]
     public class HeroRarity : ScriptableObject
     {
         /// <summary>

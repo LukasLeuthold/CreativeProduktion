@@ -4,38 +4,18 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    [CreateAssetMenu(fileName = "new EnemyPool", menuName = "ScriptableUnitPool/EnemyPool", order = 2)]
+    [CreateAssetMenu(fileName = "new EnemyPool", menuName = "Enemy/EnemyPool")]
     public class EnemyPool : ScriptableObject
     {
         [SerializeField]
-        private ThreatLevel[] enemiesInPool = new ThreatLevel[1];
+        private ThreatLevel[] threatLevels = new ThreatLevel[1];
         [SerializeField]
-        private EnemyData bossEnemy;
-        public ThreatLevel[] EnemiesInPool { get => enemiesInPool; private set => enemiesInPool = value; }
+        private ThreatLevel bossEnemy;
+        public ThreatLevel[] ThreatLevels { get => threatLevels; private set => threatLevels = value; }
 
-    }
-
-    [System.Serializable]
-    public struct ThreatLevel
-    {
-        [SerializeField]
-        private string name;
-
-        [SerializeField]
-        private int pointCost;
-
-        [SerializeField]
-        private EnemyData[] enemiesInThreatLevel;
-
-        public int PointCost { get => pointCost; }
-
-        /// <summary>
-        /// returns a random enemyData of the ThreatLevel
-        /// </summary>
-        /// <returns>Random EnemyData</returns>
-        public EnemyData GetRandomEnemy()
+        public EnemyData BossEnemy
         {
-            return enemiesInThreatLevel[UtilRandom.GetRandomIntFromRange(0, enemiesInThreatLevel.Length)].GetCopy();
+            get { return bossEnemy.GetEnemyAt(0); }
         }
     }
 }

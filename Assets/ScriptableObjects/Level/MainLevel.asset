@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7500d6b15484d049a94b754922cd27d, type: 3}
   m_Name: MainLevel
   m_EditorClassIdentifier: 
-  maxWaveCount: 5
-  currWave: 0
+  maxWaveCount: 3
+  currWave: 1
   difficultieCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 10
+      value: 2
       inSlope: 0
       outSlope: 0
       tangentMode: 34
@@ -28,7 +28,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 10
-      value: 10
+      value: 2
       inSlope: 0
       outSlope: 0
       tangentMode: 34
@@ -40,5 +40,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   goldPerWave: 4
   xpPerWave: 4
-  OnWaveStart: {fileID: 11400000, guid: 85cc32f130cf7f54d81c2fcc6fa4ce00, type: 2}
-  OnWaveEnd: {fileID: 11400000, guid: 5078ed14aaec500498a1c452e024e45d, type: 2}
+  OnGameOver: {fileID: 11400000, guid: 17df92b924336af4da04f5c0400d8083, type: 2}

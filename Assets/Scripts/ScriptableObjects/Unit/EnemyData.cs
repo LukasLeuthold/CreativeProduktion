@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    [CreateAssetMenu(fileName = "new EnemyData", menuName = "ScriptableUnitData/EnemyData", order = 2)]
+    [CreateAssetMenu(fileName = "new EnemyData", menuName = "Enemy/EnemyData")]
 
     public class EnemyData : UnitData
     {
@@ -11,7 +11,15 @@ namespace AutoDefense
         public Vector2 nextPosition;
         public RectTransform enemyTransform;
         public TMP_Text DamageText;
+        private ThreatLevel enemyThreatLevel;
         public Enemy enemyPrefab;
+
+        public ThreatLevel EnemyThreatLevel
+        {
+            get => enemyThreatLevel;
+            set => enemyThreatLevel = value;
+        }
+
         public override void Attack(Vector2 _targetPosition)
         {
             GameField.Instance.Slots[(int)_targetPosition.x, (int)_targetPosition.y].GetComponent<UnitSlot>().Unit.damageText.text = (CurrStatBlock.Attack + CurrStatModifier.AttackMod).ToString();
@@ -92,11 +100,13 @@ namespace AutoDefense
         {
             EnemyData copy = Object.Instantiate(this);
             copy.name = this.name;
+            copy.EnemyThreatLevel = this.EnemyThreatLevel;
             return copy;
         }
 
         public override void Tick()
         {
+            //TODO: do we need this
             bool CanMove = false;
             if (CanMove)
             {

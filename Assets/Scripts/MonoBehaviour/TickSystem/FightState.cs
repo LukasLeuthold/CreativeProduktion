@@ -28,7 +28,6 @@ namespace AutoDefense
             if (tickManager.enemySpawner.EnemiesInWave.Count <= 0 && GameField.Instance.EnemyList.Count <= 0)
             {
                 tickManager.CallOnWaveEnd();
-                tickManager.enemySpawner.BuildWave();
                 tickManager.SetState("Edit");
             }
             else

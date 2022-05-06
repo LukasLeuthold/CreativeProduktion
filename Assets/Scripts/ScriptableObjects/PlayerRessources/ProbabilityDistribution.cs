@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    [CreateAssetMenu(fileName = "new ProbabilityDistribution",menuName ="ScriptablePlayerRessources/ProbailityDistribution")]
+    [CreateAssetMenu(fileName = "new ProbabilityDistribution",menuName ="Player/ProbailityDistribution")]
     public class ProbabilityDistribution : ScriptableObject
     {
         public int probabilityCommon;

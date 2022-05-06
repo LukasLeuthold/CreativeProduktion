@@ -273,15 +273,21 @@ namespace AutoDefense
                 {
                     for (int e = 0; e < GameField.Instance.EnemyList.Count(); e++)
                     {
-                        if (GameField.Instance.EnemyList[e] == sortEnemys.Peek() && (slots[x - 1, y].GetComponent<UnitSlot>()._HData == null || slots[x - 1, y].GetComponent<UnitSlot>().Unit.isDead) && (slots[x - 2, y].GetComponent<UnitSlot>()._HData == null || slots[x - 2, y].GetComponent<UnitSlot>().Unit.isDead))
+                        if (
+                            GameField.Instance.EnemyList[e] == sortEnemys.Peek() &&
+                            (slots[x - 1, y].GetComponent<UnitSlot>()._HData == null ||
+                            slots[x - 1, y].GetComponent<UnitSlot>().Unit.isDead) &&
+                            (slots[x - 2, y].GetComponent<UnitSlot>()._HData == null ||
+                            slots[x - 2, y].GetComponent<UnitSlot>().Unit.isDead))
                         {
                             EnemyData edata = sortEnemys.Peek();
 
                             sortEnemys.Dequeue();
+                            pRessources.PlayerHealth -= edata.EnemyThreatLevel.PlayerDamage;
                             edata.DestroyEnemy();
                             GameField.Instance.EnemyList.RemoveAt(e);
                             GameField.Instance.Slots[x, y].GetComponent<EnemyField>().EnemyOnField = null;
-                            pRessources.PlayerHealth -= playerDamage;
+
                             yield return new WaitForSeconds(time);
                         }
                     }
