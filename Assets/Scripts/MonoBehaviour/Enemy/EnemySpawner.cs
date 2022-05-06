@@ -15,22 +15,12 @@ namespace AutoDefense
 
         public Queue<EnemyData> EnemiesInWave;
 
-        //test
-        public int Testpoints;
-        public bool debug;
+        
 
-        private void Start()
-        {
-            BuildWave();
-
-        }
+        
         public void BuildWave()
         {
             EnemiesInWave = waveBuilder.BuildEnemyWave(Mathf.RoundToInt(levelInfo.DifficultieCurve.Evaluate(levelInfo.CurrWave)));
-        }
-        public void BuildWave(int _points)
-        {
-            EnemiesInWave = waveBuilder.BuildEnemyWave(_points);
         }
         private void DebugWave()
         {
