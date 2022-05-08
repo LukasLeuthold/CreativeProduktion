@@ -102,7 +102,7 @@ namespace AutoDefense
             _attributeVisualManager.NameText = _collection.name;
             _attributeVisualManager.DisplayedCollection = _collection;
             _attributeVisualManager.ToolTipText = _collection.GetToolTip();
-            if (_collection.CurrEffect == null)
+            if (_collection.CurrActiveEffect == null)
             {
                 _attributeVisualManager.TextColor = inActiveAttributeColor;
             }
