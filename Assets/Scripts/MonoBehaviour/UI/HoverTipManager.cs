@@ -32,9 +32,9 @@ namespace AutoDefense
         private void ShowTip(string _tipText,Vector2 _position, ToolTipHorizontalAllignment _hAllignment, ToolTipVerticalAllignment _vAllignment)
         {
             tipText.text = _tipText;
+            tipPanelRect.gameObject.SetActive(true);
             tipPanelRect.sizeDelta = new Vector2(tipText.preferredWidth > 200 ? 200 : tipText.preferredWidth, tipText.preferredHeight);
 
-            tipPanelRect.gameObject.SetActive(true);
 
             Vector2 positionVector = Vector2.zero;
             switch (_hAllignment)

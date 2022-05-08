@@ -249,6 +249,6 @@ namespace AutoDefense
     {
         public int neededDiversity;
         public Effect effect;
-        public string effectToolTip;
+        [TextArea]public string effectToolTip;
     }
 }
