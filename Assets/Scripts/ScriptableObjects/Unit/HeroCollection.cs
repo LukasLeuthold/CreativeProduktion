@@ -40,6 +40,10 @@ namespace AutoDefense
             {
                 return currEffect;
             }
+            set
+            {
+
+            }
         }
         public int Diversity
         {
@@ -122,6 +126,11 @@ namespace AutoDefense
                     }
                 }
             }
+        }
+        public Dictionary<string, List<HeroData>> HeroesInCollection
+        {
+            get { return heroesInCollection; }
+            set { heroesInCollection = value; }
         }
 
 

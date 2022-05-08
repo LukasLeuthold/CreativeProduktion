@@ -14,7 +14,6 @@ namespace AutoDefense
             for (int i = 0; i < subscribedHeroes.Count; i++)
             {
                 subscribedHeroes[i].Unit.CurrHP += healAmount;
-                Debug.Log(subscribedHeroes[i]+" healed for " + healAmount);
             }
         }
     }

@@ -32,7 +32,7 @@ namespace AutoDefense
             {
                 EnemiesInWave = waveBuilder.BuildEnemyWave(Mathf.RoundToInt(levelInfo.DifficultieCurve.Evaluate(levelInfo.CurrWave)));
             }
-            DebugWave();
+            //DebugWave();
         }
         private void DebugWave()
         {

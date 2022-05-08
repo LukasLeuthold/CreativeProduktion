@@ -30,7 +30,8 @@ namespace AutoDefense
             }
         }
 
-        public int CurrHP;
+        private int currHP;
+
         [SerializeField] private HeroData heroData;
 
         public TMP_Text damageText;
@@ -66,6 +67,24 @@ namespace AutoDefense
         private Vector2 lastRectTranform;
         private CanvasGroup canvasGroup;
         [SerializeField]private Animator animator;
+
+        public int CurrHP
+        {
+            get
+            {
+                return currHP;
+            }
+            set
+            {
+                if (value >= heroData.CurrStatBlock.MaxHP)
+                {
+                    currHP = heroData.CurrStatBlock.MaxHP;
+                    return;
+                }
+                currHP = value;
+            }
+        }
+
 
         private void Start()
         {
@@ -243,7 +262,6 @@ namespace AutoDefense
                 rangeUnitText.SetActive(true);
             }
             
-            //changed cost
             _Cost.text = heroData.CurrCost.ToString();
             _border.color = heroData.Rarity.BorderColor;
             heroImage.sprite = heroData.unitSprite;
