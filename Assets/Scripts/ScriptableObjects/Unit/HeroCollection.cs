@@ -42,15 +42,21 @@ namespace AutoDefense
                 if (currActiveEffect != null)
                 {
                     currActiveEffect.effect.RemoveEffectFromGroup(this);
-                    OnAddedToCollection -= currActiveEffect.effect.ApplyEffect;
-                    OnRemovedFromCollection -= currActiveEffect.effect.RemoveEffect;
+                    Debug.Log("removed: " + currActiveEffect.effect.name);
                 }
                 currActiveEffect = value;
                 if (currActiveEffect != null)
                 {
+                    Debug.Log("new value: " + currActiveEffect.effect.name);
+                }
+                else
+                {
+                    Debug.Log("no effect");
+                }
+                if (currActiveEffect != null)
+                {
                     currActiveEffect.effect.ApplyEffectToGroup(this);
-                    OnAddedToCollection += currActiveEffect.effect.ApplyEffect;
-                    OnRemovedFromCollection += currActiveEffect.effect.RemoveEffect;
+                    Debug.Log("applied: " + currActiveEffect.effect.name);
                 }
             }
         }
@@ -142,16 +148,12 @@ namespace AutoDefense
         /// <param name="_hero">herodata to add</param>
         public void AddToCollection(HeroData _hero, DragDrop _heroDrag)
         {
+            OnAddedToCollection?.Invoke(_hero);
             if (Diversity == 0)
             {
                 OnFirstUnitPlaced?.Invoke(this);
             }
             heroDragDrops.Add(_heroDrag);
-            OnAddedToCollection?.Invoke(_hero);
-            if (currActiveEffect != null)
-            {
-               // currActiveEffect.effect.ApplyEffect(_hero);
-            }
             if (heroesInCollection.ContainsKey(_hero.name))
             {
                 heroesInCollection[_hero.name].Add(_hero);
@@ -170,46 +172,20 @@ namespace AutoDefense
         /// <param name="_hero">herodata to remove</param>
         public void RemoveFromCollection(HeroData _hero, DragDrop _heroDrag)
         {
+            OnRemovedFromCollection?.Invoke(_hero);
             heroDragDrops.Remove(_heroDrag);
             heroesInCollection[_hero.name].Remove(_hero);
-            if (currActiveEffect != null)
-            {
-                //currActiveEffect.effect.RemoveEffect(_hero);
-            }
             if (heroesInCollection[_hero.name].Count <= 0)
             {
                 heroesInCollection.Remove(_hero.name);
                 Diversity--;
             }
-            OnRemovedFromCollection?.Invoke(_hero);
             if (Diversity == 0)
             {
                 OnLastUnitRemoved?.Invoke(this);
             }
         }
 
-        public override void Initialize()
-        {
-            heroesInCollection = new Dictionary<string, List<HeroData>>();
-            heroDragDrops = new List<DragDrop>();
-            currActiveEffect = null;
-            diversity = 0;
-            if (groupEffects.Length == 0)
-            {
-                return;
-            }
-            lowestDiversity = int.MaxValue;
-            dicGroupEffect = new Dictionary<int, GroupEffect>();
-            string namew = this.name;
-            for (int i = 0; i < groupEffects.Length; i++)
-            {
-                dicGroupEffect.Add(groupEffects[i].neededDiversity, groupEffects[i]);
-                if (groupEffects[i].neededDiversity < lowestDiversity)
-                {
-                    lowestDiversity = groupEffects[i].neededDiversity;
-                }
-            }
-        }
         public string GetToolTip()
         {
             string toolTip = this.name + "\n";
@@ -249,6 +225,54 @@ namespace AutoDefense
             for (int i = 0; i < heroDragDrops.Count; i++)
             {
                 heroDragDrops[i].ToggleHighlight(false, highlightColor);
+            }
+        }
+
+        public override void Initialize()
+        {
+            //OnAddedToCollection = DebugAddingEvent;
+            //OnRemovedFromCollection = DebugRemovingEvent;
+            heroesInCollection = new Dictionary<string, List<HeroData>>();
+            heroDragDrops = new List<DragDrop>();
+            dicGroupEffect = new Dictionary<int, GroupEffect>();
+            currActiveEffect = null;
+            diversity = 0;
+            if (groupEffects.Length == 0)
+            {
+                return;
+            }
+            lowestDiversity = int.MaxValue;
+            for (int i = 0; i < groupEffects.Length; i++)
+            {
+                dicGroupEffect.Add(groupEffects[i].neededDiversity, groupEffects[i]);
+                if (groupEffects[i].neededDiversity < lowestDiversity)
+                {
+                    lowestDiversity = groupEffects[i].neededDiversity;
+                }
+            }
+        }
+        public void DebugAddingEvent(HeroData _hData)
+        {
+            Debug.Log("Added: " + _hData.name + " to: " + this.name);
+            if (CurrActiveEffect!= null)
+            {
+                Debug.Log("Currently Active Effect: " + CurrActiveEffect.effect.name);
+            }
+            else
+            {
+                Debug.Log("No active effect");
+            }
+        }
+        public void DebugRemovingEvent(HeroData _hData)
+        {
+            Debug.Log("Removed: " + _hData.name + " from: " + this.name);
+            if (CurrActiveEffect!= null)
+            {
+                Debug.Log("Currently Active Effect: " + CurrActiveEffect.effect.name);
+            }
+            else
+            {
+                Debug.Log("No active effect");
             }
         }
     }

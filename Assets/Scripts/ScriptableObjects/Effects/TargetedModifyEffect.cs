@@ -36,8 +36,6 @@ namespace AutoDefense
         }
         public override void RemoveEffectFromGroup(HeroCollection _collection)
         {
-            targetCollection.OnAddedToCollection -= this.ApplyEffect;
-            targetCollection.OnRemovedFromCollection -= this.RemoveEffect;
             for (int i = 0; i < targetCollection.HeroesInCollection.Count; i++)
             {
                 List<HeroData> heroes = targetCollection.HeroesInCollection.ElementAt(i).Value;
@@ -46,6 +44,8 @@ namespace AutoDefense
                     this.RemoveEffect(heroes[j]);
                 }
             }
+            targetCollection.OnAddedToCollection -= this.ApplyEffect;
+            targetCollection.OnRemovedFromCollection -= this.RemoveEffect;
         }
         public override void Initialize()
         {

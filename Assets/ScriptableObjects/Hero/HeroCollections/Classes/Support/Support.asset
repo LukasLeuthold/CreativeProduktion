@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c42e8b6218cf448d83a6d45ea3d2b, type: 3}
   m_Name: Support
   m_EditorClassIdentifier: 
-  heroessssTest: []
-  groupEffects: []
+  groupEffects:
+  - neededDiversity: 1
+    effect: {fileID: 11400000, guid: 01fabb555fe03d040a469bbe7048b16a, type: 2}
+    effectToolTip: 
+  - neededDiversity: 2
+    effect: {fileID: 11400000, guid: 5858713858bfcf94f85dc45df3486d6c, type: 2}
+    effectToolTip: 
   highlightColor: {r: 1, g: 0.71392024, b: 0, a: 0.56078434}
   diversity: 0

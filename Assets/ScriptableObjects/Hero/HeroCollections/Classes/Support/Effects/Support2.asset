@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d59945e3416b804ea49b9813dfab904, type: 3}
-  m_Name: Support1
+  m_Name: Support2
   m_EditorClassIdentifier: 
   buffStats:
     maxHPMod: 0
