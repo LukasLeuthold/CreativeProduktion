@@ -24,6 +24,9 @@ namespace AutoDefense
         public event Action<HeroCollection> OnCollectionChanged;
         public event Action<HeroCollection> OnLastUnitRemoved;
 
+        public event Action<HeroData> OnAddedToCollection;
+        public event Action<HeroData> OnRemovedFromCollection;
+
         [SerializeField] private int diversity;
 
         private int lowestDiversity;
@@ -39,11 +42,15 @@ namespace AutoDefense
                 if (currActiveEffect != null)
                 {
                     currActiveEffect.effect.RemoveEffectFromGroup(this);
+                    OnAddedToCollection -= currActiveEffect.effect.ApplyEffect;
+                    OnRemovedFromCollection -= currActiveEffect.effect.RemoveEffect;
                 }
                 currActiveEffect = value;
                 if (currActiveEffect != null)
                 {
                     currActiveEffect.effect.ApplyEffectToGroup(this);
+                    OnAddedToCollection += currActiveEffect.effect.ApplyEffect;
+                    OnRemovedFromCollection += currActiveEffect.effect.RemoveEffect;
                 }
             }
         }
@@ -67,10 +74,10 @@ namespace AutoDefense
                         OnCollectionChanged?.Invoke(this);
                         return;
                     }
-                    if (currActiveEffect != null)
-                    {
-                        currActiveEffect.effect.RemoveEffectFromGroup(this);
-                    }
+                    //if (currActiveEffect != null)
+                    //{
+                    //    currActiveEffect.effect.RemoveEffectFromGroup(this);
+                    //}
                     diversity = value;
                     CurrActiveEffect = dicGroupEffect[diversity];
                     OnCollectionChanged?.Invoke(this);
@@ -127,6 +134,8 @@ namespace AutoDefense
         }
 
 
+
+
         /// <summary>
         /// adds a herodata to the collection
         /// </summary>
@@ -138,9 +147,10 @@ namespace AutoDefense
                 OnFirstUnitPlaced?.Invoke(this);
             }
             heroDragDrops.Add(_heroDrag);
+            OnAddedToCollection?.Invoke(_hero);
             if (currActiveEffect != null)
             {
-                currActiveEffect.effect.ApplyEffect(_hero);
+               // currActiveEffect.effect.ApplyEffect(_hero);
             }
             if (heroesInCollection.ContainsKey(_hero.name))
             {
@@ -164,13 +174,14 @@ namespace AutoDefense
             heroesInCollection[_hero.name].Remove(_hero);
             if (currActiveEffect != null)
             {
-                currActiveEffect.effect.RemoveEffect(_hero);
+                //currActiveEffect.effect.RemoveEffect(_hero);
             }
             if (heroesInCollection[_hero.name].Count <= 0)
             {
                 heroesInCollection.Remove(_hero.name);
                 Diversity--;
             }
+            OnRemovedFromCollection?.Invoke(_hero);
             if (Diversity == 0)
             {
                 OnLastUnitRemoved?.Invoke(this);
@@ -199,7 +210,6 @@ namespace AutoDefense
                 }
             }
         }
-
         public string GetToolTip()
         {
             string toolTip = this.name + "\n";
@@ -227,7 +237,6 @@ namespace AutoDefense
             }
             return toolTip;
         }
-
         public void TurnOnHighlights()
         {
             for (int i = 0; i < heroDragDrops.Count; i++)
@@ -249,6 +258,6 @@ namespace AutoDefense
     {
         public int neededDiversity;
         public Effect effect;
-        [TextArea]public string effectToolTip;
+        [TextArea] public string effectToolTip;
     }
 }
