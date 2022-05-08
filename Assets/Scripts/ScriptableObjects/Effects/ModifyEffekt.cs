@@ -31,6 +31,8 @@ namespace AutoDefense
                     this.ApplyEffect(heroes[j]);
                 }
             }
+            _collection.OnAddedToCollection += this.ApplyEffect;
+            _collection.OnRemovedFromCollection += this.RemoveEffect;
         }
         public override void RemoveEffectFromGroup(HeroCollection _collection)
         {
@@ -42,6 +44,8 @@ namespace AutoDefense
                     this.RemoveEffect(heroes[j]);
                 }
             }
+            _collection.OnAddedToCollection -= this.ApplyEffect;
+            _collection.OnRemovedFromCollection -= this.RemoveEffect;
         }
 
 
