@@ -13,6 +13,7 @@ namespace AutoDefense
         }
         public override void EnterState()
         {
+            tickManager.CallOnHeroTurnStartEffects();
             tickManager.UnitAttack();
         }
         public override void HandleState()

@@ -18,5 +18,6 @@ MonoBehaviour:
     attackMod: 0
     rangeMod: 1
     pierceMod: 0
-    amountAttackActionsMod: 1
+    amountAttackActionsMod: 0
     amountMovementActionsMod: 0
+    canDoPirceDamage: 0

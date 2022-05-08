@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AutoDefense
@@ -7,12 +5,27 @@ namespace AutoDefense
     public class Initializer : MonoBehaviour
     {
         [SerializeField] private InitScriptObject[] initializableObjects;
-
+        [SerializeField] private InitScriptObject[] levelInformation;
+        [SerializeField] private InitScriptObject[] heroCollections;
+        [SerializeField] private InitScriptObject[] enemyCollections;
+        [SerializeField] private InitScriptObject[] effectCollections;
+        [SerializeField] private InitScriptObject[] baseEventEffects;
         private void Awake()
         {
-            for (int i = 0; i < initializableObjects.Length; i++)
+            InitializeCollection(initializableObjects);
+            InitializeCollection(levelInformation);
+            InitializeCollection(heroCollections);
+            InitializeCollection(enemyCollections);
+            InitializeCollection(effectCollections);
+            InitializeCollection(baseEventEffects);
+            
+        }
+
+        private void InitializeCollection(InitScriptObject[] _collection)
+        {
+            for (int i = 0; i < _collection.Length; i++)
             {
-                initializableObjects[i].Initialize();
+                _collection[i].Initialize();
             }
         }
     }

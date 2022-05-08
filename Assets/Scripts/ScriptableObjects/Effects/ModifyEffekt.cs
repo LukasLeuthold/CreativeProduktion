@@ -14,10 +14,14 @@ namespace AutoDefense
             _hero.CurrStatModifier = _hero.CurrStatModifier + buffStats;
         }
 
+
         public override void RemoveEffect(HeroData _hero)
         {
             _hero.CurrStatModifier = _hero.CurrStatModifier - buffStats;
 
+        }
+        public override void Initialize()
+        {
         }
     }
 }

@@ -42,7 +42,6 @@ namespace AutoDefense
         public override void Initialize()
         {
             currWave = 0;
-
         }
     }
 }

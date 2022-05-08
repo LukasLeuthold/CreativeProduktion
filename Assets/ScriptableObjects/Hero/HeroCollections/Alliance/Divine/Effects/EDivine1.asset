@@ -9,15 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a4053289b3269044995f22f4e3a5ff4, type: 3}
-  m_Name: EMage3
+  m_Script: {fileID: 11500000, guid: 6c0617e4f4d980a43b80746ded4e7e9d, type: 3}
+  m_Name: EDivine1
   m_EditorClassIdentifier: 
-  buffStats:
-    maxHPMod: 2
-    speedMod: 0
-    attackMod: 1
-    rangeMod: 1
-    pierceMod: 3
-    amountAttackActionsMod: 0
-    amountMovementActionsMod: 0
-    canDoPirceDamage: 1
+  collection: {fileID: 11400000, guid: c5c95290451784245b247ff016b7ec52, type: 2}
+  healAmount: 1

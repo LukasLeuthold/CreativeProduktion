@@ -9338,7 +9338,6 @@ MonoBehaviour:
   timeSlider: {fileID: 1660544710}
   editTime: 200
   breakTime: 0
-  playerDamage: 1
   enemySpawner: {fileID: 1896895793}
   SkipButton: {fileID: 1557589588}
   BlockImage: {fileID: 744178432}
@@ -9347,6 +9346,7 @@ MonoBehaviour:
   onWaveEnd: {fileID: 11400000, guid: 5078ed14aaec500498a1c452e024e45d, type: 2}
   onEditStart: {fileID: 11400000, guid: 0abb4183f09255140884c2c858e67016, type: 2}
   onEditEnd: {fileID: 11400000, guid: 1152569a873a0bb4397b2ab2ac8d24be, type: 2}
+  onHeroTurnStartEffects: {fileID: 11400000, guid: c5c95290451784245b247ff016b7ec52, type: 2}
 --- !u!114 &977695122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17192,21 +17192,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de45c9663afbf8c42a1f0194136386fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializableObjects:
+  initializableObjects: []
+  levelInformation:
   - {fileID: 11400000, guid: 9a72326749b33694c9663206106de544, type: 2}
+  - {fileID: 11400000, guid: 7152fb949bfbb0244b4fbfffbc58088d, type: 2}
   - {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
+  heroCollections:
+  - {fileID: 11400000, guid: c1215f8c4fdf45a488fe924642e66c4b, type: 2}
+  - {fileID: 11400000, guid: 58de748fd1cee0c448e9dd0ea6f5f50b, type: 2}
   - {fileID: 11400000, guid: 7ff8a8a286f2a7a42910e41f2478c13c, type: 2}
   - {fileID: 11400000, guid: 2d594c65d938fe145885a1a686a74e37, type: 2}
   - {fileID: 11400000, guid: 6d0152e4df99dca4ba74343e62483cac, type: 2}
   - {fileID: 11400000, guid: 15efbbde8bf724448b8f9bd67e126c7d, type: 2}
-  - {fileID: 11400000, guid: a99267ac49487144d82236bffaecdc64, type: 2}
   - {fileID: 11400000, guid: 00cffb01dbb21b34dbd03483c3308b8a, type: 2}
-  - {fileID: 11400000, guid: c1215f8c4fdf45a488fe924642e66c4b, type: 2}
-  - {fileID: 11400000, guid: 58de748fd1cee0c448e9dd0ea6f5f50b, type: 2}
-  - {fileID: 11400000, guid: 7152fb949bfbb0244b4fbfffbc58088d, type: 2}
+  - {fileID: 11400000, guid: a99267ac49487144d82236bffaecdc64, type: 2}
+  enemyCollections:
   - {fileID: 11400000, guid: b3fdf46056af7ba47b331590f1e01ac9, type: 2}
   - {fileID: 11400000, guid: f8bc889bf4238434c993b101acf6bc52, type: 2}
   - {fileID: 11400000, guid: 2b0430c91bf519b4ebf9c6944f5b5ea3, type: 2}
+  effectCollections:
+  - {fileID: 11400000, guid: c5c95290451784245b247ff016b7ec52, type: 2}
+  baseEventEffects:
+  - {fileID: 11400000, guid: 4bb2b2cd3a3c1e84e9bc113eede1e8d9, type: 2}
+  - {fileID: 11400000, guid: e031fc5650e48654c9db324afe57cf36, type: 2}
+  - {fileID: 11400000, guid: f7f2f4d9dcbc0634eaceed5c86ad73a9, type: 2}
 --- !u!4 &1866481926
 Transform:
   m_ObjectHideFlags: 0

@@ -15,8 +15,9 @@ MonoBehaviour:
   buffStats:
     maxHPMod: 2
     speedMod: 0
-    attackMod: 0
+    attackMod: 1
     rangeMod: 0
     pierceMod: 2
     amountAttackActionsMod: 0
     amountMovementActionsMod: 0
+    canDoPirceDamage: 1

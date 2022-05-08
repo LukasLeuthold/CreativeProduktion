@@ -20,3 +20,4 @@ MonoBehaviour:
     pierceMod: 1
     amountAttackActionsMod: 0
     amountMovementActionsMod: 0
+    canDoPirceDamage: 1

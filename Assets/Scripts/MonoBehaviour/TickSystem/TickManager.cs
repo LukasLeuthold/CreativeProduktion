@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,12 @@ namespace AutoDefense
         private TickState state;
         [SerializeField] internal LevelInfo LevelI;
         [SerializeField] internal TMP_Text currStateText;
+
+        
+
         [SerializeField] internal Slider timeSlider;
         [SerializeField] internal int editTime;
         [SerializeField] internal int breakTime;
-        [SerializeField] private int playerDamage;
 
         public EnemySpawner enemySpawner;
 
@@ -38,6 +41,9 @@ namespace AutoDefense
         [SerializeField] private INTScriptableEvent onWaveEnd;
         [SerializeField] private VOIDScriptableEvent onEditStart;
         [SerializeField] private VOIDScriptableEvent onEditEnd;
+
+        [Header("EventEffects")]
+        [SerializeField] private EventEffektCollection onHeroTurnStartEffects;
 
         void Start()
         {
@@ -309,6 +315,10 @@ namespace AutoDefense
         public void CallOnEditEnd()
         {
             onEditEnd.Raise();
+        }
+        internal void CallOnHeroTurnStartEffects()
+        {
+            onHeroTurnStartEffects.ActivateEffects();
         }
 
     }
