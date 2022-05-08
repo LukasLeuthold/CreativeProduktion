@@ -20,7 +20,7 @@ namespace AutoDefense
         [SerializeField] private HeroCollection classAttribute;
         [Header("Rarity")]
         [SerializeField] private HeroRarity rarity;
-        //ADDED
+
         [SerializeField] private int currCost;
         public int CurrCost
         {
@@ -105,12 +105,6 @@ namespace AutoDefense
             return copy;
         }
 
-        public override void Tick()
-        {
-            for (int i = 0; i < (CurrStatBlock.AmountAttackActions + CurrStatModifier.AmountAttackActionsMod); i++)
-            {
-            }
-        }
 
         public override string ToString()
         {

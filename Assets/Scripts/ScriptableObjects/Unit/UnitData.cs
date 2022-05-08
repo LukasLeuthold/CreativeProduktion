@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    public abstract class UnitData : ScriptableObject, ITickable
+    public abstract class UnitData : ScriptableObject
     {
         public Sprite unitSprite;
         [SerializeField] private StatBlock currStatBlock;
@@ -11,11 +11,11 @@ namespace AutoDefense
         public event Action OnModifierChanged;
         public event Action OnUnitDataChanged;
         public event Action OnCurrStatBlockChanged;
-        public event Action OnTurnStart;
-        public event Action OnMoving;
-        public event Action OnAttack;
-        public event Action OnOnKill;
-        public event Action OnTurnEnd;
+        //public event Action OnTurnStart;
+        //public event Action OnMoving;
+        //public event Action OnAttack;
+        //public event Action OnOnKill;
+        //public event Action OnTurnEnd;
 
         public StatBlock CurrStatBlock
         {
@@ -42,7 +42,6 @@ namespace AutoDefense
         public virtual void Attack(Vector2 targetPosition) { }
         public virtual void Move() { }
 
-        public abstract void Tick();
     }
 
     [System.Serializable]

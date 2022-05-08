@@ -104,23 +104,6 @@ namespace AutoDefense
             return copy;
         }
 
-        public override void Tick()
-        {
-            //TODO: do we need this
-            bool CanMove = false;
-            if (CanMove)
-            {
-                for (int i = 0; i < (CurrStatBlock.AmountMovementActions + CurrStatModifier.AmountMovementActionsMod); i++)
-                {
-                    Move();
-                }
-            }
-            for (int i = 0; i < (CurrStatBlock.AmountAttackActions + CurrStatModifier.AmountAttackActionsMod); i++)
-            {
-                
-            }
-        }
-
         public override string ToString()
         {
             return $"Enemy {name}";
