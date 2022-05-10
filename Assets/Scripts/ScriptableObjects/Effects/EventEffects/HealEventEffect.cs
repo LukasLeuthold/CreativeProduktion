@@ -11,6 +11,7 @@ namespace AutoDefense
 
         public override void ActivateEffect()
         {
+            Debug.Log("activated: " + this.name);
             for (int i = 0; i < subscribedHeroes.Count; i++)
             {
                 subscribedHeroes[i].Unit.CurrHP += healAmount;

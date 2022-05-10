@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0104e1257eb984549918077bb54e1e85, type: 3}
+  m_Name: Demon1
+  m_EditorClassIdentifier: 
+  subscribedHeroes: []
+  collection: {fileID: 11400000, guid: f845ce78abd1c784bb8cbc32c2aba177, type: 2}
+  playerRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
+  healthCost: 5
+  moneyReward: 20

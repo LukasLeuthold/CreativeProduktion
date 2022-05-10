@@ -19,8 +19,7 @@ namespace AutoDefense
 
         public override void Initialize()
         {
-            //Debug.Log("Initialized");
-            //eventEffects.Clear();
+            eventEffects.Clear();
         }
     }
 }
