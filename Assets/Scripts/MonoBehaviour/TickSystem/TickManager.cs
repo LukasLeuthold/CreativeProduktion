@@ -44,6 +44,7 @@ namespace AutoDefense
 
         [Header("EventEffects")]
         [SerializeField] private EventEffektCollection onHeroTurnStartEffects;
+        [SerializeField] private EventEffektCollection onWaveOverEffects;
 
         void Start()
         {
@@ -307,6 +308,7 @@ namespace AutoDefense
         public void CallOnWaveEnd()
         {
             onWaveEnd.Raise(LevelI.CurrWave);
+            CallOnEaveOverEffects();
         }
         public void CallOnEditStart()
         {
@@ -319,6 +321,10 @@ namespace AutoDefense
         internal void CallOnHeroTurnStartEffects()
         {
             onHeroTurnStartEffects.ActivateEffects();
+        }
+        internal void CallOnEaveOverEffects()
+        {
+            onWaveOverEffects.ActivateEffects();
         }
 
     }

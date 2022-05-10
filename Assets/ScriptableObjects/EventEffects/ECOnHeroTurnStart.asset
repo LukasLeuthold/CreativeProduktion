@@ -9,15 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a4053289b3269044995f22f4e3a5ff4, type: 3}
-  m_Name: EMage1
+  m_Script: {fileID: 11500000, guid: 8073e74c935159640b16eacdf0798c72, type: 3}
+  m_Name: ECOnHeroTurnStart
   m_EditorClassIdentifier: 
-  buffStats:
-    maxHPMod: 0
-    speedMod: 0
-    attackMod: 1000
-    rangeMod: 0
-    pierceMod: 1
-    amountAttackActionsMod: 0
-    amountMovementActionsMod: 0
-    canDoPirceDamage: 1
+  eventEffects: []

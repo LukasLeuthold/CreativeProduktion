@@ -42,21 +42,21 @@ namespace AutoDefense
                 if (currActiveEffect != null)
                 {
                     currActiveEffect.effect.RemoveEffectFromGroup(this);
-                    Debug.Log("removed: " + currActiveEffect.effect.name);
+                    //Debug.Log("removed: " + currActiveEffect.effect.name);
                 }
                 currActiveEffect = value;
-                if (currActiveEffect != null)
-                {
-                    Debug.Log("new value: " + currActiveEffect.effect.name);
-                }
-                else
-                {
-                    Debug.Log("no effect");
-                }
+                //if (currActiveEffect != null)
+                //{
+                //    Debug.Log("new value: " + currActiveEffect.effect.name);
+                //}
+                //else
+                //{
+                //    Debug.Log("no effect");
+                //}
                 if (currActiveEffect != null)
                 {
                     currActiveEffect.effect.ApplyEffectToGroup(this);
-                    Debug.Log("applied: " + currActiveEffect.effect.name);
+                    //Debug.Log("applied: " + currActiveEffect.effect.name);
                 }
             }
         }

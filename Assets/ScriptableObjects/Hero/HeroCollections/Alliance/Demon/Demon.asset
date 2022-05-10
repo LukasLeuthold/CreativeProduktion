@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c42e8b6218cf448d83a6d45ea3d2b, type: 3}
   m_Name: Demon
   m_EditorClassIdentifier: 
-  heroessssTest: []
-  groupEffects: []
+  groupEffects:
+  - neededDiversity: 1
+    effect: {fileID: 11400000, guid: eac75856a02eacc4da4aacd65e1b24f9, type: 2}
+    effectToolTip: 
+  - neededDiversity: 2
+    effect: {fileID: 11400000, guid: a5c137fa394aacb408f2e5b23f8631ab, type: 2}
+    effectToolTip: 
   highlightColor: {r: 0.49731323, g: 0.08664116, b: 0.5566038, a: 0.5176471}
-  diversity: 0
+  diversity: 2

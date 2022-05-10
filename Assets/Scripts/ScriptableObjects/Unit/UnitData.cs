@@ -95,7 +95,7 @@ namespace AutoDefense
         public int AttackMod { get => attackMod; set => attackMod = value; }
         public int PierceMod { get => pierceMod; set => pierceMod = value; }
         public int RangeMod { get => rangeMod; set => rangeMod = value; }
-        public bool CanDoPierceDamage { get => canDoPirceDamage; }
+        public bool CanDoPierceDamage { get => canDoPirceDamage; set => canDoPirceDamage = value; }
 
         public static ModifierBlock Copy(ModifierBlock __original)
         {
@@ -120,6 +120,7 @@ namespace AutoDefense
             newMod.AttackMod = a.AttackMod + b.AttackMod;
             newMod.PierceMod = a.PierceMod + b.PierceMod;
             newMod.RangeMod = a.RangeMod + b.RangeMod;
+            newMod.CanDoPierceDamage = b.CanDoPierceDamage;
             return newMod;
         }
 
@@ -133,6 +134,7 @@ namespace AutoDefense
             newMod.AttackMod = a.AttackMod - b.AttackMod;
             newMod.PierceMod = a.PierceMod - b.PierceMod;
             newMod.RangeMod = a.RangeMod - b.RangeMod;
+            newMod.CanDoPierceDamage = !b.CanDoPierceDamage;
             return newMod;
         }
     }
