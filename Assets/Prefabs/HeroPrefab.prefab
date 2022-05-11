@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6293077557277477591
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1440,7 +1440,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 152, y: 152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3142322954252678951
 CanvasRenderer:
@@ -1463,14 +1463,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.990566, g: 0.6985637, b: 0, a: 0.7607843}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7607843}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4a1f2e7821c387b4b88288a1c860d0a3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1624,9 +1624,12 @@ MonoBehaviour:
   LastSlot: {fileID: 0}
   isDead: 0
   CantDragDrop: 0
-  CurrHP: 0
   heroData: {fileID: 0}
   damageText: {fileID: 277090677952393044}
+  starImage: {fileID: 1161726749080378532}
+  oneStarSprite: {fileID: 21300000, guid: cb9f0e6855dd5604fba15983feb87f16, type: 3}
+  twoStarSprite: {fileID: 21300000, guid: 57a77171f73fd7747aa2a41e8cb77c03, type: 3}
+  threeStarSprite: {fileID: 21300000, guid: 24fd5c7300ab2cc458dc076a901ee233, type: 3}
   haveSlot: 0
   currStats: {fileID: 3769448774556075270}
   hP: {fileID: 917250224157293923}

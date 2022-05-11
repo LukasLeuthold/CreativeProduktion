@@ -36,6 +36,12 @@ namespace AutoDefense
 
         public TMP_Text damageText;
 
+        [Header("StarSprites")]
+        [SerializeField] private Image starImage;
+        [SerializeField] Sprite oneStarSprite;
+        [SerializeField] Sprite twoStarSprite;
+        [SerializeField] Sprite threeStarSprite;
+
         [Header("CurrStats")]
         [HideInInspector] public bool haveSlot;
         [SerializeField] private GameObject currStats;
@@ -82,6 +88,10 @@ namespace AutoDefense
                     return;
                 }
                 currHP = value;
+                if (currHP <=0)
+                {
+                    currHP = 0;
+                }
             }
         }
 
@@ -238,6 +248,7 @@ namespace AutoDefense
         }
         private void UpdateUnitCard()
         {
+            heroData.Unit = this;
             // add this to herodata valuechanged/modchanged
             speed.text = (heroData.CurrStatBlock.Speed + heroData.CurrStatModifier.SpeedMod).ToString();
             aT.text = (heroData.CurrStatBlock.Attack + heroData.CurrStatModifier.AttackMod).ToString();
@@ -250,7 +261,6 @@ namespace AutoDefense
             _Name.text = heroData.name;
             _Alliance.text = heroData.AllianceName;
             _Class.text = heroData.ClassName;
-
             if (heroData.isMele)
             {
                 meleUnitText.SetActive(true);
@@ -262,11 +272,32 @@ namespace AutoDefense
                 rangeUnitText.SetActive(true);
             }
             
+            SetStarSprite(heroData.CurrLevel);
             _Cost.text = heroData.CurrCost.ToString();
             _border.color = heroData.Rarity.BorderColor;
             heroImage.sprite = heroData.unitSprite;
             heroData.Anim = animator;
-            heroData.Unit = this;
+        }
+
+        public void SetStarSprite(int _level)
+        {
+            if (_level<=0 || _level >= 4)
+            {
+                return;
+            }
+            switch (_level)
+            {
+                case 1:
+                    starImage.sprite = oneStarSprite;
+                    break;
+                case 2:
+                    starImage.sprite = twoStarSprite;
+                    break;
+                case 3:
+                    starImage.sprite = threeStarSprite;
+                    break;
+            }
+            starImage.SetNativeSize();
         }
 
         public void ToggleHighlight(bool _value,Color _color)

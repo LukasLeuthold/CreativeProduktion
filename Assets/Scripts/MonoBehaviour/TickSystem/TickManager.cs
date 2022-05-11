@@ -290,11 +290,11 @@ namespace AutoDefense
                             EnemyData edata = sortEnemys.Peek();
 
                             sortEnemys.Dequeue();
-                            pRessources.PlayerHealth -= edata.EnemyThreatLevel.PlayerDamage;
                             edata.DestroyEnemy();
                             GameField.Instance.EnemyList.RemoveAt(e);
                             GameField.Instance.Slots[x, y].GetComponent<EnemyField>().EnemyOnField = null;
 
+                            pRessources.PlayerHealth -= edata.EnemyThreatLevel.PlayerDamage;
                             yield return new WaitForSeconds(time);
                         }
                     }
@@ -308,7 +308,7 @@ namespace AutoDefense
         public void CallOnWaveEnd()
         {
             onWaveEnd.Raise(LevelI.CurrWave);
-            CallOnEaveOverEffects();
+            CallOnWaveOverEffects();
         }
         public void CallOnEditStart()
         {
@@ -322,7 +322,7 @@ namespace AutoDefense
         {
             onHeroTurnStartEffects.ActivateEffects();
         }
-        internal void CallOnEaveOverEffects()
+        internal void CallOnWaveOverEffects()
         {
             onWaveOverEffects.ActivateEffects();
         }
