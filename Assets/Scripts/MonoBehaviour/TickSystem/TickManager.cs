@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +17,7 @@ namespace AutoDefense
         [SerializeField] internal LevelInfo LevelI;
         [SerializeField] internal TMP_Text currStateText;
 
-        
+
 
         [SerializeField] internal Slider timeSlider;
         [SerializeField] internal int editTime;
@@ -290,14 +289,14 @@ namespace AutoDefense
                             EnemyData edata = sortEnemys.Peek();
 
                             sortEnemys.Dequeue();
-                            pRessources.PlayerHealth -= edata.EnemyThreatLevel.PlayerDamage;
                             edata.DestroyEnemy();
                             GameField.Instance.EnemyList.RemoveAt(e);
                             GameField.Instance.Slots[x, y].GetComponent<EnemyField>().EnemyOnField = null;
-
-                            yield return new WaitForSeconds(time);
+                            pRessources.PlayerHealth -= edata.EnemyThreatLevel.PlayerDamage;
+                            break;
                         }
                     }
+                    yield return new WaitForSeconds(time);
                 }
 
             }
