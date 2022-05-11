@@ -9373,7 +9373,7 @@ MonoBehaviour:
   currStateText: {fileID: 840408013}
   timeSlider: {fileID: 1660544710}
   editTime: 200
-  breakTime: 0
+  breakTime: 1
   enemySpawner: {fileID: 1896895793}
   SkipButton: {fileID: 1557589588}
   BlockImage: {fileID: 744178432}

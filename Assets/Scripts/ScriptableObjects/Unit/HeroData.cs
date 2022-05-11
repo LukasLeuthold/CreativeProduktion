@@ -10,14 +10,18 @@ namespace AutoDefense
         public bool isMele;
 
         [SerializeField] private StatBlock[] unitStats = new StatBlock[3];
+
+        [Header("Level")]
         [SerializeField, Range(1, 3)] private int currLevel = 1;
+        
+
+        [Header("HeroCollections")]
+        [SerializeField] private HeroCollection allianceAttribute;
+        [SerializeField] private HeroCollection classAttribute;
         [SerializeField] private HeroCollection activeHeroCollection;
 
-        [Header("Attributes")]
-        [SerializeField] private HeroCollection allianceAttribute;
 
 
-        [SerializeField] private HeroCollection classAttribute;
         [Header("Rarity")]
         [SerializeField] private HeroRarity rarity;
 
@@ -59,6 +63,14 @@ namespace AutoDefense
                 if (value < 1 || 3 < value)
                 {
                     return;
+                }
+                switch (value)
+                {
+                    case 1:
+
+                        break;
+                    default:
+                        break;
                 }
                 currLevel = value;
                 CurrStatBlock = unitStats[currLevel - 1];

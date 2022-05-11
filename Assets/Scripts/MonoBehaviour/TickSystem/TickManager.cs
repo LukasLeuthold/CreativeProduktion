@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace AutoDefense
         [SerializeField] internal LevelInfo LevelI;
         [SerializeField] internal TMP_Text currStateText;
 
-
+        
 
         [SerializeField] internal Slider timeSlider;
         [SerializeField] internal int editTime;
@@ -292,11 +293,11 @@ namespace AutoDefense
                             edata.DestroyEnemy();
                             GameField.Instance.EnemyList.RemoveAt(e);
                             GameField.Instance.Slots[x, y].GetComponent<EnemyField>().EnemyOnField = null;
+
                             pRessources.PlayerHealth -= edata.EnemyThreatLevel.PlayerDamage;
-                            break;
+                            yield return new WaitForSeconds(time);
                         }
                     }
-                    yield return new WaitForSeconds(time);
                 }
 
             }
@@ -307,7 +308,7 @@ namespace AutoDefense
         public void CallOnWaveEnd()
         {
             onWaveEnd.Raise(LevelI.CurrWave);
-            CallOnEaveOverEffects();
+            CallOnWaveOverEffects();
         }
         public void CallOnEditStart()
         {
@@ -321,7 +322,7 @@ namespace AutoDefense
         {
             onHeroTurnStartEffects.ActivateEffects();
         }
-        internal void CallOnEaveOverEffects()
+        internal void CallOnWaveOverEffects()
         {
             onWaveOverEffects.ActivateEffects();
         }
