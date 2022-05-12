@@ -16,7 +16,7 @@ namespace AutoDefense
         
         [HideInInspector]public bool isGrabing;
 
-        public SOGameField sOGameField;
+        //public SOGameField sOGameField;
 
         private void Awake()
         {
@@ -29,10 +29,10 @@ namespace AutoDefense
                 Destroy(gameObject);
             }
 
-            for (int i = 0; i < 6; i++)
-            {
-                sOGameField.HDatas[i] = null;
-            }           
+            //for (int i = 0; i < 6; i++)
+            //{
+            //    sOGameField.HDatas[i] = null;
+            //}           
         }
 
     }

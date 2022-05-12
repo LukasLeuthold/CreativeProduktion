@@ -7,12 +7,7 @@ namespace AutoDefense
     [CreateAssetMenu(menuName ="ScriptableValues/FloatValue",fileName = "new ScriptableFloatValue")]
     public class ScriptableFloatValue : ScriptableObject
     {
-        [SerializeField] private float value;
-        public float Value { get; set; }
-
-        private void OnValidate()
-        {
-            Value = value;
-        }
+        [SerializeField] private float myValue;
+        public float Value { get => myValue; set => myValue = value; }
     }
 }

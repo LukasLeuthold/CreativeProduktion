@@ -16,7 +16,6 @@ namespace AutoDefense
             tickManager.ResetSlider(tickManager.editTime);
             tickManager.currStateText.text = "Edit";
             tickManager.LevelI.CurrWave++;
-           // tickManager.SwitchDragDropGameAll(true);
             tickManager.BlockImage.SetActive(false);
             tickManager.CallOnEditStart();
             for (int i = 0; i < 2; i++)
@@ -38,12 +37,6 @@ namespace AutoDefense
             tickManager.currTime += Time.deltaTime;
             tickManager.timeSlider.value = tickManager.currTime;
 
-            //if (tickManager.LevelI.CurrWave > tickManager.LevelI.MaxWaveCount)
-            //{
-            //    //TODO End Level
-            //    Debug.Log("Level End");
-            //}
-            //else
             if (tickManager.currTime >= tickManager.editTime)
             {
                 
@@ -57,7 +50,6 @@ namespace AutoDefense
             tickManager.BlockImage.SetActive(true);
             tickManager.SkipButton.SetActive(false);
             tickManager.CallOnEditEnd();
-            //tickManager.SwitchDragDropGameAll(false);
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,13 +7,10 @@ namespace AutoDefense
     {
         public int count;
 
-        public SOGameField _SOGameField;
-
-
         public HeroData _HData;
 
         public bool isGameField;
-        
+
         public DragDrop Unit;
         private DragDrop lastUnit;
         public Vector2 field;
@@ -34,31 +29,56 @@ namespace AutoDefense
         }
         public void OnDrop(PointerEventData eventData)
         {
-             if (eventData.pointerDrag != null && _HData != null)
+            if (eventData.pointerDrag != null && _HData != null)
             {
                 //Tauschen von Units
 
                 //Momentane Unit die getauscht wird
+
+                //geforcte unit auf position der gedroppten unit
                 Unit.GetComponent<RectTransform>().anchoredPosition = eventData.pointerDrag.GetComponent<DragDrop>().LastSlot.GetComponent<RectTransform>().anchoredPosition;
+
+                //geforcte unit zuweisung von unitslot der gedroppten unit
                 Unit.LastSlot = eventData.pointerDrag.GetComponent<DragDrop>().LastSlot;
-                if (Unit.LastSlot.isGameField)
-                {
-                    Unit.LastSlot._SOGameField.HDatas[Unit.LastSlot.count] = Unit.HData;
-                }
-                
+
+                //geforcte unit als alte unit
                 lastUnit = Unit;
-               //Unit vom DragDrop
-                Unit = eventData.pointerDrag.GetComponent<DragDrop>();
-                Unit.LastSlot.Unit = lastUnit;
+                //dem alten feld der gedroppten unit wird hdata der geforcten unit zugewiesen
                 Unit.LastSlot._HData = _HData;
-                GetInfo(eventData);
-                
+                //gedroppte unit wird dem feld zugewiesen
+                Unit = eventData.pointerDrag.GetComponent<DragDrop>();
+                //dem alten feld der gedroppten uniit wird geforcte unit zugewiesen
+                Unit.LastSlot.Unit = lastUnit;
+                //hdata wird erneuert mit gedroppter hdata
                 _HData = Unit.HData;
+                
+
                 if (isGameField)
                 {
-                    _SOGameField.HDatas[count] = (HeroData)_HData;
-                    _HData.PlaceOnField(Unit);
+                    //gamefield wird gesetzt von diesem feld
+                    if (Unit.LastSlot.isGameField)
+                    {
+                        //add dropped
+                        Unit.HData.PlaceOnField(Unit);
+                    }
+                    else
+                    {
+                        lastUnit.HData.RemoveFromField(lastUnit);
+
+                        //neue hdata wird platziert
+                        Unit.HData.PlaceOnField(Unit);
+                    }
                 }
+                else
+                {
+                    if (eventData.pointerDrag.GetComponent<DragDrop>().LastSlot.isGameField)
+                    {
+                        //added geforcte unit zu gamefield so
+                        lastUnit.HData.PlaceOnField(lastUnit);
+                    }
+                }
+                //verankert gedroppte unit auf diesem feld
+                GetInfo(eventData);
             }
             else if (eventData.pointerDrag != null && !isGameField)
             {
@@ -70,16 +90,15 @@ namespace AutoDefense
                 GetInfo(eventData);
             }
             else if (eventData.pointerDrag != null)
-            {   
+            {
                 //Wenn keine Unit aufm feld stellt
                 Unit = eventData.pointerDrag.GetComponent<DragDrop>();
-                
+
                 DeletData();
-                
+
                 if (isGameField)
                 {
                     _HData = Unit.HData;
-                    _SOGameField.HDatas[count] = _HData;
                     _HData.PlaceOnField(Unit);
                 }
 
@@ -96,7 +115,7 @@ namespace AutoDefense
             {
                 Unit.LastSlot.Unit = null;
 
-                 Unit.LastSlot._HData = null;
+                Unit.LastSlot._HData = null;
             }
         }
         private void GetInfo(PointerEventData _eventData)

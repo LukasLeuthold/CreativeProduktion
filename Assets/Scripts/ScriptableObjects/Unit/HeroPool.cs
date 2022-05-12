@@ -16,9 +16,6 @@ namespace AutoDefense
 
         List<HeroData> possibleChosenHero;
 
-        //TODO: test only delete before release
-        public ProbabilityDistribution Prop;
-        //
         public HeroData[] GetLineUp(int _amount, ProbabilityDistribution _probability)
         {
             HeroData[] lineUp = new HeroData[_amount];
@@ -31,8 +28,6 @@ namespace AutoDefense
                 HeroData chosenHero = null;
                 possibleChosenHero = new List<HeroData>();
                 int value = UtilRandom.GetRandomIntFromRange(0, 100);
-                //do
-                //{
                 if (!commonUnitEmpty && value <= _probability.probabilityCommon)
                 {
                     foreach (KeyValuePair<string, HeroDataCount> dicEntry in dicCommonHeros)
@@ -75,25 +70,12 @@ namespace AutoDefense
                         lordUnitempty = true;
                     }
 
-                    //int number = UtilRandom.GetRandomIntFromRange(0, dicLordHeros.Count);
-                    //    chosenHero = (HeroData)dicLordHeros.ElementAt(number).Value.heroData.GetCopy();
                 }
-                //} while (possibleChosenHero.Count <= 0);
                 int number2 = UtilRandom.GetRandomIntFromRange(0, possibleChosenHero.Count);
                 chosenHero = possibleChosenHero[number2].GetCopy();
                 SubtractUnitCount(chosenHero.name, 1);
                 lineUp[i] = chosenHero;
             }
-            //Debug.Log("lineUp: ");
-            //for (int i = 0; i < lineUp.Length; i++)
-            //{
-            //    if (lineUp[i] == null)
-            //    {
-            //        Debug.Log("Unit null");
-            //        continue;
-            //    }
-            //    //Debug.Log("Unit: " + lineUp[i]);
-            //}
             return lineUp;
         }
         public void AddUnitCount(string _heroName, int _amount = 1)

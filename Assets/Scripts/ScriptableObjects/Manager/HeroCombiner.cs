@@ -85,7 +85,7 @@ namespace AutoDefense
             if (_spawnSlot.isGameField)
             {
                 clone.GetComponent<DragDrop>().HData.PlaceOnField(clone.GetComponent<DragDrop>());
-                GameField.Instance.sOGameField.HDatas[_spawnSlot.count] = clone.GetComponent<DragDrop>().HData;
+               // GameField.Instance.sOGameField.HDatas[_spawnSlot.count] = clone.GetComponent<DragDrop>().HData;
             }
             _spawnSlot.Unit = clone.GetComponent<DragDrop>();
             _spawnSlot._HData = _heroData;
@@ -96,7 +96,7 @@ namespace AutoDefense
             if (_heroPrefab.LastSlot.isGameField)
             {
                 _heroPrefab.HData.RemoveFromField(_heroPrefab);
-                GameField.Instance.sOGameField.HDatas[_heroPrefab.LastSlot.count] = null;
+                //GameField.Instance.sOGameField.HDatas[_heroPrefab.LastSlot.count] = null;
             }
             _heroPrefab.LastSlot._HData = null;
             _heroPrefab.LastSlot.Unit = null;

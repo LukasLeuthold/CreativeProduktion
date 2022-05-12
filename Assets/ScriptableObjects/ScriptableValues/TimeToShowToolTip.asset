@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765241c0fa582cb499540fc9aa0a8180, type: 3}
   m_Name: TimeToShowToolTip
   m_EditorClassIdentifier: 
-  value: 0.4
+  myValue: 1.5

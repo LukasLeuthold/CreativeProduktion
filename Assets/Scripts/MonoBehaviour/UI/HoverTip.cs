@@ -15,7 +15,7 @@ namespace AutoDefense
         public void OnPointerEnter(PointerEventData eventData)
         {
             StopAllCoroutines();
-            StartCoroutine(HoverTime());
+            StartCoroutine(HoverTime(timeToShow.Value));
 
         }
 
@@ -29,9 +29,9 @@ namespace AutoDefense
             }
         }
 
-        IEnumerator HoverTime()
+        IEnumerator HoverTime(float _time)
         {
-            yield return new WaitForSeconds(timeToShow.Value);
+            yield return new WaitForSeconds(_time);
 
             if (!string.IsNullOrWhiteSpace(toolTipText))
             {

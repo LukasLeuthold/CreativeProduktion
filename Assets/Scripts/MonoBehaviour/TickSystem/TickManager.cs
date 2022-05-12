@@ -32,7 +32,7 @@ namespace AutoDefense
 
         [SerializeField] private PlayerRessources pRessources;
 
-        [SerializeField] private SOGameField _Field;
+        [SerializeField] private HeroCollection activeHeroes;
         Queue<HeroData> sortHeros = new Queue<HeroData>();
         Queue<EnemyData> sortEnemys = new Queue<EnemyData>();
 
@@ -90,7 +90,7 @@ namespace AutoDefense
 
         internal void UnitAttack()
         {
-            HeroData[] hDatas = _Field.HDatas;
+            HeroData[] hDatas = activeHeroes.ToArray();
             GameObject[,] slots = GameField.Instance.Slots;
 
             List<HeroData> herosOnField = new List<HeroData>();

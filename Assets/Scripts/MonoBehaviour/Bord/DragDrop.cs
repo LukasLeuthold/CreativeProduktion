@@ -150,7 +150,6 @@ namespace AutoDefense
             if (LastSlot != null && LastSlot.isGameField)
             {
                 LastSlot._HData = null;
-                LastSlot._SOGameField.HDatas[LastSlot.count] = null;
                 heroData.RemoveFromField(this);
 
             }

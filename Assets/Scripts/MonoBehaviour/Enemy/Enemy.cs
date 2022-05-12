@@ -59,7 +59,6 @@ namespace AutoDefense
             enemyData.anim = animator;
             enemyData.DamageText = damageNumber;
             enemyData.enemyPrefab = this;
-            //TODO: use to update enemy card values from data
         }
 
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace AutoDefense
@@ -42,21 +43,11 @@ namespace AutoDefense
                 if (currActiveEffect != null)
                 {
                     currActiveEffect.effect.RemoveEffectFromGroup(this);
-                    //Debug.Log("removed: " + currActiveEffect.effect.name);
                 }
                 currActiveEffect = value;
-                //if (currActiveEffect != null)
-                //{
-                //    Debug.Log("new value: " + currActiveEffect.effect.name);
-                //}
-                //else
-                //{
-                //    Debug.Log("no effect");
-                //}
                 if (currActiveEffect != null)
                 {
                     currActiveEffect.effect.ApplyEffectToGroup(this);
-                    //Debug.Log("applied: " + currActiveEffect.effect.name);
                 }
             }
         }
@@ -275,6 +266,33 @@ namespace AutoDefense
                 Debug.Log("No active effect");
             }
         }
+
+
+        public HeroData[] ToArray()
+        {
+            HeroData[] heroArray;
+            int index = 0;
+            int totalCount = 0;
+
+            string[] keys = HeroesInCollection.Keys.ToArray();
+            for (int i = 0; i < HeroesInCollection.Keys.Count; i++)
+            {
+               totalCount += HeroesInCollection[keys[i]].Count;
+            }
+            heroArray = new HeroData[totalCount];
+            for (int i = 0; i < HeroesInCollection.Keys.Count; i++)
+            {
+                List<HeroData> hDatas = HeroesInCollection[keys[i]];
+                for (int j = 0; j < hDatas.Count; j++)
+                {
+                    heroArray[index+j] = hDatas[j];
+                }
+                index += hDatas.Count;
+            }
+            return heroArray;
+        }
+
+
     }
 
     [System.Serializable]
