@@ -12,25 +12,151 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7500d6b15484d049a94b754922cd27d, type: 3}
   m_Name: MainLevel
   m_EditorClassIdentifier: 
-  maxWaveCount: 3
+  maxWaveCount: 15
   currWave: 1
   difficultieCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -314.666
-      value: 100
-      inSlope: -0.111305095
-      outSlope: -0.111305095
+      time: 0
+      value: 5
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 467.39496
-      value: 12.952637
-      inSlope: -0.111305095
-      outSlope: -0.111305095
+      time: 1
+      value: 5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2
+      value: 10
+      inSlope: 0.000079165686
+      outSlope: 0.000079165686
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 10
+      inSlope: 0.0023199783
+      outSlope: 0.0023199783
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4
+      value: 15
+      inSlope: 0.0032325191
+      outSlope: 0.0032325191
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 5
+      value: 20
+      inSlope: 0.00020013898
+      outSlope: 0.00020013898
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 6
+      value: 25
+      inSlope: -0.009147922
+      outSlope: -0.009147922
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 7
+      value: 30
+      inSlope: -0.023622813
+      outSlope: -0.023622813
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 8
+      value: 35
+      inSlope: -0.030467073
+      outSlope: -0.030467073
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 9
+      value: 40
+      inSlope: -0.0459073
+      outSlope: -0.0459073
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10
+      value: 50
+      inSlope: -0.052457076
+      outSlope: -0.052457076
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 11
+      value: 60
+      inSlope: -0.07569455
+      outSlope: -0.07569455
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 12
+      value: 70
+      inSlope: -0.09752421
+      outSlope: -0.09752421
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 13
+      value: 80
+      inSlope: -0.12889661
+      outSlope: -0.12889661
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 14
+      value: 90
+      inSlope: -0.0011119316
+      outSlope: -0.0011119316
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.47574738
+    - serializedVersion: 3
+      time: 14.904449
+      value: 89.79953
+      inSlope: -0.22164862
+      outSlope: -0.22164862
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -38,6 +164,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  goldPerWave: 4
-  xpPerWave: 4
+  goldPerWave: 5
+  xpPerWave: 2
   OnGameOver: {fileID: 11400000, guid: 17df92b924336af4da04f5c0400d8083, type: 2}

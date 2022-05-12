@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d6e702cfefdd041a06d1f2be4055fe, type: 3}
   m_Name: KingBlob_TL_2
   m_EditorClassIdentifier: 
-  pointCost: 5
-  playerDamage: 5
+  pointCost: 3
+  playerDamage: 2
   enemiesInThreatLevel:
   - {fileID: 11400000, guid: 6a262871e285b4f48b7abbfde1b4a6dd, type: 2}
   - {fileID: 11400000, guid: 3a073b7cea5dac543923daf16e2ea2a7, type: 2}
