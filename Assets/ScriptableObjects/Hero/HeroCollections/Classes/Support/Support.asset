@@ -13,11 +13,8 @@ MonoBehaviour:
   m_Name: Support
   m_EditorClassIdentifier: 
   groupEffects:
-  - neededDiversity: 1
-    effect: {fileID: 11400000, guid: 01fabb555fe03d040a469bbe7048b16a, type: 2}
-    effectToolTip: 
   - neededDiversity: 2
-    effect: {fileID: 11400000, guid: 5858713858bfcf94f85dc45df3486d6c, type: 2}
-    effectToolTip: 
+    effect: {fileID: 11400000, guid: 01fabb555fe03d040a469bbe7048b16a, type: 2}
+    effectToolTip: All Heros + 3  Hp + 3  Attack
   highlightColor: {r: 1, g: 0.71392024, b: 0, a: 0.56078434}
   diversity: 0

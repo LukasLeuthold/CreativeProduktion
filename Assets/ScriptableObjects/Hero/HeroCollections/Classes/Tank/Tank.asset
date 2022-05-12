@@ -12,16 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c42e8b6218cf448d83a6d45ea3d2b, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
-  heroessssTest: []
   groupEffects:
   - neededDiversity: 2
     effect: {fileID: 11400000, guid: c2b0ddc780ed1ce4ea4c26b1a55eb44d, type: 2}
-    effectToolTip: 
-  - neededDiversity: 4
+    effectToolTip: All Tank + 5 hp
+  - neededDiversity: 3
     effect: {fileID: 11400000, guid: 4e1db35d1ad1648418596936f2eab750, type: 2}
-    effectToolTip: 
-  - neededDiversity: 6
-    effect: {fileID: 11400000, guid: 914f3e70b9c4c724784a4cbdedac7602, type: 2}
-    effectToolTip: 
+    effectToolTip: All Tank + 10 hp
   highlightColor: {r: 0.254539, g: 0.7143507, b: 0.8301887, a: 0.48235294}
   diversity: 0

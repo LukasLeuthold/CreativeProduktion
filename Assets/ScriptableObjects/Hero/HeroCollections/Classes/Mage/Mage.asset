@@ -12,16 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c42e8b6218cf448d83a6d45ea3d2b, type: 3}
   m_Name: Mage
   m_EditorClassIdentifier: 
-  heroessssTest: []
   groupEffects:
   - neededDiversity: 2
     effect: {fileID: 11400000, guid: 0f3b233609840a34db40e22b3dcded3f, type: 2}
-    effectToolTip: 
-  - neededDiversity: 4
-    effect: {fileID: 11400000, guid: 58923a3644caa4b4a8b3003db408027b, type: 2}
-    effectToolTip: 
-  - neededDiversity: 6
-    effect: {fileID: 11400000, guid: 7a89fd76cc0f18c42aca077c773ff971, type: 2}
-    effectToolTip: 
+    effectToolTip: Mage can do pirce Damage(two Enemys get Damage)
   highlightColor: {r: 0.033018887, g: 0.113471925, b: 1, a: 0.6392157}
   diversity: 0

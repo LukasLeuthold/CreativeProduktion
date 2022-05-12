@@ -16,8 +16,8 @@ MonoBehaviour:
     maxHPMod: 0
     speedMod: 0
     attackMod: 0
-    rangeMod: 1
+    rangeMod: 0
     pierceMod: 0
-    amountAttackActionsMod: 0
+    amountAttackActionsMod: 1
     amountMovementActionsMod: 0
     canDoPirceDamage: 0

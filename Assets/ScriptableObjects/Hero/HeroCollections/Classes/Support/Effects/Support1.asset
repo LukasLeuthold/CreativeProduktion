@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Support1
   m_EditorClassIdentifier: 
   buffStats:
-    maxHPMod: 0
+    maxHPMod: 3
     speedMod: 0
-    attackMod: 100
+    attackMod: 3
     rangeMod: 0
     pierceMod: 0
     amountAttackActionsMod: 0

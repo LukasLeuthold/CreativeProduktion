@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Demon
   m_EditorClassIdentifier: 
   groupEffects:
-  - neededDiversity: 1
+  - neededDiversity: 4
     effect: {fileID: 11400000, guid: eac75856a02eacc4da4aacd65e1b24f9, type: 2}
-    effectToolTip: 
-  - neededDiversity: 2
+    effectToolTip: loose 2 life and get 3 gold after wave
+  - neededDiversity: 6
     effect: {fileID: 11400000, guid: a5c137fa394aacb408f2e5b23f8631ab, type: 2}
-    effectToolTip: 
+    effectToolTip: ' get 5  gold after wave'
   highlightColor: {r: 0.49731323, g: 0.08664116, b: 0.5566038, a: 0.5176471}
   diversity: 2

@@ -12,16 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c42e8b6218cf448d83a6d45ea3d2b, type: 3}
   m_Name: Ranger
   m_EditorClassIdentifier: 
-  heroessssTest: []
   groupEffects:
   - neededDiversity: 2
     effect: {fileID: 11400000, guid: 547af8bab7e01474e98e036044b74981, type: 2}
-    effectToolTip: 
-  - neededDiversity: 4
-    effect: {fileID: 11400000, guid: 7090261f61826834ebd57b448fe84034, type: 2}
-    effectToolTip: 
-  - neededDiversity: 6
-    effect: {fileID: 11400000, guid: 452bb06804c5cae4db3a4e708af16938, type: 2}
-    effectToolTip: 
+    effectToolTip: Ranger can Attack twice
   highlightColor: {r: 0.042808846, g: 0.6981132, b: 0.30510595, a: 0.6313726}
   diversity: 0

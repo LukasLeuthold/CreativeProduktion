@@ -18,4 +18,4 @@ MonoBehaviour:
   collection: {fileID: 11400000, guid: f845ce78abd1c784bb8cbc32c2aba177, type: 2}
   playerRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
   healthCost: 0
-  moneyReward: 400
+  moneyReward: 5

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: ETank1
   m_EditorClassIdentifier: 
   buffStats:
-    maxHPMod: 2
+    maxHPMod: 5
     speedMod: 0
     attackMod: 0
     rangeMod: 0
     pierceMod: 0
     amountAttackActionsMod: 0
     amountMovementActionsMod: 0
+    canDoPirceDamage: 0

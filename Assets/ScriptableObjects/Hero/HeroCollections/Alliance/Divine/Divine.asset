@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Divine
   m_EditorClassIdentifier: 
   groupEffects:
-  - neededDiversity: 1
+  - neededDiversity: 2
     effect: {fileID: 11400000, guid: 4bb2b2cd3a3c1e84e9bc113eede1e8d9, type: 2}
     effectToolTip: Heals every Divine unit for 1 hp at the start of the round
-  - neededDiversity: 3
+  - neededDiversity: 4
     effect: {fileID: 11400000, guid: e031fc5650e48654c9db324afe57cf36, type: 2}
     effectToolTip: Heals every Divine unit for 2 hp at the start of the round
-  - neededDiversity: 4
+  - neededDiversity: 6
     effect: {fileID: 11400000, guid: f7f2f4d9dcbc0634eaceed5c86ad73a9, type: 2}
     effectToolTip: Heals every Divine unit for 4 hp at the start of the round
   highlightColor: {r: 0.8113208, g: 0.6963596, b: 0.057404764, a: 0.6117647}

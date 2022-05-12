@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: EFighter1
   m_EditorClassIdentifier: 
   buffStats:
-    maxHPMod: 2
+    maxHPMod: 0
     speedMod: 0
     attackMod: 2
     rangeMod: 0
     pierceMod: 0
     amountAttackActionsMod: 0
     amountMovementActionsMod: 0
+    canDoPirceDamage: 0
