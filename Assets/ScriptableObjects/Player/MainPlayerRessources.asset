@@ -16,7 +16,7 @@ MonoBehaviour:
   startPlayerMoney: 3
   interestCalculationValue: 5
   maxPossibleInterest: 6
-  xPNeededForLevelUp: 0600000008000000100000001a000000
+  xPNeededForLevelUp: 0400000008000000100000001a000000
   probabilities:
   - {fileID: 11400000, guid: 7e50c57ffc6023f40969cdb105d306d1, type: 2}
   - {fileID: 11400000, guid: d09ff5cc1d2b64e4088db7719db87541, type: 2}
