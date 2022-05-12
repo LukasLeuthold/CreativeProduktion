@@ -73,6 +73,7 @@ namespace AutoDefense
         private Vector2 lastRectTranform;
         private CanvasGroup canvasGroup;
         [SerializeField]private Animator animator;
+        private Canvas canvas;
 
         public int CurrHP
         {
@@ -98,6 +99,7 @@ namespace AutoDefense
 
         private void Start()
         {
+            canvas = GameObject.Find("LevelCanvas").GetComponent<Canvas>();
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             currStats.SetActive(false);
@@ -161,7 +163,6 @@ namespace AutoDefense
             lastRectTranform = rectTransform.anchoredPosition;
             transform.SetAsLastSibling();
         }
-
         public void OnDrag(PointerEventData eventData)
         {
             if (CantDragDrop)
@@ -169,9 +170,8 @@ namespace AutoDefense
                 return;
             }
             
-            rectTransform.anchoredPosition += eventData.delta;
+            rectTransform.anchoredPosition += eventData.delta/canvas.scaleFactor;
         }
-
         public void OnEndDrag(PointerEventData eventData)
         {
 
@@ -186,6 +186,7 @@ namespace AutoDefense
                 heroData.PlaceOnField(this);
                 }
                 rectTransform.anchoredPosition = lastRectTranform;
+                LastSlot._HData = HData;
             }
             haveSlot = false;
         }
