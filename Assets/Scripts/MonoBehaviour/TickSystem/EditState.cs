@@ -16,6 +16,7 @@ namespace AutoDefense
             tickManager.ResetSlider(tickManager.editTime);
             tickManager.currStateText.text = "Edit";
             tickManager.LevelI.CurrWave++;
+       
             tickManager.BlockImage.SetActive(false);
             tickManager.CallOnEditStart();
             for (int i = 0; i < 2; i++)

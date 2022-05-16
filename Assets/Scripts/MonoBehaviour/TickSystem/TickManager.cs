@@ -17,6 +17,8 @@ namespace AutoDefense
         [SerializeField] internal LevelInfo LevelI;
         [SerializeField] internal TMP_Text currStateText;
 
+        [SerializeField] private Text currWave;
+        [SerializeField] private Text maxWave;
 
 
         [SerializeField] internal Slider timeSlider;
@@ -29,7 +31,8 @@ namespace AutoDefense
 
         public GameObject SkipButton;
         public GameObject BlockImage;
-        public bool SkipBreak;
+
+        [HideInInspector]public bool SkipBreak;
 
         [SerializeField] private PlayerRessources pRessources;
 
@@ -58,12 +61,14 @@ namespace AutoDefense
             {"Enemy", new EnemyFightState(this)}
         };
             state = _TickStates["Start"];
+            maxWave.text = LevelI.MaxWaveCount.ToString();
 
         }
 
         void Update()
         {
             state.HandleState();
+            currWave.text = LevelI.CurrWave.ToString();
         }
 
         public void SkipEdit()
