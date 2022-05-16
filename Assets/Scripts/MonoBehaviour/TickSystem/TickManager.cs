@@ -29,6 +29,7 @@ namespace AutoDefense
 
         public GameObject SkipButton;
         public GameObject BlockImage;
+        public bool SkipBreak;
 
         [SerializeField] private PlayerRessources pRessources;
 
@@ -171,6 +172,7 @@ namespace AutoDefense
                     sortHeros.Dequeue();
                 }
             }
+
             SetState("Break");
         }
         private void _Attack()
@@ -327,5 +329,9 @@ namespace AutoDefense
             onWaveOverEffects.ActivateEffects();
         }
 
+        public void Toggle_Change(bool newValue)
+        {
+            SkipBreak = newValue;
+        }
     }
 }
