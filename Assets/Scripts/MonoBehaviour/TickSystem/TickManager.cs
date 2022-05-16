@@ -137,6 +137,10 @@ namespace AutoDefense
             {
                 StartCoroutine(_UnitsAttack());
             }
+            else if (SkipBreak)
+            {
+                SetState("Fight");
+            }
             else
             {
                 SetState("Break");
@@ -173,7 +177,15 @@ namespace AutoDefense
                 }
             }
 
-            SetState("Break");
+             if (SkipBreak)
+            {
+                SetState("Fight");
+            }
+            else
+            {
+
+                SetState("Break");
+            }
         }
         private void _Attack()
         {
@@ -331,7 +343,7 @@ namespace AutoDefense
 
         public void Toggle_Change(bool newValue)
         {
-            SkipBreak = newValue;
+            SkipBreak = !SkipBreak;
         }
     }
 }

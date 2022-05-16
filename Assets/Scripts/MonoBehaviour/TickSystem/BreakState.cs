@@ -30,11 +30,8 @@ namespace AutoDefense
         {
             tickManager.currTime += Time.deltaTime;
             tickManager.timeSlider.value = tickManager.currTime;
-            if (tickManager.SkipBreak)
-            {
-                tickManager.SetState("Fight");
-            }
-            else if (tickManager.currTime >= tickManager.breakTime)
+
+            if (tickManager.currTime >= tickManager.breakTime)
             {
                 tickManager.SetState("Fight");
             }
