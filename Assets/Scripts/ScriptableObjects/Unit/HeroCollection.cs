@@ -200,7 +200,7 @@ namespace AutoDefense
             }
             else
             {
-                toolTip += "\n";
+                toolTip += "No active effect";
             }
             return toolTip;
         }

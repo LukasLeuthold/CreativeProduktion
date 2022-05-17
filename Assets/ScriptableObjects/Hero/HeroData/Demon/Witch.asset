@@ -16,12 +16,12 @@ MonoBehaviour:
   currStatBlock:
     amountAttackActions: 1
     amountMovementActions: 1
-    maxHP: 1
+    maxHP: 2
     currHP: 0
     speed: 0
-    attack: 4
+    attack: 3
     pierce: 0
-    range: 3
+    range: 2
   currStatModifier:
     maxHPMod: 0
     speedMod: 0
@@ -36,10 +36,18 @@ MonoBehaviour:
   unitStats:
   - amountAttackActions: 1
     amountMovementActions: 1
-    maxHP: 1
+    maxHP: 2
     currHP: 0
     speed: 0
-    attack: 4
+    attack: 3
+    pierce: 0
+    range: 2
+  - amountAttackActions: 1
+    amountMovementActions: 1
+    maxHP: 2
+    currHP: 0
+    speed: 0
+    attack: 3
     pierce: 0
     range: 3
   - amountAttackActions: 1
@@ -47,17 +55,9 @@ MonoBehaviour:
     maxHP: 2
     currHP: 0
     speed: 0
-    attack: 4
+    attack: 5
     pierce: 0
     range: 4
-  - amountAttackActions: 1
-    amountMovementActions: 1
-    maxHP: 2
-    currHP: 0
-    speed: 0
-    attack: 6
-    pierce: 0
-    range: 5
   currLevel: 1
   allianceAttribute: {fileID: 11400000, guid: c1215f8c4fdf45a488fe924642e66c4b, type: 2}
   classAttribute: {fileID: 11400000, guid: 2d594c65d938fe145885a1a686a74e37, type: 2}

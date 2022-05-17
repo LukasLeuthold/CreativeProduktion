@@ -19,7 +19,7 @@ MonoBehaviour:
     maxHP: 2
     currHP: 0
     speed: 0
-    attack: 15
+    attack: 11
     pierce: 0
     range: 3
   currStatModifier:
@@ -39,15 +39,15 @@ MonoBehaviour:
     maxHP: 2
     currHP: 0
     speed: 0
-    attack: 15
+    attack: 11
     pierce: 0
     range: 3
   - amountAttackActions: 1
     amountMovementActions: 1
-    maxHP: 4
+    maxHP: 3
     currHP: 0
     speed: 0
-    attack: 18
+    attack: 14
     pierce: 0
     range: 4
   - amountAttackActions: 1
@@ -55,9 +55,9 @@ MonoBehaviour:
     maxHP: 4
     currHP: 0
     speed: 0
-    attack: 25
+    attack: 20
     pierce: 0
-    range: 6
+    range: 5
   currLevel: 1
   allianceAttribute: {fileID: 11400000, guid: 58de748fd1cee0c448e9dd0ea6f5f50b, type: 2}
   classAttribute: {fileID: 11400000, guid: 6d0152e4df99dca4ba74343e62483cac, type: 2}
