@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ceb25e318afd34194750557b482060, type: 3}
   m_Name: Common
   m_EditorClassIdentifier: 
-  borderColor: {r: 0.17021184, g: 0.8018868, b: 0.20285144, a: 1}
+  borderColor: {r: 0.20741367, g: 0.5566038, b: 0.22879265, a: 1}
   cost: 1

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ceb25e318afd34194750557b482060, type: 3}
   m_Name: Rare
   m_EditorClassIdentifier: 
-  borderColor: {r: 0.0514418, g: 0.17069997, b: 0.6415094, a: 1}
+  borderColor: {r: 0.109069064, g: 0.16995865, b: 0.4056604, a: 1}
   cost: 3
