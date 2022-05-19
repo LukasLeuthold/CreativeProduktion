@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MainPlayerRessources
   m_EditorClassIdentifier: 
   startPlayerHealth: 20
-  startPlayerMoney: 3
+  startPlayerMoney: 30000
   interestCalculationValue: 5
   maxPossibleInterest: 6
   xPNeededForLevelUp: 0400000008000000100000001a000000

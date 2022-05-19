@@ -228,7 +228,7 @@ namespace AutoDefense
             dicGroupEffect = new Dictionary<int, GroupEffect>();
             currActiveEffect = null;
             diversity = 0;
-            if (groupEffects.Length == 0)
+            if (groupEffects ==null ||groupEffects.Length == 0)
             {
                 return;
             }
