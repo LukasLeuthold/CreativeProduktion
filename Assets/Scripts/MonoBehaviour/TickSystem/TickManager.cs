@@ -160,7 +160,8 @@ namespace AutoDefense
             {
                 if (!sortHeros.Peek().Unit.isDead && (int)sortHeros.Peek().Unit.LastSlot.field.x == 0 && !sortHeros.Peek().isMele)
                 {
-                    for (int e = 0; e < sortHeros.Peek().CurrStatBlock.AmountAttackActions; e++)
+                    int attackAmount = sortHeros.Peek().CurrStatBlock.AmountAttackActions + sortHeros.Peek().CurrStatModifier.AmountAttackActionsMod;
+                    for (int e = 0; e < attackAmount; e++)
                     {
                         _Attack();
                         yield return new WaitForSeconds(time);
@@ -169,7 +170,8 @@ namespace AutoDefense
                 }
                 else if (!sortHeros.Peek().Unit.isDead && (int)sortHeros.Peek().Unit.LastSlot.field.x == 1)
                 {
-                    for (int e = 0; e < sortHeros.Peek().CurrStatBlock.AmountAttackActions; e++)
+                    int attackAmount = sortHeros.Peek().CurrStatBlock.AmountAttackActions + sortHeros.Peek().CurrStatModifier.AmountAttackActionsMod;
+                    for (int e = 0; e < attackAmount; e++)
                     {
                         _Attack();
                         yield return new WaitForSeconds(time);
