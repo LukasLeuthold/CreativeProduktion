@@ -15,3 +15,4 @@ MonoBehaviour:
   amountToCombine: 3
   maxLevel: 3
   heroPrefab: {fileID: 5838227218692730145, guid: afe58b98458a7ce4883f4dcc1eac1c6c, type: 3}
+  onHeroLevelUp: {fileID: 11400000, guid: cb054397c9a6b9c4c8439fffe8231e7e, type: 2}

@@ -11,6 +11,7 @@ namespace AutoDefense
         [SerializeField]private PlayerRessources pRessources;
         [SerializeField]private HeroPool heroPool;
         [SerializeField]private HeroCombiner heroCombiner;
+        [SerializeField]private AUDIOScriptableEvent onUnitSell;
 
         [Header("Bin Icon")]
         [SerializeField]private Image recycleFieldImage;
@@ -49,6 +50,7 @@ namespace AutoDefense
             }
             Destroy(eventData.pointerDrag);
             recycleFieldImage.sprite = closedTrashSprite;
+            onUnitSell.Raise();
         }
 
         public void OnPointerEnter(PointerEventData eventData)

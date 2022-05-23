@@ -10,6 +10,8 @@ namespace AutoDefense
         [SerializeField,Min(2)] private int amountToCombine;
         [SerializeField] private int maxLevel;
         [SerializeField] private GameObject heroPrefab;
+        [SerializeField] private AUDIOScriptableEvent onHeroLevelUp;
+
 
         public int AmountToCombine
         {
@@ -89,6 +91,7 @@ namespace AutoDefense
             }
             _spawnSlot.Unit = clone.GetComponent<DragDrop>();
             _spawnSlot._HData = _heroData;
+            onHeroLevelUp.Raise();
             return clone.GetComponent<DragDrop>();
         }
         private void RemoveFromGame(DragDrop _heroPrefab)
