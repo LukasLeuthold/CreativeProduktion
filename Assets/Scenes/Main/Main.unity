@@ -9207,7 +9207,7 @@ MonoBehaviour:
   fastSource: {fileID: 1698311292}
   slowSource: {fileID: 507753567}
   blendSpeed: 0.002
-  isEditTime: 1
+  isEditTime: 0
 --- !u!114 &842067910
 MonoBehaviour:
   m_ObjectHideFlags: 0
