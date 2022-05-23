@@ -108,5 +108,9 @@ namespace AutoDefense
         {
             return $"Enemy {name}";
         }
+
+        public override void Initialize()
+        {
+        }
     }
 }

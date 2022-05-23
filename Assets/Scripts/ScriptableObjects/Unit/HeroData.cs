@@ -122,5 +122,10 @@ namespace AutoDefense
         {
             return $"name: {name}; maxHP{this.CurrStatBlock.MaxHP}; maxHPMod{CurrStatModifier.MaxHPMod}";
         }
+
+        public override void Initialize()
+        {
+            CurrStatModifier = new ModifierBlock();
+        }
     }
 }

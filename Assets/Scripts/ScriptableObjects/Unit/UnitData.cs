@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AutoDefense
 {
-    public abstract class UnitData : ScriptableObject
+    public abstract class UnitData : InitScriptObject
     {
         public Sprite unitSprite;
         [SerializeField] private StatBlock currStatBlock;
