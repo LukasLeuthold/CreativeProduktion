@@ -10,7 +10,7 @@ namespace AutoDefense
     public class AUDIOScriptableEvent : ScriptableObject
     {
         [SerializeField] AudioClip clip;
-        [SerializeField,Range(0,1)] float volume;
+        [SerializeField,Range(0,1)] float volume = 1;
         [SerializeField] AudioMixerGroup mixer;
         [SerializeField] AudioPlayMode mode = AudioPlayMode.ONESHOT;
 

@@ -29,6 +29,8 @@ namespace AutoDefense
         public event Action<HeroData> OnRemovedFromCollection;
 
         [SerializeField] private int diversity;
+        [SerializeField] private AUDIOScriptableEvent OnBuffActivated;
+        [SerializeField] private AUDIOScriptableEvent OnBuffDeactivated;
 
         private int lowestDiversity;
 
@@ -44,10 +46,16 @@ namespace AutoDefense
                 {
                     currActiveEffect.effect.RemoveEffectFromGroup(this);
                 }
+              
                 currActiveEffect = value;
                 if (currActiveEffect != null)
                 {
                     currActiveEffect.effect.ApplyEffectToGroup(this);
+                    OnBuffActivated?.Raise();
+                }
+                else
+                {
+                    OnBuffDeactivated?.Raise();
                 }
             }
         }

@@ -21,3 +21,5 @@ MonoBehaviour:
     effectToolTip: All Tank + 10 hp
   highlightColor: {r: 0.254539, g: 0.7143507, b: 0.8301887, a: 0.48235294}
   diversity: 0
+  OnBuffActivated: {fileID: 11400000, guid: b3ac5f860c0378d408b0cb3b407f9db9, type: 2}
+  OnBuffDeactivated: {fileID: 11400000, guid: b705910c4d5bde740add7afc66ec143a, type: 2}

@@ -14,7 +14,13 @@ namespace AutoDefense
         /// </summary>
         public void OnEventRaised(AudioClip _clip, AudioPlayMode _mode,float _volume, AudioMixerGroup _mixer)
         {
-            //source.clip = clip;
+            if (source.isPlaying)
+            {
+                source.Stop();
+            }
+            source.volume = _volume;
+            source.outputAudioMixerGroup = _mixer;
+
             switch (_mode)
             {
                 case AudioPlayMode.ONESHOT:

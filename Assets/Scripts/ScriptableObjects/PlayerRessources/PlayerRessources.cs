@@ -33,6 +33,13 @@ namespace AutoDefense
         [SerializeField]private INT2ScriptableEvent OnPlayerXpChanged;
         [SerializeField]private INTScriptableEvent OnPlayerHpChanged;
         [SerializeField]private BOOLScriptableEvent OnGameOver;
+
+        [Header("Audio")]
+        [SerializeField]private AUDIOScriptableEvent OnPlayerLevelUp;
+        [SerializeField]private AUDIOScriptableEvent OnPlayerLifeLost;
+
+
+
         public int PlayerMoney 
         {
             get => playerMoney;
@@ -66,6 +73,7 @@ namespace AutoDefense
                     OnGameOver?.Raise(false);
                     return;
                 }
+                OnPlayerLifeLost?.Raise();
                 OnPlayerHpChanged?.Raise(playerHealth);
             }
         }
@@ -104,6 +112,7 @@ namespace AutoDefense
                 {
                     currXP = value - xPNeededForLevelUp[(currLevel - 1)];
                     currLevel++;
+                    OnPlayerLevelUp?.Raise();
                     if (currLevel == maxLevel)
                     {
                         currXP = xPNeededForLevelUp[currLevel - 2];
@@ -127,7 +136,8 @@ namespace AutoDefense
             CurrXP = 0;
             maxLevel = xPNeededForLevelUp.Length+1;
             OnProbabilityChanged?.Raise(probabilities[currLevel - 1]);
-            PlayerHealth = startPlayerHealth;
+            playerHealth = startPlayerHealth;
+            OnPlayerHpChanged?.Raise(playerHealth);
         }
 
         public void AddXp()

@@ -13,6 +13,8 @@ namespace AutoDefense
         [SerializeField] private GameObject quitScreen;
         [SerializeField] private int mainMenuSceneIndex;
 
+        [SerializeField] private AUDIOScriptableEvent GameOver_Won;
+        [SerializeField] private AUDIOScriptableEvent GameOver_Lost;
 
         void Start()
         {
@@ -24,10 +26,12 @@ namespace AutoDefense
             if (_isWinner)
             {
                 titleText.text = "winner";
+                GameOver_Won?.Raise();
             }
             else
             {
                 titleText.text = "looser";
+                GameOver_Lost?.Raise();
             }
         }
         public void HandleQuitScreen(bool _isQuitting)
