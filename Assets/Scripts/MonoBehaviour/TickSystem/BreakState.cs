@@ -13,6 +13,11 @@ namespace AutoDefense
 
         public override void EnterState()
         {
+            if (tickManager.enemySpawner.EnemiesInWave.Count <= 0 && GameField.Instance.EnemyList.Count <= 0)
+            {
+                tickManager.CallOnWaveEnd();
+                tickManager.SetState("Edit");
+            }
             tickManager.ResetSlider(tickManager.breakTime);
             tickManager.currStateText.text = "Break";
             for (int i = 0; i < 2; i++)

@@ -184,7 +184,12 @@ namespace AutoDefense
                 }
             }
 
-             if (SkipBreak)
+            if (enemySpawner.EnemiesInWave.Count <= 0 && GameField.Instance.EnemyList.Count <= 0)
+            {
+                CallOnWaveEnd();
+                SetState("Edit");
+            }
+            else if (SkipBreak)
             {
                 SetState("Fight");
             }
