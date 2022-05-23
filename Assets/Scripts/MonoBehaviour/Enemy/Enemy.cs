@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace AutoDefense
@@ -13,6 +14,12 @@ namespace AutoDefense
         [SerializeField]private Image enemyImage;
         [SerializeField]private Animator animator;
         [SerializeField] private Slider hpSlider;
+
+        [SerializeField] private Text hP;
+        [SerializeField] private Text attack;
+
+
+
         public TMP_Text damageNumber;
         public EnemyField lastEnemyField;
         [HideInInspector]public int currHP;
@@ -37,6 +44,8 @@ namespace AutoDefense
         }
         private void Update()
         {
+            hP.text = currHP.ToString();
+            attack.text = (enemyData.CurrStatBlock.Attack + enemyData.CurrStatModifier.AttackMod).ToString();
             hpSlider.value = currHP;    
             if (currHP <= 0)
             {

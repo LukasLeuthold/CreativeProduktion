@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ProbabilityLvl5
   m_EditorClassIdentifier: 
   probabilityCommon: 10
-  probabilityRare: 80
-  probabilityLord: 10
+  probabilityRare: 70
+  probabilityLord: 20

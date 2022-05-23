@@ -10021,7 +10021,7 @@ MonoBehaviour:
   currWave: {fileID: 655372849}
   maxWave: {fileID: 1818124553}
   timeSlider: {fileID: 1660544710}
-  editTime: 20
+  editTime: 50
   breakTime: 5
   enemySpawner: {fileID: 1896895793}
   SkipButton: {fileID: 1557589588}
@@ -16826,7 +16826,7 @@ MonoBehaviour:
   - {fileID: 1912177893}
   - {fileID: 1145388337}
   rerollCost: 2
-  xpBuyCost: 4
+  xpBuyCost: 2
   xpBuyValue: 2
   playerRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
   rerollButton: {fileID: 1427058232}
