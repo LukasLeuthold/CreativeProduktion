@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace AutoDefense
 {
@@ -26,6 +27,8 @@ namespace AutoDefense
             {
                 GameField.Instance.Reserve[count] = this.gameObject;
             }
+            Image image = GetComponent<Image>();
+            GameField.Instance.SelectetField(Color.white, 0, image);
         }
         public void OnDrop(PointerEventData eventData)
         {

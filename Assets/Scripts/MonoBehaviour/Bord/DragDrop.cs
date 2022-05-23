@@ -155,7 +155,7 @@ namespace AutoDefense
                 heroData.RemoveFromField(this);
 
             }
-
+            ChangeFieldsSlectionBoarder(0.3f);
             canvasGroup.alpha = 0.7f;
             canvasGroup.blocksRaycasts = false;
             GameField.Instance.isGrabing = true;
@@ -174,7 +174,7 @@ namespace AutoDefense
         }
         public void OnEndDrag(PointerEventData eventData)
         {
-
+            ChangeFieldsSlectionBoarder(0);
             canvasGroup.alpha = 1f;
 
             GameField.Instance.isGrabing = false;
@@ -197,7 +197,7 @@ namespace AutoDefense
             transform.SetAsLastSibling();
             if (LastSlot.isGameField)
             {
-                PrintRangeOnField(Color.green);
+                PrintRangeOnField(Color.green, 0.2f);
             }
         }
 
@@ -207,7 +207,7 @@ namespace AutoDefense
             details.SetActive(false);
             if (LastSlot.isGameField)
             {
-                PrintRangeOnField(Color.white);
+                PrintRangeOnField(Color.white, 0);
             }
             isHiddenCard = true;
 
@@ -236,13 +236,13 @@ namespace AutoDefense
         {
             heroImage.gameObject.SetActive(!_switch);  
         }
-        private void PrintRangeOnField(Color color)
+        private void PrintRangeOnField(Color color, float alpha)
         {
             for (int i = 0; i < (heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod); i++)
             {
                 var tempColor = GameField.Instance.Slots[2 + i, (int)LastSlot.field.y].GetComponent<Image>().color;
                 tempColor = color;
-                tempColor.a = 0.25f;
+                tempColor.a = alpha;
                 GameField.Instance.Slots[2 + i, (int)LastSlot.field.y].GetComponent<Image>().color = tempColor;
             }
         }
@@ -326,6 +326,24 @@ namespace AutoDefense
             ColorHeroImage(Color.blue, 1f);
             yield return new WaitForSeconds(.1f);
             ColorHeroImage(Color.white, 1);
+        }
+
+        private void ChangeFieldsSlectionBoarder(float alpha)
+        {            
+            for (int i = 0; i < 2; i++)
+            {
+                for (int e  = 0; e < 3; e++)
+                {                    
+                    Image image = GameField.Instance.Slots[i,e].GetComponent<Image>();
+                    GameField.Instance.SelectetField(Color.white, alpha, image);
+                }
+            }
+
+            for (int i = 0; i < GameField.Instance.Reserve.Length; i++)
+            {
+                Image image = GameField.Instance.Reserve[i].GetComponent<Image>();
+                GameField.Instance.SelectetField(Color.white, alpha, image);
+            }
         }
     }
 }

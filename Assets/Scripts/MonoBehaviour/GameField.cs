@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AutoDefense
 {
@@ -8,15 +8,15 @@ namespace AutoDefense
     {
         public static GameField Instance;
 
-        //public EnemyData[] Enemys = new EnemyData[1];
+
         public List<EnemyData> EnemyList = new List<EnemyData>();
         public GameObject[,] Slots = new GameObject[10, 3];
-       
-        [HideInInspector]public GameObject[] Reserve = new GameObject[9];
-        
-        [HideInInspector]public bool isGrabing;
 
-        //public SOGameField sOGameField;
+        [HideInInspector] public GameObject[] Reserve = new GameObject[9];
+
+        [HideInInspector] public bool isGrabing;
+
+    
 
         private void Awake()
         {
@@ -29,11 +29,16 @@ namespace AutoDefense
                 Destroy(gameObject);
             }
 
-            //for (int i = 0; i < 6; i++)
-            //{
-            //    sOGameField.HDatas[i] = null;
-            //}           
+  
         }
 
+
+        public void SelectetField(Color color, float alpha, Image image)
+        {
+            var tempColor = image.color;
+            tempColor = color;
+            tempColor.a = alpha;
+            image.color = tempColor;
+        }
     }
 }
