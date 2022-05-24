@@ -7,20 +7,18 @@ namespace AutoDefense
         [SerializeField] private InitScriptObject[] initializableObjects;
         [SerializeField] private InitScriptObject[] levelInformation;
         [SerializeField] private InitScriptObject[] heroCollections;
-        [SerializeField] private InitScriptObject[] heroes;
         [SerializeField] private InitScriptObject[] enemyCollections;
         [SerializeField] private InitScriptObject[] effectCollections;
         [SerializeField] private InitScriptObject[] baseEventEffects;
+
         private void Awake()
         {
             InitializeCollection(initializableObjects);
             InitializeCollection(levelInformation);
-            InitializeCollection(heroes);
             InitializeCollection(heroCollections);
             InitializeCollection(enemyCollections);
             InitializeCollection(effectCollections);
             InitializeCollection(baseEventEffects);
-            
         }
 
         private void InitializeCollection(InitScriptObject[] _collection)

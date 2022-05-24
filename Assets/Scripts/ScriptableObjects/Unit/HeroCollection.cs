@@ -221,12 +221,12 @@ namespace AutoDefense
 
         public override void Initialize()
         {
-            //OnAddedToCollection = DebugAddingEvent;
-            //OnRemovedFromCollection = DebugRemovingEvent;
             heroesInCollection = new Dictionary<string, List<HeroData>>();
             heroDragDrops = new List<DragDrop>();
             dicGroupEffect = new Dictionary<int, GroupEffect>();
             currActiveEffect = null;
+            OnAddedToCollection = null;
+            OnRemovedFromCollection = null;
             diversity = 0;
             if (groupEffects ==null ||groupEffects.Length == 0)
             {
