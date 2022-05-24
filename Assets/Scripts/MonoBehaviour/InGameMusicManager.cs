@@ -18,6 +18,7 @@ namespace AutoDefense
         private void Start()
         {
             introSource.Play();
+            introSource.volume = 0.2f;
             isIntro = true;
             fastSource.volume = 0;
             slowSource.volume = 1;
@@ -26,14 +27,18 @@ namespace AutoDefense
         }
         private void Update()
         {
-            Debug.Log(introSource.isPlaying);
-            Debug.Log(fastSource.isPlaying + " , " + fastSource.volume);
-            Debug.Log(slowSource.isPlaying + " , " + slowSource.volume);
-            if (isIntro &&!introSource.isPlaying)
+            if (isIntro )
             {
-                fastSource.Play();
-                slowSource.Play();
-                isIntro = false;
+                if (!introSource.isPlaying)
+                {
+                    fastSource.Play();
+                    slowSource.Play();
+                    isIntro = false;
+                }
+                else
+                {
+                    introSource.volume += blendSpeed;
+                }
             }
             if (isEditTime)
             {

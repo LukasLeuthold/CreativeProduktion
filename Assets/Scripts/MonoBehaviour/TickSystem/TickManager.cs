@@ -49,6 +49,9 @@ namespace AutoDefense
         [SerializeField] private EventEffektCollection onHeroTurnStartEffects;
         [SerializeField] private EventEffektCollection onWaveOverEffects;
 
+        [Header("Audio Events")]
+        [SerializeField] internal AUDIOScriptableEvent onWaveStart;
+
         void Start()
         {
             _TickStates = new Dictionary<string, TickState>()

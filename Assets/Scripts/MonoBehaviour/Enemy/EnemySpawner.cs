@@ -11,6 +11,7 @@ namespace AutoDefense
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private int spawnProbability;
         [SerializeField] private RectTransform[] spawnFieldTransforms;
+        [SerializeField] private AUDIOScriptableEvent onEnemySpawn;
 
         private Queue<EnemyData> enemiesInWave;
         public Queue<EnemyData> EnemiesInWave
@@ -32,7 +33,6 @@ namespace AutoDefense
             {
                 EnemiesInWave = waveBuilder.BuildEnemyWave(Mathf.RoundToInt(levelInfo.DifficultieCurve.Evaluate(levelInfo.CurrWave)));
             }
-            //DebugWave();
         }
         private void DebugWave()
         {
@@ -50,7 +50,7 @@ namespace AutoDefense
 
         public void SpawnNextEnemy()
         {
-
+            bool spawnedSomething = false;
             if (levelInfo.CurrWave == levelInfo.MaxWaveCount)
             {
                 for (int i = 0; i < spawnFieldTransforms.Length; i++)
@@ -65,6 +65,7 @@ namespace AutoDefense
                             GameField.Instance.EnemyList.Add(enemy);
                     }
                 }
+                spawnedSomething = true;
             }
             else
             {
@@ -79,6 +80,7 @@ namespace AutoDefense
                             clone.GetComponent<Enemy>().EnemyData = enemy;
                             spawnFieldTransforms[i].GetComponent<EnemyField>().EnemyOnField = enemy;
                             enemy.nextPosition = spawnFieldTransforms[i].GetComponent<EnemyField>().field;
+                            spawnedSomething = true;
 
                             GameField.Instance.EnemyList.Add(enemy);
 
@@ -86,7 +88,10 @@ namespace AutoDefense
                     }
                 }
             }
-            
+            if (spawnedSomething == true)
+            {
+                onEnemySpawn?.Raise();
+            }
         }
 
     }
