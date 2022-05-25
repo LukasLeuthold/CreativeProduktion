@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +11,7 @@ namespace AutoDefense
         [SerializeField] private int xpBuyCost;
         [SerializeField] private int xpBuyValue;
         [SerializeField] private PlayerRessources playerRessources;
+        bool isMaxLevel = false;
 
         [Header("UI Elements")]
         [SerializeField] private Button rerollButton;
@@ -23,14 +22,15 @@ namespace AutoDefense
 
         private void Start()
         {
+            isMaxLevel = false;
             hPool.InitDictionaries();
-            rerollText.text = "Refresh (" + rerollCost + ")"; 
-            xpBuyText.text = "Buy Xp (" + xpBuyCost + ")"; 
+            rerollText.text = "Refresh (" + rerollCost + ")";
+            xpBuyText.text = "Buy Xp (" + xpBuyCost + ")";
             GetNewCarusell();
         }
         private void GetNewCarusell()
         {
-            HeroData[]hData = hPool.GetLineUp(hCard.Length, playerRessources.CurrProbability);
+            HeroData[] hData = hPool.GetLineUp(hCard.Length, playerRessources.CurrProbability);
             for (int i = 0; i < hCard.Length; i++)
             {
                 hCard[i].HeroData = hData[i];
@@ -39,6 +39,7 @@ namespace AutoDefense
 
         public void SetRerollable(int _value)
         {
+
             if (rerollCost <= _value)
             {
                 rerollButton.interactable = true;
@@ -51,15 +52,33 @@ namespace AutoDefense
 
         public void SetXpBuyable(int _value)
         {
-            if (xpBuyCost <= _value)
+            if (!isMaxLevel)
             {
-                xpButton.interactable = true;
-            }
-            else if (xpBuyCost > _value)
-            {
-                xpButton.interactable = false;
+                if (xpBuyCost <= _value)
+                {
+                    xpButton.interactable = true;
+                }
+                else if (xpBuyCost > _value)
+                {
+                    xpButton.interactable = false;
+                }
             }
         }
+        public void SetXpButtonInteractable(int _value)
+        {
+            if (_value < playerRessources.MaxLevel)
+            {
+                xpButton.interactable = true;
+                isMaxLevel = false;
+            }
+            else
+            {
+                xpButton.interactable = false;
+                isMaxLevel = true;
+                xpBuyText.text = "MAX";
+            }
+        }
+
         public void FreeRoll()
         {
             for (int i = 0; i < hCard.Length; i++)
@@ -88,7 +107,7 @@ namespace AutoDefense
         }
         public void BuyXp()
         {
-            playerRessources.CurrXP+=xpBuyValue;
+            playerRessources.CurrXP += xpBuyValue;
             playerRessources.PlayerMoney -= xpBuyCost;
         }
     }

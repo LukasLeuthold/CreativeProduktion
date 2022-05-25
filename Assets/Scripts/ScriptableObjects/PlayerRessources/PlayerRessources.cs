@@ -84,7 +84,11 @@ namespace AutoDefense
                 }
             }
         }
-
+        public int MaxLevel
+        {
+            get =>maxLevel;
+            set =>maxLevel = value;
+        }
 
         public int CurrXP
         {
