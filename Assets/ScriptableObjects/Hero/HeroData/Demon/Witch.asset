@@ -30,7 +30,7 @@ MonoBehaviour:
     pierceMod: 0
     amountAttackActionsMod: 0
     amountMovementActionsMod: 0
-    canDoPirceDamage: 1
+    canDoPirceDamage: 0
   Unit: {fileID: 0}
   isMele: 0
   unitStats:
