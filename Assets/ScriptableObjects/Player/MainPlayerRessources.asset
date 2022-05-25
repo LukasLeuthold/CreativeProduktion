@@ -29,3 +29,5 @@ MonoBehaviour:
   OnPlayerXpChanged: {fileID: 11400000, guid: d364f44b92774e84692029fd0ab35452, type: 2}
   OnPlayerHpChanged: {fileID: 11400000, guid: 75d83f4741575bf4daefa3f4d76b928d, type: 2}
   OnGameOver: {fileID: 11400000, guid: 17df92b924336af4da04f5c0400d8083, type: 2}
+  OnPlayerLevelUp: {fileID: 11400000, guid: a232bf7acd1ef7348a27dd771580e424, type: 2}
+  OnPlayerLifeLost: {fileID: 11400000, guid: b5b38aaa6f31c244fb927cc2820e7dea, type: 2}

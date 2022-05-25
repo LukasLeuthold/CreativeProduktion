@@ -50,6 +50,7 @@ namespace AutoDefense
         {        
             tickManager.BlockImage.SetActive(true);
             tickManager.SkipButton.SetActive(false);
+            tickManager.onWaveStart?.Raise();
             tickManager.CallOnEditEnd();
         }
     }

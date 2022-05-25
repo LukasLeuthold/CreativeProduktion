@@ -20,4 +20,6 @@ MonoBehaviour:
     effect: {fileID: 11400000, guid: a5c137fa394aacb408f2e5b23f8631ab, type: 2}
     effectToolTip: ' get 5  gold after wave'
   highlightColor: {r: 0.49731323, g: 0.08664116, b: 0.5566038, a: 0.5176471}
-  diversity: 2
+  diversity: 1
+  OnBuffActivated: {fileID: 11400000, guid: b3ac5f860c0378d408b0cb3b407f9db9, type: 2}
+  OnBuffDeactivated: {fileID: 11400000, guid: b705910c4d5bde740add7afc66ec143a, type: 2}

@@ -36,7 +36,7 @@ namespace AutoDefense
         /// <summary>
         /// on event raised invokes the respone unityevent
         /// </summary>
-        public void OnEventRaised()
+        public virtual void OnEventRaised()
         {
             response?.Invoke();
         }

@@ -13,22 +13,6 @@ namespace AutoDefense
         public bool isDead;
         public bool CantDragDrop;
 
-        public HeroData HData
-        {
-            get => heroData;
-            set
-            {
-                if (heroData != null)
-                {
-                    heroData.OnModifierChanged -= UpdateUnitCard;
-                    heroData.OnCurrStatBlockChanged -= UpdateUnitCard;
-                }
-                heroData = value;
-                UpdateUnitCard();
-                heroData.OnModifierChanged += UpdateUnitCard;
-                    heroData.OnCurrStatBlockChanged += UpdateUnitCard;
-            }
-        }
 
         private int currHP;
 
@@ -73,8 +57,25 @@ namespace AutoDefense
         private Vector2 lastRectTranform;
         private CanvasGroup canvasGroup;
         [SerializeField]private Animator animator;
+        [SerializeField]private AUDIOScriptableEvent OnUnitDeath;
         private Canvas canvas;
 
+        public HeroData HData
+        {
+            get => heroData;
+            set
+            {
+                if (heroData != null)
+                {
+                    heroData.OnModifierChanged -= UpdateUnitCard;
+                    heroData.OnCurrStatBlockChanged -= UpdateUnitCard;
+                }
+                heroData = value;
+                UpdateUnitCard();
+                heroData.OnModifierChanged += UpdateUnitCard;
+                    heroData.OnCurrStatBlockChanged += UpdateUnitCard;
+            }
+        }
         public int CurrHP
         {
             get
@@ -121,7 +122,7 @@ namespace AutoDefense
             if (CurrHP <= 0)
             {
                 isDead = true;
-
+                OnUnitDeath.Raise();
             }
            
             if (isDead)

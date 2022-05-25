@@ -49,6 +49,10 @@ namespace AutoDefense
         [SerializeField] private EventEffektCollection onHeroTurnStartEffects;
         [SerializeField] private EventEffektCollection onWaveOverEffects;
 
+        [Header("Audio Events")]
+        [SerializeField] internal AUDIOScriptableEvent onWaveStart;
+        [SerializeField] private AUDIOScriptableEvent onUnitAttack;
+
         void Start()
         {
             _TickStates = new Dictionary<string, TickState>()
@@ -174,6 +178,7 @@ namespace AutoDefense
                     for (int e = 0; e < attackAmount; e++)
                     {
                         _Attack();
+                        onUnitAttack?.Raise();
                         yield return new WaitForSeconds(time);
                     }
                     sortHeros.Dequeue();

@@ -18,3 +18,5 @@ MonoBehaviour:
     effectToolTip: Mage can do pirce Damage(two Enemys get Damage)
   highlightColor: {r: 0.033018887, g: 0.113471925, b: 1, a: 0.6392157}
   diversity: 0
+  OnBuffActivated: {fileID: 11400000, guid: b3ac5f860c0378d408b0cb3b407f9db9, type: 2}
+  OnBuffDeactivated: {fileID: 11400000, guid: b705910c4d5bde740add7afc66ec143a, type: 2}

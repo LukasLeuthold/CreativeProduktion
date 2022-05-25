@@ -20,4 +20,6 @@ MonoBehaviour:
     effect: {fileID: 11400000, guid: 8617eae2d3d045c4085ef5e24bdb7648, type: 2}
     effectToolTip: Fighter get 4 bonus Damage
   highlightColor: {r: 0.8773585, g: 0.23385492, b: 0.22761661, a: 0.7176471}
-  diversity: 0
+  diversity: 2
+  OnBuffActivated: {fileID: 11400000, guid: b3ac5f860c0378d408b0cb3b407f9db9, type: 2}
+  OnBuffDeactivated: {fileID: 11400000, guid: b705910c4d5bde740add7afc66ec143a, type: 2}

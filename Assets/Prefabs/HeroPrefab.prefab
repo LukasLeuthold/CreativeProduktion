@@ -1650,6 +1650,7 @@ MonoBehaviour:
   heroImage: {fileID: 8718536276557778854}
   highlightImage: {fileID: 5225587760699588247}
   animator: {fileID: 2686951840346532141}
+  OnUnitDeath: {fileID: 11400000, guid: b3e266dd9de92254db357511d7d817bd, type: 2}
 --- !u!225 &3202606274977018456
 CanvasGroup:
   m_ObjectHideFlags: 0
