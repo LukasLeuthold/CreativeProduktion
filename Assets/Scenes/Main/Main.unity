@@ -10307,7 +10307,6 @@ MonoBehaviour:
   onHeroTurnStartEffects: {fileID: 11400000, guid: c5c95290451784245b247ff016b7ec52, type: 2}
   onWaveOverEffects: {fileID: 11400000, guid: f845ce78abd1c784bb8cbc32c2aba177, type: 2}
   onWaveStart: {fileID: 11400000, guid: e1c39bca4f4b6514daf07725098e3ec1, type: 2}
-  onUnitAttack: {fileID: 11400000, guid: 1fa790520d0840c4db6524bfed26e7ee, type: 2}
 --- !u!114 &977695122
 MonoBehaviour:
   m_ObjectHideFlags: 0
