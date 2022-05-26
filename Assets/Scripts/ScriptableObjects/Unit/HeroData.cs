@@ -25,6 +25,11 @@ namespace AutoDefense
         [Header("Rarity")]
         [SerializeField] private HeroRarity rarity;
 
+
+        [Header("Audio")]
+        [SerializeField] private AUDIOScriptableEvent onUnitAttack;
+
+
         [SerializeField] private int currCost;
         public int CurrCost
         {
@@ -98,7 +103,7 @@ namespace AutoDefense
 
         public override void Attack(Vector2 _enemyField)
         {
-
+            onUnitAttack?.Raise();
             GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.DamageText.text = (CurrStatBlock.Attack + CurrStatModifier.AttackMod).ToString();
             GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.DamageText.gameObject.SetActive(true);
             GameField.Instance.Slots[(int)_enemyField.x, (int)_enemyField.y].GetComponent<EnemyField>().EnemyOnField.anim.Play("Damage");        

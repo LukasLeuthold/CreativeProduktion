@@ -63,4 +63,5 @@ MonoBehaviour:
   classAttribute: {fileID: 11400000, guid: 2d594c65d938fe145885a1a686a74e37, type: 2}
   activeHeroCollection: {fileID: 11400000, guid: 00cffb01dbb21b34dbd03483c3308b8a, type: 2}
   rarity: {fileID: 11400000, guid: aa5009484bda8fa47a7a95acf68f31d5, type: 2}
+  onUnitAttack: {fileID: 11400000, guid: 1fa790520d0840c4db6524bfed26e7ee, type: 2}
   currCost: 0

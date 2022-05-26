@@ -51,7 +51,6 @@ namespace AutoDefense
 
         [Header("Audio Events")]
         [SerializeField] internal AUDIOScriptableEvent onWaveStart;
-        [SerializeField] private AUDIOScriptableEvent onUnitAttack;
 
         void Start()
         {
@@ -178,7 +177,6 @@ namespace AutoDefense
                     for (int e = 0; e < attackAmount; e++)
                     {
                         _Attack();
-                        onUnitAttack?.Raise();
                         yield return new WaitForSeconds(time);
                     }
                     sortHeros.Dequeue();
