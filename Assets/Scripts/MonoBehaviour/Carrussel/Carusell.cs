@@ -12,6 +12,7 @@ namespace AutoDefense
         [SerializeField] private int xpBuyValue;
         [SerializeField] private PlayerRessources playerRessources;
         bool isMaxLevel = false;
+        [SerializeField] private GameObject shop;
 
         [Header("UI Elements")]
         [SerializeField] private Button rerollButton;
@@ -19,6 +20,7 @@ namespace AutoDefense
         [SerializeField] private Button xpButton;
         [SerializeField] private Text xpBuyText;
 
+        bool locked = false;
 
         private void Start()
         {
@@ -109,6 +111,20 @@ namespace AutoDefense
         {
             playerRessources.CurrXP += xpBuyValue;
             playerRessources.PlayerMoney -= xpBuyCost;
+        }
+
+        public void LockShop(bool _isLocked)
+        {
+                SetShop(!_isLocked);
+            locked = _isLocked;
+        }
+        public void SetShop(bool _isOpen)
+        {
+            if (locked)
+            {
+                return;
+            }
+            shop.SetActive(_isOpen);
         }
     }
 

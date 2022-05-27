@@ -15,25 +15,67 @@ namespace AutoDefense
         /// dictionary of unique heroes and the amount of them on the battlefield
         /// </summary>
         Dictionary<string, List<HeroData>> heroesInCollection;
+        /// <summary>
+        /// list of hero prefabs
+        /// </summary>
         private List<DragDrop> heroDragDrops;
+        /// <summary>
+        /// array of effects of the collection
+        /// </summary>
         public GroupEffect[] groupEffects;
+        /// <summary>
+        /// the currently active effect
+        /// </summary>
         private GroupEffect currActiveEffect;
+        /// <summary>
+        /// dictionary of effects of the collection with needed diversity as key
+        /// </summary>
         private Dictionary<int, GroupEffect> dicGroupEffect;
+        /// <summary>
+        /// color the highlight border of this collection has
+        /// </summary>
         [SerializeField] private Color highlightColor;
 
+        /// <summary>
+        /// gets called when the first unit of the collection is placed
+        /// </summary>
         public event Action<HeroCollection> OnFirstUnitPlaced;
+        /// <summary>
+        /// gets called when a parameter of the collection is changed
+        /// </summary>
         public event Action<HeroCollection> OnCollectionChanged;
+        /// <summary>
+        /// gets called when the last unit of the colleciton is removed from play
+        /// </summary>
         public event Action<HeroCollection> OnLastUnitRemoved;
 
+        /// <summary>
+        /// gets called when a unit is added to play
+        /// </summary>
         public event Action<HeroData> OnAddedToCollection;
+        /// <summary>
+        /// gets called when a unit is removed from play
+        /// </summary>
         public event Action<HeroData> OnRemovedFromCollection;
-
+        /// <summary>
+        /// the amount of unique heroes in play
+        /// </summary>
         [SerializeField] private int diversity;
+        /// <summary>
+        /// gets called when a buff is activated
+        /// </summary>
         [SerializeField] private AUDIOScriptableEvent OnBuffActivated;
+        /// <summary>
+        /// gets caled when a buff is deactivated
+        /// </summary>
         [SerializeField] private AUDIOScriptableEvent OnBuffDeactivated;
-
+        /// <summary>
+        /// lowest diversity of all effects of the collection
+        /// </summary>
         private int lowestDiversity;
-
+        /// <summary>
+        /// the currently active effect
+        /// </summary>
         public GroupEffect CurrActiveEffect
         {
             get
@@ -59,6 +101,9 @@ namespace AutoDefense
                 }
             }
         }
+        /// <summary>
+        /// the amount of unique heroes in play
+        /// </summary>
         public int Diversity
         {
             get => diversity;
@@ -132,6 +177,9 @@ namespace AutoDefense
                 }
             }
         }
+        /// <summary>
+        /// dictionary of unique heroes and the amount of them on the battlefield
+        /// </summary>
         public Dictionary<string, List<HeroData>> HeroesInCollection
         {
             get { return heroesInCollection; }
@@ -184,7 +232,10 @@ namespace AutoDefense
                 OnLastUnitRemoved?.Invoke(this);
             }
         }
-
+        /// <summary>
+        /// returns the currrent tooltip
+        /// </summary>
+        /// <returns></returns>
         public string GetToolTip()
         {
             string toolTip = this.name + "\n";
@@ -212,6 +263,9 @@ namespace AutoDefense
             }
             return toolTip;
         }
+        /// <summary>
+        /// turns on highlights for all heroes in play of the collection
+        /// </summary>
         public void TurnOnHighlights()
         {
             for (int i = 0; i < heroDragDrops.Count; i++)
@@ -219,6 +273,9 @@ namespace AutoDefense
                 heroDragDrops[i].ToggleHighlight(true, highlightColor);
             }
         }
+        /// <summary>
+        /// turns off highlights for all heroes in play of the collection
+        /// </summary>
         public void TurnOffHighlights()
         {
             for (int i = 0; i < heroDragDrops.Count; i++)
@@ -226,7 +283,9 @@ namespace AutoDefense
                 heroDragDrops[i].ToggleHighlight(false, highlightColor);
             }
         }
-
+        /// <summary>
+        /// initializes collection reseting all values and lists
+        /// </summary>
         public override void Initialize()
         {
             heroesInCollection = new Dictionary<string, List<HeroData>>();
@@ -250,32 +309,10 @@ namespace AutoDefense
                 }
             }
         }
-        public void DebugAddingEvent(HeroData _hData)
-        {
-            Debug.Log("Added: " + _hData.name + " to: " + this.name);
-            if (CurrActiveEffect!= null)
-            {
-                Debug.Log("Currently Active Effect: " + CurrActiveEffect.effect.name);
-            }
-            else
-            {
-                Debug.Log("No active effect");
-            }
-        }
-        public void DebugRemovingEvent(HeroData _hData)
-        {
-            Debug.Log("Removed: " + _hData.name + " from: " + this.name);
-            if (CurrActiveEffect!= null)
-            {
-                Debug.Log("Currently Active Effect: " + CurrActiveEffect.effect.name);
-            }
-            else
-            {
-                Debug.Log("No active effect");
-            }
-        }
-
-
+        /// <summary>
+        /// gets all the heroes of the collection and returns it as an array
+        /// </summary>
+        /// <returns></returns>
         public HeroData[] ToArray()
         {
             HeroData[] heroArray;
@@ -299,15 +336,25 @@ namespace AutoDefense
             }
             return heroArray;
         }
-
-
     }
 
+    /// <summary>
+    /// data container for effects and the needed diversity to activate them
+    /// </summary>
     [System.Serializable]
     public class GroupEffect
     {
+        /// <summary>
+        /// needed diversity to activate the effect
+        /// </summary>
         public int neededDiversity;
+        /// <summary>
+        /// effect that gets activated
+        /// </summary>
         public Effect effect;
+        /// <summary>
+        /// tooltip of the effect
+        /// </summary>
         [TextArea] public string effectToolTip;
     }
 }

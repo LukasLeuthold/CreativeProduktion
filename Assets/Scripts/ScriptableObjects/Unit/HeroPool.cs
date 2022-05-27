@@ -3,19 +3,50 @@ using UnityEngine;
 
 namespace AutoDefense
 {
+    /// <summary>
+    /// handles hero pool logic
+    /// </summary>
     [CreateAssetMenu(fileName = "new HeroPool", menuName = "Hero/HeroPool", order = 1)]
     public class HeroPool : ScriptableObject
     {
+        /// <summary>
+        /// array of common heroes
+        /// </summary>
         [SerializeField] private PoolUnit[] commonHeros;
+        /// <summary>
+        /// array of rare heroes
+        /// </summary>
         [SerializeField] private PoolUnit[] rareHeros;
+        /// <summary>
+        /// array of lord heroes
+        /// </summary>
         [SerializeField] private PoolUnit[] lordHeros;
+        /// <summary>
+        /// dictionary of all heroes
+        /// </summary>
         private Dictionary<string, HeroDataCount> allHeros = new Dictionary<string, HeroDataCount>();
+        /// <summary>
+        /// dictionary of common heroes
+        /// </summary>
         private Dictionary<string, HeroDataCount> dicCommonHeros = new Dictionary<string, HeroDataCount>();
+        /// <summary>
+        /// dictionary of rare heroes
+        /// </summary>
         private Dictionary<string, HeroDataCount> dicRareHeros = new Dictionary<string, HeroDataCount>();
+        /// <summary>
+        /// dictionary of lord heroes
+        /// </summary>
         private Dictionary<string, HeroDataCount> dicLordHeros = new Dictionary<string, HeroDataCount>();
-
+        /// <summary>
+        /// list of possible heroes
+        /// </summary>
         List<HeroData> possibleChosenHero;
-
+        /// <summary>
+        /// returns an array of random heroes using a custom probability distribution
+        /// </summary>
+        /// <param name="_amount">amount of units in the array</param>
+        /// <param name="_probability">custom probability distribution</param>
+        /// <returns></returns>
         public HeroData[] GetLineUp(int _amount, ProbabilityDistribution _probability)
         {
             HeroData[] lineUp = new HeroData[_amount];
@@ -78,6 +109,11 @@ namespace AutoDefense
             }
             return lineUp;
         }
+        /// <summary>
+        /// adds a unit amount to the pool
+        /// </summary>
+        /// <param name="_heroName">hero that gets added</param>
+        /// <param name="_amount">amount added</param>
         public void AddUnitCount(string _heroName, int _amount = 1)
         {
             switch (allHeros[_heroName].heroData.Rarity.name)
@@ -96,6 +132,11 @@ namespace AutoDefense
             }
             RefreshUnitData();
         }
+        /// <summary>
+        /// subtracts a unit amount from the pool
+        /// </summary>
+        /// <param name="_heroName">hero that gets removed</param>
+        /// <param name="_amount">amount removed</param>
         public void SubtractUnitCount(string _heroName, int _amount = 1)
         {
             switch (allHeros[_heroName].heroData.Rarity.name)
@@ -114,7 +155,9 @@ namespace AutoDefense
             }
             RefreshUnitData();
         }
-
+        /// <summary>
+        /// validates entries and refreshes pool
+        /// </summary>
         private void OnValidate()
         {
             for (int i = 0; i < commonHeros.Length; i++)
@@ -135,7 +178,9 @@ namespace AutoDefense
             InitUnitData();
 
         }
-
+        /// <summary>
+        /// initializes the dictionaries from the arrays
+        /// </summary>
         public void InitDictionaries()
         {
             dicCommonHeros.Clear();
@@ -159,7 +204,9 @@ namespace AutoDefense
                 allHeros.Add(lordHeros[i].name, new HeroDataCount(lordHeros[i].unitData, lordHeros[i].amount));
             }
         }
-
+        /// <summary>
+        /// initializes all the unitdatas in the arrays
+        /// </summary>
         private void InitUnitData()
         {
             for (int i = 0; i < commonHeros.Length; i++)
@@ -175,6 +222,9 @@ namespace AutoDefense
                 lordHeros[i].InitPoolUnit();
             }
         }
+        /// <summary>
+        /// refreshes the serialization of the array
+        /// </summary>
         private void RefreshUnitData()
         {
             for (int i = 0; i < commonHeros.Length; i++)
@@ -190,17 +240,33 @@ namespace AutoDefense
                 lordHeros[i].amount = dicLordHeros[lordHeros[i].name].count;
             }
         }
-
     }
 
+    /// <summary>
+    /// struct to hold info about unittype and amount
+    /// </summary>
     [System.Serializable]
     public struct PoolUnit
     {
+        /// <summary>
+        /// name of the unit
+        /// </summary>
         [HideInInspector] public string name;
+        /// <summary>
+        /// data object of the unit
+        /// </summary>
         public HeroData unitData;
+        /// <summary>
+        /// amount of the unit in the pool
+        /// </summary>
         [Min(1)] public int amount;
+        /// <summary>
+        /// max amount of the unit in the pool
+        /// </summary>
         [Min(1)] public int maxAmount;
-
+        /// <summary>
+        /// initializes poolunit; Sets name; and amount to starting value
+        /// </summary>
         public void InitPoolUnit()
         {
             if (unitData != null)
@@ -210,19 +276,43 @@ namespace AutoDefense
             }
         }
     }
+
+    /// <summary>
+    /// class to hold info about the amount of a specific herodata
+    /// </summary>
     public class HeroDataCount
     {
+        /// <summary>
+        /// ctor of the HeroDataCount class
+        /// </summary>
+        /// <param name="_heroData">herodata thats used in the class</param>
+        /// <param name="_count">amount of the specific herodata</param>
         public HeroDataCount(HeroData _heroData, int _count)
         {
             heroData = _heroData;
             count = _count;
         }
+
+        /// <summary>
+        /// herodata this object is storing info about
+        /// </summary>
         public HeroData heroData;
+        /// <summary>
+        /// current amoutn
+        /// </summary>
         public int count;
+        /// <summary>
+        /// add amount to the current amount
+        /// </summary>
+        /// <param name="_add">amount to add</param>
         public void AddCount(int _add)
         {
             count += _add;
         }
+        /// <summary>
+        /// remove amount from the current amount
+        /// </summary>
+        /// <param name="_add">amount to remove</param>
         public void SubCount(int _sub)
         {
             count -= _sub;

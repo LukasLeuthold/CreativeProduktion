@@ -3,10 +3,19 @@ using UnityEngine.Audio;
 
 namespace AutoDefense
 {
+    /// <summary>
+    /// simple audio event listener; listens to event and plays audio clip when raised
+    /// </summary>
     [RequireComponent(typeof(AudioSource))]
     public class AudioEventListener : MonoBehaviour
     {
-
+        /// <summary>
+        /// the event the listener is registering to
+        /// </summary>
+        [SerializeField] private AUDIOScriptableEvent Event;
+        /// <summary>
+        /// audiosource the clip gets played on
+        /// </summary>
         [SerializeField] AudioSource source;
 
         /// <summary>
@@ -26,18 +35,8 @@ namespace AutoDefense
                 case AudioPlayMode.ONESHOT:
                     source.PlayOneShot(_clip);
                     break;
-                //case AudioPlayMode.LOOP:
-                //    break;
-                default:
-                    break;
             }
         }
-
-        /// <summary>
-        /// the event the listener is registering to
-        /// </summary>
-        [SerializeField] private AUDIOScriptableEvent Event;
-
         /// <summary>
         /// on enable registers to event
         /// </summary>

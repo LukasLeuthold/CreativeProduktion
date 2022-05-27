@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 namespace AutoDefense
 {
+    /// <summary>
+    /// simple event listener to probability events
+    /// </summary>
     public class PROBEventListener : MonoBehaviour
     {
         /// <summary>
