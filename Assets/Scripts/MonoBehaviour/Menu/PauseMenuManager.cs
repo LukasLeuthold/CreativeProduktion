@@ -8,10 +8,25 @@ namespace AutoDefense
     /// </summary>
     public class PauseMenuManager : MonoBehaviour
     {
+        /// <summary>
+        /// pause menu
+        /// </summary>
         [SerializeField] private GameObject pausedGO;
+        /// <summary>
+        /// main pause menu screen object
+        /// </summary>
         [SerializeField] private GameObject pauseMenuScreen;
+        /// <summary>
+        /// quit screen go
+        /// </summary>
         [SerializeField] private GameObject quitScreen;
+        /// <summary>
+        /// index of the main menu scene
+        /// </summary>
         [SerializeField] private int mainMenuSceneIndex;
+        /// <summary>
+        /// flag if game is paused or not
+        /// </summary>
         private bool pauseFlag;
 
         // Start is called before the first frame update
