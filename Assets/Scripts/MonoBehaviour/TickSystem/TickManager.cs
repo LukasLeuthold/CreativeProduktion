@@ -29,7 +29,7 @@ namespace AutoDefense
 
         internal float currTime;
 
-        public GameObject SkipButton;
+        public Button SkipButton;
         public GameObject BlockImage;
 
         [HideInInspector]public bool SkipBreak;
