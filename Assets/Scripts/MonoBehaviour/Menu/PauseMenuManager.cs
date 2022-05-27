@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 namespace AutoDefense
 {
+    /// <summary>
+    /// manages pause menu logic
+    /// </summary>
     public class PauseMenuManager : MonoBehaviour
     {
         [SerializeField] private GameObject pausedGO;
