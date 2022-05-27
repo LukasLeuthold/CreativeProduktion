@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace AutoDefense
 {
     public class GameOverMenuManager : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private GameObject gameOverScreen;
+        [SerializeField] private Image gameOverScreenImage;
         [SerializeField] private GameObject quitScreen;
         [SerializeField] private int mainMenuSceneIndex;
+
+        [SerializeField] private Sprite winSprite;
+        [SerializeField] private Sprite looseSprite;
 
         [SerializeField] private AUDIOScriptableEvent GameOver_Won;
         [SerializeField] private AUDIOScriptableEvent GameOver_Lost;
@@ -25,12 +29,12 @@ namespace AutoDefense
         {
             if (_isWinner)
             {
-                titleText.text = "winner";
-                GameOver_Won?.Raise();
+                gameOverScreenImage.sprite = winSprite;
+                 GameOver_Won?.Raise();
             }
             else
             {
-                titleText.text = "looser";
+                gameOverScreenImage.sprite = looseSprite;
                 GameOver_Lost?.Raise();
             }
         }
