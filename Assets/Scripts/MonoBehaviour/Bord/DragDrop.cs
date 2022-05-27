@@ -36,9 +36,14 @@ namespace AutoDefense
         [SerializeField] Sprite threeStarSprite;
 
         [Header("CurrStats")]
+        /// <summary>true when the Unit gets draged over an Field</summary>
         [HideInInspector] public bool haveSlot;
+
+        /// <summary>Hover Boarder</summary>
         [SerializeField] private GameObject currStats;
+        /// <summary>Hp text from the hover Boarder</summary>
         [SerializeField] private Text hP;
+        /// <summary>speed Text from the hover Boarder</summary>
         [SerializeField] private Text speed;
         [SerializeField] private Text aT;
 
