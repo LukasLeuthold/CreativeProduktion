@@ -6,7 +6,9 @@ namespace AutoDefense
 {
     public class GameManager : MonoBehaviour
     {
+        /// <summary></summary>
         [SerializeField] private GameObject levelGO;
+        /// <summary></summary>
         [SerializeField] private GameObject gameOverGO;
 
         [SerializeField] private PlayerRessources playerRessources;
