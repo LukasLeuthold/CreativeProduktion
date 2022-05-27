@@ -29,12 +29,17 @@ namespace AutoDefense
         /// </summary>
         private bool pauseFlag;
 
-        // Start is called before the first frame update
+        /// <summary>
+        /// sets default values
+        /// </summary>
         void Start()
         {
             pauseFlag = false;
             SetPauseState(pauseFlag);
         }
+        /// <summary>
+        /// checks for esc button press to un/pause
+        /// </summary>
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -44,6 +49,10 @@ namespace AutoDefense
             }
         }
 
+        /// <summary>
+        /// sets that pause state
+        /// </summary>
+        /// <param name="_isPauseState">bool if it is paused or unpaused</param>
         public void SetPauseState(bool _isPauseState)
         {
             if (_isPauseState)
@@ -61,11 +70,17 @@ namespace AutoDefense
                 Time.timeScale = 1;
             }
         }
+        /// <summary>
+        /// restarts the level
+        /// </summary>
         public void Restart()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        
+        /// <summary>
+        /// handles quit screen input
+        /// </summary>
+        /// <param name="_isQuitting"></param>
         public void HandleQuitScreen(bool _isQuitting)
         {
             if (_isQuitting)
@@ -78,11 +93,17 @@ namespace AutoDefense
                 SetPauseState(true);
             }
         }
+        /// <summary>
+        /// opens the quit screen
+        /// </summary>
         public void OpenQuitScreen()
         {
             quitScreen.SetActive(true);
             pauseMenuScreen.SetActive(false);
         }
+        /// <summary>
+        /// goes to the main menu
+        /// </summary>
         public void GoToMainMenu()
         {
             SceneManager.LoadScene(mainMenuSceneIndex);
