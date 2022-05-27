@@ -6,7 +6,6 @@ namespace AutoDefense
     public class PauseMenuManager : MonoBehaviour
     {
         [SerializeField] private GameObject pausedGO;
-        [SerializeField] private GameObject unpausedGO;
         [SerializeField] private GameObject pauseMenuScreen;
         [SerializeField] private GameObject quitScreen;
         [SerializeField] private int mainMenuSceneIndex;
@@ -33,7 +32,6 @@ namespace AutoDefense
             {
                 Time.timeScale = 0;
                 pauseFlag = true;
-                unpausedGO.SetActive(false);
                 pausedGO.SetActive(true);
                 pauseMenuScreen.SetActive(true);
                 quitScreen.SetActive(false);
@@ -42,7 +40,6 @@ namespace AutoDefense
             {
                 pauseFlag = false;
                 pausedGO.SetActive(false);
-                unpausedGO.SetActive(true);
                 Time.timeScale = 1;
             }
         }

@@ -15,9 +15,9 @@ namespace AutoDefense
         public static Action<HeroCollection> OnTurnOnHighlight;
         public static Action<HeroCollection> OnTurnOffHighlight;
 
-        [Header("Color")]
-        [SerializeField]private Color activeAttributeColor;
-        [SerializeField]private Color inActiveAttributeColor;
+        [Header("Sprites")]
+        [SerializeField]private Sprite activeAttributeSprite;
+        [SerializeField]private Sprite inActiveAttributeSprite;
 
         private void Start()
         {
@@ -104,11 +104,11 @@ namespace AutoDefense
             _attributeVisualManager.ToolTipText = _collection.GetToolTip();
             if (_collection.CurrActiveEffect == null)
             {
-                _attributeVisualManager.TextColor = inActiveAttributeColor;
+                _attributeVisualManager.Attributesprite = inActiveAttributeSprite;
             }
             else
             {
-                _attributeVisualManager.TextColor = activeAttributeColor;
+                _attributeVisualManager.Attributesprite = activeAttributeSprite;
             }
         }
         /// <summary>
@@ -118,7 +118,7 @@ namespace AutoDefense
         {
             for (int j = 0; j < attributeVisuals.Length; j++)
             {
-                attributeVisuals[j].TextColor = inActiveAttributeColor;
+                attributeVisuals[j].Attributesprite = inActiveAttributeSprite;
                 attributeVisuals[j].DisplayedCollection = null;
                 attributeVisuals[j].gameObject.SetActive(false);
                 attributeVisuals[j].ToolTipText = null;

@@ -12,7 +12,7 @@ namespace AutoDefense
 
         public override void EnterState()
         {
-            tickManager.SkipButton.SetActive(true);
+            tickManager.SkipButton.interactable= true;
             tickManager.ResetSlider(tickManager.editTime);
             tickManager.currStateText.text = "Edit";
             tickManager.LevelI.CurrWave++;
@@ -49,7 +49,7 @@ namespace AutoDefense
         public override void ExitState()
         {        
             tickManager.BlockImage.SetActive(true);
-            tickManager.SkipButton.SetActive(false);
+            tickManager.SkipButton.interactable = false;
             tickManager.onWaveStart?.Raise();
             tickManager.CallOnEditEnd();
         }

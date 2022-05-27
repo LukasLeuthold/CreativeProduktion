@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20.2734, y: 0.4523697}
-  m_SizeDelta: {x: 30.829597, y: -9.096001}
+  m_AnchoredPosition: {x: 20.183495, y: 0.09250069}
+  m_SizeDelta: {x: 23.813, y: -15.573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &263169574971426066
 CanvasRenderer:
@@ -141,14 +141,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41091138, g: 0.509434, b: 0.48705786, a: 0.8156863}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e126c090ed176dc40a2f8dba69341ef4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -188,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 263169576932552078}
   diversityText: {fileID: 263169574971426077}
+  attributeImage: {fileID: 263169575372759162}
   toolTip: {fileID: 263169575372759160}
 --- !u!1 &263169576932552072
 GameObject:
@@ -223,8 +224,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.844, y: 0.45259857}
-  m_SizeDelta: {x: 84.312, y: -9.0964}
+  m_AnchoredPosition: {x: 106.29059, y: -0.09359932}
+  m_SizeDelta: {x: 123.8932, y: -8.0288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &263169576932552079
 CanvasRenderer:

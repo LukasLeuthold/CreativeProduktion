@@ -10,6 +10,7 @@ namespace AutoDefense
     {
         [SerializeField] private Text nameText;
         [SerializeField] private Text diversityText;
+        [SerializeField] private Image attributeImage;
         [SerializeField] private HoverTip toolTip;
 
         public HeroCollection DisplayedCollection
@@ -38,12 +39,12 @@ namespace AutoDefense
                 toolTip.toolTipText = value;
             }
         }
-        public Color TextColor
+        public Sprite Attributesprite
         {
             set
             {
-                diversityText.color = value;
-                nameText.color = value;
+                attributeImage.sprite = value;
+                attributeImage.SetNativeSize();
             }
         }
 
