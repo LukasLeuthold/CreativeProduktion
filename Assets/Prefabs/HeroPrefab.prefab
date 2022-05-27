@@ -1804,6 +1804,8 @@ MonoBehaviour:
   highlightImage: {fileID: 5225587760699588247}
   animator: {fileID: 2686951840346532141}
   OnUnitDeath: {fileID: 11400000, guid: b3e266dd9de92254db357511d7d817bd, type: 2}
+  OnUnitDragStart: {fileID: 11400000, guid: 30e90ff74b241ea46ac54fc3a06b56eb, type: 2}
+  OnUnitDragEnd: {fileID: 11400000, guid: 59802554a20d7a6469055f5896b6da64, type: 2}
 --- !u!225 &3202606274977018456
 CanvasGroup:
   m_ObjectHideFlags: 0

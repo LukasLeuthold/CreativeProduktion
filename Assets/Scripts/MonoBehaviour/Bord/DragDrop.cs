@@ -69,6 +69,9 @@ namespace AutoDefense
         [SerializeField]private AUDIOScriptableEvent OnUnitDeath;
         private Canvas canvas;
 
+        [SerializeField] private VOIDScriptableEvent OnUnitDragStart;
+        [SerializeField] private VOIDScriptableEvent OnUnitDragEnd;
+
         /// <summary>All the Unit Data</summary>
         public HeroData HData
         {
@@ -162,6 +165,7 @@ namespace AutoDefense
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
+            OnUnitDragStart?.Raise();
             if (LastSlot != null && LastSlot.isGameField)
             {
                 LastSlot._HData = null;
@@ -187,6 +191,7 @@ namespace AutoDefense
         }
         public void OnEndDrag(PointerEventData eventData)
         {
+            OnUnitDragEnd?.Raise();
             ChangeFieldsSlectionBoarder(0);
             canvasGroup.alpha = 1f;
 

@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 namespace AutoDefense
 {
+    /// <summary>
+    /// simple event listener to int,int events
+    /// </summary>
     public class INT2EventListener : MonoBehaviour
     {
         /// <summary>

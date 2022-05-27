@@ -6,9 +6,15 @@ using UnityEngine.Audio;
 
 namespace AutoDefense
 {
+    /// <summary>
+    /// scriptable audio event
+    /// </summary>
     [CreateAssetMenu(fileName = "newAudioEvent", menuName = "ScriptableEvents/AudioEvent")]
     public class AUDIOScriptableEvent : ScriptableObject
     {
+        /// <summary>
+        /// audioclip of the events
+        /// </summary>
         [SerializeField] AudioClip clip;
         [SerializeField,Range(0,1)] float volume = 1;
         [SerializeField] AudioMixerGroup mixer;
@@ -52,6 +58,5 @@ namespace AutoDefense
     public enum AudioPlayMode
     {
         ONESHOT,
-        //LOOP,
     }
 }

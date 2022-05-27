@@ -486,8 +486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 68515017}
   Event: {fileID: 11400000, guid: e1c39bca4f4b6514daf07725098e3ec1, type: 2}
+  source: {fileID: 68515017}
 --- !u!82 &68515017
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8501,8 +8501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 867809955}
   Event: {fileID: 11400000, guid: b3e266dd9de92254db357511d7d817bd, type: 2}
+  source: {fileID: 867809955}
 --- !u!82 &867809955
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8611,8 +8611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 867809955}
   Event: {fileID: 11400000, guid: b55343c7efa59394e9f16deedf99c6fe, type: 2}
+  source: {fileID: 867809955}
 --- !u!114 &867809957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8625,8 +8625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 867809955}
   Event: {fileID: 11400000, guid: cb054397c9a6b9c4c8439fffe8231e7e, type: 2}
+  source: {fileID: 867809955}
 --- !u!114 &867809958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8639,8 +8639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 867809955}
   Event: {fileID: 11400000, guid: 1fa790520d0840c4db6524bfed26e7ee, type: 2}
+  source: {fileID: 867809955}
 --- !u!1001 &872071473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11986,8 +11986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1210923226}
   Event: {fileID: 11400000, guid: 6d69387ee8ce0254ab64b2ae951b0a2b, type: 2}
+  source: {fileID: 1210923226}
 --- !u!114 &1210923225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12000,8 +12000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1210923226}
   Event: {fileID: 11400000, guid: 70e9730101b1a9c44ac43e140732ee1e, type: 2}
+  source: {fileID: 1210923226}
 --- !u!82 &1210923226
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12512,8 +12512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1270477003}
   Event: {fileID: 11400000, guid: b3ac5f860c0378d408b0cb3b407f9db9, type: 2}
+  source: {fileID: 1270477003}
 --- !u!82 &1270477003
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12622,8 +12622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1270477003}
   Event: {fileID: 11400000, guid: b705910c4d5bde740add7afc66ec143a, type: 2}
+  source: {fileID: 1270477003}
 --- !u!1001 &1288971309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16287,9 +16287,11 @@ GameObject:
   - component: {fileID: 1662021433}
   - component: {fileID: 1662021434}
   - component: {fileID: 1662021435}
+  - component: {fileID: 1662021438}
   - component: {fileID: 1662021436}
   - component: {fileID: 1662021437}
-  - component: {fileID: 1662021438}
+  - component: {fileID: 1662021440}
+  - component: {fileID: 1662021439}
   m_Layer: 5
   m_Name: Carusell
   m_TagString: Untagged
@@ -16340,6 +16342,7 @@ MonoBehaviour:
   xpBuyCost: 2
   xpBuyValue: 2
   playerRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
+  shop: {fileID: 503694279}
   rerollButton: {fileID: 1427058232}
   rerollText: {fileID: 1210098304}
   xpButton: {fileID: 840678593}
@@ -16400,9 +16403,9 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 503694279}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 1662021434}
+        m_TargetAssemblyTypeName: AutoDefense.Carusell, Assembly-CSharp
+        m_MethodName: LockShop
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16410,7 +16413,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1662021434}
         m_TargetAssemblyTypeName: AutoDefense.Carusell, Assembly-CSharp
@@ -16422,7 +16425,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1662021437
 MonoBehaviour:
@@ -16440,9 +16443,9 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 503694279}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 1662021434}
+        m_TargetAssemblyTypeName: AutoDefense.Carusell, Assembly-CSharp
+        m_MethodName: LockShop
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16450,7 +16453,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1662021438
 MonoBehaviour:
@@ -16472,6 +16475,62 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: AutoDefense.Carusell, Assembly-CSharp
         m_MethodName: SetXpButtonInteractable
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1662021439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662021432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87980ebc61fe31e4aae96f96206cb81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 59802554a20d7a6469055f5896b6da64, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1662021434}
+        m_TargetAssemblyTypeName: AutoDefense.Carusell, Assembly-CSharp
+        m_MethodName: SetShop
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1662021440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662021432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87980ebc61fe31e4aae96f96206cb81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 30e90ff74b241ea46ac54fc3a06b56eb, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1662021434}
+        m_TargetAssemblyTypeName: AutoDefense.Carusell, Assembly-CSharp
+        m_MethodName: SetShop
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17221,8 +17280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1742871153}
   Event: {fileID: 11400000, guid: b5b38aaa6f31c244fb927cc2820e7dea, type: 2}
+  source: {fileID: 1742871153}
 --- !u!114 &1742871152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17235,8 +17294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1742871153}
   Event: {fileID: 11400000, guid: a232bf7acd1ef7348a27dd771580e424, type: 2}
+  source: {fileID: 1742871153}
 --- !u!82 &1742871153
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18484,8 +18543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1866481927}
   Event: {fileID: 0}
+  source: {fileID: 1866481927}
 --- !u!1 &1896895792
 GameObject:
   m_ObjectHideFlags: 0
@@ -18586,8 +18645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c33c366bdcb642a3cbf913cf06317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1896895797}
   Event: {fileID: 11400000, guid: bfe758cb11a53c8498f1002c32328c8f, type: 2}
+  source: {fileID: 1896895797}
 --- !u!82 &1896895797
 AudioSource:
   m_ObjectHideFlags: 0
