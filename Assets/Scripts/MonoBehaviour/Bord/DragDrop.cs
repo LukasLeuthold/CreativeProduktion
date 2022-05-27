@@ -8,22 +8,31 @@ namespace AutoDefense
 {
     public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
+        /// <summary>Field of the Unit</summary>
         [HideInInspector] public UnitSlot LastSlot;
-
+        
+        /// <summary>tells if the Unit is dead</summary>
         public bool isDead;
+        /// <summary></summary>
         public bool CantDragDrop;
 
-
+        /// <summary>Current HP of the Unit</summary>
         private int currHP;
 
+        /// <summary>All Unit relevant Data</summary>
         [SerializeField] private HeroData heroData;
 
+        /// <summary>Damage Number that shows when the Unit gets Damage</summary>
         public TMP_Text damageText;
 
         [Header("StarSprites")]
+        /// <summary> Sarte Image für the hover Boarder</summary>
         [SerializeField] private Image starImage;
+        /// <summary>One Star sprite for the hover Boarder</summary>
         [SerializeField] Sprite oneStarSprite;
+        /// <summary>two Star sprite for the hover Boarder</summary>
         [SerializeField] Sprite twoStarSprite;
+        /// <summary>three Star sprite for the hover Boarder</summary>
         [SerializeField] Sprite threeStarSprite;
 
         [Header("CurrStats")]
@@ -60,6 +69,7 @@ namespace AutoDefense
         [SerializeField]private AUDIOScriptableEvent OnUnitDeath;
         private Canvas canvas;
 
+        /// <summary>All the Unit Data</summary>
         public HeroData HData
         {
             get => heroData;
@@ -76,6 +86,8 @@ namespace AutoDefense
                     heroData.OnCurrStatBlockChanged += UpdateUnitCard;
             }
         }
+
+        /// <summary>The current HP of the Unit</summary>
         public int CurrHP
         {
             get
@@ -329,6 +341,10 @@ namespace AutoDefense
             ColorHeroImage(Color.white, 1);
         }
 
+        /// <summary>
+        /// Change the alpha of all Units relevant fields 
+        /// </summary>
+        /// <param name="alpha">Alpha of the Image</param>
         private void ChangeFieldsSlectionBoarder(float alpha)
         {            
             for (int i = 0; i < 2; i++)
