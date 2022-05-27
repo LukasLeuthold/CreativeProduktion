@@ -13,7 +13,6 @@ namespace AutoDefense
 
         public override void ActivateEffect()
         {
-            //Debug.Log("activated: " + this.name);
             playerRessources.PlayerHealth -= healthCost;
             playerRessources.PlayerMoney += moneyReward;
         }

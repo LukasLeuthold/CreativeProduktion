@@ -4,11 +4,22 @@ using UnityEngine;
 
 namespace AutoDefense
 {
+    /// <summary>
+    /// handles logic for building enemy waves
+    /// </summary>
     [CreateAssetMenu(fileName = "new EnemyWaveBuilder", menuName = "Enemy/WaveBuilder")]
     public class EnemyWaveBuilder : ScriptableObject
     {
+        /// <summary>
+        /// enemypool the wave is build from
+        /// </summary>
         [SerializeField] private EnemyPool enemyPool;
 
+        /// <summary>
+        /// builds a random wave from a pool with a given pointamount
+        /// </summary>
+        /// <param name="_pointsForWave">given pointamount</param>
+        /// <returns></returns>
         public Queue<EnemyData> BuildEnemyWave(int _pointsForWave)
         {
             Queue<EnemyData> enemyDatas = new Queue<EnemyData>();
@@ -33,10 +44,13 @@ namespace AutoDefense
             } while (possibleBuys.Count>0);
             return enemyDatas;
         }
-
+        /// <summary>
+        /// builds a boss wave from a pool 
+        /// </summary>
+        /// <param name="_pointsForWave">given pointamount</param>
+        /// <returns></returns>
         public Queue<EnemyData> BuildBossWave(int _pointsForWave)
         {
-            //Queue<EnemyData> enemyDatas = BuildEnemyWave(_pointsForWave);
             Queue<EnemyData> enemyDatas = new Queue<EnemyData>();
             for (int i = 0; i < 3; i++)
             {

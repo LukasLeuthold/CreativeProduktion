@@ -13,11 +13,20 @@ namespace AutoDefense
     public class AUDIOScriptableEvent : ScriptableObject
     {
         /// <summary>
-        /// audioclip of the events
+        /// audioclip of the event
         /// </summary>
         [SerializeField] AudioClip clip;
+        /// <summary>
+        /// volume of the clip playing
+        /// </summary>
         [SerializeField,Range(0,1)] float volume = 1;
+        /// <summary>
+        /// mixer group of the clip
+        /// </summary>
         [SerializeField] AudioMixerGroup mixer;
+        /// <summary>
+        /// mode of the played clip
+        /// /// </summary>
         [SerializeField] AudioPlayMode mode = AudioPlayMode.ONESHOT;
 
         /// <summary>
@@ -55,6 +64,9 @@ namespace AutoDefense
         }
     }
 
+    /// <summary>
+    /// possible playmodes for audioclips
+    /// </summary>
     public enum AudioPlayMode
     {
         ONESHOT,

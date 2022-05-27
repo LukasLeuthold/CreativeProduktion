@@ -16288,8 +16288,6 @@ GameObject:
   - component: {fileID: 1662021434}
   - component: {fileID: 1662021435}
   - component: {fileID: 1662021438}
-  - component: {fileID: 1662021436}
-  - component: {fileID: 1662021437}
   - component: {fileID: 1662021440}
   - component: {fileID: 1662021439}
   m_Layer: 5
@@ -16387,74 +16385,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1662021436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662021432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87980ebc61fe31e4aae96f96206cb81c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 0abb4183f09255140884c2c858e67016, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1662021434}
-        m_TargetAssemblyTypeName: AutoDefense.Carusell, Assembly-CSharp
-        m_MethodName: LockShop
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1662021434}
-        m_TargetAssemblyTypeName: AutoDefense.Carusell, Assembly-CSharp
-        m_MethodName: FreeRoll
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1662021437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662021432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87980ebc61fe31e4aae96f96206cb81c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 1152569a873a0bb4397b2ab2ac8d24be, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1662021434}
-        m_TargetAssemblyTypeName: AutoDefense.Carusell, Assembly-CSharp
-        m_MethodName: LockShop
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &1662021438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16495,7 +16425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87980ebc61fe31e4aae96f96206cb81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 59802554a20d7a6469055f5896b6da64, type: 2}
+  Event: {fileID: 11400000, guid: 0abb4183f09255140884c2c858e67016, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -16523,7 +16453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87980ebc61fe31e4aae96f96206cb81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 30e90ff74b241ea46ac54fc3a06b56eb, type: 2}
+  Event: {fileID: 11400000, guid: 1152569a873a0bb4397b2ab2ac8d24be, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
