@@ -10,19 +10,27 @@ namespace AutoDefense
 {
     public class Enemy : MonoBehaviour
     {
+        /// <summary>All Enemy relevnat Data</summary>
         [SerializeField]private EnemyData enemyData;
+        /// <summary>Enemy Image</summary>
         [SerializeField]private Image enemyImage;
+        /// <summary>Enemy Animator</summary>
         [SerializeField]private Animator animator;
+        /// <summary>HP bar</summary>
         [SerializeField] private Slider hpSlider;
-
+        /// <summary>Enemy HP text</summary>
         [SerializeField] private Text hP;
+        /// <summary>Enemy Attack text</summary>
         [SerializeField] private Text attack;
 
 
-
+        /// <summary>Damage Number when Enemy gets Damage</summary>
         public TMP_Text damageNumber;
+        /// <summary> Last Field from the Enemy</summary>
         public EnemyField lastEnemyField;
+        /// <summary>Enemy current HP</summary>
         [HideInInspector]public int currHP;
+        /// <summary>All Enemy relevant Data</summary>
         public EnemyData EnemyData
         {
             get
@@ -36,12 +44,14 @@ namespace AutoDefense
             }
         }
 
+        /// <summary>default values</summary>
         private void Start()
         {
             currHP = enemyData.CurrStatBlock.MaxHP;
             hpSlider.maxValue = enemyData.CurrStatBlock.MaxHP;
             hpSlider.value = hpSlider.maxValue;
         }
+        /// <summary>default values</summary>
         private void Update()
         {
             hP.text = currHP.ToString();
@@ -61,6 +71,7 @@ namespace AutoDefense
                 }
             }
         }
+        /// <summary>Updates Enemy Visuals</summary>
         private void UpdateEnemyVisual()
         {
             enemyImage.sprite = enemyData.unitSprite;
@@ -70,11 +81,12 @@ namespace AutoDefense
             enemyData.enemyPrefab = this;
         }
 
-
+        /// <summary> Turns Text Off</summary>
         public void TurnTextOff()
         {
             damageNumber.gameObject.SetActive(false);
         }
+        /// <summary>Destroyes Enemy</summary>
         public void DestroyEnemy()
         {
             Destroy(this.gameObject);

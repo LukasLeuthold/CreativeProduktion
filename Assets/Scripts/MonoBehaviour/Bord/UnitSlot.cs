@@ -6,17 +6,22 @@ namespace AutoDefense
 {
     public class UnitSlot : MonoBehaviour, IDropHandler
     {
+        /// <summary>Position in the Array</summary>
         public int count;
-
+        /// <summary>All unit relevnat Datas</summary>
         public HeroData _HData;
-
+        /// <summary>tell if this objekt is on the Unit Field</summary>
         public bool isGameField;
 
+        /// <summary>Unit</summary>
         public DragDrop Unit;
+        /// <summary>Last unit</summary>
         private DragDrop lastUnit;
+        /// <summary>Posiotion in the Slots Array</summary>
         public Vector2 field;
+        /// <summary>Enemy Reverenz</summary>
         public EnemyData EnemyOnField { get; set; }
-
+        /// <summary>default values</summary>
         private void Start()
         {
             if (isGameField)
@@ -30,6 +35,7 @@ namespace AutoDefense
             Image image = GetComponent<Image>();
             GameField.Instance.SelectetField(Color.white, 0, image);
         }
+        /// <summary>Slot on Drop Event</summary>
         public void OnDrop(PointerEventData eventData)
         {
             if (eventData.pointerDrag != null && _HData != null)
@@ -121,6 +127,7 @@ namespace AutoDefense
                 Unit.LastSlot._HData = null;
             }
         }
+        /// <summary>Sets Unit Valuse</summary>
         private void GetInfo(PointerEventData _eventData)
         {
             Unit.haveSlot = true;

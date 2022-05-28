@@ -89,10 +89,13 @@ namespace AutoDefense
 
         /// <summary>Unit Animator</summary>
         [SerializeField]private Animator animator;
+        /// <summary>Audio Event</summary>
         [SerializeField]private AUDIOScriptableEvent OnUnitDeath;
+        /// <summary>Game Canvas</summary>
         private Canvas canvas;
-
+        /// <summary>Unit start Drag Event</summary>
         [SerializeField] private VOIDScriptableEvent OnUnitDragStart;
+        /// <summary>Unit end Drag Event</summary>
         [SerializeField] private VOIDScriptableEvent OnUnitDragEnd;
 
         /// <summary>All the Unit Data</summary>
@@ -146,7 +149,7 @@ namespace AutoDefense
             highlightImage.gameObject.SetActive(false);
             CurrHP = heroData.CurrStatBlock.MaxHP;
         }
-        /// <summary></summary>
+        /// <summary>default values</summary>
         private void Update()
         {
             hP.text = CurrHP.ToString();
@@ -174,7 +177,7 @@ namespace AutoDefense
                 SwitchUnitOnOFF(isDead);
             }
         }
-        /// <summary></summary>
+        /// <summary>Update unit</summary>
         private void OnValidate()
         {
             if (heroData == null)
@@ -184,7 +187,7 @@ namespace AutoDefense
 
             UpdateUnitCard();
         }
-
+        /// <summary>Unit OnBeginDrag Event</summary>
         public void OnBeginDrag(PointerEventData eventData)
         {
             OnUnitDragStart?.Raise();
@@ -202,6 +205,7 @@ namespace AutoDefense
             lastRectTranform = unitRectTransform.anchoredPosition;
             transform.SetAsLastSibling();
         }
+        /// <summary>Unit</summary>
         public void OnDrag(PointerEventData eventData)
         {
             if (CantDragDrop)
@@ -211,6 +215,7 @@ namespace AutoDefense
             
             unitRectTransform.anchoredPosition += eventData.delta/canvas.scaleFactor;
         }
+        /// <summary>Unit OnEndDrag Event</summary>
         public void OnEndDrag(PointerEventData eventData)
         {
             OnUnitDragEnd?.Raise();
@@ -230,17 +235,17 @@ namespace AutoDefense
             }
             haveSlot = false;
         }
-
+        /// <summary>Unit OnPointerEnterEvent</summary>
         public void OnPointerEnter(PointerEventData eventData)
         {
             currStats.SetActive(true);
             transform.SetAsLastSibling();
             if (LastSlot.isGameField)
             {
-                PrintRangeOnField(Color.green, 0.2f);
+                PrintRangeOnField(Color.green, 0.5f);
             }
         }
-
+        /// <summary>Unit On PointerExit Event</summary>
         public void OnPointerExit(PointerEventData eventData)
         {
             currStats.SetActive(false);
@@ -252,7 +257,7 @@ namespace AutoDefense
             isHiddenCardToggle = true;
 
         }
-
+        /// <summary>Unit ONPointerClick Event</summary>
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Right)
@@ -272,10 +277,19 @@ namespace AutoDefense
             }
         }
 
+       /// <summary>
+       /// Turns units on off when they die 
+       /// </summary>
+       /// <param name="_switch"></param>
         public void SwitchUnitOnOFF(bool _switch)
         {
             heroImage.gameObject.SetActive(!_switch);  
         }
+        /// <summary>
+        /// shows the range from the unit on the enemy Field
+        /// </summary>
+        /// <param name="color"></param>
+        /// <param name="alpha"></param>
         private void PrintRangeOnField(Color color, float alpha)
         {
             for (int i = 0; i < (heroData.CurrStatBlock.Range + heroData.CurrStatModifier.RangeMod); i++)
@@ -286,6 +300,9 @@ namespace AutoDefense
                 GameField.Instance.Slots[2 + i, (int)LastSlot.field.y].GetComponent<Image>().color = tempColor;
             }
         }
+       /// <summary>
+       /// Updates all Unit Relevant Data
+       /// </summary>
         private void UpdateUnitCard()
         {
             heroData.Unit = this;
@@ -319,6 +336,10 @@ namespace AutoDefense
             heroData.Anim = animator;
         }
 
+        /// <summary>
+        /// Shows the star Level on the hover boarder
+        /// </summary>
+        /// <param name="_level"> Start Level</param>
         public void SetStarSprite(int _level)
         {
             if (_level<=0 || _level >= 4)
@@ -340,23 +361,39 @@ namespace AutoDefense
             starImage.SetNativeSize();
         }
 
+        /// <summary>
+        /// Highlights the Unit 
+        /// </summary>
+        /// <param name="_value"> on/off</param>
+        /// <param name="_color">Color of the Boarder</param>
         public void ToggleHighlight(bool _value,Color _color)
         {
             highlightImage.gameObject.SetActive(_value);
             highlightImage.color = _color;
         }
+        
+        /// <summary>
+        /// Starts Corutin
+        /// </summary>
         public void AnimateFusion()
         {
             StartCoroutine(FusionAnimation());
         }
 
+        /// <summary>
+        /// Color change when Animation Level Up Unit
+        /// </summary>
+        /// <param name="_color">Color of the Unit</param>
+        /// <param name="_alpha">Alpha of the Unit</param>
         private void ColorHeroImage(Color _color,float _alpha = 1)
         {
             Color tempColor = _color;
             tempColor.a = _alpha;
             heroImage.color = tempColor;
         }
-
+        /// <summary>
+        /// Unit Level Up animation
+        /// </summary>
         private IEnumerator FusionAnimation()
         {
             ColorHeroImage(Color.blue, 1f);
