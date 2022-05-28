@@ -2,7 +2,13 @@ namespace AutoDefense
 {
     public class StartState : TickState
     {
-        private TickManager tickManager;
+        /// <summary>
+        /// Referenz tickmanager
+        /// </summary>
+        TickManager tickManager;
+        /// <summary>
+        /// default Values
+        /// </summary>
         public StartState(TickManager _TManager)
         {
             tickManager = _TManager;

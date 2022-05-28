@@ -5,34 +5,19 @@ using UnityEngine.EventSystems;
 
 namespace AutoDefense
 {
-    public class TurnTextOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class TurnTextOff : MonoBehaviour
     {
-        [SerializeField] private GameObject hoverOver;
+        /// <summary>
+        /// Damage Text on the Enemy
+        /// </summary>
         [SerializeField] private GameObject damageText;
 
-
+        /// <summary>
+        /// Turns Damage Text off
+        /// </summary>
         public void _TurnTextOff()
         {
             damageText.SetActive(false);
         }
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-           // StopAllCoroutines();
-            StopCoroutine(ShowHoverOver());
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            //StopAllCoroutines();
-            hoverOver.SetActive(false);
-        }
-
-        IEnumerator ShowHoverOver()
-        {
-            yield return new WaitForSeconds(0.5f);
-            hoverOver.SetActive(true);
-        }
     }
-
 }

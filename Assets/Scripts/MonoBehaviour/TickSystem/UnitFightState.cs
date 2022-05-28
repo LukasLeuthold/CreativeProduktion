@@ -6,7 +6,13 @@ namespace AutoDefense
 {
     public class UnitFightState : TickState
     {
+        /// <summary>
+        /// Referenz tickmanager
+        /// </summary>
         TickManager tickManager;
+        /// <summary>
+        /// default Values
+        /// </summary>
         public UnitFightState(TickManager _TManager)
         {
             tickManager = _TManager;

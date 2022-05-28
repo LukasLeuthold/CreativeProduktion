@@ -4,13 +4,18 @@ namespace AutoDefense
 {
     public class BreakState : TickState
     {
+        /// <summary>
+        /// Referenz tickmanager
+        /// </summary>
         TickManager tickManager;
+        /// <summary>
+        /// default Values
+        /// </summary>
         public BreakState(TickManager _TManager)
         {
             tickManager = _TManager;
             
         }
-
         public override void EnterState()
         {
             if (tickManager.enemySpawner.EnemiesInWave.Count <= 0 && GameField.Instance.EnemyList.Count <= 0)

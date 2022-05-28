@@ -11,47 +11,64 @@ namespace AutoDefense
 
     public class TickManager : MonoBehaviour
     {
-
+        /// <summary>Dictionary of all states</summary>
         public Dictionary<string, TickState> _TickStates;
+        /// <summary>state</summary>
         private TickState state;
+        /// <summary>Levelinfo</summary>
         [SerializeField] internal LevelInfo LevelI;
+        /// <summary>Current State Te´xt</summary>
         [SerializeField] internal TMP_Text currStateText;
 
-        [SerializeField] private Text currWave;
-        [SerializeField] private Text maxWave;
-
-
+        /// <summary>Time Slider</summary>
         [SerializeField] internal Slider timeSlider;
+        /// <summary>Edit Time</summary>
         [SerializeField] internal int editTime;
+        /// <summary>Break time</summary>
         [SerializeField] internal int breakTime;
-
+        /// <summary>enemy Spawner</summary>
         public EnemySpawner enemySpawner;
-
+        /// <summary>Time on the Slider</summary>
         internal float currTime;
-
+        /// <summary>Skip</summary>
         public Button SkipButton;
+        /// <summary>Image Block Reserve</summary>
         public GameObject BlockImage;
-
+        /// <summary></summary>
         [HideInInspector]public bool SkipBreak;
-
+        
+        [Header("Audio Events")]
+        /// <summary>Audio Event</summary>
+        [SerializeField] internal AUDIOScriptableEvent onWaveStart;
+        [Header("Wave")]
+        /// <summary>Current Wave</summary>
+        [SerializeField] private Text currWave;
+        /// <summary>max Wave</summary>
+        [SerializeField] private Text maxWave;
+        /// <summary>Player Ressources</summary>
         [SerializeField] private PlayerRessources pRessources;
-
+        /// <summary>Active hero Collection</summary>
         [SerializeField] private HeroCollection activeHeroes;
+        /// <summary>all Units on Field</summary>
         Queue<HeroData> sortHeros = new Queue<HeroData>();
+        /// <summary>All Enemys on Field</summary>
         Queue<EnemyData> sortEnemys = new Queue<EnemyData>();
 
         [Header("Events")]
+        /// <summary>On Wave End Event</summary>
         [SerializeField] private INTScriptableEvent onWaveEnd;
+        /// <summary>On Edit Time Start Event</summary>
         [SerializeField] private VOIDScriptableEvent onEditStart;
+        /// <summary>On Edit Time End Event</summary>
         [SerializeField] private VOIDScriptableEvent onEditEnd;
 
         [Header("EventEffects")]
+        /// <summary>One Hero Turn Start Event</summary>
         [SerializeField] private EventEffektCollection onHeroTurnStartEffects;
+        /// <summary>OnWave over Event</summary>
         [SerializeField] private EventEffektCollection onWaveOverEffects;
 
-        [Header("Audio Events")]
-        [SerializeField] internal AUDIOScriptableEvent onWaveStart;
-
+        /// <summary>default values</summary>
         void Start()
         {
             _TickStates = new Dictionary<string, TickState>()
@@ -67,18 +84,22 @@ namespace AutoDefense
             maxWave.text = LevelI.MaxWaveCount.ToString();
 
         }
-
+        /// <summary>default values</summary>
         void Update()
         {
             state.HandleState();
             currWave.text = LevelI.CurrWave.ToString();
         }
-
+        /// <summary>Skips The Edit Time</summary>
         public void SkipEdit()
         {
             currTime = editTime;
             timeSlider.value = editTime;
         }
+        /// <summary>
+        /// transition into the next State
+        /// </summary>
+        /// <param name="stateName">new State</param>
         internal void SetState(string stateName)
         {
             if (state != null)
@@ -89,14 +110,16 @@ namespace AutoDefense
 
             state.EnterState();
         }
-
+        /// <summary>Reset Slider in new State</summary>
         internal void ResetSlider(int maxTime)
         {
             currTime = 0;
             timeSlider.value = 0;
             timeSlider.maxValue = maxTime;
         }
-
+        /// <summary>
+        /// Sorts units by speed
+        /// </summary>
         internal void UnitAttack()
         {
             HeroData[] hDatas = activeHeroes.ToArray();
@@ -154,6 +177,9 @@ namespace AutoDefense
                 SetState("Break");
             }
         }
+        /// <summary>
+        /// Attack Logig
+        /// </summary>
         private IEnumerator _UnitsAttack()
         {
             float time = 0.5f;
@@ -202,6 +228,9 @@ namespace AutoDefense
                 SetState("Break");
             }
         }
+        /// <summary>
+        /// Unit Attack
+        /// </summary>
         private void _Attack()
         {
             GameObject[,] slots = GameField.Instance.Slots;
@@ -227,8 +256,10 @@ namespace AutoDefense
                 }
             }
         }
-
-        internal void EnemyMoA()
+        /// <summary>
+        ///sorts Enemys by speed
+        /// </summary>
+        internal void SortEnemy()
         {
             EnemyData[] eDatas = GameField.Instance.EnemyList.ToArray();
             sortEnemys.Clear();
@@ -253,9 +284,12 @@ namespace AutoDefense
                     }
                 }
             }
-            StartCoroutine(_EnemyAttack());
+            StartCoroutine(_EnemyAttackOrMove());
         }
-        private IEnumerator _EnemyAttack()
+        /// <summary>
+        /// Enemy Attack or Move logig
+        /// </summary>
+        private IEnumerator _EnemyAttackOrMove()
         {
             float time = 0.5f;
             int count = sortEnemys.Count;
@@ -334,28 +368,46 @@ namespace AutoDefense
             SetState("Unit");
         }
 
+        /// <summary>
+        /// Events
+        /// </summary>
         public void CallOnWaveEnd()
         {
             onWaveEnd.Raise(LevelI.CurrWave);
             CallOnWaveOverEffects();
         }
+        /// <summary>
+        /// Events
+        /// </summary>
         public void CallOnEditStart()
         {
             onEditStart.Raise();
         }
+        /// <summary>
+        /// Events
+        /// </summary>
         public void CallOnEditEnd()
         {
             onEditEnd.Raise();
         }
+        /// <summary>
+        /// Events
+        /// </summary>
         internal void CallOnHeroTurnStartEffects()
         {
             onHeroTurnStartEffects.ActivateEffects();
         }
+        /// <summary>
+        /// Events
+        /// </summary>
         internal void CallOnWaveOverEffects()
         {
             onWaveOverEffects.ActivateEffects();
         }
-
+        /// <summary>
+        /// Break Skip
+        /// </summary>
+        /// <param name="newValue">true fals</param>
         public void Toggle_Change(bool newValue)
         {
             SkipBreak = !SkipBreak;

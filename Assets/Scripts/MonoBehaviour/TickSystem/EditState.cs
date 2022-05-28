@@ -4,7 +4,13 @@ namespace AutoDefense
 {
     public class EditState : TickState
     {
+        /// <summary>
+        /// Referenz tickmanager
+        /// </summary>
         TickManager tickManager;
+        /// <summary>
+        /// default Values
+        /// </summary>
         public EditState(TickManager _TManager)
         {
             tickManager = _TManager;
@@ -44,8 +50,7 @@ namespace AutoDefense
                 tickManager.SetState("Fight");
             }
         }
-
-        
+       
         public override void ExitState()
         {        
             tickManager.BlockImage.SetActive(true);
