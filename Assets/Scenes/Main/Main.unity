@@ -1952,6 +1952,7 @@ GameObject:
   - component: {fileID: 213909289}
   - component: {fileID: 213909291}
   - component: {fileID: 213909290}
+  - component: {fileID: 213909292}
   m_Layer: 5
   m_Name: LordText
   m_TagString: Untagged
@@ -2020,6 +2021,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213909288}
   m_CullTransparentMesh: 1
+--- !u!114 &213909292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213909288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 2
+  toolTipText: Probability to get a lord unit in the shop
 --- !u!1 &216452887
 GameObject:
   m_ObjectHideFlags: 0
@@ -3546,6 +3563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 357379335}
   - component: {fileID: 357379336}
+  - component: {fileID: 357379337}
   m_Layer: 5
   m_Name: Toggel Skip
   m_TagString: Untagged
@@ -3571,8 +3589,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -72, y: 438}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -72.441895, y: 438.19995}
+  m_SizeDelta: {x: 112, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357379336
 MonoBehaviour:
@@ -3634,6 +3652,22 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &357379337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357379334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 2
+  toolTipText: toggle automatic breakskip
 --- !u!1 &358596659
 GameObject:
   m_ObjectHideFlags: 0
@@ -6200,6 +6234,7 @@ GameObject:
   - component: {fileID: 655372848}
   - component: {fileID: 655372850}
   - component: {fileID: 655372849}
+  - component: {fileID: 655372851}
   m_Layer: 5
   m_Name: curr Wave
   m_TagString: Untagged
@@ -6268,6 +6303,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655372847}
   m_CullTransparentMesh: 1
+--- !u!114 &655372851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655372847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 2
+  toolTipText: current wave count
 --- !u!1001 &655885288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8197,6 +8248,7 @@ GameObject:
   - component: {fileID: 840678595}
   - component: {fileID: 840678594}
   - component: {fileID: 840678593}
+  - component: {fileID: 840678596}
   m_Layer: 5
   m_Name: XpBuyButton
   m_TagString: Untagged
@@ -8318,6 +8370,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840678591}
   m_CullTransparentMesh: 1
+--- !u!114 &840678596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840678591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 1
+  toolTipText: Buy 2 Xp for 2 Gold
 --- !u!1 &842067906
 GameObject:
   m_ObjectHideFlags: 0
@@ -10039,6 +10107,7 @@ GameObject:
   - component: {fileID: 993294853}
   - component: {fileID: 993294852}
   - component: {fileID: 993294851}
+  - component: {fileID: 993294855}
   m_Layer: 5
   m_Name: HealthText
   m_TagString: Untagged
@@ -10153,6 +10222,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993294849}
   m_CullTransparentMesh: 1
+--- !u!114 &993294855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993294849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 2
+  toolTipText: Player life total
 --- !u!1 &999051324
 GameObject:
   m_ObjectHideFlags: 0
@@ -11203,6 +11288,7 @@ GameObject:
   - component: {fileID: 1136601021}
   - component: {fileID: 1136601020}
   - component: {fileID: 1136601023}
+  - component: {fileID: 1136601024}
   m_Layer: 5
   m_Name: MoneyText
   m_TagString: Untagged
@@ -11317,6 +11403,22 @@ MonoBehaviour:
   preFixB: 
   suFixB: 
   textB: {fileID: 0}
+--- !u!114 &1136601024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136601018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 2
+  toolTipText: Player money
 --- !u!1001 &1145388335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11652,6 +11754,7 @@ GameObject:
   - component: {fileID: 1195647698}
   - component: {fileID: 1195647700}
   - component: {fileID: 1195647699}
+  - component: {fileID: 1195647701}
   m_Layer: 5
   m_Name: CommonText
   m_TagString: Untagged
@@ -11720,6 +11823,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195647697}
   m_CullTransparentMesh: 1
+--- !u!114 &1195647701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195647697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 2
+  toolTipText: Probability to get a common unit in the shop
 --- !u!1 &1195655657
 GameObject:
   m_ObjectHideFlags: 0
@@ -13091,6 +13210,7 @@ GameObject:
   - component: {fileID: 1323774579}
   - component: {fileID: 1323774582}
   - component: {fileID: 1323774581}
+  - component: {fileID: 1323774583}
   m_Layer: 5
   m_Name: PlayerLevelText
   m_TagString: Untagged
@@ -13205,6 +13325,22 @@ MonoBehaviour:
   preFixB: 
   suFixB: 
   textB: {fileID: 0}
+--- !u!114 &1323774583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323774577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 2
+  toolTipText: Player level
 --- !u!1001 &1329991760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13813,6 +13949,7 @@ GameObject:
   - component: {fileID: 1409592874}
   - component: {fileID: 1409592873}
   - component: {fileID: 1409592872}
+  - component: {fileID: 1409592875}
   m_Layer: 5
   m_Name: RecycleField
   m_TagString: Untagged
@@ -13896,6 +14033,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409592870}
   m_CullTransparentMesh: 1
+--- !u!114 &1409592875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409592870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 1
+  toolTipText: Sell units to get your gold back
 --- !u!1 &1427058230
 GameObject:
   m_ObjectHideFlags: 0
@@ -13908,6 +14061,7 @@ GameObject:
   - component: {fileID: 1427058234}
   - component: {fileID: 1427058233}
   - component: {fileID: 1427058232}
+  - component: {fileID: 1427058235}
   m_Layer: 5
   m_Name: RefreshButton
   m_TagString: Untagged
@@ -14029,6 +14183,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427058230}
   m_CullTransparentMesh: 1
+--- !u!114 &1427058235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427058230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 1
+  toolTipText: reroll the shop for 2 gold
 --- !u!1 &1428431302
 GameObject:
   m_ObjectHideFlags: 0
@@ -14970,6 +15140,7 @@ GameObject:
   - component: {fileID: 1557589592}
   - component: {fileID: 1557589591}
   - component: {fileID: 1557589590}
+  - component: {fileID: 1557589593}
   m_Layer: 5
   m_Name: Skip_Button
   m_TagString: Untagged
@@ -14993,7 +15164,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 72, y: 438.2}
+  m_AnchoredPosition: {x: 72, y: 438}
   m_SizeDelta: {x: 112, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1557589590
@@ -15090,6 +15261,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557589588}
   m_CullTransparentMesh: 1
+--- !u!114 &1557589593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557589588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 2
+  toolTipText: Skip the edit time
 --- !u!1001 &1572039220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15527,6 +15714,7 @@ GameObject:
   - component: {fileID: 1617327836}
   - component: {fileID: 1617327838}
   - component: {fileID: 1617327837}
+  - component: {fileID: 1617327839}
   m_Layer: 5
   m_Name: RareText
   m_TagString: Untagged
@@ -15595,6 +15783,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617327835}
   m_CullTransparentMesh: 1
+--- !u!114 &1617327839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617327835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 2
+  toolTipText: Probability to get a rare unit in the shop
 --- !u!1 &1623844717
 GameObject:
   m_ObjectHideFlags: 0
@@ -17406,8 +17610,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 20}
+  m_AnchoredPosition: {x: 0, y: -27.189026}
+  m_SizeDelta: {x: 200, y: 74.3781}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1761386089
 MonoBehaviour:
@@ -18101,6 +18305,7 @@ GameObject:
   - component: {fileID: 1818124552}
   - component: {fileID: 1818124554}
   - component: {fileID: 1818124553}
+  - component: {fileID: 1818124555}
   m_Layer: 5
   m_Name: maxWave
   m_TagString: Untagged
@@ -18169,6 +18374,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818124551}
   m_CullTransparentMesh: 1
+--- !u!114 &1818124555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818124551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 2
+  toolTipText: maximum wave count
 --- !u!1 &1853364642
 GameObject:
   m_ObjectHideFlags: 0
@@ -18180,6 +18401,7 @@ GameObject:
   - component: {fileID: 1853364643}
   - component: {fileID: 1853364645}
   - component: {fileID: 1853364644}
+  - component: {fileID: 1853364646}
   m_Layer: 5
   m_Name: AttributeBoxTitleText
   m_TagString: Untagged
@@ -18203,8 +18425,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -829.88983, y: 276.2132}
-  m_SizeDelta: {x: 188.396, y: 32.0897}
+  m_AnchoredPosition: {x: -829.94836, y: 276.01178}
+  m_SizeDelta: {x: 196.1839, y: 39.6793}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1853364644
 MonoBehaviour:
@@ -18228,9 +18450,9 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
@@ -18248,6 +18470,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853364642}
   m_CullTransparentMesh: 1
+--- !u!114 &1853364646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853364642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0537b5f17cde73046bbf2ee42f261be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: {fileID: 11400000, guid: 0703e50466e30104a82ee436bc49f443, type: 2}
+  horizontalAllignment: 2
+  verticalAllignment: 0
+  toolTipText: field different units from a class or Alliance to activate strong
+    effects
 --- !u!1 &1866481924
 GameObject:
   m_ObjectHideFlags: 0
