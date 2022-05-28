@@ -9766,8 +9766,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelI: {fileID: 11400000, guid: 9a72326749b33694c9663206106de544, type: 2}
   currStateText: {fileID: 840408013}
-  currWave: {fileID: 655372849}
-  maxWave: {fileID: 1818124553}
   timeSlider: {fileID: 1660544710}
   editTime: 50
   breakTime: 5
@@ -9775,6 +9773,9 @@ MonoBehaviour:
   SkipButton: {fileID: 1557589590}
   BlockImage: {fileID: 744178432}
   SkipBreak: 0
+  onWaveStart: {fileID: 11400000, guid: e1c39bca4f4b6514daf07725098e3ec1, type: 2}
+  currWave: {fileID: 655372849}
+  maxWave: {fileID: 1818124553}
   pRessources: {fileID: 11400000, guid: a3a6307b2b95ffa44ba36fe157ff17c4, type: 2}
   activeHeroes: {fileID: 11400000, guid: 00cffb01dbb21b34dbd03483c3308b8a, type: 2}
   onWaveEnd: {fileID: 11400000, guid: 5078ed14aaec500498a1c452e024e45d, type: 2}
@@ -9782,7 +9783,6 @@ MonoBehaviour:
   onEditEnd: {fileID: 11400000, guid: 1152569a873a0bb4397b2ab2ac8d24be, type: 2}
   onHeroTurnStartEffects: {fileID: 11400000, guid: c5c95290451784245b247ff016b7ec52, type: 2}
   onWaveOverEffects: {fileID: 11400000, guid: f845ce78abd1c784bb8cbc32c2aba177, type: 2}
-  onWaveStart: {fileID: 11400000, guid: e1c39bca4f4b6514daf07725098e3ec1, type: 2}
 --- !u!114 &977695122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13829,7 +13829,7 @@ RectTransform:
   m_Children:
   - {fileID: 182186132}
   m_Father: {fileID: 1683344852}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16858,9 +16858,9 @@ RectTransform:
   - {fileID: 1662021433}
   - {fileID: 811483313}
   - {fileID: 1301650579}
-  - {fileID: 1398335737}
-  - {fileID: 744178433}
   - {fileID: 1896895794}
+  - {fileID: 744178433}
+  - {fileID: 1398335737}
   - {fileID: 1761386088}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -17610,7 +17610,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -27.189026}
+  m_AnchoredPosition: {x: 0, y: -27.188965}
   m_SizeDelta: {x: 200, y: 74.3781}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1761386089
@@ -18722,7 +18722,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1683344852}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
