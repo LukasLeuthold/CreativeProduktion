@@ -12,18 +12,18 @@ namespace AutoDefense
         [HideInInspector] public UnitSlot LastSlot;
         
         /// <summary>tells if the Unit is dead</summary>
-        public bool isDead;
+        [HideInInspector]public bool isDead;
         /// <summary></summary>
-        public bool CantDragDrop;
+        [HideInInspector]public bool CantDragDrop;
 
+        /// <summary>Damage Number that shows when the Unit gets Damage</summary>
+        public TMP_Text damageText;
+       
         /// <summary>Current HP of the Unit</summary>
         private int currHP;
 
         /// <summary>All Unit relevant Data</summary>
         [SerializeField] private HeroData heroData;
-
-        /// <summary>Damage Number that shows when the Unit gets Damage</summary>
-        public TMP_Text damageText;
 
         [Header("StarSprites")]
         /// <summary> Sarte Image für the hover Boarder</summary>
@@ -45,31 +45,49 @@ namespace AutoDefense
         [SerializeField] private Text hP;
         /// <summary>speed Text from the hover Boarder</summary>
         [SerializeField] private Text speed;
+        /// <summary>Attack Text from the hover Boarder</summary>
         [SerializeField] private Text aT;
 
         [Header("Details")]
+        /// <summary>Details Boarder</summary>
         [SerializeField] private GameObject details;
+        /// <summary>mele Unit text from the  Details Boarder</summary>
         [SerializeField] private GameObject meleUnitText;
+        /// <summary>range Unit text from the Details Boarder/</summary>
         [SerializeField] private GameObject rangeUnitText;
+        /// <summary>HPtext from the Details Boarder/</summary>
         [SerializeField] private Text _HP;
+        /// <summary>Speed text from the Details Boarder/</summary>
         [SerializeField] private Text _Speed;
+        /// <summary>Attacktext from the Details Boarder/</summary>
         [SerializeField] private Text _AT;
+        /// <summary>range text from the Details Boarder/</summary>
         [SerializeField] private Text _Range;
+        /// <summary>Name text from the Details Boarder/</summary>
         [SerializeField] private Text _Name;
+        /// <summary>Cost text from the Details Boarder/</summary>
         [SerializeField] private Text _Cost;
-        
+        /// <summary>Alliance text from the Details Boarder/</summary>
         [SerializeField] private Text _Alliance;
+        /// <summary>Class text from the Details Boarder/</summary>
         [SerializeField] private Text _Class;
-        
+        /// <summary>Boarder Image from the Details Boarder/</summary>
         [SerializeField] private Image _border;
-
+        /// <summary>Hero Image from the Details Boarder</summary>
         [SerializeField] private Image heroImage;
+        /// <summary>Highlight Image Attribute</summary>
         [SerializeField] private Image highlightImage;
-
-        private bool isHiddenCard = true;
-        private RectTransform rectTransform;
+        
+        /// <summary>Toggle</summary>
+        private bool isHiddenCardToggle = true;
+        /// <summary>Unit Transfomr</summary>
+        private RectTransform unitRectTransform;
+        /// <summary>Last Unit Transform</summary>
         private Vector2 lastRectTranform;
+        /// <summary>Game Canvas</summary>
         private CanvasGroup canvasGroup;
+
+        /// <summary>Unit Animator</summary>
         [SerializeField]private Animator animator;
         [SerializeField]private AUDIOScriptableEvent OnUnitDeath;
         private Canvas canvas;
@@ -117,17 +135,18 @@ namespace AutoDefense
             }
         }
 
-
+        /// <summary>default values</summary>
         private void Start()
         {
             canvas = GameObject.Find("LevelCanvas").GetComponent<Canvas>();
-            rectTransform = GetComponent<RectTransform>();
+            unitRectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             currStats.SetActive(false);
             details.SetActive(false);
             highlightImage.gameObject.SetActive(false);
             CurrHP = heroData.CurrStatBlock.MaxHP;
         }
+        /// <summary></summary>
         private void Update()
         {
             hP.text = CurrHP.ToString();
@@ -139,6 +158,7 @@ namespace AutoDefense
             {
                 canvasGroup.blocksRaycasts = true;
             }
+           
             if (CurrHP <= 0)
             {
                 isDead = true;
@@ -153,8 +173,8 @@ namespace AutoDefense
             {
                 SwitchUnitOnOFF(isDead);
             }
-
         }
+        /// <summary></summary>
         private void OnValidate()
         {
             if (heroData == null)
@@ -162,12 +182,9 @@ namespace AutoDefense
                 return;
             }
 
-
-
             UpdateUnitCard();
-
-
         }
+
         public void OnBeginDrag(PointerEventData eventData)
         {
             OnUnitDragStart?.Raise();
@@ -182,7 +199,7 @@ namespace AutoDefense
             canvasGroup.blocksRaycasts = false;
             GameField.Instance.isGrabing = true;
 
-            lastRectTranform = rectTransform.anchoredPosition;
+            lastRectTranform = unitRectTransform.anchoredPosition;
             transform.SetAsLastSibling();
         }
         public void OnDrag(PointerEventData eventData)
@@ -192,7 +209,7 @@ namespace AutoDefense
                 return;
             }
             
-            rectTransform.anchoredPosition += eventData.delta/canvas.scaleFactor;
+            unitRectTransform.anchoredPosition += eventData.delta/canvas.scaleFactor;
         }
         public void OnEndDrag(PointerEventData eventData)
         {
@@ -208,7 +225,7 @@ namespace AutoDefense
                 {
                 heroData.PlaceOnField(this);
                 }
-                rectTransform.anchoredPosition = lastRectTranform;
+                unitRectTransform.anchoredPosition = lastRectTranform;
                 LastSlot._HData = HData;
             }
             haveSlot = false;
@@ -232,7 +249,7 @@ namespace AutoDefense
             {
                 PrintRangeOnField(Color.white, 0);
             }
-            isHiddenCard = true;
+            isHiddenCardToggle = true;
 
         }
 
@@ -240,15 +257,15 @@ namespace AutoDefense
         {
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                if (!isHiddenCard)
+                if (!isHiddenCardToggle)
                 {
-                    isHiddenCard = true;
+                    isHiddenCardToggle = true;
                     details.SetActive(false);
                     currStats.SetActive(true);
                 }
-                else if (isHiddenCard)
+                else if (isHiddenCardToggle)
                 {
-                    isHiddenCard = false;
+                    isHiddenCardToggle = false;
                     details.SetActive(true);
                     currStats.SetActive(false);
                 }
