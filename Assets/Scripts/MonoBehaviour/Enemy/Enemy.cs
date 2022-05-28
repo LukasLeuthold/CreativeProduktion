@@ -18,10 +18,6 @@ namespace AutoDefense
         [SerializeField]private Animator animator;
         /// <summary>HP bar</summary>
         [SerializeField] private Slider hpSlider;
-        /// <summary>Enemy HP text</summary>
-        [SerializeField] private Text hP;
-        /// <summary>Enemy Attack text</summary>
-        [SerializeField] private Text attack;
 
 
         /// <summary>Damage Number when Enemy gets Damage</summary>
@@ -54,8 +50,6 @@ namespace AutoDefense
         /// <summary>default values</summary>
         private void Update()
         {
-            hP.text = currHP.ToString();
-            attack.text = (enemyData.CurrStatBlock.Attack + enemyData.CurrStatModifier.AttackMod).ToString();
             hpSlider.value = currHP;    
             if (currHP <= 0)
             {
