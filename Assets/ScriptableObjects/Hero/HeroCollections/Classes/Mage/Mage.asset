@@ -15,7 +15,7 @@ MonoBehaviour:
   groupEffects:
   - neededDiversity: 2
     effect: {fileID: 11400000, guid: 0f3b233609840a34db40e22b3dcded3f, type: 2}
-    effectToolTip: Mage can do pirce Damage(two Enemys get Damage)
+    effectToolTip: Mage can do pierce Damage(two Enemys get Damage)
   highlightColor: {r: 0.033018887, g: 0.113471925, b: 1, a: 0.6392157}
   diversity: 0
   OnBuffActivated: {fileID: 11400000, guid: b3ac5f860c0378d408b0cb3b407f9db9, type: 2}

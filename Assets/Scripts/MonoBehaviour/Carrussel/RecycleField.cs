@@ -6,24 +6,53 @@ using UnityEngine.UI;
 
 namespace AutoDefense
 {
+    /// <summary>
+    /// handles selling a unit
+    /// </summary>
     public class RecycleField : MonoBehaviour,IDropHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField]private PlayerRessources pRessources;
-        [SerializeField]private HeroPool heroPool;
-        [SerializeField]private HeroCombiner heroCombiner;
+        /// <summary>
+        /// the player ressources
+        /// </summary>
+        [SerializeField] private PlayerRessources pRessources;
+        /// <summary>
+        /// the curr used heropool
+        /// </summary>
+        [SerializeField] private HeroPool heroPool;
+        /// <summary>
+        /// the used herocombiner
+        /// </summary>
+        [SerializeField] private HeroCombiner heroCombiner;
+        /// <summary>
+        /// plays when a unit is sold
+        /// </summary>
         [SerializeField]private AUDIOScriptableEvent onUnitSell;
 
-        [Header("Bin Icon")]
-        [SerializeField]private Image recycleFieldImage;
-        [SerializeField]private Sprite closedTrashSprite;
+        /// <summary>
+        /// image that displays the field sprites
+        /// </summary>
+        [Header("Icon")]
+        [SerializeField] private Image recycleFieldImage;
+        /// <summary>
+        /// default sprite
+        /// </summary>
+        [SerializeField] private Sprite closedTrashSprite;
+        /// <summary>
+        /// sprite showing hover over with unit feedback
+        /// </summary>
         [SerializeField]private Sprite openTrashSprite;
         
-
+        /// <summary>
+        /// sets default values
+        /// </summary>
         private void Start()
         {
             recycleFieldImage.sprite = closedTrashSprite;
         }
-
+        /// <summary>
+        /// sells the hero; player gets money; hero gets added to pool
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnDrop(PointerEventData eventData)
         {
             DragDrop dd = eventData.pointerDrag.GetComponent<DragDrop>();
@@ -52,7 +81,10 @@ namespace AutoDefense
             recycleFieldImage.sprite = closedTrashSprite;
             onUnitSell.Raise();
         }
-
+        /// <summary>
+        /// swaps to the hover over sprite
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (eventData.pointerDrag != null)
@@ -60,7 +92,10 @@ namespace AutoDefense
                 recycleFieldImage.sprite = openTrashSprite;
             }
         }
-
+        /// <summary>
+        /// swaps to the default sprite
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnPointerExit(PointerEventData eventData)
         {
             if (eventData.pointerDrag != null)

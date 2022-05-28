@@ -4,10 +4,70 @@ using UnityEngine.UI;
 
 namespace AutoDefense
 {
+    /// <summary>
+    /// display of a single hero; can be interacted with to buy the hero
+    /// </summary>
     public class HeroCard : MonoBehaviour, IPointerDownHandler
     {
+        /// <summary>
+        /// herodata of the card
+        /// </summary>
         [Header("Data")]
         private HeroData heroData;
+        /// <summary>
+        /// ressources of the player
+        /// </summary>
+        [SerializeField] private PlayerRessources playerRessources;
+        /// <summary>
+        /// herocombiner used to handle logic for combining and leveling up heroes
+        /// </summary>
+        [SerializeField] private HeroCombiner heroCombiner;
+        /// <summary>
+        /// flag if the hero is affordable by the player
+        /// </summary>
+        private bool isAffordable = false;
+        /// <summary>
+        /// the unit parent object heroprefabs get parented to
+        /// </summary>
+        [SerializeField] GameObject unitParent;
+        /// <summary>
+        /// the heroprefab
+        /// </summary>
+        [SerializeField] private GameObject heroPrefab;
+
+        /// <summary>
+        /// the whole card
+        /// </summary>
+        [Header("UI")]
+        [SerializeField] public GameObject card;
+        /// <summary>
+        /// the image displaying the heroes look
+        /// </summary>
+        [SerializeField] private Image heroImage;
+        /// <summary>
+        /// the border of the card; gets colored in rarity color
+        /// </summary>
+        [SerializeField] private Image Border;
+        /// <summary>
+        /// text to display the name of the hero
+        /// </summary>
+        [SerializeField] private Text nameText;
+        /// <summary>
+        /// text to display the alliance of the hero
+        /// </summary>
+        [SerializeField] private Text allianceText;
+        /// <summary>
+        /// text to display the class of the hero
+        /// </summary>
+        [SerializeField] private Text classText;
+        /// <summary>
+        /// text to deisplay the cost of the hero
+        /// </summary>
+        [SerializeField] private Text costText;
+
+        /// <summary>
+        /// herodata of the card
+        /// </summary>
         public HeroData HeroData
         {
             get => heroData;
@@ -18,25 +78,9 @@ namespace AutoDefense
             }
         }
 
-        [SerializeField] private PlayerRessources playerRessources;
-        [SerializeField] private HeroCombiner heroCombiner;
-
-        private bool isAffordable = false;
-
-        [SerializeField] GameObject unitParent;
-
-        [SerializeField] private GameObject heroPrefab;
-
-        [Header("UI")]
-        [SerializeField] public GameObject card;
-        [SerializeField] private Image heroImage;
-        [SerializeField] private Image Border;
-        [SerializeField] private Text nameText;
-        [SerializeField] private Text allianceText;
-        [SerializeField] private Text classText;
-        [SerializeField] private Text costText;
-
-
+        /// <summary>
+        /// refreshes all displays of the card
+        /// </summary>
         private void UpdateUnitCard()
         {
             if (heroData == null)
@@ -62,6 +106,10 @@ namespace AutoDefense
                 heroImage.color = color;
             }
         }
+        /// <summary>
+        /// evaluates if the hero is affordable by the player or not
+        /// </summary>
+        /// <param name="_value"></param>
         public void SetAffordable(int _value)
         {
             if (heroData == null)
@@ -79,7 +127,10 @@ namespace AutoDefense
                 UpdateUnitCard();
             }
         }
-
+        /// <summary>
+        /// buys the unit and puts it on the reserve of the player
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnPointerDown(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)

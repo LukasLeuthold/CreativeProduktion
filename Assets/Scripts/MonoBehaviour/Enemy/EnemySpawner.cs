@@ -4,25 +4,51 @@ using UnityEngine;
 
 namespace AutoDefense
 {
+    /// <summary>
+    /// handles spawning of enemies
+    /// </summary>
     public class EnemySpawner : MonoBehaviour
     {
+        /// <summary>
+        /// wavebuilder used to build wave
+        /// </summary>
         [SerializeField] private EnemyWaveBuilder waveBuilder;
+        /// <summary>
+        /// info object of the level
+        /// </summary>
         [SerializeField] private LevelInfo levelInfo;
+        /// <summary>
+        /// prefab of the enemy
+        /// </summary>
         [SerializeField] private GameObject enemyPrefab;
+        /// <summary>
+        /// probability of spawning an enemy
+        /// </summary>
         [SerializeField] private int spawnProbability;
+        /// <summary>
+        /// transforms of the spawnfields
+        /// </summary>
         [SerializeField] private RectTransform[] spawnFieldTransforms;
+        /// <summary>
+        /// gets played when enemy is spawned
+        /// </summary>
         [SerializeField] private AUDIOScriptableEvent onEnemySpawn;
 
+        /// <summary>
+        /// queue of enemies in the wave
+        /// </summary>
         private Queue<EnemyData> enemiesInWave;
+        /// <summary>
+        /// queue of enemies in the wave
+        /// </summary>
         public Queue<EnemyData> EnemiesInWave
         {
             get { return enemiesInWave; }
             set { enemiesInWave = value; }
         }
-
-        
-
-        
+        /// <summary>
+        /// uses the wavebuilder to build a wave
+        /// </summary>
         public void BuildWave()
         {
             if (levelInfo.CurrWave == levelInfo.MaxWaveCount)
@@ -34,6 +60,9 @@ namespace AutoDefense
                 EnemiesInWave = waveBuilder.BuildEnemyWave(Mathf.RoundToInt(levelInfo.DifficultieCurve.Evaluate(levelInfo.CurrWave)));
             }
         }
+        /// <summary>
+        /// debugs the wave build
+        /// </summary>
         private void DebugWave()
         {
             if (EnemiesInWave == null)
@@ -47,7 +76,9 @@ namespace AutoDefense
                 Debug.Log(enemy.ToString());
             }
         }
-
+        /// <summary>
+        /// spawns the wave from the queue on the spawnfields 
+        /// </summary>
         public void SpawnNextEnemy()
         {
             bool spawnedSomething = false;
@@ -93,6 +124,5 @@ namespace AutoDefense
                 onEnemySpawn?.Raise();
             }
         }
-
     }
 }
